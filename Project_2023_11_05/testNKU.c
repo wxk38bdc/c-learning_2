@@ -216,7 +216,7 @@
 //}
 
 //求2个正整数的最大公约数
-#include<stdio.h>
+//#include<stdio.h>
 //int main()
 //{
 //	int a = 0;
@@ -235,3 +235,103 @@
 //	}
 //	return 0;
 //}
+
+//#include <stdio.h>
+//#include <string.h>
+//
+//int main() {
+//    char arr[105];
+//    fgets(arr, sizeof(arr), stdin); // 使用fgets读取整行文本
+//    int i = 0, j = 0, k = 0;
+//    char arr_new[105][105];
+//    //全部初始化为\0
+//    for (i = 0; i < 105; i++) {
+//        for (j = 0; j < 105; j++) {
+//            arr_new[i][j] = '\0';
+//        }
+//    }
+//    i = 0, j = 0;
+//    int len = strlen(arr);
+//    while (i<len) 
+//    {
+//        if (arr[i] != ' ') 
+//        {
+//            arr_new[j][k] = arr[i];
+//            k++;
+//        }
+//        else if (arr[i] == '\0')
+//        {
+//            arr_new[j][k] = '\0';
+//            break;
+//        }
+//        else 
+//        {
+//            arr_new[j][k] = '\0';
+//            j++;
+//            k = 0;
+//        }
+//        i++;
+//    }
+//    //for (i = 0; i <= j; i++)
+//    //{
+//    //    printf("%s\n", arr_new[i]);
+//    //}
+//    int max = strlen(arr_new[0]);
+//    int max_index = 0;
+//
+//    for (i = 0; i <= j; i++) {
+//        if (strlen(arr_new[i]) > max) {
+//            max = strlen(arr_new[i]);
+//            max_index = i;
+//        }
+//    }
+//
+//    printf("%s", arr_new[max_index]);
+//    return 0;
+//}
+
+#include <stdio.h>
+//输入一个年份，一个月份，输出这个月有几天？
+int is_leap_year(int year)
+{
+	if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0)
+	{
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
+}
+int main()
+{
+	int year = 0, month = 0;
+	scanf("%d %d", &year, &month);
+	if (year < 0 || month < 1 || month>12)
+	{
+		printf("ERROR");
+		return 1;
+	}
+	int day = 0;
+	if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12)
+	{
+		day = 31;
+	}
+	else if (month == 4 || month == 6 || month == 9 || month == 11)
+	{
+		day = 30;
+	}
+	else
+	{
+		if (is_leap_year(year))
+		{
+			day = 29;
+		}
+		else
+		{
+			day = 28;
+		}
+	}
+	printf("%d", day);
+	return 0;
+}
