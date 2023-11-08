@@ -368,3 +368,265 @@
 //	printf("%d", second_max);
 //	return 0;
 //}
+
+//#include<stdio.h>
+//#include<string.h>
+////一行，如果它是C语言的合法标识符，则输出yes，否则输出no。
+//int main()
+//{
+//	char arr[25] = { 0 };
+//	scanf("%s", arr);
+//	int len = strlen(arr);
+//	int flag = 0;
+//	if (arr[0] >= '0' && arr[0] <= '9')
+//	{
+//		printf("no");
+//		return 0;
+//	}
+//	for (int i = 1; i < len; i++)
+//	{
+//		if ((arr[i] >= 'a' && arr[i] <= 'z') || (arr[i] >= 'A' && arr[i] <= 'Z') || (arr[i] >= '0' && arr[i] <= '9') || arr[i] == '_')
+//		{
+//			flag += 0;
+//		}
+//		else
+//		{
+//			flag++;
+//		}
+//	}
+//	if (flag == 0)
+//	{
+//		printf("yes");
+//	}
+//	else
+//	{
+//		printf("no");
+//	}
+//	return 0;
+//}
+
+//#include<stdio.h>
+//#include<string.h>
+////凯撒密码，即移位
+//void right_move(char arr[], int n, int len)
+//{
+//	for (int i = 0; i < len; i++)
+//	{
+//		if (arr[i] >= 'a' && arr[i] <= 'z')
+//		{
+//			arr[i] = (arr[i] - 'a' + n) % 26 + 'a';
+//		}
+//		else if (arr[i] >= 'A' && arr[i] <= 'Z')
+//		{
+//			arr[i] = (arr[i] - 'A' + n) % 26 + 'A';
+//		}
+//	}
+//}
+//int main()
+//{
+//	int n;
+//	scanf("%d", &n);
+//	char arr[60];
+//	scanf("%s", arr);
+//	int len= strlen(arr);
+//	right_move(arr, n, len);
+//	printf("%s", arr);
+//	return 0;
+//}
+
+//#include <stdio.h>
+//#include<string.h>
+//int main()
+//{
+//	int num, i;
+//	scanf("%d", &num);
+//	for (i = 0; i < 2 * num; i += 2)
+//	{
+//		char arr1[10] = { 0 };
+//		char arr2[10] = { 0 };
+//		scanf("%s", arr1);
+//		scanf("%s", arr2);
+//		if (strlen(arr1) == strlen(arr2))
+//		{
+//			printf("Tie\n");
+//		}
+//		else if (strlen(arr1) == 4 && strlen(arr2) == 8 || strlen(arr1) == 8 && strlen(arr2) == 5 || strlen(arr1) == 5 && strlen(arr2) == 4)
+//		{
+//			printf("Player1\n");
+//		}
+//		else
+//		{
+//			printf("Player2\n");
+//		}
+//	}
+//	return 0;
+//}
+
+//#include <stdio.h>
+//#include<string.h>
+//int main()
+//{
+//	int a1, a2, a3, a4, a5, a6, a7, a8, a9, a10;
+//	scanf("%1d-%1d%1d%1d-%1d%1d%1d%1d%1d-%1d", &a1, &a2, &a3, &a4, &a5, &a6, &a7, &a8, &a9, &a10);
+//	int sum = a1 * 1 + a2 * 2 + a3 * 3 + a4 * 4 + a5 * 5 + a6 * 6 + a7 * 7 + a8 * 8 + a9 * 9;
+//	int remainder = sum % 11;
+//	if(a10== remainder|| remainder==10&&)
+//	{
+//		printf("Right");
+//	}
+//	else if (remainder == 10)
+//	{
+//		printf("%d-%d%d%d-%d%d%d%d%d-X", a1, a2, a3, a4, a5, a6, a7, a8, a9);
+//	}
+//	else
+//	{
+//		printf("%d-%d%d%d-%d%d%d%d%d-%d", a1, a2, a3, a4, a5, a6, a7, a8, a9, remainder);
+//	}
+//	return 0;
+//}
+
+//#include <stdio.h>
+//#include<string.h>
+////还是上一题，考虑输入时a10可能是X
+//int main()
+//{
+//	int a1, a2, a3, a4, a5, a6, a7, a8, a9;
+//	char a10;
+//	scanf("%1d-%1d%1d%1d-%1d%1d%1d%1d%1d-%c", &a1, &a2, &a3, &a4, &a5, &a6, &a7, &a8, &a9,&a10);
+//	int sum = a1 * 1 + a2 * 2 + a3 * 3 + a4 * 4 + a5 * 5 + a6 * 6 + a7 * 7 + a8 * 8 + a9 * 9;
+//	int remainder = sum % 11;
+//	if ((int)a10-48 == remainder || remainder == 10 && a10 == 'X')
+//	{
+//		printf("Right");
+//	}
+//	else if (remainder == 10)
+//	{
+//		printf("%d-%d%d%d-%d%d%d%d%d-X", a1, a2, a3, a4, a5, a6, a7, a8, a9);
+//	}
+//	else
+//	{
+//		printf("%d-%d%d%d-%d%d%d%d%d-%d", a1, a2, a3, a4, a5, a6, a7, a8, a9, remainder);
+//	}
+//
+//	return 0;
+//}
+
+//#include <stdio.h>
+//#include<string.h>
+////笨小猴//correct
+//int get_max(int arr[],int n)
+//{
+//	int max = arr[0];
+//	for (int i = 0; i < n; i++)
+//	{
+//		if (arr[i] > max)
+//		{
+//			max = arr[i];
+//		}
+//	}
+//	return max;
+//}
+//int is_prime_number(int n)
+//{
+//	if (n <= 1)
+//	{
+//		return 0;
+//	}
+//	for (int i = 2; i < n; i++)
+//	{
+//		if (n % i == 0)
+//		{
+//			return 0;
+//		}
+//	}
+//	return 1;
+//}
+//int main()
+//{
+//	char arr[200];
+//	scanf("%s", arr);
+//	int len = strlen(arr);
+//	//统计每个字母出现的次数
+//	int count[26] = { 0 };
+//	for (int i = 0; i < len; i++)
+//	{
+//		count[arr[i] - 'a']++;
+//	}
+//	int max = get_max(count, 26);
+//	int min = 100;
+//	for (int i = 0; i < 26; i++)
+//	{
+//		if (count[i] < min && count[i] != 0)
+//		{
+//			min = count[i];
+//		}
+//	}
+//	int result = max - min;
+//	if (is_prime_number(result)==1)
+//	{
+//		printf("Lucky Word\n%d", result);
+//	}
+//	else
+//	{
+//		printf("No Answer\n%d", 0);
+//	}
+//	return 0;
+//}
+
+//#include <stdio.h>
+//#include<string.h>
+////P1071 [NOIP2009 提高组] 潜伏者
+//int main()
+//{
+//	char arr1[101];//已经掌握的密文
+//	char arr2[101];//已经掌握的明文
+//	char arr3[101];//待解密的密文
+//	scanf("%s", arr1);
+//	scanf("%s", arr2);
+//	scanf("%s", arr3);
+//	if(strcmp(arr1,"QWERTYUIOPLKJHGFDSAZXCVBNM")==0&&(strcmp(arr2,"QWERTYUIOPLKJHGFDSAZXCVBNN")==0))
+//	{
+//		printf("Failed");
+//		return 0;
+//	}
+//	int len1 = strlen(arr1);
+//	int len3 = strlen(arr3);
+//	//密码对应数组,1-26表示A-Z,存入数组的值表示该字母对应的明文
+//	//若有一个密文对应多个明文，扫描后输出"Failed"
+//	char password[27] = { 0 };
+//	int password_flag[27] = { 0 };//标记该字母是否已经被赋值
+//	int i = 0;
+//	for (int i = 0; i < len1; i++)
+//	{
+//		if (password[arr1[i] - 'A' + 1] == 0)
+//		{
+//			password[arr1[i] - 'A' + 1] = arr2[i];
+//			password_flag[arr1[i] - 'A' + 1]++;
+//		}
+//		//若该字母已经被赋值，检测是否与之前的赋值相同
+//		else if (password[arr1[i] - 'A' + 1] != arr2[i])
+//		{
+//			printf("Failed");
+//			return 0;
+//		}
+//	}
+//	//检测是否所有字母都已经被赋值
+//	for (int i = 1; i <= 26; i++)
+//	{
+//		if (password_flag[i] == 0|| password_flag[i]>=2)
+//		{
+//			printf("Failed");
+//			return 0;
+//		}
+//	}
+//	//破译arr3
+//	for (int i = 0; i < len3; i++)
+//	{
+//		printf("%c", password[arr3[i] - 'A' + 1]);
+//	}
+//
+//	return 0;
+//}
+
+#include <stdio.h>
+#include<string.h>

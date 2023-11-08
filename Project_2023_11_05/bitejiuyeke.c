@@ -252,4 +252,94 @@
 你可以通过调用 hanoi 函数来解决不同数量盘子的汉诺塔问题，传递起始柱子、辅助柱子和目标柱子的标识，代码会自动处理盘子的移动过程。
 */
 
-#include<stdio.h>
+//#include<stdio.h>
+//
+//int main()
+//{
+//    char a, b;
+//    scanf("%c%c", &a, &b);
+//    printf("%c\n%c", a + 32, b + 32);
+//    return 0;
+//}
+
+//#include <stdio.h>
+//
+//int main() {
+//    char a;
+//    while (scanf("%c", &a) != EOF)
+//    {
+//        printf("%c\n", a + 32);
+//        getchar();//吸收空格
+//    }
+//    return 0;
+//}
+
+//#include <stdio.h>
+//
+//int main() {
+//    int a = 1234;
+//    printf("%#o %#X", a, a);
+//    return 0;
+//}
+
+//#include<stdio.h>
+//int main()
+//{
+//	int a;
+//	scanf("%x", &a);
+//	printf("%d", a);
+//	return 0;
+//}
+
+//#include<stdio.h>
+//int main()
+//{
+//	int a = 0;
+//	scanf("%d", &a);
+//	int ret=2<<a-1;
+//	printf("%d", ret);
+//	return 0;
+//}
+
+//#include<stdio.h>
+//int main()
+//{
+//	int hour_now, minute_now;
+//	scanf("%d:%d", &hour_now, &minute_now);
+//	int minutes = 0;
+//	scanf("%d", &minutes);
+//	minutes %= 1440;
+//	int hour = minutes / 60;
+//	int minute = minutes % 60;
+//	printf("%02d:%02d", (hour_now + hour + (minute_now + minute) / 60) % 24, (minute_now + minute) % 60);
+//	return 0;
+//}
+
+//#include<stdio.h>
+////求最大公约数
+//long long func1(long long a, long long b)//辗转相除法
+//{
+//	long long tmp = 0;
+//	while (tmp = a % b)
+//	{
+//		a = b;
+//		b = tmp;
+//	}
+//	return b;
+//}
+////求最小公倍数
+//long long func2(long long a, long long b)
+//{
+//	return a * b / func1(a, b);
+//}
+//int main()
+//{
+//	long long a, b;
+//	while (scanf("%lld %lld", &a, &b) != EOF)
+//	{
+//		long long ret1 = func1(a, b);
+//		long long ret2 = func2(a, b);
+//		printf("%lld\n", ret1 + ret2);
+//	}
+//	return 0;
+//}
