@@ -290,48 +290,81 @@
 //    return 0;
 //}
 
-#include <stdio.h>
-//输入一个年份，一个月份，输出这个月有几天？
-int is_leap_year(int year)
-{
-	if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0)
-	{
-		return 1;
-	}
-	else
-	{
-		return 0;
-	}
-}
-int main()
-{
-	int year = 0, month = 0;
-	scanf("%d %d", &year, &month);
-	if (year < 0 || month < 1 || month>12)
-	{
-		printf("ERROR");
-		return 1;
-	}
-	int day = 0;
-	if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12)
-	{
-		day = 31;
-	}
-	else if (month == 4 || month == 6 || month == 9 || month == 11)
-	{
-		day = 30;
-	}
-	else
-	{
-		if (is_leap_year(year))
-		{
-			day = 29;
-		}
-		else
-		{
-			day = 28;
-		}
-	}
-	printf("%d", day);
-	return 0;
-}
+//#include <stdio.h>
+////输入一个年份，一个月份，输出这个月有几天？
+//int is_leap_year(int year)
+//{
+//	if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0)
+//	{
+//		return 1;
+//	}
+//	else
+//	{
+//		return 0;
+//	}
+//}
+//int main()
+//{
+//	int year = 0, month = 0;
+//	scanf("%d %d", &year, &month);
+//	if (year < 0 || month < 1 || month>12)
+//	{
+//		printf("ERROR");
+//		return 1;
+//	}
+//	int day = 0;
+//	if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12)
+//	{
+//		day = 31;
+//	}
+//	else if (month == 4 || month == 6 || month == 9 || month == 11)
+//	{
+//		day = 30;
+//	}
+//	else
+//	{
+//		if (is_leap_year(year))
+//		{
+//			day = 29;
+//		}
+//		else
+//		{
+//			day = 28;
+//		}
+//	}
+//	printf("%d", day);
+//	return 0;
+//}
+
+//#include <stdio.h>
+////输出5个数中第二大的数
+//int main()
+//{
+//	int arr[5] = { 0 };
+//	int i = 0;
+//	for (i = 0; i < 5; i++)
+//	{
+//		scanf("%d", &arr[i]);
+//	}
+//	int max = arr[0];
+//	int max_index = 0;
+//	for (i = 0; i < 5; i++)
+//	{
+//		if (arr[i] > max)
+//		{
+//			max = arr[i];
+//			max_index = i;
+//		}
+//	}
+//	arr[max_index] = 0;
+//	int second_max = 0;
+//	for (i = 0; i < 5; i++)
+//	{
+//		if (arr[i] > second_max)
+//		{
+//			second_max = arr[i];
+//		}
+//	}
+//	printf("%d", second_max);
+//	return 0;
+//}
