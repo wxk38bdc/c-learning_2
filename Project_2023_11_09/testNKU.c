@@ -200,3 +200,184 @@
 //	printf("交换后:a=%d,b=%d\n", a, b);
 //	return 0;
 //}
+
+//#include<stdio.h>
+////CCF 202309-1 坐标变换（其一）
+//int main()
+//{
+//	int n, m;//n:操作数 m:坐标数
+//	scanf("%d%d", &n, &m);
+//	int arr1[200] = { 0 };//存储操作数
+//	int i = 0, j = 0;
+//	//输入操作数,偶数为x坐标，奇数为y坐标
+//	for (i = 0; i < n * 2; i++)
+//	{
+//		scanf("%d", &arr1[i]);
+//	}
+//	int arr2[200] = { 0 };//存储坐标
+//	//输入坐标,偶数为x坐标，奇数为y坐标
+//	for (i = 0; i < m * 2; i++)
+//	{
+//		scanf("%d", &arr2[i]);
+//	}
+//	//进行坐标变换
+//	for (i = 0; i < m * 2; i += 2)
+//	{
+//		for (j = 0; j < n * 2; j += 2)
+//		{
+//			arr2[i] += arr1[j];
+//			arr2[i + 1] += arr1[j + 1];
+//		}
+//	}
+//	//输出坐标
+//	for (i = 0; i < m * 2; i += 2)
+//	{
+//		printf("%d %d\n", arr2[i], arr2[i + 1]);
+//	}
+//	return 0;
+//}
+
+//#include<stdio.h>
+//#include<math.h>
+////CCF 202309-2 坐标变换（其二）
+//int main()
+//{
+//	int n, m;//n:操作数 m:查询数
+//	double arr_n[200000] = { 0 };//存储操作数
+//	double arr_m[400000] = { 0 };//存储查询数
+//	int i = 0, j = 0;
+//	scanf("%d%d", &n, &m);
+//	//输入操作数
+//	for (i = 0; i < 2 * n; i++)
+//	{
+//		scanf("%lf", &arr_n[i]);
+//	}
+//	//输入查询数
+//	//第4k个数为i,第4k+1个数为j,第4k+2个数为x,第4k+3个数为y
+//	//i是第i个操作数，j是第j个操作数
+//	for (i = 0; i < 4 * m; i++)
+//	{
+//		scanf("%lf", &arr_m[i]);
+//	}
+//	int a = 0, b = 0, c = 0, d = 0;
+//	//进行查询并操作
+//	//对x,y进行从i到j的操作,4个数为一次大循环
+//	for (a = 0; a < 4 * m; a += 4)
+//	{
+//		int i = arr_m[a] - 1, j = arr_m[a + 1] - 1;//-1是因为数组下标从0开始
+//		double x = arr_m[a + 2], y = arr_m[a + 3];
+//		for(b = i; b <= j; b++)
+//		{
+//			int judge = arr_n[2 * b];//判断操作数，1为乘以arr[2*b+1],2为逆时针旋转arr[2*b+1]
+//			double num = arr_n[2 * b + 1];
+//			if (judge == 1)
+//			{
+//				x *= num;
+//				y *= num;
+//			}
+//			else if (judge == 2)
+//			{
+//				double tmp1= x, tmp2 = y;
+//				x = tmp1 * cos(num) - tmp2 * sin(num);
+//				y = tmp1 * sin(num) + tmp2 * cos(num);
+//			}
+//		}
+//		//输出结果
+//		printf("%lf %lf\n", x, y);
+//	}
+//	return 0;
+//}
+
+//#include <stdio.h>
+//#include <math.h>
+//
+//int main() {
+//    int n, m;
+//    scanf("%d%d", &n, &m);
+//
+//    double arr_n[20000] = { 0 };
+//    double arr_m[40000] = { 0 };
+//
+//    for (int i = 0; i < 2 * n; i++) {
+//        scanf("%lf", &arr_n[i]);
+//    }
+//
+//    for (int i = 0; i < 4 * m; i++) {
+//        scanf("%lf", &arr_m[i]);
+//    }
+//
+//    double multiply_prefix[20000] = { 1.0 }; // 存储乘法的前缀和
+//    double rotate_prefix[20000] = { 0.0 };   // 存储旋转的前缀和
+//
+//    // 预处理前缀和
+//    for (int i = 0; i < n; i++) {
+//        int judge = (int)arr_n[2 * i];
+//        double num = arr_n[2 * i + 1];
+//
+//        multiply_prefix[i + 1] = multiply_prefix[i];
+//        rotate_prefix[i + 1] = rotate_prefix[i];
+//
+//        if (judge == 1) {
+//            multiply_prefix[i + 1] *= num;
+//        }
+//        else if (judge == 2) {
+//            rotate_prefix[i + 1] += num;
+//        }
+//    }
+//
+//    for (int k = 0; k < m; k++) {
+//        double x = arr_m[4 * k + 2];
+//        double y = arr_m[4 * k + 3];
+//
+//        int i = (int)arr_m[4 * k] - 1;
+//        int j = (int)arr_m[4 * k + 1] - 1;
+//
+//        // 直接获取区间内的影响
+//        double multiply_effect = multiply_prefix[j + 1] / multiply_prefix[i];
+//        double rotate_effect = rotate_prefix[j + 1] - rotate_prefix[i];
+//
+//        // 应用变换
+//        x *= multiply_effect;
+//        y *= multiply_effect;
+//
+//        double tmp1 = x, tmp2 = y;
+//        x = tmp1 * cos(rotate_effect) - tmp2 * sin(rotate_effect);
+//        y = tmp1 * sin(rotate_effect) + tmp2 * cos(rotate_effect);
+//
+//        printf("%lf %lf\n", x, y);
+//    }
+//
+//    return 0;
+//}
+
+#include <stdio.h>
+
+// 全局变量用于统计移动次数
+int moveCount = 0;
+
+// 汉诺塔函数
+void hanoi(int n, char source, char auxiliary, char target) 
+{
+    if (n == 1) 
+    {
+        printf("移动圆盘 1 从 %c 到 %c\n", source, target);
+        moveCount++;
+    }
+    else 
+    {
+        hanoi(n - 1, source, target, auxiliary);
+        printf("移动圆盘 %d 从 %c 到 %c\n", n, source, target);
+        moveCount++;
+        hanoi(n - 1, auxiliary, source, target);
+    }
+}
+
+int main() {
+    int n = 0;
+    scanf("%d", &n);
+    printf("汉诺塔步骤:\n");
+    hanoi(n, 'A', 'B', 'C');
+    printf("总移动次数: %d\n", moveCount);
+    return 0;
+}
+
