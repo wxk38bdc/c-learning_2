@@ -160,3 +160,122 @@
 //	return 0;
 //}
 
+//#include <stdio.h>
+//void test(int arr[11])
+//{
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	printf("%d", arr[1]);
+//}
+//int main()
+//{
+//	int arr[10] = { 0 };
+//
+//	test(arr);
+//	return 0;
+//}
+
+//#include<stdio.h>
+//void bubbleSort(int arr[], int sz)
+//{
+//	int flag = 1;
+//	int i = 0;
+//	for (i = 0; i < sz - 1; i++)
+//	{
+//		int j = 0;
+//		flag = 1;
+//		for (j = 0; j < sz - 1 - i; j++)
+//		{
+//			if (arr[j] > arr[j + 1])
+//			{
+//				int tmp = arr[j + 1];
+//				arr[j + 1] = arr[j];
+//				arr[j] = tmp;
+//				flag = 0;
+//			}
+//		}
+//		if (flag == 1)
+//		{
+//			break;
+//		}
+//	}
+//}
+//int main()
+//{
+//	int arr[10] = { 0 };
+//	int i = 0;
+//	for (i = 0; i < 10; i++)
+//	{
+//		scanf("%d", &arr[i]);
+//	}
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	bubbleSort(arr, 10);
+//	for (i = 0; i < 10; i++)
+//	{
+//		printf("%d ", arr[i]);
+//	}
+//	return 0;
+//}
+
+
+//#include <stdio.h>
+//void Print(int *arr, int sz)
+//{
+//	int i = 0;
+//	for (i = 0; i < sz; i++)
+//	{
+//		printf("%d ", *(arr + i));
+//	}
+//}
+//int main()
+//{
+//	int arr[10] = { 0 };
+//	int i = 0;
+//	for (i = 0; i < 10; i++)
+//	{
+//		scanf("%d", &arr[i]);
+//	}
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	Print(arr, 10);
+//	return 0;
+//}
+
+#include <stdio.h>
+void sortOddBeforeEven(int arr[], int sz)
+{
+	int left = 0;
+	int right = sz - 1;
+	while (left < right)
+	{
+		while (left < right && arr[left] % 2 == 1)
+		{
+			left++;
+		}
+		while (left < right && arr[right] % 2 == 0)
+		{
+			right--;
+		}
+		if (left < right)
+		{
+			int tmp = arr[left];
+			arr[left] = arr[right];
+			arr[right] = tmp;
+		}
+	}
+
+}
+int main()
+{
+	int arr[10] = { 0 };
+	int i = 0;
+	int sz = sizeof(arr) / sizeof(arr[0]);
+	for (i = 0; i < sz; i++)
+	{
+		scanf("%d", &arr[i]);
+	}
+	sortOddBeforeEven(arr, sz);//调整奇数在前，偶数在后
+	for (i = 0; i < sz; i++)
+	{
+		printf("%d ", arr[i]);
+	}
+	return 0;
+}
