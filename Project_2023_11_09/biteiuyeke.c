@@ -239,43 +239,52 @@
 //	return 0;
 //}
 
-#include <stdio.h>
-void sortOddBeforeEven(int arr[], int sz)
-{
-	int left = 0;
-	int right = sz - 1;
-	while (left < right)
-	{
-		while (left < right && arr[left] % 2 == 1)
-		{
-			left++;
-		}
-		while (left < right && arr[right] % 2 == 0)
-		{
-			right--;
-		}
-		if (left < right)
-		{
-			int tmp = arr[left];
-			arr[left] = arr[right];
-			arr[right] = tmp;
-		}
-	}
+//#include <stdio.h>
+//void sortOddBeforeEven(int arr[], int sz)
+//{
+//	int left = 0;
+//	int right = sz - 1;
+//	while (left < right)
+//	{
+//		while (left < right && arr[left] % 2 == 1)
+//		{
+//			left++;
+//		}
+//		while (left < right && arr[right] % 2 == 0)
+//		{
+//			right--;
+//		}
+//		if (left < right)
+//		{
+//			int tmp = arr[left];
+//			arr[left] = arr[right];
+//			arr[right] = tmp;
+//		}
+//	}
+//
+//}
+//int main()
+//{
+//	int arr[10] = { 0 };
+//	int i = 0;
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	for (i = 0; i < sz; i++)
+//	{
+//		scanf("%d", &arr[i]);
+//	}
+//	sortOddBeforeEven(arr, sz);//调整奇数在前，偶数在后
+//	for (i = 0; i < sz; i++)
+//	{
+//		printf("%d ", arr[i]);
+//	}
+//	return 0;
+//}
 
-}
+#include<stdio.h>
 int main()
 {
-	int arr[10] = { 0 };
-	int i = 0;
-	int sz = sizeof(arr) / sizeof(arr[0]);
-	for (i = 0; i < sz; i++)
-	{
-		scanf("%d", &arr[i]);
-	}
-	sortOddBeforeEven(arr, sz);//调整奇数在前，偶数在后
-	for (i = 0; i < sz; i++)
-	{
-		printf("%d ", arr[i]);
-	}
+	double a, b, c, d;
+	scanf("%lf %lf %lf %lf", &a, &b, &c, &d);
+	printf("%.1lf", a * 0.2 + b * 0.1 + c * 0.2 + d * 0.5);
 	return 0;
 }
