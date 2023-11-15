@@ -485,3 +485,68 @@
 //	}
 //	return 0;
 //}
+
+//#include<stdio.h>
+//int main()
+//{
+//	double value;
+//	int month, day;
+//	int flag;
+//	scanf("%lf %d %d %d", &value, &month, &day, &flag);
+//	if (month == 11 && day == 11)
+//	{
+//		if (flag)
+//		{
+//			if(value*0.7-50>0)
+//				printf("%.2lf", value * 0.7 - 50);
+//			else
+//				printf("0.00");
+//		}
+//		else
+//		{
+//			printf("%.2lf", value * 0.7);
+//		}
+//	}
+//	else if (month == 12 && day == 12)
+//	{
+//		if (flag)
+//		{
+//			if (value * 0.8 - 50 > 0)
+//				printf("%.2lf", value * 0.8 - 50);
+//			else
+//				printf("0.00");
+//		}
+//		else
+//		{
+//			printf("%.2lf", value * 0.8);
+//		}
+//	}
+//	return 0;
+//}
+
+#include<stdio.h>
+int main()
+{
+	double a;
+	char b;
+	scanf("%lf %c", &a, &b);
+	int money = 0;
+	if (a - (int)a != 0)
+	{
+		a=(int)a + 1;
+	}
+	if (a <= 1.0)
+	{
+		money = 20;
+	}
+	else
+	{
+		money = 20 + (int)(a - 1) ;
+	}
+	if(b== 'y')
+	{
+		money += 5;
+	}
+	printf("%d", money);
+	return 0;
+}
