@@ -381,3 +381,485 @@
 //    return 0;
 //}
 
+//#include <stdio.h>
+//#include<stdlib.h>
+//int main() 
+//{
+//    int x, y, x1, y1;
+//    scanf("%d %d %d %d", &x, &y, &x1, &y1);
+//    if (x == x1 && y1 - y == 1)
+//    {
+//        printf("u");
+//    }
+//    else if (x == x1 && y1 - y == -1)
+//    {
+//        printf("d");
+//    }
+//    else if (x == x1-1 && y1 == y )
+//    {
+//        printf("r");
+//    }
+//    else 
+//    {
+//        printf("l");
+//    }
+//    return 0;
+//}
+
+//#include<stdio.h>
+////200 - OK
+////202 - Accepted
+////400 - Bad Request
+////403 - Forbidden
+////404 - Not Found
+////500 - Internal Server Error
+////502 - Bad Gateway
+//int main()
+//{
+//	int a;
+//	while (scanf("%d", &a) != EOF)
+//	{
+//		switch (a)
+//		{
+//		case 200:
+//			printf("OK");
+//			break;
+//		case 202:
+//			printf("Accepted");
+//			break;
+//		case 400:
+//			printf("Bad Request");
+//			break;
+//		case 403:
+//			printf("Forbidden");
+//			break;
+//		case 404:
+//			printf("Not Found");
+//			break;
+//		case 500:
+//			printf("Internal Server Error");
+//			break;
+//		case 502:
+//			printf("Bad Gateway");
+//			break;
+//		}
+//	}
+//	return 0;
+//}
+
+//#include<stdio.h>
+//
+//int main()
+//{
+//	double t;
+//	while (scanf("%lf", &t) != EOF)
+//	{
+//		if (t > 0)
+//			printf("1\n");
+//		else if (t == 0)
+//			printf("0.5\n")
+//		else
+//			printf("0\n");
+//	}
+//	return 0;
+//}
+
+//#include<stdio.h>
+//int main()
+//{
+//	int year, month, day;
+//	int y1, m1, d1;
+//	scanf("%d %d %d %d %d %d", &year, &month, &day, &y1, &m1, &d1);
+//	if (y1 > year || y1 == year && m1 > month || y1 == year && m1 == month && d1 >= day)
+//	{
+//		printf("yes");
+//	}
+//	else
+//	{
+//		printf("no");
+//	}
+//	return 0;
+//}
+
+//#include<stdio.h>
+//#include<math.h>
+////计算一元二次方程
+//int main()
+//{
+//	double a, b, c;
+//	scanf("%lf %lf %lf", &a, &b, &c);
+//	if (a == 0)
+//	{
+//		printf("Not quadratic equation");
+//		return 0;
+//	}
+//	double delta = b * b - 4 * a * c;
+//	double x1, x2;
+//	if (delta == 0)
+//	{
+//		printf("x1=x2=%.2lf", (-b) / (2 * a)+1.0-1.0);
+//	}
+//	else if (delta > 0)
+//	{
+//		x1 = (-b - sqrt(delta)) / (2 * a);
+//		x2 = (-b + sqrt(delta)) / (2 * a);
+//		printf("x1=%.2lf;x2=%.2lf", x1, x2);
+//	}
+//	else
+//	{
+//		x1 = (-b) / (2 * a);
+//		x2 = sqrt(-1 * delta) / (2 * a);
+//		printf("x1=%.2lf-%.2lfi;x2=%.2lf+%.2lfi", x1, x2, x1, x2);
+//	}
+//	return 0;
+//}
+
+//#include<stdio.h>
+//int main()
+//{
+//	double n1, n2;
+//	char a;
+//	scanf("%lf%c%lf", &n1, &a, &n2);
+//	switch (a)
+//	{
+//	case '+':
+//		printf("%.4lf+%.4lf=%.4lf", n1, n2, n1 + n2);
+//		break;
+//	case '-':
+//		printf("%.4lf-%.4lf=%.4lf", n1, n2, n1 - n2);
+//		break;
+//	case '*':
+//		printf("%.4lf*%.4lf=%.4lf", n1, n2, n1 * n2);
+//		break;
+//	case '/':
+//		if (n2 == 0)
+//		{
+//			printf("Wrong!Division by zero!");
+//		}
+//		else
+//		{
+//			printf("%.4lf/%.4lf=%.4lf", n1, n2, n1 / n2);
+//		}
+//		break;
+//	default:
+//		printf("Invalid operation!");
+//		break;
+//	}
+//	return 0;
+//}
+
+//#include <stdio.h>
+//int main()
+//{
+//    double n;
+//    scanf("%lf", &n);
+//    double sum = 0;
+//    for (int i = 1; i <=(int)n; i++)
+//    {
+//        if ((int)i % 2)
+//        {
+//            sum += 1.0 / i;
+//        }
+//        else
+//        {
+//            sum -= 1.0 / i;
+//        }
+//    }
+//    printf("%.3lf", sum);
+//    return 0;
+//}
+
+//#include <stdio.h>
+//int func(int n)
+//{
+//	return (1 + n) * n / 2;
+//}
+//int main()
+//{
+//	int n;
+//	scanf("%d", &n);
+//	int sum = 0;
+//	for(int i=1;i<=n;i++)
+//	{
+//		sum += func(i);
+//	}
+//	printf("%d", sum);
+//	return 0;
+//}
+
+//#include <stdio.h>
+//int main()
+//{
+//	int n;
+//	scanf("%d", &n);
+//	int count = 0;
+//	while (n != 1)
+//	{
+//		if (n % 2 == 1)
+//		{
+//			n = 3 * n + 1;
+//			count++;
+//		}
+//		else if (n % 2 == 0)
+//		{
+//			n /= 2;
+//			count++;
+//		}
+//	}
+//	printf("%d", count);
+//}
+
+//#include <stdio.h>
+//int main()
+//{
+//	int count = 0;
+//	for (int i = 1; i <= 2019; i++)
+//	{
+//		if(i%10==9||i/10%10==9||i/100%10==9||i/1000%10==9)
+//		{
+//			count++;
+//		}
+//	}
+//	printf("%d", count);
+//	return 0;
+//}
+
+//#include <stdio.h>
+//int isLilyNumber(int n)
+//{
+//    int sum = 0;
+//    sum += (n % 10) * (n % 10) * (n % 10) + ((n / 10) % 10) * ((n / 10) % 10) * ((n / 10) % 10) + ((n / 100) % 10) * ((n / 100) % 10) * ((n / 100) % 10);
+//    if (sum == n)
+//	{
+//		return 1;
+//	}
+//	else
+//	{
+//		return 0;
+//	}
+//}
+//int main() {
+//    int a, b;
+//    while (scanf("%d %d", &a, &b) != EOF) 
+//    { 
+//        int count = 0;
+//        for (int i = a; i <= b; i++)
+//        {
+//			if(isLilyNumber(i))
+//			{
+//				count++;
+//                printf("%d ", i);
+//			}
+//        }
+//        if (count == 0)
+//        {
+//            printf("no\n");
+//        }
+//        else
+//        {
+//			printf("\n");
+//        }
+//    }
+//    return 0;
+//}
+
+//#include <stdio.h>
+//int isLilyNumber(int n)
+//{
+//	int sum = 0;
+//	sum = (n % 10) * (n / 10) + (n % 100) * (n / 100) + (n % 1000) * (n / 1000)+(n % 10000) * (n / 10000);
+//	if (sum == n)
+//	{
+//		return 1;
+//	}
+//	else
+//	{
+//		return 0;
+//	}
+//}
+//int main()
+//{
+//	for (int i = 10000; i < 100000; i++)
+//	{
+//		if(isLilyNumber(i))
+//		{
+//			printf("%d ", i);
+//		}
+//	}
+//	return 0;
+//}
+
+//#include <stdio.h>
+////10进制数转换为6进制数
+//int main()
+//{
+//	int arr[30] = { 0 };
+//	int n;
+//	scanf("%d", &n);
+//	int i = 0;
+//	while (n)
+//	{
+//		arr[i] = n % 6;
+//		n /= 6;
+//		i++;
+//	}
+//	for (int j = i - 1; j >= 0; j--)
+//	{
+//		printf("%d", arr[j]);
+//	}
+//	return 0;
+//}
+
+//#include <stdio.h>
+////国王发金币，第一天1枚，第2,3天2枚，第4,5,6天3枚，第7,8,9,10天4枚，第11,12,13,14,15天5枚，以此类推
+////判断i是否为1,3,6,10,15,21,...,n(n+1)/2
+//int isKing(int n)
+//{
+//	int sum = 0;
+//	for (int i = 1; i <= n; i++)
+//	{
+//		sum += i;
+//		if (sum == n)
+//		{
+//			return 1;
+//		}
+//	}
+//	return 0;
+//}
+//int main()
+//{
+//	int n;
+//	scanf("%d", &n);
+//	int sum = 0;
+//	int key = 1;
+//	for (int i = 1; i <= n; i++)
+//	{
+//		sum += key;
+//		if (isKing(i))
+//		{
+//			key++;
+//		}
+//	}
+//printf("%d", sum);
+//	return 0;
+//}
+
+//#include <stdio.h>
+//#include<stdlib.h>
+//#include<string.h>
+//int func(int n)//判断是否为回文数
+//{
+//	int arr[10] = { 0 };
+//	int i = 0;
+//	while (n)
+//	{
+//		arr[i] = n % 10;
+//		n /= 10;
+//		i++;
+//	}
+//	for (int j = 0; j < i / 2; j++)
+//	{
+//		if (arr[j] != arr[i - 1 - j])
+//		{
+//			return 0;
+//		}
+//	}
+//	return 1;
+//}
+//int main()
+//{
+//	char arr[10] = { 0 };
+//	scanf("%s", arr);
+//	int len = strlen(arr);
+//	int n = atoi(arr);
+//	for (int i = 1; i < n; i++)
+//	{
+//		if(func(i))
+//		{
+//			printf("%d\n",i);
+//		}
+//	}
+//	return 0;
+//}
+
+//#include <stdio.h>
+//int n, o, t, num;
+//int main()
+//{
+//	scanf("%d", &n);
+//	for (int i = 1; i <= n; i++)
+//	{
+//		t = 0;
+//		num = i;
+//		while (num != 0)
+//		{
+//			t *= 10;
+//			t += num % 10;
+//			num /= 10;
+//		}
+//		if (i == t)
+//			printf("%d\n", t);
+//	}
+//	return 0;
+//}
+
+//#include <stdio.h>
+//
+//int main() {
+//    int n;
+//    while (scanf("%d", &n) != EOF)
+//    {
+//        int tmp = n;
+//        int empty = n - 1;
+//        while (tmp--)
+//        {
+//            for (int i = 0; i < empty; i++)
+//            {
+//				printf(" ");
+//            }
+//            for (int i = 0; i < n - empty; i++)
+//            {
+//                printf("* ");
+//            }
+//            printf("\n");
+//            empty--;
+//        }
+//    }
+//    return 0;
+//}
+
+//#include <stdio.h>
+//#include<stdlib.h>
+//int main() 
+//{
+//    int n;
+//    while (scanf("%d", &n) != EOF)
+//    {
+//        int a = n + 1;
+//        for (int i = a; i >= -a; i--)
+//        {
+//            if (i == 0 || i == -1)
+//            {
+//                continue;
+//            }
+//            for (int j = 0; j < abs(i); j++)
+//            {
+//                printf("* ");
+//            }
+//            printf("\n");
+//        }
+//    }
+//    return 0;
+//}
+
+#include <stdio.h>
+#include<stdlib.h>
+int main()
+{
+    int n;
+    while (scanf("%d", &n) != EOF)
+    {
+      
+    }
+    return 0;
+}

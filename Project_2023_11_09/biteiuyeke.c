@@ -524,29 +524,29 @@
 //	return 0;
 //}
 
-#include<stdio.h>
-int main()
-{
-	double a;
-	char b;
-	scanf("%lf %c", &a, &b);
-	int money = 0;
-	if (a - (int)a != 0)
-	{
-		a=(int)a + 1;
-	}
-	if (a <= 1.0)
-	{
-		money = 20;
-	}
-	else
-	{
-		money = 20 + (int)(a - 1) ;
-	}
-	if(b== 'y')
-	{
-		money += 5;
-	}
-	printf("%d", money);
-	return 0;
-}
+//#include<stdio.h>
+//int main()
+//{
+//	double a;
+//	char b;
+//	scanf("%lf %c", &a, &b);
+//	int money = 0;
+//	if (a - (int)a != 0)
+//	{
+//		a=(int)a + 1;
+//	}
+//	if (a <= 1.0)
+//	{
+//		money = 20;
+//	}
+//	else
+//	{
+//		money = 20 + (int)(a - 1) ;
+//	}
+//	if(b== 'y')
+//	{
+//		money += 5;
+//	}
+//	printf("%d", money);
+//	return 0;
+//}
