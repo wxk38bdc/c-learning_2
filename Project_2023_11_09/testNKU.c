@@ -852,14 +852,71 @@
 //    return 0;
 //}
 
-#include <stdio.h>
-#include<stdlib.h>
-int main()
-{
-    int n;
-    while (scanf("%d", &n) != EOF)
-    {
-      
-    }
-    return 0;
-}
+//#include <stdio.h>
+//#include<stdlib.h>
+//int main()
+//{
+//    int n;
+//    while (scanf("%d", &n) != EOF)
+//    {
+//      
+//    }
+//    return 0;
+//}
+
+//#include <stdio.h>
+//
+//// 全局变量用于统计移动次数
+//int moveCount = 0;
+//
+//// 汉诺塔函数
+//void hanoi(int n, char source, char auxiliary, char target)
+//{
+//    if (n == 1)
+//    {
+//        printf("移动圆盘 1 从 %c 到 %c\n", source, target);
+//        moveCount++;
+//    }
+//    else
+//    {
+//        hanoi(n - 1, source, target, auxiliary);
+//        printf("移动圆盘 %d 从 %c 到 %c\n", n, source, target);
+//        moveCount++;
+//        hanoi(n - 1, auxiliary, source, target);
+//    }
+//}
+//
+//int main() {
+//    int n = 0;
+//    scanf("%d", &n);
+//    printf("汉诺塔步骤:\n");
+//    hanoi(n, 'A', 'B', 'C');
+//    printf("总移动次数: %d\n", moveCount);
+//    return 0;
+//}
+
+//#include<stdio.h>
+//int movecount = 0;
+//void hanoi(int n, char source, char auxiliary, char target)
+//{
+//	if (n == 1)
+//	{
+//		printf("圆盘 1 : %c -> %c\n", source, target);
+//		movecount++;
+//	}
+//	else
+//	{
+//		hanoi(n - 1, source, target, auxiliary);
+//		printf("圆盘 %d : %c -> %c\n", n, source, target);
+//		movecount++;
+//		hanoi(n - 1, auxiliary, source, target);
+//	}
+//}
+//int main()
+//{
+//	int n = 0;
+//	scanf("%d", &n);
+//	hanoi(n,'A','B','C');
+//	printf("总移动次数：%d\n", movecount);
+//	return 0;
+//}

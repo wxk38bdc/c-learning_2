@@ -550,3 +550,203 @@
 //	printf("%d", money);
 //	return 0;
 //}
+
+//#include<stdio.h>
+//int main()
+//{
+//	int arr[10];
+//	int* p[10];//指针数组
+//	int(*parr)[10] = &arr;//数组指针
+//	int (*pfunc[5])(int, int);//函数指针数组
+//	return 0;
+//}
+
+//#include<stdio.h>
+//#include<stdlib.h>
+//#include<time.h>
+//int intcmp(const void* e1, const void* e2)
+//{
+//	return *(int*)e1 - *(int*)e2;
+//}
+//int doublecmp(const void* a, const void* b) {
+//	// 将参数转换为double指针，并比较其指向的值
+//	double elementA = *((double*)a);
+//	double elementB = *((double*)b);
+//
+//	if (elementA < elementB) return -1;
+//	if (elementA > elementB) return 1;
+//	return 0; // 相等
+//}
+//int main()
+//{
+//	double arr[10] = { 0 };
+//	int i = 0;
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	for (i = 0; i < sz; i++)
+//	{
+//		scanf("%lf", &arr[i]);
+//	}
+//	printf("\n");
+//	qsort(arr, sz, sizeof(arr[0]), doublecmp);
+//	for (i = 0; i < sz; i++)
+//	{
+//		printf("%lf ", arr[i]);
+//	}
+//	return 0;
+//}
+
+//#include<stdio.h>
+//int add(int x, int y)
+//{
+//	return x + y;
+//}
+//int sub(int x, int y)
+//{
+//	return x - y;
+//}
+//int mul(int x, int y)
+//{
+//	return x * y;
+//}
+//int div(int x, int y)
+//{
+//	return x / y;
+//}
+//void menu()
+//{
+//	printf("*************************\n");
+//	printf("***** 1.add  2.sub  *****\n");
+//	printf("***** 3.mul  4.div  *****\n");
+//	printf("***** 0.exit       *****\n");
+//	printf("*************************\n");
+//	printf("please select:");
+//}
+//int main()
+//{
+//	int x, y;
+//	int input;
+//	int ret = 0;
+//	int(*p[5])(int x, int y) = { NULL,add,sub,mul,div };
+//	do {
+//		menu();
+//		scanf("%d", &input);
+//		if (1 <= input && input <= 4)
+//		{
+//			printf("please enter two numbers:");
+//			scanf("%d %d", &x, &y);
+//			ret = p[input](x, y);
+//			printf("%d\n", ret);
+//		}
+//		else if (input == 0)
+//		{
+//			printf("exit\n");
+//		}
+//		else
+//		{
+//			printf("error\n");
+//		}
+//	} while (input);
+//	return 0;
+//}
+
+
+//#include<stdio.h>
+//#include<stdlib.h>
+//struct stu {
+//	char name[20];
+//	int age;
+//};
+//int intcmp(const void* e1, const void* e2)
+//{
+//	return *(int*)e1 - *(int*)e2;
+//}
+//int doublecmp(const void* a, const void* b) {
+//	// 将参数转换为double指针，并比较其指向的值
+//	double elementA = *((double*)a);
+//	double elementB = *((double*)b);
+//
+//	if (elementA < elementB) return -1;
+//	if (elementA > elementB) return 1;
+//	return 0; // 相等
+//}
+//int structcmp(const void* e1, const void* e2)
+//{
+//	return ((struct stu*)e1)->age - ((struct stu*)e2)->age;
+//}
+//int main()
+//{
+//	int arr_int[10] = { 8,7,5,3,1,2,4,6,9,0 };
+//	int sz_int= sizeof(arr_int) / sizeof(arr_int[0]);
+//	printf("int型排序前：");
+//	for (int i = 0; i < sz_int; i++)
+//	{
+//		printf("%d ", arr_int[i]);
+//	}
+//	printf("\n");
+//	qsort(arr_int, sz_int, sizeof(arr_int[0]), intcmp);
+//	printf("int型排序后：");
+//	for (int i = 0; i < sz_int; i++)
+//	{
+//		printf("%d ", arr_int[i]);
+//	}
+//	printf("\n");
+//
+//	double arr_double[10] = {1.2,2.3,2.1,5.6,4.3,3.2,6.5,7.8,9.0,8.7};
+//	int sz_double = sizeof(arr_double) / sizeof(arr_double[0]);
+//	printf("double型排序前：");
+//	for (int i = 0; i < sz_double; i++)
+//	{
+//		printf("%.1lf ", arr_double[i]);
+//	}
+//	printf("\n");
+//	qsort(arr_double, sz_double, sizeof(arr_double[0]), doublecmp);
+//	printf("double型排序后：");
+//	for (int i = 0; i < sz_double; i++)
+//	{
+//		printf("%.1lf ", arr_double[i]);
+//	}
+//	printf("\n");
+//
+//
+//	struct stu arr_struct[] = { {"zhangsan",20},{"lisi",30},{"wangwu",10},{"zhaoliu",40}};
+//	int sz_struct = sizeof(arr_struct) / sizeof(arr_struct[0]);
+//	printf("struct型排序前：\n");
+//	for (int i = 0; i < sz_struct; i++)
+//	{
+//		printf("%s %d \n", arr_struct[i].name, arr_struct[i].age);
+//	}
+//	qsort(arr_struct, sz_struct, sizeof(arr_struct[0]), structcmp);
+//	printf("struct型排序后：\n");
+//	for (int i = 0; i < sz_struct; i++)
+//	{
+//		printf("%s %d \n", arr_struct[i].name, arr_struct[i].age);
+//	}
+//	return 0;
+//}
+
+#include<stdio.h>
+int main()
+{
+	int arr[] = { 1,2,3,4,5,1,2,3,4,6 };
+	int arr_times[10]= { 0 };
+	int i = 0, j = 0;
+	for (i = 0; i < 10; i++)
+	{
+		for (j = 0; j < 10; j++)
+		{
+			if (arr[i] == arr[j])
+			{
+				arr_times[i]++;
+			}
+		}
+	}
+	for (i = 0; i < 10; i++)
+	{
+		if (arr_times[i] == 1)
+		{
+			printf("%d ", arr[i]);
+		}
+	}
+	return 0;
+}
+
