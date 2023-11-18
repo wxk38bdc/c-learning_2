@@ -724,29 +724,29 @@
 //	return 0;
 //}
 
-#include<stdio.h>
-int main()
-{
-	int arr[] = { 1,2,3,4,5,1,2,3,4,6 };
-	int arr_times[10]= { 0 };
-	int i = 0, j = 0;
-	for (i = 0; i < 10; i++)
-	{
-		for (j = 0; j < 10; j++)
-		{
-			if (arr[i] == arr[j])
-			{
-				arr_times[i]++;
-			}
-		}
-	}
-	for (i = 0; i < 10; i++)
-	{
-		if (arr_times[i] == 1)
-		{
-			printf("%d ", arr[i]);
-		}
-	}
-	return 0;
-}
+//#include<stdio.h>
+//int main()
+//{
+//	int arr[] = { 1,2,3,4,5,1,2,3,4,6 };
+//	int arr_times[10]= { 0 };
+//	int i = 0, j = 0;
+//	for (i = 0; i < 10; i++)
+//	{
+//		for (j = 0; j < 10; j++)
+//		{
+//			if (arr[i] == arr[j])
+//			{
+//				arr_times[i]++;
+//			}
+//		}
+//	}
+//	for (i = 0; i < 10; i++)
+//	{
+//		if (arr_times[i] == 1)
+//		{
+//			printf("%d ", arr[i]);
+//		}
+//	}
+//	return 0;
+//}
 
