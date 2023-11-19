@@ -750,3 +750,111 @@
 //	return 0;
 //}
 
+//#include<stdio.h>
+//int main()
+//{
+//	int a[] = { 1,2,3,4 };
+//	printf("%d\n", sizeof(*&a));
+//	return 0;
+//}
+
+//#include<stdio.h>
+//#include<string.h>
+//struct stu
+//{
+//	char name[20];
+//	int age;
+//};
+//int int_cmp(const void* e1, const void* e2)
+//{
+//	return *(int*)e1 - *(int*)e2;
+//}
+//int double_cmp(const void* e1, const void* e2)
+//{
+//	if (*(double*)e1 > *(double*)e2)
+//	{
+//		return 1;
+//	}
+//	else if (*(double*)e1 < *(double*)e2)
+//	{
+//		return -1;
+//	}
+//	else
+//	{
+//		return 0;
+//	}
+//}
+//int struct_name_cmp(const void* e1, const void* e2)
+//{
+//	return strcmp(((struct stu*)e1)->name, ((struct stu*)e2)->name);
+//}
+//int struct_age_cmp(const void* e1, const void* e2)
+//{
+//	return ((struct stu*)e1)->age - ((struct stu*)e2)->age;
+//}
+//void universal_bubblusort(void* arr, int sz, int width, int(*cmp)(void* e1, void* e2))
+//{
+//	int i = 0;
+//	for (i = 0; i < sz - 1; i++)
+//	{
+//		int j = 0;
+//		int flag = 0;
+//		for (j = 0; j < sz - 1 - i; j++)
+//		{
+//			if (cmp((char*)arr + j * width, (char*)arr + (j + 1) * width) > 0)
+//			{
+//				int k = 0;
+//				for (k = 0; k < width; k++)
+//				{
+//					char tmp = *((char*)arr + j * width + k);
+//					*((char*)arr + j * width + k) = *((char*)arr + (j + 1) * width + k);
+//					*((char*)arr + (j + 1) * width + k) = tmp;
+//				}
+//				flag = 1;
+//			}
+//		}
+//		if (flag == 0)
+//		{
+//			break;
+//		}
+//	}
+//}
+//int main()
+//{
+//	//int
+//	int arr_int[] = { 8,1,5,3,7,4,6,0,2,9 };
+//	int sz_int = sizeof(arr_int) / sizeof(arr_int[0]);
+//	universal_bubblusort(arr_int, sz_int, sizeof(arr_int[0]), int_cmp);
+//	printf("int排序后：\n");
+//	for (int i = 0; i < sz_int; i++)
+//	{
+//		printf("%d ", arr_int[i]);
+//	}
+//	printf("\n");
+//	//double
+//	double arr_double[] = { 1.2,2.3,2.1,5.6,4.3,3.2,6.5,7.8,9.0,8.7 };
+//	int sz_double = sizeof(arr_double) / sizeof(arr_double[0]);
+//	universal_bubblusort(arr_double, sz_double, sizeof(arr_double[0]), double_cmp);
+//	printf("double排序后：\n");
+//	for (int i = 0; i < sz_double; i++)
+//	{
+//		printf("%.1lf ", arr_double[i]);
+//	}
+//	printf("\n");
+//	//struct
+//	struct stu arr_struct[] = { {"zhangsan",20},{"lisi",30},{"wangwu",10},{"zhaoliu",40} };
+//	int sz_struct = sizeof(arr_struct) / sizeof(arr_struct[0]);
+//	universal_bubblusort(arr_struct, sz_struct, sizeof(arr_struct[0]), struct_name_cmp);
+//	printf("按姓名排序后：\n");
+//	for (int i = 0; i < sz_struct; i++)
+//	{
+//		printf("%s %d \n", arr_struct[i].name, arr_struct[i].age);
+//	}
+//	universal_bubblusort(arr_struct, sz_struct, sizeof(arr_struct[0]), struct_age_cmp);
+//	printf("按年龄排序后：\n");
+//	for (int i = 0; i < sz_struct; i++)
+//	{
+//		printf("%s %d \n", arr_struct[i].name, arr_struct[i].age);
+//	}
+//	return 0;
+//}
