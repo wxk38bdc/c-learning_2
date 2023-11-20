@@ -25,14 +25,14 @@
 //	return 0;
 //}
 
-#include<iostream>
-using namespace std;
-void func(int a = 10)
-{
-	cout << a << endl;
-}
-int main()
-{
-	func();
-	return 0;
-}
+//#include<iostream>
+//using namespace std;
+//void func(int a = 10)
+//{
+//	cout << a << endl;
+//}
+//int main()
+//{
+//	func();
+//	return 0;
+//}
