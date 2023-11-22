@@ -920,3 +920,715 @@
 //	printf("总移动次数：%d\n", movecount);
 //	return 0;
 //}
+
+//#include <stdio.h>
+////寻找鞍点，即该元素是所在行的最大值，是所在列的最小值
+//int main()
+//{
+//	int arr[5][5] = { 0 };
+//	int i = 0, j = 0;
+//	for (i = 0; i < 5; i++)
+//	{
+//		for (j = 0; j < 5; j++)
+//		{
+//			scanf("%d", &arr[i][j]);
+//		}
+//	}
+//	//若存在鞍点，输出行数，列数，元素值
+//	//若不存在鞍点，输出"not found"
+//	//逐个遍历
+//	int flag = 0;
+//	for (i = 0; i < 5; i++)
+//	{
+//		int max = arr[i][0];
+//		int max_j = 0;
+//		for (j = 0; j < 5; j++)
+//		{
+//			if (arr[i][j] > max)
+//			{
+//				max = arr[i][j];
+//				max_j = j;
+//			}
+//		}
+//		int min = arr[0][max_j];
+//		for (int k = 0; k < 5; k++)
+//		{
+//			if (arr[k][max_j] < min)
+//			{
+//				min = arr[k][max_j];
+//			}
+//		}
+//		if (min == max)
+//		{
+//			printf("%d %d %d\n", i + 1, max_j + 1, max);
+//			flag = 1;
+//		}
+//	}
+//	if (flag == 0)
+//	{
+//		printf("not found");
+//	}
+//	return 0;
+//}
+
+//#include <stdio.h>
+//struct stu {
+//	char name[10];
+//	int chinese;
+//	int math;
+//	int english;
+//	int total_grade;
+//}s[1000];
+//int cmp(const void* a, const void* b)
+//{
+//	struct stu* aa = (struct stu*)a;
+//	struct stu* bb = (struct stu*)b;
+//	return bb->total_grade - aa->total_grade;
+//}
+//int main()
+//{
+//	int n = 0;//学生人数
+//	scanf("%d", &n);
+//	int i = 0;
+//	for (i = 0; i < n; i++)
+//	{
+//		scanf("%s %d %d %d", s[i].name, &s[i].chinese, &s[i].math, &s[i].english);
+//		s[i].total_grade = s[i].chinese + s[i].math + s[i].english;
+//	}
+//	qsort(s, n, sizeof(s[0]), cmp);//按总成绩排名
+//	//输出成绩最高的学生全部信息
+//	printf("%s %d %d %d\n", s[0].name, s[0].chinese, s[0].math, s[0].english);
+//	return 0;
+//}
+
+//#include <stdio.h>
+//#include <stdlib.h>
+//#include <math.h>
+//struct stu {
+//	char name[10];
+//	int chinese;
+//	int math;
+//	int english;
+//	int total_grade;
+//}s[1000];
+//int main()
+//{
+//	int n = 0;//学生人数
+//	scanf("%d", &n);
+//	int i = 0, j = 0;
+//	for (i = 0; i < n; i++)
+//	{
+//		scanf("%s %d %d %d", s[i].name, &s[i].chinese, &s[i].math, &s[i].english);
+//		s[i].total_grade = s[i].chinese + s[i].math + s[i].english;
+//	}
+//	//寻找“差不多强”的学生
+//	//即2个学生，语文、数学、英语相差均<5，总分相差<10
+//	for (i = 0; i < n; i++)
+//	{
+//		for (j = i+1; j < n; j++)
+//		{
+//			if (abs(s[i].chinese - s[j].chinese) <= 5 && abs(s[i].math - s[j].math) <= 5 && abs(s[i].english - s[j].english) <= 5 && abs(s[i].total_grade - s[j].total_grade) <= 10)
+//			{
+//				printf("%s %s\n", s[i].name, s[j].name);
+//			}
+//		}
+//	}
+//	return 0;
+//}
+
+//#include <stdio.h>
+//int main()
+//{
+//	int arr[31][31] = { 0 };
+//	int n = 0;//矩阵维数，即行数与列数
+//	int judge = 0;//判断，1是顺时针，2是逆时针
+//	scanf("%d %d", &n, &judge);
+//	int i = 0, j = 0;
+//	if (judge == 1)
+//	{
+//		int num = 1;//填入的数字,从1开始
+//		int left = 0, right = n - 1, up = 0, down = n - 1;
+//		while (num <= n * n)
+//		{
+//			for (i = left; i <= right; i++)
+//			{
+//				arr[up][i] = num;
+//				num++;
+//			}
+//			up++;
+//			for (i = up; i <= down; i++)
+//			{
+//				arr[i][right] = num;
+//				num++;
+//			}
+//			right--;
+//			for (i = right; i >= left; i--)
+//			{
+//				arr[down][i] = num;
+//				num++;
+//			}
+//			down--;
+//			for (i = down; i >= up; i--)
+//			{
+//				arr[i][left] = num;
+//				num++;
+//			}
+//			left++;
+//		}
+//
+//	}
+//	else if (judge == 2)
+//	{
+//		int num = 1;
+//		int left = 0, right = n - 1, up = 0, down = n - 1;
+//		while (num <= n * n)
+//		{
+//			for (i = up; i <= down; i++)
+//			{
+//				arr[i][left] = num;
+//				num++;
+//			}
+//			left++;
+//			for (i = left; i <= right; i++)
+//			{
+//				arr[down][i] = num;
+//				num++;
+//			}
+//			down--;
+//			for (i = down; i >= up; i--)
+//			{
+//				arr[i][right] = num;
+//				num++;
+//			}
+//			right--;
+//			for (i = right; i >= left; i--)
+//			{
+//				arr[up][i] = num;
+//				num++;
+//			}
+//			up++;
+//		}
+//	}
+//	for (i = 0; i < n; i++)
+//	{
+//		for (j = 0; j < n; j++)
+//		{
+//			printf("%4d", arr[i][j]);
+//		}
+//		printf("\n");
+//	}
+//	return 0;
+//}
+
+//#include <stdio.h>
+//		//从左上角arr[x-1][y-1]开始旋转，旋转范围边长为r
+//		// arr_tmp为辅助矩阵，arr为操作后的矩阵
+//		//示例输入：
+//		//5 1
+//		//2 2 3 1
+//		//示例输出：
+//		//1 2 3 4 5
+//		//6 9 14 19 10
+//		//11 8 13 18 15
+//		//16 7 12 17 20
+//		//21 22 23 24 25
+//		//算法实现：
+//		//以上示例中从arr[1][1]开始旋转，旋转范围为3*3，旋转一次
+//		//代旋转数据从外到内一共有2层，第一层是7,8,9,14,19,18,17,12,第二层是13;
+//		//我们逐层进行旋转，定义up,down,left,right分别为上下左右边界
+//		//从arr_tmp中选取合适的数据放入arr中
+//		//1  2  3  4 5
+//		//6  7  8  9 10
+//		//11 12 13 14 15
+//		//16 17 18 19 20
+//		//21 22 23 24 25
+//void leftmove(int arr[], int len, int r)
+//{
+//	int i = 0;
+//	while (r--)
+//	{
+//		int tmp = arr[0];
+//		for (i = 0; i < len - 1; i++)
+//		{
+//			arr[i] = arr[i + 1];
+//		}
+//		arr[len - 1] = tmp;
+//	}
+//}
+//void rightmove(int arr[], int len, int r)
+//{
+//	int i = 0;
+//	while (r--)
+//	{
+//		int tmp = arr[len - 1];
+//		for (i = len - 1; i > 0; i--)
+//		{
+//			arr[i] = arr[i - 1];
+//		}
+//		arr[0] = tmp;
+//	}
+//}
+//int main()
+//{
+//	int n = 0;//方阵大小
+//	int m = 0;//旋转次数
+//	int arr[100][100] = { 0 };
+//	int arr_tmp[100][100] = { 0 };
+//	scanf("%d %d", &n, &m);
+//	//初始化方阵
+//	int i = 0, j = 0, num = 1;
+//	for (i = 0; i < n; i++)
+//	{
+//		for (j = 0; j < n; j++)
+//		{
+//			arr[i][j] = num;
+//			arr_tmp[i][j] = num;
+//			num++;
+//		}
+//	}
+//	//按要求旋转，z==0为顺时针，z==1为逆时针
+//	while (m)
+//	{
+//		int x = 0, y = 0, r = 0, z = 0;
+//		scanf("%d %d %d %d", &x, &y, &r, &z);
+//		int left = y - 1, right = y + r - 2, up = x - 1, down = x + r - 2;
+//		int arr_layer[100][100] = { 0 };
+//		//读取每层数据，从第外层开始
+//		int layer = 0;//层数
+//		int layer_num = (r - layer) * (r - layer) - (r - layer - 2) * (r - layer - 2);//每层数据个数
+//		int k = 0;//计数器
+//		while (layer < r / 2)
+//		{
+//			layer_num = (r - layer) * (r - layer) - (r - layer - 2) * (r - layer - 2);
+//			for (k = 0; k <= layer_num; k++)
+//			{
+//				for (i = left; i <= right; i++)
+//				{
+//					arr_layer[layer][k] = arr[up][i];
+//					k++;
+//				}
+//				for (i = up + 1; i <= down; i++)
+//				{
+//					arr_layer[layer][k] = arr[i][right];
+//					k++;
+//				}
+//				for (i = right - 1; i >= left; i--)
+//				{
+//					arr_layer[layer][k] = arr[down][i];
+//					k++;
+//				}
+//				for (i = down - 1; i >= up + 1; i--)
+//				{
+//					arr_layer[layer][k] = arr[i][left];
+//					k++;
+//				}
+//			}
+//			left++, right--, up++, down--;
+//			layer++;
+//		}
+//		if (z == 1)
+//		{
+//			//arr_layer[layer]每个元素向左移动r-layer-1位
+//			for (i = 0; i <= r / 2; i++)
+//			{
+//				leftmove(arr_layer[i], (r - i) * (r - i) - (r - i - 2) * (r - i - 2), r - i - 1);
+//			}
+//		}
+//		else if (z == 0)
+//		{
+//			for (i = 0; i <= r / 2; i++)
+//			{
+//				rightmove(arr_layer[i], (r - i) * (r - i) - (r - i - 2) * (r - i - 2), r - i - 1);
+//			}
+//		}
+//		//将move后的数据放回arr中
+//		layer = 0;
+//		k = 0;
+//		while (layer < r / 2)
+//		{
+//			layer_num = (r - layer) * (r - layer) - (r - layer - 2) * (r - layer - 2);
+//			for (k = 0; k <= layer_num; k++)
+//			{
+//				for (i = left; i <= right; i++)
+//				{
+//					arr[up][i] = arr_layer[layer][k];
+//					k++;
+//				}
+//				for (i = up + 1; i <= down; i++)
+//				{
+//					arr[i][right] = arr_layer[layer][k];
+//					k++;
+//				}
+//				for (i = right - 1; i >= left; i--)
+//				{
+//					arr[down][i] = arr_layer[layer][k];
+//					k++;
+//				}
+//				for (i = down - 1; i >= up + 1; i--)
+//				{
+//					arr[i][left] = arr_layer[layer][k];
+//					k++;
+//				}
+//			}
+//			left++, right--, up++, down--;
+//			layer++;
+//		}
+//		m--;
+//	}
+//	//输出方阵
+//	for (i = 0; i < n; i++)
+//	{
+//		for (j = 0; j < n; j++)
+//		{
+//			printf("%d ", arr[i][j]);
+//		}
+//		printf("\n");
+//	}
+//	return 0;
+//}
+
+////version2
+//#include <stdio.h>
+//
+//void leftmove(int arr[], int len, int r)
+//{
+//    int i = 0;
+//    while (r--)
+//    {
+//        int tmp = arr[0];
+//        for (i = 0; i < len - 1; i++)
+//        {
+//            arr[i] = arr[i + 1];
+//        }
+//        arr[len - 1] = tmp;
+//    }
+//}
+//
+//void rightmove(int arr[], int len, int r)
+//{
+//    int i = 0;
+//    while (r--)
+//    {
+//        int tmp = arr[len - 1];
+//        for (i = len - 1; i > 0; i--)
+//        {
+//            arr[i] = arr[i - 1];
+//        }
+//        arr[0] = tmp;
+//    }
+//}
+//int main()
+//{
+//    int n = 0; //方阵大小
+//    int m = 0; //旋转次数
+//    int arr[100][100] = { 0 };
+//    scanf("%d %d", &n, &m);
+//    //初始化方阵
+//    int i = 0, j = 0, num = 1;
+//    for (i = 0; i < n; i++)
+//    {
+//        for (j = 0; j < n; j++)
+//        {
+//            arr[i][j] = num;
+//            num++;
+//        }
+//    }
+//    while (m)
+//    {
+//        int x = 0, y = 0, r = 0, z = 0;
+//        scanf("%d %d %d %d", &x, &y, &r, &z);
+//        int left = y - 1, right = y + r - 2, up = x - 1, down = x + r - 2;
+//        int arr_layer[100][100] = { 0 };
+//        //读取每层数据，从第外层开始
+//        int layer = 0; //层数
+//        int layer_num = (r - layer) * (r - layer) - (r - layer - 2) * (r - layer - 2); //每层数据个数
+//        int k = 0;  //计数器
+//        while (layer < r / 2 && layer < (r + 1) / 2)
+//        {
+//            layer_num = (r - layer) * (r - layer) - (r - layer - 2) * (r - layer - 2);
+//            for (k = 0; k < layer_num; k++)
+//            {
+//                for (i = left; i <= right; i++)
+//                {
+//                    arr_layer[layer][k] = arr[up][i];
+//                    k++;
+//                }
+//                for (i = up + 1; i <= down; i++)
+//                {
+//                    arr_layer[layer][k] = arr[i][right];
+//                    k++;
+//                }
+//                for (i = right - 1; i >= left; i--)
+//                {
+//                    arr_layer[layer][k] = arr[down][i];
+//                    k++;
+//                }
+//                for (i = down - 1; i >= up + 1; i--)
+//                {
+//                    arr_layer[layer][k] = arr[i][left];
+//                    k++;
+//                }
+//            }
+//            left++, right--, up++, down--;
+//            layer++;
+//        }
+//
+//        //按要求旋转，z==0为顺时针，z==1为逆时针
+//        if (z == 1)
+//        {
+//            //arr_layer[layer]每个元素向左移动r-layer-1位
+//            for (i = 0; i < r / 2; i++)
+//            {
+//                leftmove(arr_layer[i], (r - i) * (r - i) - (r - i - 2) * (r - i - 2), r - i - 1);
+//            }
+//        }
+//
+//        if (z == 0)
+//        {
+//            for (i = 0; i < r / 2; i++)
+//            {
+//                rightmove(arr_layer[i], (r - i) * (r - i) - (r - i - 2) * (r - i - 2), r - i - 1);
+//            }
+//        }
+//
+//        //将move后的数据放回arr中
+//        layer = 0;
+//        k = 0;
+//        while (layer < r / 2)
+//        {
+//            layer_num = (r - layer) * (r - layer) - (r - layer - 2) * (r - layer - 2);
+//            for (k = 0; k < layer_num; k++)
+//            {
+//                for (i = left; i <= right; i++)
+//                {
+//                    arr[up][i] = arr_layer[layer][k];
+//                    k++;
+//                }
+//                for (i = up + 1; i <= down; i++)
+//                {
+//                    arr[i][right] = arr_layer[layer][k];
+//                    k++;
+//                }
+//                for (i = right - 1; i >= left; i--)
+//                {
+//                    arr[down][i] = arr_layer[layer][k];
+//                    k++;
+//                }
+//                for (i = down - 1; i >= up + 1; i--)
+//                {
+//                    arr[i][left] = arr_layer[layer][k];
+//                    k++;
+//                }
+//            }
+//            left++, right--, up++, down--;
+//            layer++;
+//        }
+//        m--;
+//    }
+//    ////输出方阵
+//    for (i = 0; i < n; i++)
+//    {
+//        for (j = 0; j < n; j++)
+//        {
+//            printf("%d ", arr[i][j]);
+//        }
+//        printf("\n");
+//    }
+//    return 0;
+//}
+
+////version3
+//#include <stdio.h>
+//
+//void rotateLayer(int arr[], int size, int rotation)
+//{
+//    while (rotation--)
+//    {
+//        int tmp = arr[0];
+//        for (int i = 0; i < size - 1; i++)
+//        {
+//            arr[i] = arr[i + 1];
+//        }
+//        arr[size - 1] = tmp;
+//    }
+//}
+//
+//int main()
+//{
+//    int n, m;
+//    scanf("%d %d", &n, &m);
+//
+//    int arr[100][100] = { 0 };
+//
+//    // 初始化方阵
+//    int num = 1;
+//    for (int i = 0; i < n; i++)
+//    {
+//        for (int j = 0; j < n; j++)
+//        {
+//            arr[i][j] = num++;
+//        }
+//    }
+//
+//    while (m--)
+//    {
+//        int x, y, r, z;
+//        scanf("%d %d %d %d", &x, &y, &r, &z);
+//
+//        int left = y - 1, right = y + r - 2, up = x - 1, down = x + r - 2;
+//
+//        int layer = 0;
+//        while (layer < r / 2)
+//        {
+//            int layerSize = (r - layer * 2) * 4 - 4;
+//            int arrLayer[100] = { 0 };
+//
+//            int k = 0;
+//            for (int i = left; i <= right; i++)
+//            {
+//                arrLayer[k++] = arr[up][i];
+//            }
+//            for (int i = up + 1; i <= down; i++)
+//            {
+//                arrLayer[k++] = arr[i][right];
+//            }
+//            for (int i = right - 1; i >= left; i--)
+//            {
+//                arrLayer[k++] = arr[down][i];
+//            }
+//            for (int i = down - 1; i >= up + 1; i--)
+//            {
+//                arrLayer[k++] = arr[i][left];
+//            }
+//
+//            // 根据旋转方向调整层数据
+//            for (int i = 0; i <= layer; i++)
+//            {
+//                if (z == 1)
+//                {
+//                    rotateLayer(arrLayer, layerSize, r - layer - 1);
+//                }
+//                else if (z == 0)
+//                {
+//                    rotateLayer(arrLayer, layerSize, layer - i);
+//                }
+//            }
+//
+//            k = 0;
+//            for (int i = left; i <= right; i++)
+//            {
+//                arr[up][i] = arrLayer[k++];
+//            }
+//            for (int i = up + 1; i <= down; i++)
+//            {
+//                arr[i][right] = arrLayer[k++];
+//            }
+//            for (int i = right - 1; i >= left; i--)
+//            {
+//                arr[down][i] = arrLayer[k++];
+//            }
+//            for (int i = down - 1; i >= up + 1; i--)
+//            {
+//                arr[i][left] = arrLayer[k++];
+//            }
+//
+//            // 更新边界值
+//            left++, right--, up++, down--;
+//            layer++;
+//        }
+//    }
+//
+//    // 输出方阵
+//    for (int i = 0; i < n; i++)
+//    {
+//        for (int j = 0; j < n; j++)
+//        {
+//            printf("%d ", arr[i][j]);
+//        }
+//        printf("\n");
+//    }
+//
+//    return 0;
+//}
+
+////version4
+#include <stdio.h>
+
+void shunshizhen(int matrix[][100], int x, int y, int r) {
+    int temp[10000];
+    int n = sizeof(matrix) / sizeof(matrix[0]);
+
+    int k = 0;
+    for (int i = x - 1; i < x + r - 1; i++) {
+        for (int j = y - 1; j < y + r - 1; j++) {
+            temp[k++] = matrix[i][j];
+        }
+    }
+
+    k = 0;
+    for (int i = 0; i < r; i++) {
+        for (int j = 0; j < r; j++) {
+            matrix[x - 1 + j][y - 1 + r - 1 - i] = temp[i * r + j];
+        }
+    }
+}
+
+void nishizhen(int matrix[][100], int x, int y, int r) {
+    int temp[10000];
+    int n = sizeof(matrix) / sizeof(matrix[0]);
+
+    int k = 0;
+    for (int i = x - 1; i < x + r - 1; i++) {
+        for (int j = y - 1; j < y + r - 1; j++) {
+            temp[k++] = matrix[i][j];
+        }
+    }
+
+    k = 0;
+    for (int i = 0; i < r; i++) {
+        for (int j = 0; j < r; j++) {
+            matrix[x - 1 + r - 1 - j][y - 1 + i] = temp[i * r + j];
+        }
+    }
+}
+
+int main() {
+    int n, m;
+    scanf("%d %d", &n, &m);
+    int matrix[100][100];
+
+    // 初始化矩阵
+    int num = 1;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            matrix[i][j] = num++;
+        }
+    }
+
+    for (int i = 0; i < m; i++) {
+        int x, y, r, z;
+        scanf("%d %d %d %d", &x, &y, &r, &z);
+
+        if (z == 0) {
+            shunshizhen(matrix, x, y, r);
+        }
+        else {
+            nishizhen(matrix, x, y, r);
+        }
+    }
+
+    // 输出矩阵
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            printf("%d ", matrix[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+
+
+
+
+

@@ -196,4 +196,66 @@
 //    return 0;
 //}
 
+//#include <iostream>
+//#include <vector>
+//
+//using namespace std;
+//
+//void shunshizhen(vector<vector<int>>& matrix, int x, int y, int r) {
+//    int n = matrix.size();
+//    vector<int> temp;
+//    for (int i = x - 1; i < x + r - 1; i++) {
+//        for (int j = y - 1; j < y + r - 1; j++) {
+//            temp.push_back(matrix[i][j]);
+//        }
+//    }
+//    for (int i = 0; i < r; i++) {
+//        for (int j = 0; j < r; j++) {
+//            matrix[x - 1 + j][y - 1 + r - 1 - i] = temp[i * r + j];
+//        }
+//    }
+//}
+//
+//void nishizhen(vector<vector<int>>& matrix, int x, int y, int r) {
+//    int n = matrix.size();
+//    vector<int> temp;
+//    for (int i = x - 1; i < x + r - 1; i++) {
+//        for (int j = y - 1; j < y + r - 1; j++) {
+//            temp.push_back(matrix[i][j]);
+//        }
+//    }
+//    for (int i = 0; i < r; i++) {
+//        for (int j = 0; j < r; j++) {
+//            matrix[x - 1 + r - 1 - j][y - 1 + i] = temp[i * r + j];
+//        }
+//    }
+//}
+//
+//int main() {
+//    int n, m;
+//    cin >> n >> m;
+//    vector<vector<int>> matrix(n, vector<int>(n));
+//    for (int i = 0; i < n; i++) {
+//        for (int j = 0; j < n; j++) {
+//            matrix[i][j] = i * n + j + 1;
+//        }
+//    }
+//    for (int i = 0; i < m; i++) {
+//        int x, y, r, z;
+//        cin >> x >> y >> r >> z;
+//        if (z == 0) {
+//            shunshizhen(matrix, x, y, r);
+//        }
+//        else {
+//            nishizhen(matrix, x, y, r);
+//        }
+//    }
+//    for (int i = 0; i < n; i++) {
+//        for (int j = 0; j < n; j++) {
+//            cout << matrix[i][j] << " ";
+//        }
+//        cout << endl;
+//    }
+//    return 0;
+//}
 
