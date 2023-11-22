@@ -859,9 +859,85 @@
 //	return 0;
 //}
 
-#include <stdio.h>
-int main()
-{
-	printf("hello world\n");
-	return 0;
-}
+//#include <stdio.h>
+//int main()
+//{
+//	printf("hello world\n");
+//	return 0;
+//}
+
+//#include<stdio.h>
+//int main()
+//{
+//	int arr[3][4] = { 0 };
+//	printf("%zd\n", sizeof(*(arr+1)));
+//	return 0;
+//}
+
+//#include <stdio.h>
+//int main()
+//{
+//	int a[5] = { 1, 2, 3, 4, 5 };
+//	int* ptr = (int*)(&a + 1);
+//	printf("%d,%d", *(a + 1), *(ptr - 1));
+//	return 0;
+//}
+
+//#include<stdio.h>
+//struct Test
+//{
+//	int Num;
+//	char* pcName;
+//	short sDate;
+//	char cha[2];
+//	short sBa[4];
+//}*p=(struct Test*)0x100000;
+//int main()
+//{
+//	printf("%p\n", p + 0x1);
+//	printf("%p\n", (unsigned long)p + 0x1);
+//	printf("%p\n", (unsigned int*)p + 0x1);
+//	return 0;
+//}
+
+//#include <stdio.h>
+//int main()
+//{
+//	char* a[] = { "work","at","alibaba" };
+//	char** pa = a;
+//	pa++;
+//	printf("%s\n", *pa);
+//	return 0;
+//}
+
+//#include <stdio.h>
+//int main()
+//{
+//	char* c[] = { "ENTER","NEW","POINT","FIRST" };
+//	char** cp[] = { c + 3,c + 2,c + 1,c };
+//	char*** cpp = cp;
+//	printf("%s\n", **++cpp);
+//	printf("%s\n", *-- * ++cpp + 3);
+//	printf("%s\n", *cpp[-2] + 3);
+//	printf("%s\n", cpp[-1][-1] + 1);
+//	return 0;
+//}
+
+////ДњТы1
+//#include <stdio.h>
+//int main()
+//{
+//	int n = 0x11223344;
+//	int* ptr = &n;
+//	*ptr = 0;
+//	return 0;
+//}
+////ДњТы2
+//#include <stdio.h>
+//int main()
+//{
+//	int n = 0x11223344;
+//	char* ptr = (char*) &n;
+//	*ptr = 0;
+//	return 0;
+//}
