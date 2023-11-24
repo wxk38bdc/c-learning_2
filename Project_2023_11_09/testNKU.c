@@ -1036,89 +1036,89 @@
 //	return 0;
 //}
 
-//#include <stdio.h>
-//int main()
-//{
-//	int arr[31][31] = { 0 };
-//	int n = 0;//矩阵维数，即行数与列数
-//	int judge = 0;//判断，1是顺时针，2是逆时针
-//	scanf("%d %d", &n, &judge);
-//	int i = 0, j = 0;
-//	if (judge == 1)
-//	{
-//		int num = 1;//填入的数字,从1开始
-//		int left = 0, right = n - 1, up = 0, down = n - 1;
-//		while (num <= n * n)
-//		{
-//			for (i = left; i <= right; i++)
-//			{
-//				arr[up][i] = num;
-//				num++;
-//			}
-//			up++;
-//			for (i = up; i <= down; i++)
-//			{
-//				arr[i][right] = num;
-//				num++;
-//			}
-//			right--;
-//			for (i = right; i >= left; i--)
-//			{
-//				arr[down][i] = num;
-//				num++;
-//			}
-//			down--;
-//			for (i = down; i >= up; i--)
-//			{
-//				arr[i][left] = num;
-//				num++;
-//			}
-//			left++;
-//		}
-//
-//	}
-//	else if (judge == 2)
-//	{
-//		int num = 1;
-//		int left = 0, right = n - 1, up = 0, down = n - 1;
-//		while (num <= n * n)
-//		{
-//			for (i = up; i <= down; i++)
-//			{
-//				arr[i][left] = num;
-//				num++;
-//			}
-//			left++;
-//			for (i = left; i <= right; i++)
-//			{
-//				arr[down][i] = num;
-//				num++;
-//			}
-//			down--;
-//			for (i = down; i >= up; i--)
-//			{
-//				arr[i][right] = num;
-//				num++;
-//			}
-//			right--;
-//			for (i = right; i >= left; i--)
-//			{
-//				arr[up][i] = num;
-//				num++;
-//			}
-//			up++;
-//		}
-//	}
-//	for (i = 0; i < n; i++)
-//	{
-//		for (j = 0; j < n; j++)
-//		{
-//			printf("%4d", arr[i][j]);
-//		}
-//		printf("\n");
-//	}
-//	return 0;
-//}
+#include <stdio.h>
+int main()
+{
+	int arr[31][31] = { 0 };
+	int n = 0;//矩阵维数，即行数与列数
+	int judge = 0;//判断，1是顺时针，2是逆时针
+	scanf("%d %d", &n, &judge);
+	int i = 0, j = 0;
+	if (judge == 1)
+	{
+		int num = 1;//填入的数字,从1开始
+		int left = 0, right = n - 1, up = 0, down = n - 1;
+		while (num <= n * n)
+		{
+			for (i = left; i <= right; i++)
+			{
+				arr[up][i] = num;
+				num++;
+			}
+			up++;
+			for (i = up; i <= down; i++)
+			{
+				arr[i][right] = num;
+				num++;
+			}
+			right--;
+			for (i = right; i >= left; i--)
+			{
+				arr[down][i] = num;
+				num++;
+			}
+			down--;
+			for (i = down; i >= up; i--)
+			{
+				arr[i][left] = num;
+				num++;
+			}
+			left++;
+		}
+
+	}
+	else if (judge == 2)
+	{
+		int num = 1;
+		int left = 0, right = n - 1, up = 0, down = n - 1;
+		while (num <= n * n)
+		{
+			for (i = up; i <= down; i++)
+			{
+				arr[i][left] = num;
+				num++;
+			}
+			left++;
+			for (i = left; i <= right; i++)
+			{
+				arr[down][i] = num;
+				num++;
+			}
+			down--;
+			for (i = down; i >= up; i--)
+			{
+				arr[i][right] = num;
+				num++;
+			}
+			right--;
+			for (i = right; i >= left; i--)
+			{
+				arr[up][i] = num;
+				num++;
+			}
+			up++;
+		}
+	}
+	for (i = 0; i < n; i++)
+	{
+		for (j = 0; j < n; j++)
+		{
+			printf("%4d", arr[i][j]);
+		}
+		printf("\n");
+	}
+	return 0;
+}
 
 //#include <stdio.h>
 //		//从左上角arr[x-1][y-1]开始旋转，旋转范围边长为r
@@ -1552,6 +1552,7 @@
 //}
 
 ////version4
+/*
 #include <stdio.h>
 
 void shunshizhen(int matrix[][100], int x, int y, int r) {
@@ -1627,6 +1628,8 @@ int main() {
 
     return 0;
 }
+*/
+
 
 
 
