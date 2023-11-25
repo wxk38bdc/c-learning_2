@@ -67,8 +67,7 @@
 //#include<assert.h>
 //int my_strcmp(const char* str1, const char* str2)
 //{
-//	assert(str1 != NULL);
-//	assert(str2 != NULL);
+//	assert(str1 && str2);
 //	while (*str1 == *str2)
 //	{
 //		if (*str1 == '\0')
@@ -107,6 +106,7 @@
 //	{
 //		s1 = cp;
 //		s2 = (char*)str2;
+//		//处理特殊情况
 //		while (*s1 && *s2 && (*s1 == *s2))
 //		{
 //			s1++;
@@ -122,8 +122,8 @@
 //}
 //int main()
 //{
-//	char arr1[] = "abcdefdefdef";
-//	char arr2[] = "cde";
+//	char arr1[] = "abcdef";
+//	char arr2[] = "bcdef";
 //	char* ret = my_strstr(arr1, arr2);
 //	printf("%s", ret);
 //	return 0;
@@ -165,3 +165,65 @@
 //	printf("%s", arr1);
 //	return 0;
 //}
+
+//#include <stdio.h>
+//#include <string.h>
+//int main()
+//{
+//	char str[] = "This is a simple string";
+//	char* pch;
+//	pch = strstr(str, "simple");
+//	strncpy(pch, "sample", 6);
+//	printf("%s\n", str);
+//	return 0;
+//}
+//输出：This is a sample string
+
+#include<stdio.h>
+#include<string.h>
+char* my_strtok(char* str, const char* p)
+{
+	static char* pStart = NULL;
+	if (str != NULL)
+	{
+		pStart = str;
+	}
+	if (pStart == NULL)
+	{
+		return NULL;
+	}
+	char* ret = pStart;
+	while (*pStart)
+	{
+		const char* tmp = p;
+		while (*tmp)
+		{
+			if (*tmp == *pStart)
+			{
+				*pStart = '\0';
+				pStart++;
+				return ret;
+			}
+			tmp++;
+		}
+		pStart++;
+	}
+	if (*pStart == '\0')
+	{
+		pStart = NULL;
+		return ret;
+	}
+}
+int main()
+{
+	char arr[] = "zhangsan@qq.com";
+	char tmp[50] = { 0 };
+	strcpy(tmp, arr);
+	const char* p = "@.";
+	char* ret = NULL;
+	for(ret = strtok(tmp, p); ret != NULL; ret = strtok(NULL, p))
+	{
+		printf("%s\n", ret);
+	}
+	return 0;
+}
