@@ -472,3 +472,171 @@
 //	printf("%s\n", cpp[-1][-1] + 1);
 //	return 0;
 //}
+
+//#include <stdio.h>
+//#include <string.h>
+//
+//int main() {
+//    const char* string1 = "Hello";
+//    const char* string2 = "Heaven";
+//
+//    int result = strncmp(string1, string2, 3); // 比较前3个字符
+//
+//    if (result == 0)
+//    {
+//        printf("Strings are equal.\n");
+//    }
+//    else if (result < 0)
+//    {
+//        printf("String1 is less than String2.\n");
+//    }
+//    else
+//    {
+//        printf("String1 is greater than String2.\n");
+//    }
+//
+//    return 0;
+//}
+
+//#include <stdio.h>
+//#include <string.h>
+//char* my_strstr(const char* str1, const char* str2)
+//{
+//    while (*str1 != '\0')
+//    {
+//        const char* h = str1;
+//        const char* n = str2;
+//
+//        // 逐个比较字符
+//        while (*n != '\0' && *h == *n)
+//        {
+//            h++;
+//            n++;
+//        }
+//
+//        // 如果子字符串结束，表示完全匹配
+//        if (*n == '\0')
+//        {
+//            return (char*)str1;
+//        }
+//
+//        str1++;
+//    }
+//
+//    return NULL; // 未找到子字符串
+//}
+//int main() {
+//    const char* haystack = "Hello, World!";
+//    const char* needle = "0";
+//
+//    char* result = my_strstr(haystack, needle);
+//
+//    if (result != NULL) {
+//        printf("Substring found at position: %ld\n", result - haystack);
+//    }
+//    else {
+//        printf("Substring not found.\n");
+//    }
+//
+//    return 0;
+//}
+
+//#include <stdio.h>
+//#include <string.h>
+//
+//int main()
+//{
+//    char str[] = "Hello,World,Token";
+//    const char delimiters[] = ",";
+//
+//    // 第一次调用，分解字符串
+//    char* token = strtok(str, delimiters);
+//
+//    while (token != NULL)
+//    {
+//        printf("Token: %s\n", token);
+//
+//        // 后续调用，继续分解字符串
+//        token = strtok(NULL, delimiters);
+//    }
+//
+//    return 0;
+//}
+
+//#include <stdio.h>
+//#include <string.h>
+//
+//int main()
+//{
+//    // 模拟一个错误码
+//    int errnum = 2;
+//
+//    // 使用 strerror 获取错误消息字符串
+//    const char* error_message = strerror(errnum);
+//
+//    // 打印错误消息
+//    printf("Error Message: %s\n", error_message);
+//
+//    return 0;
+//}
+
+//#include <stdio.h>
+//#include <string.h>
+//
+//int main() {
+//    char source[] = "Hello, World!";
+//    char destination[20];
+//
+//    // 使用 memcpy 复制数据
+//    memcpy(destination, source, sizeof(source));
+//
+//    printf("Source: %s\n", source);
+//    printf("Destination: %s\n", destination);
+//
+//    return 0;
+//}
+
+//#include <stdio.h>
+//#include <string.h>
+//#include <stdlib.h>
+//#include <ctype.h>
+////2022期末考试题1
+//int main()
+//{
+//	char arr1[50] = { 0 };
+//	scanf("%s", arr1);
+//	int len = strlen(arr1);
+//	char arr2[50] = { 0 };
+//	int j = 0;
+//	for(int i = 0; i < len; i++)
+//	{
+//		if(isalpha(arr1[i]))
+//		{
+//			arr2[j] = toupper(arr1[i]);
+//			j++;
+//		}
+//		else
+//		{
+//			arr2[j] = ' ';
+//			j++;
+//		}
+//	}
+//	char *arr3;
+//	arr3 = strtok(arr2, " ");
+//	while (arr3 != NULL)
+//	{
+//		printf("%s ", arr3);
+//		arr3 = strtok(NULL, " ");
+//	}
+//
+//	return 0;
+//}
+
+
+
+
+
+
+
+
+
