@@ -179,51 +179,296 @@
 //}
 //输出：This is a sample string
 
-#include<stdio.h>
-#include<string.h>
-char* my_strtok(char* str, const char* p)
-{
-	static char* pStart = NULL;
-	if (str != NULL)
-	{
-		pStart = str;
-	}
-	if (pStart == NULL)
-	{
-		return NULL;
-	}
-	char* ret = pStart;
-	while (*pStart)
-	{
-		const char* tmp = p;
-		while (*tmp)
-		{
-			if (*tmp == *pStart)
-			{
-				*pStart = '\0';
-				pStart++;
-				return ret;
-			}
-			tmp++;
-		}
-		pStart++;
-	}
-	if (*pStart == '\0')
-	{
-		pStart = NULL;
-		return ret;
-	}
-}
-int main()
-{
-	char arr[] = "zhangsan@qq.com";
-	char tmp[50] = { 0 };
-	strcpy(tmp, arr);
-	const char* p = "@.";
-	char* ret = NULL;
-	for(ret = strtok(tmp, p); ret != NULL; ret = strtok(NULL, p))
-	{
-		printf("%s\n", ret);
-	}
-	return 0;
-}
+//#include<stdio.h>
+//#include<string.h>
+//char* my_strtok(char* str, const char* p)
+//{
+//	static char* pStart = NULL;
+//	if (str != NULL)
+//	{
+//		pStart = str;
+//	}
+//	if (pStart == NULL)
+//	{
+//		return NULL;
+//	}
+//	char* ret = pStart;
+//	while (*pStart)
+//	{
+//		const char* tmp = p;
+//		while (*tmp)
+//		{
+//			if (*tmp == *pStart)
+//			{
+//				*pStart = '\0';
+//				pStart++;
+//				return ret;
+//			}
+//			tmp++;
+//		}
+//		pStart++;
+//	}
+//	if (*pStart == '\0')
+//	{
+//		pStart = NULL;
+//		return ret;
+//	}
+//}
+//int main()
+//{
+//	char arr[] = "zhangsan@qq.com";
+//	char tmp[50] = { 0 };
+//	strcpy(tmp, arr);
+//	const char* p = "@.";
+//	char* ret = NULL;
+//	for(ret = strtok(tmp, p); ret != NULL; ret = strtok(NULL, p))
+//	{
+//		printf("%s\n", ret);
+//	}
+//	return 0;
+//}
+
+//#include<stdio.h>
+//#include<string.h>
+//#include<errno.h>
+//int main()
+//{
+//	char s[50]= { 0 };
+//	fgets(s, 50, stdin);
+//	FILE* pf = fopen(s, "r");
+//	if (pf == NULL)
+//	{
+//		printf("%s\n", strerror(errno));
+//	}
+//	else
+//	{
+//		printf("open success\n");
+//	}
+//	return 0;
+//}
+
+//#include<stdio.h>
+//#include<string.h>
+//#include<assert.h>
+//void* my_memcpy(void* dest, const void* src, size_t count)
+//{
+//	assert(dest && src);
+//	void* ret = dest;
+//	while (count--)
+//	{
+//		*(char*)dest = *(char*)src;
+//		((char*)dest)++;
+//		((char*)src)++;
+//	}
+//	return ret;
+//}
+//int main()
+//{
+//	int arr1[10]={1,2,3,4,5,6,7,8,9,10};
+//	int arr2[10] = { 0 };
+//	my_memcpy(arr2, arr1 + 5, 5 * sizeof(int));
+//	int i = 0;
+//	for (i = 0; i < 10; i++)
+//	{
+//		printf("%d ", arr2[i]);
+//	}
+//	return 0;
+//}
+
+//#include<stdio.h>
+//#include<string.h>
+//#include<assert.h>
+//void* my_memmove(void* dest, const void* src, size_t count)
+//{
+//	assert(dest && src);
+//	void* ret = dest;
+//	if (dest <= src || (char*)dest >= (char*)src + count)
+//	{
+//		while (count--)
+//		{
+//			*(char*)dest = *(char*)src;
+//			((char*)dest)++;
+//			((char*)src)++;
+//		}
+//	}
+//	else
+//	{
+//		while (count--)
+//		{
+//			*((char*)dest + count) = *((char*)src + count);
+//		}
+//	}
+//	return ret;
+//}
+//int main()
+//{
+//	int arr1[10] = { 1,2,3,4,5,6,7,8,9,10 };
+//	my_memmove(arr1 + 2, arr1, 5 * sizeof(int));
+//	int i = 0;
+//	for (i = 0; i < 10; i++)
+//	{
+//		printf("%d ", arr1[i]);
+//	}
+//	return 0;
+//}
+
+////检测大小端字节序
+//#include<stdio.h>
+//int check_sys()
+//{
+//	int a = 1;
+//	return *(char*)&a;
+//}
+//int main()
+//{
+//	int ret = check_sys();
+//	if (ret == 1)
+//	{
+//		printf("小端字节序\n");
+//	}
+//	else
+//	{
+//		printf("大端字节序\n");
+//	}
+//	return 0;
+//}
+
+//#include <stdio.h>
+//int main()
+//{
+//	char a = -1;
+//	signed char b = -1;
+//	unsigned char c = -1;
+//	printf("a=%d,b=%d,c=%d", a, b, c);
+//	return 0;
+//}
+
+//#include<stdio.h>
+//int main()
+//{
+//    char a[1000] = { 0 };
+//    int i = 0;
+//    for (i = 0; i < 1000; i++)
+//    {
+//        a[i] = -1 - i;
+//    }
+//    printf("%d", strlen(a));
+//    return 0;
+//}
+
+//#include<stdio.h>
+//#include<string.h>
+//#include<assert.h>
+//char* my_strncpy(char* dest, const char* src, size_t count)
+//{
+//	assert(dest && src);
+//	char* ret = dest;
+//	while (count--)
+//	{
+//		*dest++ = *src++;
+//	}
+//	return ret;
+//}
+//int main()
+//{
+//	char arr1[] = "xxxxxxxxxx";
+//	char arr2[] = "abcdef";
+//	my_strncpy(arr1 + 3, arr2, 3);
+//	printf("%s", arr1);
+//	return 0;
+//}
+
+//#include<stdio.h>
+//#include<string.h>
+//#include<assert.h>
+//char* my_strncat(char* dest, const char* src, size_t count)
+//{
+//	assert(dest && src);
+//	char* tmp = dest;
+//	while (*dest != '\0')
+//	{
+//		dest++;
+//	}
+//	while (count--)
+//	{
+//		*dest++ = *src++;
+//	}
+//	*dest = '\0';
+//	return tmp;
+//}
+//int main()
+//{
+//	char arr[20] = { 0 };
+//	char arr1[] = "hello ";
+//	char arr2[] = "worldxxxxx";
+//	strcpy(arr, arr1);
+//	my_strncat(arr, arr2, 5);
+//	printf("%s", arr);
+//	return 0;
+//}
+
+//#include<stdio.h>
+//int int_cmp(const void* p1, const void* p2)
+//{
+//	return (*(int*)p1 - *(int*)p2);
+//}
+//void _swap(void* p1, void* p2, int size)
+//{
+//	int i = 0;
+//	for (i = 0; i < size; i++)
+//	{
+//		char tmp = *((char*)p1 + i);
+//		*((char*)p1 + i) = *((char*)p2 + i);
+//		*((char*)p2 + i) = tmp;
+//	}
+//}
+//void bubble(void* base, int count, int size, int(*cmp)(void*, void*))
+//{
+//	int i = 0;
+//	int j = 0;
+//	for (i = 0; i < count - 1; i++)
+//	{
+//		for (j = 0; j < count - i - 1; j++)
+//		{
+//			if (cmp((char*)base + j * size, (char*)base + (j + 1) * size) > 0)
+//			{
+//				_swap((char*)base + j * size, (char*)base + (j + 1) * size, size);
+//			}
+//		}
+//	}
+//}
+//int main()
+//{
+//	int arr[] = { 1, 3, 5, 7, 9, 2, 4, 6, 8, 0 };
+//	int i = 0;
+//	bubble(arr, sizeof(arr) / sizeof(arr[0]), sizeof(int), int_cmp);
+//	for (i = 0; i < sizeof(arr) / sizeof(arr[0]); i++)
+//	{
+//		printf("%d ", arr[i]);
+//	}
+//	printf("\n");
+//	return 0;
+//}
+
+//#include <stdio.h>
+//int main()
+//{
+//	int aa[2][5] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+//	int* ptr1 = (int*)(&aa + 1);
+//	int* ptr2 = (int*)(*(aa + 1));
+//	printf("%d,%d", *(ptr1 - 1), *(ptr2 - 1));
+//	return 0;
+//}
+
+//#include <stdio.h>
+//int main()
+//{
+//	char* c[] = { "ENTER","NEW","POINT","FIRST" };
+//	char** cp[] = { c + 3,c + 2,c + 1,c };
+//	char*** cpp = cp;
+//	printf("%s\n", **++cpp);
+//	printf("%s\n", *-- * ++cpp + 3);
+//	printf("%s\n", *cpp[-2] + 3);
+//	printf("%s\n", cpp[-1][-1] + 1);
+//	return 0;
+//}
