@@ -598,43 +598,153 @@
 
 //#include <stdio.h>
 //#include <string.h>
-//#include <stdlib.h>
 //#include <ctype.h>
-////2022期末考试题1
 //int main()
 //{
-//	char arr1[50] = { 0 };
-//	scanf("%s", arr1);
-//	int len = strlen(arr1);
-//	char arr2[50] = { 0 };
-//	int j = 0;
-//	for(int i = 0; i < len; i++)
+//	char arr[100][50]= { 0 };
+//	int i = 0;
+//	while(scanf("%s", arr[i]) != EOF)
 //	{
-//		if(isalpha(arr1[i]))
-//		{
-//			arr2[j] = toupper(arr1[i]);
-//			j++;
-//		}
-//		else
-//		{
-//			arr2[j] = ' ';
-//			j++;
-//		}
+//		i++;
 //	}
-//	char *arr3;
-//	arr3 = strtok(arr2, " ");
-//	while (arr3 != NULL)
+//	for (int j = i-1; j >=0 ; j--)
 //	{
-//		printf("%s ", arr3);
-//		arr3 = strtok(NULL, " ");
+//		printf("%s ", arr[j]);
 //	}
-//
 //	return 0;
 //}
 
+//#include <stdio.h>
+//#include <string.h>
+//int lengthOfLastWord(char* s) {
+//    int len = strlen(s);
+//    int i = len - 1;
+//    int count = 0;
+//
+//    // 跳过末尾的空格
+//    while (i >= 0 && s[i] == ' ') {
+//        i--;
+//    }
+//
+//    // 计算最后一个单词的长度
+//    while (i >= 0 && s[i] != ' ') {
+//        count++;
+//        i--;
+//    }
+//
+//    return count;
+//}
+//
+//int main()
+//{
+//	char *arr = "l";
+//	int ret = lengthOfLastWord(arr);
+//	printf("%d", ret);
+//	return 0;
+//}
 
+//#include<stdio.h>
+////X86环境，小端字节序
+//int main()
+//{
+//	int a[4] = { 1,2,3,4 };
+//	int* ptr1 = (int*)(&a + 1);
+//	int* ptr2 = (int*)((int)a + 1);
+//	printf("%x,%x", ptr1[-1], *ptr2);
+//	return 0;
+//}
 
+//#include <stdio.h>
+//int main()
+//{
+//	int n = 9;
+//	float* pFloat = (float*)&n;
+//	printf("n的值为：%d\n", n);
+//	printf("*pFloat的值为：%f\n", *pFloat);
+//	*pFloat = 9.0;
+//	printf("num的值为：%d\n", n);
+//	printf("*pFloat的值为：%f\n", *pFloat);
+//	return 0;
+//}
 
+//#include <stdio.h>
+//int main()
+//{
+//	float f = 99.7;
+//	printf("%f\n", f);
+//	return 0;
+//}
+
+//#include <stdio.h>
+//struct stu
+//{
+//	int num;
+//	char name[10];
+//	int age;
+//};
+//
+//void fun(struct stu* p)
+//{
+//	printf("%s\n", (*p).name);
+//	return;
+//}
+//
+//int main()
+//{
+//	struct stu students[3] = { {9801,"zhang",20},
+//							 {9802,"wang",19},
+//					{9803,"zhao",18} };
+//	fun(students + 1);
+//	return 0;
+//}
+
+//#include <stdio.h>
+//#include<string.h>
+//int my_atoi(const char* str)
+//{
+//	int flag = 1;
+//	int ret = 0;
+//	int isnum = 0;//标记是否有数字
+//	while (*str == ' ')
+//	{
+//		str++;
+//	}
+//	if (*str == '-')
+//	{
+//		flag = -1;
+//		str++;
+//	}
+//	else if (*str == '+')
+//	{
+//		str++;
+//	}
+//	while (*str>='0'&&*str<='9')
+//	{
+//		isnum = 1;
+//		ret = ret * 10 + *str - '0';
+//		str++;
+//	}
+//	if (isnum == 0)
+//	{
+//		return 0;
+//	}
+//	return ret * flag;
+//}
+//int main()
+//{
+//	char arr[100] = { 0 };
+//	fgets(arr, 100, stdin);
+//	int ret = my_atoi(arr);
+//	printf("%d", ret);
+//	return 0;
+//}
+
+//#include<stdio.h>
+//int main()
+//{
+//	int num = 0x12345678;
+//	return 0;
+//}
 
 
 
