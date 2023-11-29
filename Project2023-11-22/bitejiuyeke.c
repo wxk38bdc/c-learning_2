@@ -746,7 +746,207 @@
 //	return 0;
 //}
 
+//#include <stdio.h>
+//int main()
+//{
+//	int n = 19;
+//	float* pFloat = (float*)&n;
+//	printf("n的值为：%d\n", n);
+//	printf("*pFloat的值为：%f\n", *pFloat);
+//	*pFloat = 19.0f;
+//	printf("num的值为：%d\n", n);
+//	printf("*pFloat的值为：%f\n", *pFloat);
+//	return 0;
+//}
 
+//#include <stdio.h>
+//int main()
+//{
+//	float a = -0.0f;
+//	float b = 0.0f;
+//	if(a== b)
+//	{
+//		printf("a==b\n");
+//	}
+//	else
+//	{
+//		printf("a!=b\n");
+//	}
+//	//printf("%f", b);
+//	return 0;
+//}
 
+//#include <stdio.h>
+//int main()
+//{
+//	char a = -1;
+//	signed char b = -1;
+//	unsigned char c = -1;
+//	printf("a=%d,b=%d,c=%d", a, b, c);
+//	return 0;
+//}
 
+//#include <stdio.h>
+//int main()
+//{
+//	int a[4] = { 1, 2, 3, 4 };
+//	int* ptr1 = (int*)(&a + 1);
+//	int* ptr2 = (int*)((int)a + 1);
+//	printf("%x,%x", ptr1[-1], *ptr2);
+//	return 0;
+//}
+
+//#include <stdio.h>
+//int main()
+//{
+//	long long  n, m, a;
+//	scanf("%lld %lld %lld", &n, &m, &a);
+//	long long x, y;
+//	if (n % a == 0)
+//	{
+//		x = n / a;
+//	}
+//	else
+//	{
+//		x = n / a + 1;
+//	}
+//	if (m % a == 0)
+//	{
+//		y = m / a;
+//	}
+//	else
+//	{
+//		y = m / a + 1;
+//	}
+//	printf("%lld", x * y);
+//	return 0;
+//}
+
+//#include <stdio.h>
+//int main()
+//{
+//	int w;
+//	scanf("%d", &w);
+//	if (w % 2 == 0 && w != 2)
+//	{
+//		printf("YES");
+//	}
+//	else
+//	{
+//		printf("NO");
+//	}
+//	return 0;
+//}
+
+//#include <stdio.h>
+//#include <string.h>
+//#include <stdlib.h>
+//#include <ctype.h>
+////type1:RxxCxx,如R23C55
+////type2:字母+数字,如BC23
+//void reverse(char arr[], int len)
+//{
+//	int left = 0;
+//	int right = len - 1;
+//	while (left < right)
+//	{
+//		char tmp = arr[left];
+//		arr[left] = arr[right];
+//		arr[right] = tmp;
+//		left++;
+//		right--;
+//	}
+//}
+//int istype1(char arr[],int len)
+//{
+//	int i = 0;
+//	if(arr[0]=='R'&&isdigit(arr[1]))
+//	{
+//		for (i = 2; i < len; i++)
+//		{
+//			if (arr[i] == 'C')
+//			{
+//				return 1;
+//			}
+//		}
+//	}
+//	return 0;
+//}
+//int getRowFromType1(char arr[], int len)
+//{
+//	int i = 1;
+//	int row = 0;
+//	while (arr[i] != 'C')
+//	{
+//		row = row * 10 + arr[i] - '0';
+//		i++;
+//	}
+//	return row;
+//}
+//int getColFromType1(char arr[], int len)
+//{
+//	int i = 0;
+//	int col = 0;
+//	while (arr[i] != 'C')
+//	{
+//		i++;
+//	}
+//	i++;
+//	while (i < len)
+//	{
+//		col = col * 10 + arr[i] - '0';
+//		i++;
+//	}
+//	return col;
+//}
+//void totype2(int row, int col, char arr[]) {
+//	int i = 0;
+//	while (col > 0) {
+//		int remainder = (col - 1) % 26;
+//		arr[i++] = remainder + 'A';
+//		col = (col - 1) / 26;
+//	}
+//	arr[i] = '\0';
+//	reverse(arr, strlen(arr));
+//	printf("%s%d\n", arr, row);
+//}
+//void totype1(char arr[], int len)
+//{
+//	int i = 0;
+//	int row = 0;
+//	int col = 0;
+//	while (isalpha(arr[i]))
+//	{
+//		col = col * 26 + (int)arr[i] - 65 + 1;
+//		i++;
+//	}
+//	while (i < strlen(arr))
+//	{
+//		row = row * 10 + (int)arr[i] - 48;
+//		i++;
+//	}
+//	printf("R%dC%d\n", row, col);
+//}
+//int main()
+//{
+//	int n = 0;
+//	scanf("%d", &n);
+//	while (n--)
+//	{
+//		char arr_new[20] = { 0 };
+//		char arr[20] = { 0 };
+//		scanf("%s", arr);
+//		if (istype1(arr, strlen(arr)))
+//		{
+//			int row = getRowFromType1(arr, strlen(arr));
+//			int col = getColFromType1(arr, strlen(arr));
+//			totype2(row, col, arr_new);
+//		}
+//		else
+//		{
+//			totype1(arr,strlen(arr));
+//		}
+//	}
+//	return 0;
+//}
 
