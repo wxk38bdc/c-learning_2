@@ -485,4 +485,272 @@
 //    return 0;
 //}
 
+//#include<stdio.h>
+//int main()
+//{
+//	//初始化并输入
+//	int n;
+//	int arr[200000] = { 0 };
+//	int l, r;
+//	scanf("%d", &n);
+//	int i = 0, j = 0;
+//	for (i = 0; i < n; i++)
+//	{
+//		scanf("%d", &arr[i]);
+//	}
+//	scanf("%d %d", &l, &r);
+//	//将arr数组后面接一个arr
+//	for (i = 0; i < n; i++)
+//	{
+//		arr[n + i] = arr[i];
+//	}
+//	//奶牛开始报数
+//	int sum[100000] = { 0 };
+//	for (i = 0; i < n; i++)
+//	{
+//		for (j = i + l - 1; j < i + r - 1; j++)
+//		{
+//			sum[i] += arr[j];
+//		}
+//	}
+//	//找出最大值
+//	int MAX = sum[0];
+//	int index = 0;
+//	for (i = 0; i < n; i++)
+//	{
+//		if (sum[i] > MAX)
+//		{
+//			MAX = sum[i];
+//			index = i;
+//		}
+//	}
+//	if (index == 0)
+//	{
+//		printf("1");
+//	}
+//	else
+//	{
+//		printf("%d", n - index+1);
+//	}
+//	return 0;
+//}
+
+//#include<stdio.h>
+//#include<stdlib.h>
+//
+//int main() {
+//    // 初始化并输入
+//    int n;
+//    scanf("%d", &n);
+//
+//    int* arr = (int*)malloc(2 * n * sizeof(int));  // 动态分配内存
+//    if (arr == NULL) {
+//        //printf("Memory allocation failed.\n");
+//        return 1;
+//    }
+//
+//    int i, j;
+//    for (i = 0; i < n; i++) {
+//        scanf("%d", &arr[i]);
+//    }
+//    int l, r;
+//    scanf("%d %d", &l, &r);
+//
+//    // 将arr数组后面接一个arr
+//    for (i = 0; i < n; i++) {
+//        arr[n + i] = arr[i];
+//    }
+//
+//    // 奶牛开始报数
+//    int* sum = (int*)malloc(n * sizeof(int));  // 动态分配内存
+//    if (sum == NULL) {
+//        //printf("Memory allocation failed.\n");
+//        free(arr);  // 释放arr的内存
+//        return 1;
+//    }
+//
+//    for (i = 0; i < n; i++) {
+//        sum[i] = 0;
+//        for (j = i + l - 1; j < i + r - 1; j++) {
+//            sum[i] += arr[j];
+//        }
+//    }
+//
+//    // 找出最大值
+//    int MAX = sum[0];
+//    int index = 0;
+//    for (i = 0; i < n; i++) {
+//        if (sum[i] > MAX) {
+//            MAX = sum[i];
+//            index = i;
+//        }
+//    }
+//
+//    if (index == 0) {
+//        printf("1");
+//    }
+//    else {
+//        printf("%d", n - index + 1);
+//    }
+//
+//    // 释放动态分配的内存
+//    free(arr);
+//    free(sum);
+//
+//    return 0;
+//}
+
+//#include <stdio.h>
+//#include<ctype.h>
+//#include<string.h>
+//char sign = '\0';
+//int getdigit(int n)
+//{
+//	int count = 0;
+//	if (n == 0)
+//	{
+//		return 1;
+//	}
+//	if (n < 0)
+//	{
+//		count++;
+//		n = n * (-1);
+//	}
+//	while (n)
+//	{
+//		n /= 10;
+//		count++;
+//	}
+//	return count;
+//}
+//int main()
+//{
+//	int n;
+//	int i = 0;
+//	scanf("%d", &n);
+//	n++;
+//	while (n--)
+//	{
+//		char str[100] = { 0 };
+//		fgets(str, 100, stdin);
+//		int len = strlen(str);
+//		int num1 = 0, num2 = 0;
+//		int lenofnum1 = 0;
+//		int lenofnum2 = 0;
+//		if (isalpha(str[0]))
+//		{
+//			sign = str[0];
+//			for (i = 2; i < len; i++)
+//			{
+//				if (isdigit(str[i]))
+//				{
+//					num1 = num1 * 10 + (int)str[i] - 48;
+//					lenofnum1++;
+//				}
+//				else
+//				{
+//					break;
+//				}
+//			}
+//			for(i=3+lenofnum1;i<len;i++)
+//			{
+//				if (isdigit(str[i]))
+//				{
+//					num2 = num2 * 10 + (int)str[i] - 48;
+//					lenofnum2++;
+//				}
+//				else
+//				{
+//					break;
+//				}
+//			}
+//		}
+//		else 
+//		{
+//			for (i = 0; i < len; i++)
+//			{
+//				if (isdigit(str[i]))
+//				{
+//					num1 = num1 * 10 + (int)str[i] - 48;
+//					lenofnum1++;
+//				}
+//				else
+//				{
+//					break;
+//				}
+//			}
+//			for (i =1+lenofnum1; i < len; i++)
+//			{
+//				if (isdigit(str[i]))
+//				{
+//					num2 = num2 * 10 + (int)str[i] - 48;
+//					lenofnum2++;
+//				}
+//				else
+//				{
+//					break;
+//				}
+//			}
+//
+//		}
+//		if(sign=='a')
+//		{ 
+//			printf("%d+%d=%d\n%d\n",num1,num2,num1+num2,getdigit(num1+num2)+ getdigit(num1) + getdigit(num2) +2);
+//		}
+//		else if (sign == 'b')
+//		{
+//			printf("%d-%d=%d\n%d\n", num1, num2, num1 - num2, getdigit(num1 - num2) + getdigit(num1) + getdigit(num2) + 2);
+//		}
+//		else if(sign== 'c')
+//		{
+//			printf("%d*%d=%d\n%d\n", num1, num2, num1 * num2, getdigit(num1 * num2) + getdigit(num1) + getdigit(num2) + 2);
+//		}
+//	}
+//	return 0;
+//}
+
+//#include <stdio.h>
+//int main()
+//{
+//	int n = 0;
+//	scanf("%d", &n);
+//	int i = 0, j = 0, k = 0;
+//	int arr[200] = { 0 };
+//	for (i = 0; i < n; i++)
+//	{
+//		scanf("%d", &arr[i]);
+//	}
+//	int count = 0;
+//	int flag[2000] = { 0 };
+//	for (i = 0; i < n; i++)
+//	{
+//		for (j = 0; j < n; j++)
+//		{
+//			if (j == i)
+//			{
+//				continue;
+//			}
+//			for (k = j + 1; k < n; k++)
+//			{
+//				if (k == i)
+//				{
+//					continue;
+//				}
+//				if (arr[i] == arr[j] + arr[k])
+//				{
+//					if (flag[i] == 0)
+//					{
+//						count++;
+//						flag[i] = 1;
+//						//printf("%d=%d+%d\n", arr[i], arr[j], arr[k]);
+//					}
+//				}
+//			}
+//		}
+//	}
+//	printf("%d", count);
+//	return 0;
+//}
+
+
 

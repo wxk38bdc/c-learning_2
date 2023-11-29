@@ -87,3 +87,102 @@
 //	search(0);
 //	return 0;
 //}
+
+//#include <iostream>
+//using namespace std;
+//#include<cstdio>
+//int main()
+//{
+//	int n = 0;
+//	scanf("%d", &n);
+//	int i = 0, j = 0;
+//	int arr[41][41] = { 0 };
+//	arr[0][n / 2] = 1;
+//	int num = 0;
+//	int row = 0, col = n / 2;
+//
+//	for (num = 2; num <= n*n; num++)
+//	{
+//		if (row == 0 && col != n - 1)
+//		{
+//			row = n - 1;
+//			col++;
+//			arr[row][col] = num;
+//		}
+//		else if (col == n - 1 && row != 0)
+//		{
+//			col = 0;
+//			row--;
+//			arr[row][col] = num;
+//		}
+//		else if (row == 0 && col == n-1)
+//		{
+//			row++;
+//			arr[row][col] = num;
+//		}
+//		else if (row != 0 && col != n - 1)
+//		{
+//			if (arr[row - 1][col + 1] == 0)
+//			{
+//				row--;
+//				col++;
+//				arr[row][col] = num;
+//			}
+//			else
+//			{
+//				row++;
+//				arr[row][col] = num;
+//			}
+//		}
+//	}
+//	//Êä³ö
+//	for (i = 0; i < n; i++)
+//	{
+//		for (j = 0; j < n; j++)
+//		{
+//			printf("%d ", arr[i][j]);
+//		}
+//		printf("\n");
+//	}
+//	return 0;
+//}
+
+//#include <iostream>
+//using namespace std;
+//#include<cstdio>
+//
+//int main() {
+//    int n = 0;
+//    scanf("%d", &n);
+//    int i = 0, j = 0;
+//    int arr[41][41] = { 0 };
+//    arr[0][n / 2] = 1;
+//    int num = 2;
+//    int row = 0, col = n / 2;
+//
+//    while (num <= (n * n)) {
+//        int nextRow = (row - 1 + n) % n;
+//        int nextCol = (col + 1) % n;
+//
+//        if (arr[nextRow][nextCol] == 0) {
+//            row = nextRow;
+//            col = nextCol;
+//        }
+//        else {
+//            row = (row + 1) % n;
+//        }
+//
+//        arr[row][col] = num;
+//        num++;
+//    }
+//
+//    // Êä³ö
+//    for (i = 0; i < n; i++) {
+//        for (j = 0; j < n; j++) {
+//            printf("%d ", arr[i][j]);
+//        }
+//        printf("\n");
+//    }
+//
+//    return 0;
+//}

@@ -950,3 +950,236 @@
 //	return 0;
 //}
 
+//#include<stdio.h>
+//int main()
+//{
+//	int arr[101] = { 0 };
+//	int i = 0;
+//	int count = 0;
+//	while (scanf("%d", &arr[i]) != EOF)
+//	{
+//		i++;
+//		count++;
+//	}
+//	for (i = count - 2; i >= 0; i--)
+//	{
+//		printf("%d ", arr[i]);
+//	}
+//	return 0;
+//}
+
+//#include<stdio.h>
+//int checkSameNum(int arr1[], int arr2[])
+//{
+//	int i = 0, j = 0;
+//	int count = 0;
+//	for (i = 0; i < 7; i++)
+//	{
+//		for (j = 0; j < 7; j++)
+//		{
+//			if (arr1[i] == arr2[j])
+//			{
+//				count++;
+//			}
+//		}
+//	}
+//	return count;
+//}
+//int main()
+//{
+//	int n = 0;
+//	scanf("%d", &n);
+//	int prize[7] = { 0 };
+//	int i = 0, j = 0;
+//	for (i = 0; i < 7; i++)
+//	{
+//		scanf("%d", &prize[i]);
+//	}
+//	int ticket[1000][7] = { 0 };
+//	for (i = 0; i < n; i++)
+//	{
+//		for (j = 0; j < 7; j++)
+//		{
+//			scanf("%d", &ticket[i][j]);
+//		}
+//	}
+//	int result[8] = { 0 };
+//	for (i = 0; i < n; i++)
+//	{
+//		int num = checkSameNum(prize, ticket[i]);
+//		result[num]++;
+//	}
+//	for (i = 7; i > 0; i--)
+//	{
+//		printf("%d ", result[i]);
+//	}
+//	return 0;
+//}
+
+//#include<stdio.h>
+//#include<string.h>
+//int main()
+//{
+//	int n = 0;
+//	char str[103] = { 0 };
+//	int i = 0, j = 0;
+//	int count = 0;
+//	scanf("%d", &n);
+//	scanf("%s", str);
+//	for (i = 0; i < n - 1; i++)
+//	{
+//		if(str[i]=='V'&&str[i+1]=='K')
+//		{
+//			count++;
+//			str[i] = '0';
+//			str[i + 1] = '0';
+//		}
+//	}
+//	for (i = 0; i < n - 1; i++)
+//	{
+//		if (str[i] == 'V' && str[i + 1] == 'V')
+//		{
+//			count++;
+//			break;
+//		}
+//		if (str[i] == 'K' && str[i + 1] == 'K')
+//		{
+//			count++;
+//			break;
+//		}
+//	}
+//	printf("%d", count);
+//	return 0;
+//}
+
+//#include<stdio.h>
+//#include<string.h>
+//int main()
+//{
+//	char str[259] = { 0 };
+//	scanf("%s", str);
+//	int len = strlen(str);
+//	int i = 0;
+//	int boyNum = 0;
+//	int girlNum = 0;
+//	for (i = 0; i < len - 3; i++)
+//	{
+//		if (str[i] == '.')
+//		{
+//			continue;
+//		}
+//		if (str[i] == 'g' && str[i + 1] == 'i' && str[i + 2] == 'r' && str[i + 3] == 'l')
+//		{
+//			girlNum++;
+//			str[i] = '.';
+//			str[i + 1] = '.';
+//			str[i + 2] = '.';
+//			str[i + 3] = '.';
+//			i += 3;
+//		}
+//	}
+//	for (i = 0; i < len - 2; i++)
+//	{
+//		if (str[i] == '.')
+//		{
+//			continue;
+//		}
+//		if (str[i] == 'b' && str[i + 1] == 'o' && str[i + 2] == 'y')
+//		{
+//			boyNum++;
+//			str[i] = '.';
+//			str[i + 1] = '.';
+//			str[i + 2] = '.';
+//			i += 2;
+//		}
+//		if((str[i]=='g'&&str[i+1]=='i'&&str[i+2]=='r')|| (str[i] == 'i' && str[i + 1] == 'r' && str[i + 2] == 'l'))
+//		{
+//			girlNum++;
+//			str[i] = '.';
+//			str[i + 1] = '.';
+//			str[i + 2] = '.';
+//			i += 2;
+//		}
+//	}
+//	for (i = 0; i < len - 1; i++)
+//	{
+//		if (str[i] == '.')
+//		{
+//			continue;
+//		}
+//		if ((str[i] == 'b' && str[i + 1] == 'o')|| (str[i] == 'o' && str[i + 1] == 'y'))
+//		{
+//			boyNum++;
+//			str[i] = '.';
+//			str[i + 1] = '.';
+//			i += 1;
+//		}
+//		if ((str[i] == 'g' && str[i + 1] == 'i') || (str[i] == 'i' && str[i + 1] == 'r') || (str[i] == 'r' && str[i + 1] == 'l'))
+//		{
+//			girlNum++;
+//			str[i] = '.';
+//			str[i + 1] = '.';
+//			i += 1;
+//		}
+//	}
+//	for(i=0;i<len;i++)
+//	{
+//		if (str[i] == '.')
+//		{
+//			continue;
+//		}
+//		if (str[i] == 'b' || str[i] == 'o' || str[i] == 'y' )
+//		{
+//			boyNum++;
+//			str[i] = '.';
+//		}
+//		if ( str[i] == 'g' || str[i] == 'i' || str[i] == 'r' || str[i] == 'l')
+//		{
+//			girlNum++;
+//			str[i] = '.';
+//		}
+//	}
+//	printf("%d\n%d", boyNum, girlNum);
+//	return 0;
+//}
+
+#include<stdio.h>
+//int missingNumber(int* nums, int numsSize) {
+//    if (nums == NULL || numsSize == 0) {
+//        return -1;
+//    }
+//
+//    int arr[10000] = { 0 };
+//    int i = 0;
+//
+//    // 使用另一个变量遍历数组
+//    for (i = 0; i < numsSize; i++) {
+//        arr[nums[i]]++;
+//    }
+//
+//    for (i = 0; i <= numsSize; i++) {
+//        if (arr[i] == 0) {
+//            return i;
+//        }
+//    }
+//
+//    // 如果没有缺失的数字，可以返回一个特定的值，比如 -1
+//    return -1;
+//}
+//
+//int missingNumber2(int* nums, int numsSize)
+//{
+//	int sum = 0;
+//	for(int i=0;i<numsSize;i++)
+//	{
+//		sum += nums[i];
+//	}
+//	return numsSize * (numsSize + 1) / 2 - sum;
+//}
+//int main()
+//{
+//	int arr[] = { 0,1 };
+//	int ret = missingNumber(arr, 2);
+//	printf("%d", ret);
+//	return 0;
+//}
