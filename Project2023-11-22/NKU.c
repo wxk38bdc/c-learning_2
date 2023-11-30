@@ -753,4 +753,182 @@
 //}
 
 
+//#include<stdio.h>
+//#define N 4
+//int x[N];
+////输出1到n的全部排列，数字不能重复
+//void search(int k)
+//{
+//	int i = 0;
+//	if (k == N)
+//	{
+//		for (i = 0; i < N; i++)
+//		{
+//			printf("%d ", x[i]);
+//		}
+//		printf("\n");
+//	}
+//	else
+//	{
+//		for (i = 1; i <= N; i++)
+//		{
+//			int flag = 1;
+//			for (int j = 0; j < k; j++)
+//			{
+//				if (x[j] == i)
+//				{
+//					flag = 0;
+//					break;
+//				}
+//			}
+//			if (flag)
+//			{
+//				x[k] = i;
+//				search(k + 1);
+//			}
+//		}
+//	}
+//}
+//int main()
+//{
+//	search(0);
+//	return 0;
+//}
+
+//#include<stdio.h>
+//#include<string.h>
+//char s[] = {'a','b','c','\0'};
+//int isoccur[3] = { 0 };
+//void search(int k)
+//{
+//	int i = 0;
+//	if (k == 3)
+//	{
+//		for (i = 0; i < 3; i++)
+//		{
+//			printf("%c ", s[i]);
+//		}
+//		printf("\n");
+//	}
+//	else
+//	{
+//		for (i = 0; i < 3; i++)
+//		{
+//			if (isoccur[i] == 0)
+//			{
+//				isoccur[i] = 1;
+//				s[k] = 'a' + i;
+//				search(k + 1);
+//				isoccur[i] = 0;
+//			}
+//		}
+//	}
+//}
+//int main()
+//{
+//	search(0);
+//	return 0;
+//}
+
+//#include<stdio.h>
+//#include<string.h>
+////找到字符数组的全部子集
+//char a[] = { 'a','b','c','\0' };
+//int x[3] = { 0 };
+//void print(int x[],char a[])
+//{
+//	int i = 0;
+//	for (i = 0; i < 3; i++)
+//	{
+//		if (x[i])
+//		{
+//			printf("%c ", a[i]);
+//		}
+//	}
+//	printf("\n");
+//}
+//void search(int k)
+//{
+//	int i = 0;
+//	if (k == 3)
+//	{
+//		print(x, a);
+//	}
+//	else
+//	{
+//		x[k] = 1;
+//		search(k + 1);
+//		x[k] = 0;
+//		search(k + 1);
+//
+//	}
+//}
+//int main()
+//{
+//	search(0);
+//	return 0;
+//}
+
+//#include<stdio.h>
+//#include<stdlib.h>
+//#define N (5)
+////N皇后问题
+//int x[N];//x[i]表示第i行皇后所在的列
+//int count = 0;//可行棋盘数
+//void Print()
+//{
+//	for (int i = 0; i < N; i++)
+//	{
+//		for (int j = 0; j < N; j++)
+//		{
+//			if (x[i] == j)
+//			{
+//				printf("Q ");
+//			}
+//			else
+//			{
+//				printf("* ");
+//			}
+//		}
+//		printf("\n");
+//	}
+//	printf("\n");
+//	count++;
+//}
+//void search(int k)
+//{
+//	if (k == N)
+//	{
+//		Print();
+//	}
+//	else
+//	{
+//		for (int i = 0; i < N; i++)
+//		{
+//			if (ableToPlace(i, k))
+//			{
+//				x[k] = i;
+//				search(k + 1);
+//			}
+//		}
+//	}
+//}
+//int ableToPlace(int i, int k)
+//{
+//	for (int j = 0; j < k; j++)
+//	{
+//		if (x[j] == i || abs(x[j] - i) == abs(j - k))
+//		{
+//			return 0;
+//		}
+//	}
+//	return 1;
+//}
+//
+//int main()
+//{
+//	search(0);
+//	printf("总棋盘数是：%d\n", count);
+//	return 0;
+//}
 

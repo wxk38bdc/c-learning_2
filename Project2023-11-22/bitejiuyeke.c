@@ -1143,7 +1143,7 @@
 //	return 0;
 //}
 
-#include<stdio.h>
+//#include<stdio.h>
 //int missingNumber(int* nums, int numsSize) {
 //    if (nums == NULL || numsSize == 0) {
 //        return -1;
@@ -1181,5 +1181,199 @@
 //	int arr[] = { 0,1 };
 //	int ret = missingNumber(arr, 2);
 //	printf("%d", ret);
+//	return 0;
+//}
+
+//#include<stdio.h>
+//int singleNonDuplicate(int* nums, int numsSize) {
+//	int i = 0;
+//	int ret = 0;
+//	for(i=0;i<numsSize;i++)
+//	{
+//		ret ^= nums[i];
+//	}
+//	return ret;
+//}
+//int main()
+//{
+//	int arr[] = { 1,1,2,3,3,4,4,8,8 };
+//	int ret = singleNonDuplicate(arr, 9);
+//	printf("%d", ret);
+//	return 0;
+//}
+
+//#include <stdio.h>
+//#include<string.h>
+//int lengthOfLongestSubstring(char* s) {
+//	int len = strlen(s);
+//	if (s[0] == '\0')
+//	{
+//		return 0;
+//	}
+//	int i = 0, j = 0, k = 0;
+//	int countMax = 0;
+//	for (i = 0; i < len; i++)
+//	{
+//		for (j = i; j < len; j++)
+//		{
+//			for (k = i; k < j; k++)
+//			{
+//				if (s[k] == s[j])
+//				{
+//					break;
+//				}
+//			}
+//			if (k != j)
+//			{
+//				break;
+//			}
+//			if (j - i > countMax)
+//			{
+//				countMax = j - i;
+//			}
+//		}
+//	}
+//	return countMax+1 ;
+//}
+//int main()
+//{
+//	char s[50] = { 0 };
+//	scanf("%s", s);
+//	int ret = lengthOfLongestSubstring(s);
+//	printf("%d", ret);
+//	return 0;
+//}
+
+//#include <stdio.h>
+//struct s3
+//{
+//	double d;
+//	char c;
+//	int i;
+//};
+//struct s4
+//{
+//	char c1;
+//	struct s3 s;
+//	double d;
+//};
+//int main()
+//{
+//
+//	printf("%d", sizeof(struct s4));
+//	return 0;
+//}
+
+//#include<stdio.h>
+//struct A
+//{
+//	int _a : 2;
+//	int _b : 5;
+//	int _c : 10;
+//	int _d : 30;
+//};
+//int main()
+//{
+//	printf("%d", sizeof(struct A));
+//	return 0;
+//}
+
+//#include<stdio.h>
+//int check_sys()
+//{
+//	union
+//	{
+//		char c;
+//		int i;
+//	}u;
+//	u.i = 1;
+//	return (int)u.c;
+//}
+//int main()
+//{
+//	int ret = check_sys();
+//	if (ret == 1)
+//	{
+//		printf("%d:小端字节序\n",ret);
+//	}
+//	else
+//	{
+//		printf("%d:大端字节序\n",ret);
+//	}
+//}
+
+//#define MAX_SIZE 5
+//struct _Record_Struct
+//{
+//	unsigned char Env_Alarm_ID : 4;
+//	unsigned char Para1 : 2;
+//	unsigned char state;
+//	unsigned char avail : 1;
+//}*Env_Alarm_Record;
+//struct _Record_Struct* pointer = (struct _Record_Struct*)malloc(sizeof(struct _Record_Struct) * MAX_SIZE);
+//int main()
+//{
+//	printf("%zd", sizeof(struct _Record_Struct));
+//	return 0;
+//}
+
+//#include<stdio.h>
+//int main()
+//{
+//    union
+//    {
+//        short k;
+//        char i[2];
+//    }*s, a;
+//    s = &a;
+//    s->i[0] = 0x39;
+//    s->i[1] = 0x38;
+//    printf("%x\n", a.k);
+//    return 0;
+//}
+
+//#include<stdio.h>
+//#include<string.h>
+//int main()
+//{
+//    unsigned char puc[4];
+//    struct tagPIM
+//    {
+//        unsigned char ucPim1;
+//        unsigned char ucData0 : 1;
+//        unsigned char ucData1 : 2;
+//        unsigned char ucData2 : 3;
+//    }*pstPimData;
+//    pstPimData = (struct tagPIM*)puc;
+//    memset(puc, 0, 4);
+//    pstPimData->ucPim1 = 2;
+//    pstPimData->ucData0 = 3;
+//    pstPimData->ucData1 = 4;
+//    pstPimData->ucData2 = 5;
+//    printf("%02x %02x %02x %02x\n", puc[0], puc[1], puc[2], puc[3]);
+//    return 0;
+//}
+
+//#include<stdio.h>
+//int main()
+//{
+//	int arr[50] = { 0 };
+//	int n;
+//	scanf("%d", &n);
+//	int i = 0;
+//	for (i = 0; i < n; i++)
+//	{
+//		scanf("%d", &arr[i]);
+//	}
+//	int del = 0;
+//	scanf("%d", &del);
+//	for (i = 0; i < n; i++)
+//	{
+//		if (arr[i] == del)
+//		{
+//			continue;
+//		}
+//		printf("%d ", arr[i]);
+//	}
 //	return 0;
 //}
