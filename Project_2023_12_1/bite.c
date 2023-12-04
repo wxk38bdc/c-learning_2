@@ -672,47 +672,131 @@
 //    return 0;
 //}
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <limits.h>
-int main()
-{
-	int num = 0;
-	scanf("%d", &num);
-	while (num--)
-	{
-		long long n, k;
-		scanf("%lld %lld", &n, &k);
-		int p;
-		scanf("%d", &p);
-		if (p == 0)//能否将n表示为k个非负偶数之和
-		{
-			if (n % 2 == 0)
-			{
-				printf("YES\n");
-			}
-			else
-			{
-				printf("NO\n");
-			}
-		}
-		else//能否将n表示为k个非负奇数之和
-		{
-			if ((k % 2 == 0 && n % 2 != 0) || (k % 2 == 1 && n % 2 == 0))
-			{
-				printf("NO\n");
-			}
-			else if(k > n)
-			{
-				printf("NO\n");
-			}
-			else
-			{
-				printf("YES\n");
-			}
-		}
-	}
-	return 0;
-}
+//#include <stdio.h>
+//#include <stdlib.h>
+//#include <string.h>
+//#include <limits.h>
+//int main()
+//{
+//	int num = 0;
+//	scanf("%d", &num);
+//	while (num--)
+//	{
+//		long long n, k;
+//		scanf("%lld %lld", &n, &k);
+//		int p;
+//		scanf("%d", &p);
+//		if (p == 0)//能否将n表示为k个非负偶数之和
+//		{
+//			if (n % 2 == 0)
+//			{
+//				printf("YES\n");
+//			}
+//			else
+//			{
+//				printf("NO\n");
+//			}
+//		}
+//		else//能否将n表示为k个非负奇数之和
+//		{
+//			if ((k % 2 == 0 && n % 2 != 0) || (k % 2 == 1 && n % 2 == 0))
+//			{
+//				printf("NO\n");
+//			}
+//			else if(k > n)
+//			{
+//				printf("NO\n");
+//			}
+//			else
+//			{
+//				printf("YES\n");
+//			}
+//		}
+//	}
+//	return 0;
+//}
 
+//#include <stdio.h>
+//#include <stdlib.h>
+//#include <limits.h>
+//
+//int main() {
+//    int n;
+//    scanf("%d", &n);
+//
+//    long long* arr = (long long*)malloc(n * sizeof(long long));
+//    int* result = (int*)malloc(n * sizeof(int));
+//
+//    int lastZeroIndex = INT_MIN;
+//    for (int i = 0; i < n; i++) {
+//        scanf("%lld", &arr[i]);
+//        if (arr[i] == 0) {
+//            lastZeroIndex = i;
+//        }
+//        result[i] = (lastZeroIndex == INT_MIN) ? INT_MIN : i - lastZeroIndex;
+//    }
+//
+//    lastZeroIndex = INT_MAX;
+//    for (int i = n - 1; i >= 0; i--) {
+//        if (arr[i] == 0) {
+//            lastZeroIndex = i;
+//        }
+//        // 取左右两侧最小距离
+//        result[i] = (lastZeroIndex == INT_MAX) ? result[i] :
+//            ((lastZeroIndex - i < result[i]) ? lastZeroIndex - i : result[i]);
+//    }
+//    //修正第一个0
+//    int firstzero = 0;
+//    for (int i = 0; i < n; i++)
+//    {
+//        if (arr[i] == 0)
+//        {
+//            firstzero = i;
+//            break;
+//        }
+//    }
+//    for (int i = 0; i < firstzero; i++)
+//	{
+//		result[i] = firstzero - i;
+//	}
+//
+//    // 输出结果
+//    for (int i = 0; i < n; i++) {
+//        printf("%d ", result[i]);
+//    }
+//
+//    // 释放动态分配的内存
+//    free(arr);
+//    free(result);
+//
+//    return 0;
+//}
+
+//#include <stdio.h>
+//#include <stdlib.h>
+//
+//int main() {
+//    int t;
+//    scanf("%d", &t);
+//    for (int i = 0; i < t; i++) {
+//        int n;
+//        scanf("%d", &n);
+//        int max_sum = 0;
+//        for (int k = 1; k <= n; k++) {
+//            if (!(k & (1 << (n - 1)))) {
+//                max_sum += k;
+//            }
+//        }
+//        printf("%d\n", max_sum % 998244353);
+//    }
+//    return 0;
+//}
+
+//#include<stdio.h>
+//int main()
+//{
+//	int i = 1;
+//	while (i++ < 4);
+//	printf("%d", i);
+//	return 0;
+//}
