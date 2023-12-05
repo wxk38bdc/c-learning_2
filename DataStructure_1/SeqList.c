@@ -65,7 +65,6 @@ void SeqListPopBack(SL* ps)//尾删
 		return;
 	}
 	ps->size--;
-
 }
 
 void SeqListPushFront(SL* ps, SLDataType x)//头插
@@ -119,4 +118,17 @@ void SeqListErase(SL* ps, int pos)//任意位置删除
 		ps->a[i] = ps->a[i + 1];
 	}
 	ps->size--;
+}
+
+int SeqListFind(SL* ps, SLDataType x)//查找元素下标
+{
+	assert(ps);
+	for (int i = 0; i < ps->size; i++)
+	{
+		if (ps->a[i] == x)
+		{
+			return i;
+		}
+	}
+	return -1;
 }

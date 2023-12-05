@@ -855,8 +855,271 @@ int main() {
 */
 
 
+/*
+* 第一版
+ #include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include<iostream>
+using namespace std;
+char ans[1500][11] = { 0 }; // 用于保存结果
+int ans_index = 0; // 用于记录结果的个数
+int validate_input(char* str1, char* str2, int length) {
+    for (int i = 0; i < length; i++) {
+        if (str1[i] > str2[i]) {
+            return 0;
+        }
+    }
+    return 1;
+}
+void generate_strings(char* current, char* str1, char* str2, int length, int position) {
+    if (position == length) {
+        // 保存结果
+        strcpy(ans[ans_index], current);
+        ans_index++;
+        return;
+    }
+
+    int num1 = str1[position] - '0';
+    int num2 = str2[position] - '0';
+
+    for (int j = num1; j <= num2; j++) {
+        current[position] = j + '0';
+        generate_strings(current, str1, str2, strlen(str1), position + 1);
+    }
+}
+int main() {
+    char s[301] = { 0 };
+    scanf("%s", s);
+    int length;
+    scanf("%d", &length);
+    char str1[11];
+    char str2[11];
+    scanf("%s", str1);
+    scanf("%s", str2);
+    if (validate_input(str1, str2, length)==0) 
+    {
+		printf("NO");
+		return 0;
+	}
+    char current[11];
+    strcpy(current, str1);
+    generate_strings(current, str1, str2, length, 0);
+    int i = 0, j = 0, k = 0;
+    int flag = 0;
+    //判断ans[i]是否是s的子串，字符在s中的位置可以不连续，但必须从左到右出现
+    for (i = 0; i < ans_index; i++)
+    {
+        k = 0;
+        for (j = 0; j < (int)strlen(s); j++)
+        {
+            if (ans[i][k] == s[j])
+            {
+                k++;
+            }
+            if (k == length)
+            {
+                flag++;
+                break;
+            }
+        }
+    }
+    if (flag >= ans_index)
+    {
+        printf("NO");
+    }
+    else
+    {
+        printf("YES");
+    }
+    return 0;
+}
+*/
+
+
+////啊啊啊啊啊啊终于通过了！！！！
+//#include <cstdio>
+//#include <cstdlib>
+//#include <cstring>
+//#include<iostream>
+//using namespace std;
+//char s[301] = { 0 };
+//int ans_index = 0; // 用于记录结果的个数
+//int flag = 0;
+//int validate_input(char* str1, char* str2, int length) {
+//    for (int i = 0; i < length; i++) {
+//        if (str1[i] > str2[i]) {
+//            return 0;
+//        }
+//    }
+//    return 1;
+//}
+//void judge(char* s, char* ans, int length)
+//{
+//    int j = 0, k = 0;
+//    for (j = 0; j < (int)strlen(s); j++)
+//    {
+//        if (ans[k] == s[j])
+//        {
+//            k++;
+//        }
+//        if (k == length)
+//        {
+//            flag++;
+//            k = 0;
+//            break;
+//        }
+//    }
+//}
+//void generate_strings(char* current, char* str1, char* str2, int length, int position) {
+//    if (position == length) {
+//        char ans[12] = { 0 };
+//        strcpy(ans, current);
+//        judge(s, ans, length);
+//        ans_index++;
+//        return;
+//    }
+//
+//    int num1 = str1[position] - '0';
+//    int num2 = str2[position] - '0';
+//
+//    for (int j = num1; j <= num2; j++) {
+//        current[position] = j + '0';
+//        generate_strings(current, str1, str2, strlen(str1), position + 1);
+//    }
+//}
+//int main() {
+//    scanf("%s", s);
+//    int length;
+//    scanf("%d", &length);
+//    char str1[12];
+//    char str2[12];
+//    scanf("%s", str1);
+//    scanf("%s", str2);
+//    if (validate_input(str1, str2, length) == 0)
+//    {
+//        printf("NO");
+//        return 0;
+//    }
+//    char current[12];
+//    strcpy(current, str1);
+//    generate_strings(current, str1, str2, length, 0);
+//    if (flag >= ans_index)
+//    {
+//        printf("NO");
+//    }
+//    else
+//    {
+//        printf("YES");
+//    }
+//    return 0;
+//}
+
+
+//#include <iostream>
+//#include <cstdio>
+//#include <vector>
+//#include <algorithm>
+//
+//using namespace std;
+//
+//int main() {
+//    int n;
+//    scanf("%d", &n);
+//
+//    vector<int> b(n + 1);
+//    vector<int> c(2 * n + 1, 0);
+//
+//    for (int i = 1; i <= n; i++) {
+//        scanf("%d", &b[i]);
+//    }
+//
+//    // Sort array b
+//    sort(b.begin() + 1, b.end());
+//
+//    // Count occurrences of each element in b
+//    vector<int> count(n + 1, 0);
+//    for (int i = 1; i <= n; i++) {
+//        count[b[i]]++;
+//    }
+//
+//    // Calculate the prefix sum of count array
+//    for (int i = 1; i <= n; i++) {
+//        count[i] += count[i - 1];
+//    }
+//
+//    // Calculate the contribution of each element to the answer
+//    for (int i = 1; i <= n; i++) {
+//        int numPairs = count[n] - count[b[i]];
+//        c[2 * b[i]] += numPairs;
+//    }
+//
+//    for (int i = 1; i <= 2 * n; i++) {
+//        printf("%d ", c[i]);
+//    }
+//
+//    return 0;
+//}
+
+
+//#include<iostream>
+//using namespace std;
+//#include<cstdio>
+//
+//int main() {
+//    int n;
+//    scanf("%d", &n);
+//
+//    int b[50001] = { 0 };
+//    int c[100002] = { 0 };
+//
+//    for (int i = 1; i <= n; i++) 
+//    {
+//        scanf("%d", &b[i]);
+//    }
+//
+//    for (int k = 1; k <= n; k++) {
+//        for (int j = 1; j <= n; j++) {
+//            c[k + j] += (b[k] != b[j]);
+//        }
+//    }
+//    for (int i = 1; i <= 2 * n; i++) {
+//        printf("%d ", c[i]);
+//    }
+//
+//    return 0;
+//}
 
 
 
-
+//#include <iostream>
+//#include <cstdio>
+//#include <vector>
+//using namespace std;
+//
+//int main() {
+//    int n;
+//    scanf("%d", &n);
+//
+//    vector<int> b(n + 1);
+//    vector<int> count(100002, 0);
+//    vector<int> c(100002, 0);
+//
+//    for (int i = 1; i <= n; i++) {
+//        scanf("%d", &b[i]);
+//        count[b[i]]++;
+//    }
+//
+//     Calculate the contribution of each element to the answer
+//    for (int i = 1; i <= n; i++) {
+//        c[2 * b[i]] += i - 1;
+//        c[2 * b[i]] -= (count[b[i]] - i);
+//    }
+//
+//    for (int i = 1; i <= 2 * n; i++) {
+//        printf("%d ", c[i]);
+//    }
+//
+//    return 0;
+//}
 

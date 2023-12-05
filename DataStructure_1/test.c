@@ -31,6 +31,12 @@ void TestSeqList1()
 	SeqListPrint(&s);
 	SeqListErase(&s, 5);
 	SeqListPrint(&s);
+	int ret = SeqListFind(&s, 5);
+	if (ret != -1)
+	{
+		SeqListErase(&s, ret);
+	}
+	SeqListPrint(&s);
 	SeqListDestory(&s);//Ïú»Ù
 }
 int main()
