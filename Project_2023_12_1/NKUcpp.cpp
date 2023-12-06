@@ -1122,4 +1122,437 @@ int main() {
 //
 //    return 0;
 //}
+// 
 
+//#include<iostream>
+//#include<cstdio>
+//#include<cstring>
+//#include<cctype>
+//#include<cstdlib>
+//using namespace std;
+//struct stu {
+//    char name[15];
+//    char id[11];
+//    int cn;
+//    int math;
+//    int eng;
+//    int lz;
+//    int total;
+//}s[20];
+//int compareid(const void* e1, const void* e2)
+//{
+//    return strcmp(((stu*)e1)->id, ((stu*)e2)->id);
+//}
+//int compareid2(const void* e1, const void* e2)
+//{
+//    return -strcmp(((stu*)e1)->id, ((stu*)e2)->id);
+//}
+//int comparetotal(const void* e1, const void* e2)
+//{
+//	return -((stu*)e2)->total + ((stu*)e1)->total;
+//}
+//int compareid1(const void* e1, const void* e2)
+//{
+//    if (((stu*)e1)->total != ((stu*)e2)->total)
+//    {
+//        return 0;
+//    }
+//    else if((((stu*)e1)->total == ((stu*)e2)->total))
+//    {
+//		return strcmp(((stu*)e1)->id, ((stu*)e2)->id);
+//	}
+//}
+//int n = 0;
+//void change()
+//{
+//    for (int i = 0; i < n; i++)
+//    {
+//        for (int j = i + 1; j < n; j++)
+//        {
+//            if (s[i].total == s[j].total)
+//            {
+//                if (strcmp(s[i].id, s[j].id) > 0)
+//                {
+//                    stu temp;
+//                    temp = s[i];
+//                    s[i] = s[j];
+//                    s[j] = temp;
+//                }
+//            }
+//        }
+//    }
+//
+//}
+//
+//int main()
+//{
+//    //int n;
+//    scanf("%d", &n);
+//    int i = 0, j = 0, k = 0;
+//    for (i = 0; i < n; i++)
+//    {
+//        scanf("%s %s %d %d %d %d", s[i].name, s[i].id, &s[i].cn, &s[i].math, &s[i].eng, &s[i].lz);
+//        s[i].total = s[i].cn + s[i].math + s[i].eng + s[i].lz;
+//    }
+//    qsort(s, n, sizeof(s[0]), compareid2);
+//    qsort(s, n, sizeof(s[0]), comparetotal);
+//    //保证总分相同的情况下，按照学号从小到大排序,考虑有多个总分相同的情况
+//    //封装成函数
+//    //change();
+//    //考虑有多个总分相同的情况，按照学号从小到大排序
+//    //qsort(s, n, sizeof(s[0]), compareid1);
+//    qsort(s, n, sizeof(s[0]), comparetotal);
+//    change();
+//    for (i = 0; i < n; i++)
+//    {
+//        printf("%s %s %d %d %d %d %d\n", s[i].name, s[i].id, s[i].cn, s[i].math, s[i].eng, s[i].lz, s[i].total);
+//        //printf("%s\n", s[i].name);
+//    }
+//    int cn_max = s[0].cn;
+//    int cn_max_index = 0;
+//    int math_max = s[0].math;
+//    int math_max_index = 0;
+//    int eng_max = s[0].eng;
+//    int eng_max_index = 0;
+//    int lz_max = s[0].lz;
+//    int lz_max_index = 0;
+//    for (i = 0; i < n; i++)
+//    {
+//        if (s[i].cn > cn_max)
+//        {
+//            cn_max = s[i].cn;
+//            cn_max_index = i;
+//        }
+//        if (s[i].math > math_max)
+//        {
+//			math_max = s[i].math;
+//			math_max_index = i;
+//		}
+//        if (s[i].eng > eng_max)
+//        {
+//            eng_max = s[i].eng;
+//            eng_max_index = i;
+//        }
+//        if (s[i].lz > lz_max)
+//        {
+//            lz_max = s[i].lz;
+//            lz_max_index = i;
+//        }
+//    }
+//    printf("%s %s %d\n", s[cn_max_index].name, s[cn_max_index].id, s[cn_max_index].cn);
+//    printf("%s %s %d\n", s[math_max_index].name, s[math_max_index].id, s[math_max_index].math);
+//    printf("%s %s %d\n", s[eng_max_index].name, s[eng_max_index].id, s[eng_max_index].eng);
+//    printf("%s %s %d\n", s[lz_max_index].name, s[lz_max_index].id, s[lz_max_index].lz);
+//    return 0;
+//}
+
+//for (i = 0; i < n; i++)
+//{
+//    for (j = i + 1; j < n; j++)
+//    {
+//        if (s[i].total == s[j].total)
+//        {
+//            if (strcmp(s[i].id, s[j].id) > 0)
+//            {
+//                stu temp;
+//                temp = s[i];
+//                s[i] = s[j];
+//                s[j] = temp;
+//            }
+//        }
+//    }
+//}
+
+   /*for (i = 0; i < n; i++)
+    {
+        for (j = i + 1; j < n; j++)
+        {
+            if (s[i].total == s[j].total)
+            {
+                if (strcmp(s[i].id, s[j].id) > 0)
+                {
+                    stu temp;
+                    temp=s[i];
+                    s[i]=s[j];
+                    s[j]=temp;
+                }
+            }
+        }
+    }*/
+
+//#include<iostream>
+//#include<cstdio>
+//#include<cstring>
+//#include<cctype>
+//#include<cstdlib>
+//using namespace std;
+//int main()
+//{
+//    int n, m;
+//    scanf("%d %d", &n, &m);
+//    double arr[100][100] = { 0 };
+//    double arr_new[100][100] = { 0 };
+//
+//    int i = 0, j = 0;
+//    for (i = 0; i < n; i++)
+//    {
+//        for (j = 0; j < m; j++)
+//        {
+//            scanf("%lf", &arr[i][j]);
+//            arr_new[i][j] = arr[i][j];
+//        }
+//    }
+//    for (i = 1; i < n - 1; i++)
+//    {
+//        for (j = 1; j < m - 1; j++)
+//        {
+//            arr_new[i][j] = (arr[i][j] + arr[i - 1][j] + arr[i + 1][j] + arr[i][j - 1] + arr[i][j + 1]) / 5.0;
+//        }
+//    }
+//
+//
+//    for (i = 0; i < n; i++)
+//    {
+//        for (j = 0; j < m; j++)
+//        {
+//            printf("%.0lf ", arr_new[i][j]);
+//        }
+//        printf("\n");
+//    }
+//    return 0;
+//}
+
+
+
+//#include <iostream>
+//#include <cstdio>
+//#include <cstring>
+//#include <cstdlib>
+//using namespace std;
+//
+//struct stu {
+//    char name[15];
+//    char id[11];
+//    int cn;
+//    int math;
+//    int eng;
+//    int lz;
+//    int total;
+//}s[20];
+//
+//int compareid(const void* e1, const void* e2) {
+//    return strcmp(((stu*)e1)->id, ((stu*)e2)->id);
+//}
+//
+//int comparetotal(const void* e1, const void* e2) {
+//    // 按总成绩升序排列
+//    return (((stu*)e1)->total - ((stu*)e2)->total);
+//}
+//
+//// 冒泡排序实现
+//void bubbleSort(stu arr[], int order[], int n) {
+//    for (int i = 0; i < n - 1; i++) {
+//        for (int j = 0; j < n - i - 1; j++) {
+//            // 如果总成绩相同，则按学号升序排列
+//            if (arr[order[j]].total == arr[order[j + 1]].total && strcmp(arr[order[j]].id, arr[order[j + 1]].id) > 0) {
+//                int temp = order[j];
+//                order[j] = order[j + 1];
+//                order[j + 1] = temp;
+//            }
+//        }
+//    }
+//}
+//
+//int main() {
+//    int n = 0;
+//    scanf("%d", &n);
+//
+//    for (int i = 0; i < n; i++) {
+//        scanf("%s %s %d %d %d %d", s[i].name, s[i].id, &s[i].cn, &s[i].math, &s[i].eng, &s[i].lz);
+//        s[i].total = s[i].cn + s[i].math + s[i].eng + s[i].lz;
+//    }
+//
+//    // 初始化次序数组
+//    int order[20];
+//    for (int i = 0; i < n; i++) {
+//        order[i] = i;
+//    }
+//
+//    // 使用冒泡排序，处理总成绩升序排列，成绩相同的情况下按学号升序排列
+//    bubbleSort(s, order, n);
+//
+//    // 输出结果
+//    for (int i = 0; i < n; i++) 
+//    {
+//        int idx = order[i];
+//        printf("%s %s %d %d %d %d %d\n", s[idx].name, s[idx].id, s[idx].cn, s[idx].math, s[idx].eng, s[idx].lz, s[idx].total);
+//    }
+//
+//    // 找到并打印每个科目得分最高的学生
+//    int cn_max_index = 0;
+//    int math_max_index = 0;
+//    int eng_max_index = 0;
+//    int lz_max_index = 0;
+//
+//    for (int i = 0; i < n; i++) {
+//        if (s[i].cn > s[cn_max_index].cn) {
+//            cn_max_index = i;
+//        }
+//        if (s[i].math > s[math_max_index].math) {
+//            math_max_index = i;
+//        }
+//        if (s[i].eng > s[eng_max_index].eng) {
+//            eng_max_index = i;
+//        }
+//        if (s[i].lz > s[lz_max_index].lz) {
+//            lz_max_index = i;
+//        }
+//    }
+//
+//    printf("%s %s %d\n", s[cn_max_index].name, s[cn_max_index].id, s[cn_max_index].cn);
+//    printf("%s %s %d\n", s[math_max_index].name, s[math_max_index].id, s[math_max_index].math);
+//    printf("%s %s %d\n", s[eng_max_index].name, s[eng_max_index].id, s[eng_max_index].eng);
+//    printf("%s %s %d\n", s[lz_max_index].name, s[lz_max_index].id, s[lz_max_index].lz);
+//
+//    return 0;
+//}
+
+//#include<iostream>
+//using namespace std;
+//struct student {
+//    string name;
+//    string xuehao;
+//    int yuwen;
+//    int shuxue;
+//    int english;
+//    int lizong;
+//    int z;
+//} a[100];
+//int main() {
+//    int n;
+//    cin >> n;
+//    for (int i = 0; i < n; i++) {
+//        cin >> a[i].name >> a[i].xuehao >> a[i].yuwen >> a[i].shuxue >> a[i].english >> a[i].lizong;
+//        a[i].z = a[i].yuwen + a[i].shuxue + a[i].english + a[i].lizong;
+//    }
+//    int xx, yy, zz, tt;
+//    int max1 = 0, max2 = 0, max3 = 0, max4 = 0;
+//
+//    for (int i = 0; i < n; i++) {
+//        for (int j = i + 1; j < n; j++) {
+//            if (a[i].z <= a[j].z)swap(a[i], a[j]);
+//        }
+//    }
+//
+//    for (int i = n - 1; i >= 0; i--) {
+//        cout << a[i].name <<" "<<a[i].xuehao<<" "<<a[i].z << endl;
+//
+//    }
+//    string k1 = "999999999", k2 = "9999999999", k3 = "999999999", k4 = "99999999";
+//    for (int i = 0; i < n; i++) {
+//        if (a[i].yuwen > max1 || (a[i].yuwen == max1 && a[i].xuehao < k1)) { xx = i; max1 = a[i].yuwen; k1 = a[i].xuehao; }
+//        if (a[i].shuxue > max2 || (a[i].shuxue == max2 && a[i].xuehao < k2)) { yy = i; max2 = a[i].shuxue; k2 = a[i].xuehao; }
+//        if (a[i].english > max3 || (a[i].english == max3 && a[i].xuehao < k3)) { zz = i; max3 = a[i].english; k3 = a[i].xuehao; }
+//        if (a[i].lizong > max4 || (a[i].lizong == max4 && a[i].xuehao < k4)) { tt = i; max4 = a[i].lizong; k4 = a[i].xuehao; }
+//
+//    }
+//    cout << a[xx].name << ' ' << a[xx].xuehao << ' ' << max1 << endl;
+//    cout << a[yy].name << ' ' << a[yy].xuehao << ' ' << max2 << endl;
+//    cout << a[zz].name << ' ' << a[zz].xuehao << ' ' << max3 << endl;
+//    cout << a[tt].name << ' ' << a[tt].xuehao << ' ' << max4 << endl;
+//
+//}
+
+
+//最终版本
+//#include <iostream>
+//#include <cstdio>
+//#include <cstring>
+//#include <cstdlib>
+//using namespace std;
+//
+//struct stu {
+//    char name[15];
+//    char id[11];
+//    int cn;
+//    int math;
+//    int eng;
+//    int lz;
+//    int total;
+//}s[20];
+//
+//int compareid(const void* e1, const void* e2) {
+//    return strcmp(((stu*)e1)->id, ((stu*)e2)->id);
+//}
+//
+//int comparetotal(const void* e1, const void* e2) {
+//    // 按总成绩升序排列
+//    return (((stu*)e1)->total - ((stu*)e2)->total);
+//}
+//
+//int main() {
+//    int n = 0;
+//    scanf("%d", &n);
+//
+//    for (int i = 0; i < n; i++) {
+//        scanf("%s %s %d %d %d %d", s[i].name, s[i].id, &s[i].cn, &s[i].math, &s[i].eng, &s[i].lz);
+//        s[i].total = s[i].cn + s[i].math + s[i].eng + s[i].lz;
+//    }
+//
+//    // 按照总成绩升序排列，成绩相同的情况下按学号升序排列
+//    qsort(s, n, sizeof(s[0]), comparetotal);
+//
+//    // 用数组记录排好序后的次序
+//    int order[20];
+//    for (int i = 0; i < n; i++) {
+//        order[i] = i;
+//    }
+//
+//    // 冒泡排序实现排好序后的次序
+//    for (int i = 0; i < n - 1; i++) {
+//        for (int j = 0; j < n - i - 1; j++) {
+//            if (s[order[j]].total == s[order[j + 1]].total && strcmp(s[order[j]].id, s[order[j + 1]].id) > 0) {
+//                int temp = order[j];
+//                order[j] = order[j + 1];
+//                order[j + 1] = temp;
+//            }
+//        }
+//    }
+//
+//    // 输出结果
+//    for (int i = 0; i < n; i++) {
+//        int idx = order[i];
+//        printf("%s\n", s[idx].name);
+//
+//        //printf("%s %s %d %d %d %d %d\n", s[idx].name, s[idx].id, s[idx].cn, s[idx].math, s[idx].eng, s[idx].lz, s[idx].total);
+//    }
+//
+//    // 找到并打印每个科目得分最高的学生
+//    int cn_max_index = 0;
+//    int math_max_index = 0;
+//    int eng_max_index = 0;
+//    int lz_max_index = 0;
+//    //还要重新按照学号从小到大排序
+//    qsort(s, n, sizeof(s[0]), compareid);
+//    for (int i = 0; i < n; i++) {
+//        if (s[i].cn > s[cn_max_index].cn) {
+//            cn_max_index = i;
+//        }
+//        if (s[i].math > s[math_max_index].math) {
+//            math_max_index = i;
+//        }
+//        if (s[i].eng > s[eng_max_index].eng) {
+//            eng_max_index = i;
+//        }
+//        if (s[i].lz > s[lz_max_index].lz) {
+//            lz_max_index = i;
+//        }
+//    }
+//
+//    printf("%s %s %d\n", s[cn_max_index].name, s[cn_max_index].id, s[cn_max_index].cn);
+//    printf("%s %s %d\n", s[math_max_index].name, s[math_max_index].id, s[math_max_index].math);
+//    printf("%s %s %d\n", s[eng_max_index].name, s[eng_max_index].id, s[eng_max_index].eng);
+//    printf("%s %s %d\n", s[lz_max_index].name, s[lz_max_index].id, s[lz_max_index].lz);
+//
+//    return 0;
+//}

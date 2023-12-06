@@ -1070,5 +1070,68 @@
 //    return 0;
 //}
 
-
-
+//#include<stdio.h>
+//#include<stdlib.h>
+//
+//int* addToArrayForm(int* num, int numSize, int k, int* returnSize) {
+//    int k_size = 0;
+//    int k_tmp = k;
+//    while (k_tmp) {
+//        k_tmp /= 10;
+//        k_size++;
+//    }
+//
+//    int len = numSize > k_size ? numSize : k_size;
+//    int* retArr = (int*)malloc(sizeof(int) * (len + 1));
+//    int reti = 0;
+//    int carry = 0;  // 用于存储进位的变量
+//
+//    while (len--) {
+//        int ret = carry;
+//        if (numSize > 0) {
+//            ret += num[numSize - 1];
+//            numSize--;
+//        }
+//        if (k > 0) {
+//            ret += k % 10;
+//            k /= 10;
+//        }
+//
+//        retArr[reti] = ret % 10;
+//        carry = ret / 10;
+//        reti++;
+//    }
+//
+//    if (carry > 0) {
+//        retArr[reti] = carry;
+//        reti++;
+//    }
+//
+//    // 反转结果数组
+//    int i = 0;
+//    int j = reti - 1;
+//    while (i < j) {
+//        int tmp = retArr[i];
+//        retArr[i] = retArr[j];
+//        retArr[j] = tmp;
+//        i++;
+//        j--;
+//    }
+//
+//    *returnSize = reti;
+//    return retArr;
+//}
+//
+//int main()
+//{
+//	int num[100] = {1,2,3,4,9,8,5,2,5,7,0,5,6,9,8,5,4,7,1,2,0,5,8 };
+//	int numSize = 23;
+//	int k = 99999999;
+//	int returnSize = 0;
+//	int* ret = addToArrayForm(num, numSize, k, &returnSize);
+//	for (int i = 0; i < returnSize; i++)
+//	{
+//		printf("%d ", ret[i]);
+//	}
+//	return 0;
+//}
