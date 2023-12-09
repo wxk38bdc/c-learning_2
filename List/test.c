@@ -17,6 +17,17 @@ void test1()
 	SListPrint(pList);
 	SListPushFront(&pList, 0);
 	SListPrint(pList);
+	SListPopFront(&pList);
+	SListPrint(pList);
+	SListPopFront(&pList);
+	SListPrint(pList);
+	SListNode* find=SListFind(pList, 3);
+	find->data = 30;
+	SListPrint(pList);
+	SListInsertAfter(find, 40);
+	SListPrint(pList);
+	SListEraseAfter(find);
+	SListPrint(pList);
 }
 int main()
 {
