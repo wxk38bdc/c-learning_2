@@ -222,3 +222,150 @@
 //	}
 //	return ans;
 //}
+
+//#include <stdio.h>
+//int main()
+//{
+//	//打开文件，写入数据
+//	//FILE* pf = fopen("D:\\Windows桌面\\1.txt", "r");
+//	FILE* pf = fopen("data.txt", "r");
+//	//如果文件打开失败，返回NULL
+//	if (pf == NULL)
+//	{
+//		perror("打开文件失败");
+//		return 1;
+//	}
+//	//读取文件
+//	for (int i = 0; i < 10; i++)
+//	{
+//		int ch = fgetc(pf);
+//		printf("%c", ch);
+//	}
+//
+//	fclose(pf);
+//	pf = NULL;
+//	return 0;
+//}
+
+//#include <stdio.h>
+//int main()
+//{
+//	FILE* pfread = fopen("data1.txt", "r");
+//	if (pfread == NULL)
+//	{
+//		perror("打开data1失败");
+//		return 1;
+//	}
+//	FILE* pfwrite = fopen("data2.txt", "w");
+//	if (pfwrite == NULL)
+//	{
+//		fclose(pfread);//关闭文件
+//		pfread = NULL;//防止野指针
+//		perror("打开data2失败");
+//		return 1;
+//	}
+//	//data1.txt->data2.txt
+//	char ch = 0;
+//	while (ch = fgetc(pfread) != EOF)//读取文件
+//	{
+//		fputc(ch, pfwrite);//写入文件
+//	}
+//
+//	fclose(pfread);
+//	pfread = NULL;
+//	fclose(pfwrite);
+//	pfwrite = NULL;
+//	return 0;
+//}
+
+//#include <stdio.h>
+//int main()
+//{
+//	FILE* pf = fopen("data.txt", "r");
+//	if (pf == NULL)
+//	{
+//		perror("打开文件失败");
+//		return 1;
+//	}
+//	char str[20] = { 0 };
+//	//读取文件
+//	fgets(str, 20, pf);
+//	printf("%s", str);//hello world
+//	fclose(pf);
+//	pf = NULL;
+//	return 0;
+//}
+
+//#include <stdio.h>
+//typedef struct stu
+//{
+//	char name[20];
+//	int age;
+//	float score;
+//}stu;
+//stu s = { "zhangsan", 20,66.6};
+//int main()
+//{
+//	FILE* pf = fopen("data.txt", "wb");
+//	if (pf == NULL)
+//	{
+//		perror("打开文件失败");
+//		return 1;
+//	}
+//	//二进制的方式写入
+//	fwrite(&s, sizeof(stu), 1, pf);
+//	fclose(pf);
+//	pf = NULL;
+//	return 0;
+//}
+
+//#include <stdio.h>
+//typedef struct stu
+//{
+//	char name[20];
+//	int age;
+//	float score;
+//}stu;
+//int main()
+//{
+//	stu s;
+//	FILE* pf = fopen("data.txt", "rb");
+//	if (pf == NULL)
+//	{
+//		perror("打开文件失败");
+//		return 1;
+//	}
+//	//二进制的方式读取
+//	fread(&s,sizeof(stu), 1, pf);
+//	printf("%s %d %.1f\n", s.name, s.age, s.score);
+//	fclose(pf);
+//	pf = NULL;
+//	return 0;
+//}
+
+//#include<stdio.h>
+//int main()
+//{
+//	FILE* pread = fopen("data.txt", "r");
+//	if (pread == NULL)
+//	{
+//		perror("打开data.txt失败");
+//		return 1;
+//	}
+//	FILE* pwrite = fopen("data_copy.txt", "w");
+//	if (pwrite == NULL)
+//	{
+//		fclose(pread);
+//		pread = NULL;
+//		perror("打开data_copy.txt失败");
+//		return 1;
+//	}
+//	char str[20] = { 0 };
+//	fgets(str, 20, pread);
+//	fputs(str, pwrite);
+//	fclose(pread);
+//	pread = NULL;
+//	fclose(pwrite);
+//	pwrite = NULL;
+//	return 0;
+//}
