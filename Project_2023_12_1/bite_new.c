@@ -369,3 +369,37 @@
 //	pwrite = NULL;
 //	return 0;
 //}
+
+//#include <stdio.h>
+//#include <stdlib.h>
+//int main()
+//{
+//	int arr[10] = { 2021,2021,2021,2021,2021,2021,2021,2021,2021,2021 };
+//	//int arr[10] = { 3,3,3,3,3,3,3,3,3,3 };
+//	int num = 1;
+//	while (1)
+//	{
+//		int tmp = num;
+//		while (tmp)
+//		{
+//			if (arr[tmp % 10] == 0)
+//			{
+//				goto out;
+//			}
+//			arr[tmp % 10]--;
+//			tmp /= 10;
+//		}
+//		num++;
+//	}
+//	out:
+//	printf("%d", num-1);
+//	return 0;
+//}
+
+//#include <stdio.h>
+//#include <stdlib.h>
+//int main()
+//{
+//
+//	return 0;
+//}
