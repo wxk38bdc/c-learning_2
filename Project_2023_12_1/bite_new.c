@@ -403,3 +403,136 @@
 //
 //	return 0;
 //}
+
+//#include <string.h>
+//#include <stdio.h>
+//
+//void processString(char* str) {
+//    int len = strlen(str);
+//    int i, leadingZeros = 0;
+//
+//    // 检查字符串是否为空
+//    if (len == 0) return;
+//
+//    // 计算前导0的数量
+//    for (i = 0; i < len; ++i) {
+//        if (str[i] != '0') break;
+//        leadingZeros++;
+//    }
+//
+//    // 情况1: 字符串全为0
+//    if (leadingZeros == len) {
+//        str[0] = '0';
+//        str[1] = '\0';
+//    }
+//    // 情况2: 有前导0但不全是0
+//    else if (leadingZeros > 0) {
+//        int j = 0;
+//        for (i = leadingZeros; i < len; ++i) {
+//            str[j++] = str[i];
+//        }
+//        str[j] = '\0'; // 添加字符串终止符
+//    }
+//    // 情况3: 其他情况，不做改变
+//}
+//
+//// 测试函数
+//int main() {
+//    char str1[] = "000000";
+//    char str2[] = "0050012";
+//    char str3[] = "12345";
+//
+//    processString(str1);
+//    processString(str2);
+//    processString(str3);
+//
+//    printf("Result 1: %s\n", str1); // 0
+//    printf("Result 2: %s\n", str2); // 50012
+//    printf("Result 3: %s\n", str3); // 12345
+//
+//    return 0;
+//}
+
+//#include <stdio.h>
+//#include <string.h>
+//#include <stdlib.h>
+//#include <ctype.h>
+//
+//// 比较函数，比较字符串表示的数字大小
+//int compareNumericStrings(const void* e1, const void* e2) {
+//    const char* str1 = *(const char**)e1;
+//    const char* str2 = *(const char**)e2;
+//    int len1 = strlen(str1);
+//    int len2 = strlen(str2);
+//
+//    // 首先比较长度
+//    if (len1 != len2) {
+//        return len1 - len2;
+//    }
+//
+//    // 如果长度相同，则逐字符比较
+//    return strcmp(str1, str2);
+//}
+//
+//// 处理字符串，移除前导零
+//void processString(char* str) {
+//    int len = strlen(str);
+//    int i, leadingZeros = 0;
+//
+//    for (i = 0; i < len; ++i) {
+//        if (str[i] != '0') break;
+//        leadingZeros++;
+//    }
+//
+//    if (leadingZeros == len) {
+//        str[0] = '0';
+//        str[1] = '\0';
+//    }
+//    else if (leadingZeros > 0) {
+//        int j = 0;
+//        for (i = leadingZeros; i < len; ++i) {
+//            str[j++] = str[i];
+//        }
+//        str[j] = '\0';
+//    }
+//}
+//
+//int main() {
+//    int n;
+//    scanf("%d", &n);
+//    while (n--) {
+//        char str[1001], temp[1001];
+//        char* arrPtrs[1001];
+//        scanf("%s", str);
+//        int len = strlen(str), num = 0;
+//
+//        for (int i = 0; i < len; i++) {
+//            if (str[i] == '5' || isalpha(str[i])) {
+//                str[i] = '@';
+//            }
+//        }
+//
+//        char* pch = strtok(str, "@");
+//        while (pch != NULL) {
+//            strcpy(temp, pch);
+//            processString(temp);
+//            arrPtrs[num++] = strdup(temp); // 为去重和排序创建副本
+//            pch = strtok(NULL, "@");
+//        }
+//
+//        qsort(arrPtrs, num, sizeof(char*), compareNumericStrings);
+//
+//        // 打印去重后的结果
+//        for (int i = 0; i < num; i++) {
+//            if (i == 0 || strcmp(arrPtrs[i], arrPtrs[i - 1]) != 0) {
+//                printf("%s", arrPtrs[i]);
+//                if (i < num - 1) {
+//                    printf(" ");
+//                }
+//            }
+//            free(arrPtrs[i]); // 释放分配的内存
+//        }
+//        printf("\n");
+//    }
+//    return 0;
+//}
