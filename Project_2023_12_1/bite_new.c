@@ -687,3 +687,55 @@ int main()
 //	}
 //	return 0;
 //}
+
+#include<stdio.h>
+#include<stdlib.h>
+int singleNumber(int* nums, int numsSize) {
+	int* numvalue = (int*)malloc(sizeof(int) * numsSize);
+	int* numtimes = (int*)malloc(sizeof(int) * numsSize);
+	for (int i = 0; i < numsSize; i++) {
+		numtimes[i] = 0;
+	}
+
+	numvalue[0] = nums[0];
+	numtimes[0] = 1;
+	int numofnum = 1;
+
+	for (int i = 1; i < numsSize; i++) {
+		int flag = 0;
+		for (int j = 0; j < numofnum; j++) {
+			if (nums[i] == numvalue[j]) {
+				numtimes[j]++;
+				flag = 1;
+				break;
+			}
+		}
+		if (flag == 0) {
+			numvalue[numofnum] = nums[i];
+			numtimes[numofnum] = 1;
+			numofnum++;
+		}
+	}
+
+	for (int i = 0; i < numofnum; i++) {
+		if (numtimes[i] == 1) {
+			int single = numvalue[i];
+			free(numvalue);
+			free(numtimes);
+			return single;
+		}
+	}
+
+	free(numvalue);
+	free(numtimes);
+	return 0; // 如果没有找到只出现一次的数字，返回0
+}
+
+int main()
+{
+	int arr[] = { 2,2,3,2,3,3,5,5,6,7,7,8,8};
+	int size = sizeof(arr) / sizeof(arr[0]);
+	int ret = singleNumber(arr, size);
+	printf("%d", ret);
+	return 0;
+}
