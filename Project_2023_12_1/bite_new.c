@@ -537,3 +537,153 @@
 //    return 0;
 //}
 
+/*
+#include<stdio.h>
+#include<limits.h>
+int isprime(int n)
+{
+	if (n < 2)
+		return 0;
+	for (int i = 2; i < n; i++)
+	{
+		if (n % i == 0)
+			return 0;
+	}
+	return 1;
+}
+//判断是否为回文数,原理：将数字反转，如果反转后的数字与原数字相等，则为回文数
+int ishuiwen(int n)
+{
+	int tmp = n;
+	int sum = 0;
+	while (tmp)
+	{
+		sum = sum * 10 + tmp % 10;
+		tmp /= 10;
+	}
+	if (sum == n)
+		return 1;
+	return 0;
+}
+int main()
+{
+	int a = 0, b = 0;
+	scanf("%d %d", &a, &b);
+	for(int i=a;i<=b;i++)
+	{
+		if (i % 2 == 0)
+		{
+			continue;
+		}
+		if (isprime(i) && ishuiwen(i))
+			printf("%d\n", i);
+	}
+	return 0;
+}
+*/
+
+//#include<stdio.h>
+//#include<limits.h>
+//#include<math.h>
+//
+//int isprime(int n)
+//{
+//	if (n < 2) return 0;
+//	if (n == 2) return 1;
+//	if (n % 2 == 0) return 0;
+//	for (int i = 3; i * i <= n; i += 2)
+//	{
+//		if (n % i == 0)
+//			return 0;
+//	}
+//	return 1;
+//}
+//
+//int ishuiwen(int n)
+//{
+//	if (n < 10) return 1;
+//	int tmp = n;
+//	int sum = 0;
+//	while (tmp)
+//	{
+//		sum = sum * 10 + tmp % 10;
+//		tmp /= 10;
+//		if (sum > n) return 0;
+//	}
+//	return sum == n;
+//}
+//
+//int main()
+//{
+//	int a = 0, b = 0;
+//	scanf("%d %d", &a, &b);
+//	for (int i = a; i <= b; i++)
+//	{
+//		if (i % 2 == 0) continue;
+//		if (ishuiwen(i))
+//		{
+//			if (isprime(i))
+//			{
+//				printf("%d\n", i);
+//			}
+//		}
+//	}
+//	return 0;
+//}
+
+//#include<stdio.h>
+//#include<limits.h>
+//#include<math.h>
+//int main()
+//{
+//	unsigned long long arr[30] = { 0 };
+//	int i = 0;
+//	while (scanf("%lld", &arr[i]) != EOF)
+//	{
+//		i++;
+//	}
+//	int index = i;
+//	unsigned long long sum = 0;
+//	for (i = 0; i < index; i++)
+//	{
+//		sum += arr[i];
+//	}
+//	unsigned long long total= sum * pow(2, index - 1);
+//	printf("%lld", total);
+//	return 0;
+//}
+
+//#include<stdio.h>
+//#include<stdlib.h>
+//#include<string.h>
+//#include<math.h>
+//typedef struct stu {
+//	char name[10];
+//	int cn;
+//	int ma;
+//	int en;
+//	int sum;
+//}stu;
+//int main()
+//{
+//	int n;
+//	scanf("%d", &n);
+//	stu* arr = (stu*)malloc(n * sizeof(stu));
+//	int i = 0, j = 0;
+//	for (i = 0; i < n; i++)
+//	{
+//		scanf("%s %d %d %d", arr[i].name, &arr[i].cn, &arr[i].ma, &arr[i].en);
+//		arr[i].sum = arr[i].cn + arr[i].ma + arr[i].en;
+//	}
+//	for (i = 0; i < n; i++)
+//	{
+//		for (j = i+1; j < n; j++)
+//		{
+//			if(abs(arr[i].cn-arr[j].cn)<=5&&abs(arr[i].ma-arr[j].ma)<=5&&abs(arr[i].en-arr[j].en)<=5&&abs(arr[i].sum-arr[j].sum)<=10)
+//			{
+//				printf("%s %s\n", arr[i].name, arr[j].name);
+//			}
+//		}
+//	}
+//	return 0;
+//}
