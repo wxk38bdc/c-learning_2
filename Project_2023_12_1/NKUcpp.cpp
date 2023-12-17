@@ -1556,3 +1556,63 @@ int main() {
 //
 //    return 0;
 //}
+
+//#include<iostream>
+//#include<cstring>
+//#include<cstdio>
+//#include<cstring>
+//using namespace std;
+//int main(){
+//	int n;
+//	cin>>n;
+//	for(int i=0;i<n;i++)
+//	{
+//		char a[1001];
+//		int b[1001];
+//		int y=0;
+//		cin>>a;
+//		int l=strlen(a);
+//		for(int j=0;j<l;j++)
+//		{
+//			if(a[j]>='0'&&a[j]<='4'||a[j]>='6'&&a[j]<='9')
+//			{
+//				int k=j;
+//				while(a[k]>='0'&&a[k]<='4'||a[k]>='6'&&a[k]<='9'){k++;}
+//				int sum=0;
+//				int x=1;
+//				for(int p=k-1;p>=j;p--)
+//				{
+//					sum*=10;
+//				}
+//				b[y++]=sum;
+//				j=k-1;
+//			}
+//			
+//		}
+//		for(int j=0;j<y;j++)
+//		{
+//			for(int k=j+1;k<y;k++)
+//			{
+//				if(b[j]>b[k])swap(b[j],b[k]);
+//			}
+//		}
+//		for(int j=0;j<y;j++)
+//		{
+//			bool flag=0;
+//			for(int k=0;k<j;k++)
+//			{
+//				if(b[j]==b[k])flag=1;
+//			}
+//			if(flag)
+//			{
+//				continue;
+//			}
+//			else 
+//			{
+//				cout<<b[j]<<" ";
+//			}
+//		cout<<endl;
+//	}
+//	return 0;
+//}
+//}
