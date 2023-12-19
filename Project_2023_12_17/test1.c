@@ -67,121 +67,121 @@
 //    return 0;
 //}
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-void reverse(char*left)
-{
-	int len=strlen(left);
-	char* right = left + len - 1;
-	while (left < right)
-	{
-		char tmp = *left;
-		*left = *right;
-		*right = tmp;
-		left++;
-		right--;
-	}
-}
-void processstrings(char* str)
-{
-	int leadzero = 0;
-	int len = strlen(str);
-	int i = 0;
-	for (i = 0; i < len; i++)
-	{
-		if (str[i] != '0')
-		{
-			break;
-		}
-		else {
-			leadzero++;
-		}
-	}
-
-	if (leadzero == len)
-	{
-		str[1] = '\0';
-	}
-
-	else if (leadzero > 0 && leadzero < len)
-	{
-		for (i = 0; i < len - leadzero; i++)
-		{
-			str[i] = str[i + leadzero];
-		}
-		str[len - leadzero] = '\0';
-	}
-}
-int main()
-{
-	char s[30] = { 0 };
-	scanf("%s", s);
-	int flag = 0;
-	int len = strlen(s);
-	int i = 0;
-	for (i = 0; i < len; i++)
-	{
-		if(s[i]=='.')
-		{
-			flag = 1;
-			break;
-		}
-		if (s[i] == '/')
-		{
-			flag = 2;
-			break;
-		}
-		if(s[i]=='%')
-		{
-			flag = 3;
-			break;
-		}
-	}
-	if (flag == 0)
-	{
-		reverse(s);
-		processstrings(s);
-		printf(s);
-	}
-	else if (flag == 1)
-	{
-		char* s1 = strtok(s, ".");
-		char* s2 = strtok(NULL, ".");
-		reverse(s1);
-		processstrings(s1);
-		reverse(s2);
-		for(i=strlen(s2)-1;i>=0;i--)
-		{
-			if (s2[i] != '0')
-			{
-				break;
-			}
-			else if(i>=1)
-			{
-				s2[i] = '\0';
-			}
-		}
-		printf("%s.", s1);
-		printf("%s", s2);
-	}
-else if (flag == 2)
-	{
-		char* s1 = strtok(s, "/");
-		char* s2 = strtok(NULL, "/");
-		reverse(s1);
-		processstrings(s1);
-		reverse(s2);
-		processstrings(s2);
-		printf("%s/", s1);
-		printf("%s", s2);
-	}
-	else if (flag == 3)
-	{
-		char* s1 = strtok(s, "%");
-		reverse(s1);
-		processstrings(s1);
-		printf("%s%%", s1);
-	}
-	return 0;
-}
+//#include <stdio.h>
+//#include <stdlib.h>
+//#include <string.h>
+//void reverse(char*left)
+//{
+//	int len=strlen(left);
+//	char* right = left + len - 1;
+//	while (left < right)
+//	{
+//		char tmp = *left;
+//		*left = *right;
+//		*right = tmp;
+//		left++;
+//		right--;
+//	}
+//}
+//void processstrings(char* str)
+//{
+//	int leadzero = 0;
+//	int len = strlen(str);
+//	int i = 0;
+//	for (i = 0; i < len; i++)
+//	{
+//		if (str[i] != '0')
+//		{
+//			break;
+//		}
+//		else {
+//			leadzero++;
+//		}
+//	}
+//
+//	if (leadzero == len)
+//	{
+//		str[1] = '\0';
+//	}
+//
+//	else if (leadzero > 0 && leadzero < len)
+//	{
+//		for (i = 0; i < len - leadzero; i++)
+//		{
+//			str[i] = str[i + leadzero];
+//		}
+//		str[len - leadzero] = '\0';
+//	}
+//}
+//int main()
+//{
+//	char s[30] = { 0 };
+//	scanf("%s", s);
+//	int flag = 0;
+//	int len = strlen(s);
+//	int i = 0;
+//	for (i = 0; i < len; i++)
+//	{
+//		if(s[i]=='.')
+//		{
+//			flag = 1;
+//			break;
+//		}
+//		if (s[i] == '/')
+//		{
+//			flag = 2;
+//			break;
+//		}
+//		if(s[i]=='%')
+//		{
+//			flag = 3;
+//			break;
+//		}
+//	}
+//	if (flag == 0)
+//	{
+//		reverse(s);
+//		processstrings(s);
+//		printf(s);
+//	}
+//	else if (flag == 1)
+//	{
+//		char* s1 = strtok(s, ".");
+//		char* s2 = strtok(NULL, ".");
+//		reverse(s1);
+//		processstrings(s1);
+//		reverse(s2);
+//		for(i=strlen(s2)-1;i>=0;i--)
+//		{
+//			if (s2[i] != '0')
+//			{
+//				break;
+//			}
+//			else if(i>=1)
+//			{
+//				s2[i] = '\0';
+//			}
+//		}
+//		printf("%s.", s1);
+//		printf("%s", s2);
+//	}
+//else if (flag == 2)
+//	{
+//		char* s1 = strtok(s, "/");
+//		char* s2 = strtok(NULL, "/");
+//		reverse(s1);
+//		processstrings(s1);
+//		reverse(s2);
+//		processstrings(s2);
+//		printf("%s/", s1);
+//		printf("%s", s2);
+//	}
+//	else if (flag == 3)
+//	{
+//		char* s1 = strtok(s, "%");
+//		reverse(s1);
+//		processstrings(s1);
+//		printf("%s%%", s1);
+//	}
+//	return 0;
+//}
