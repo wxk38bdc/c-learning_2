@@ -185,3 +185,222 @@
 //	}
 //	return 0;
 //}
+
+#include <stdio.h>
+#include <stdlib.h>
+#include<string.h>
+#include<ctype.h>
+int main()
+{
+	char tofind[11] = { 0 };
+	char str[100001] = { 0 };
+	fgets(tofind, 11, stdin);
+	fgets(str, 100001, stdin);
+	int lent=strlen(tofind);
+	int lens = strlen(str);
+	int i = 0;
+	int j = 0;
+	for (i = 0; i < lent; i++)
+	{
+		tofind[i]=tolower(tofind[i]);
+	}
+	for (i = 0; i < lens; i++)
+	{
+		str[i] = tolower(str[i]);
+	}
+	tofind[lent - 1] = '\0';
+	lent--;
+	str[lens - 1] = '\0';
+	lens--;
+	int space[10000] = { 0 };//存储每个单词前的空格数
+    int inWord = 0; // 标记是否在单词内部
+    for (i = 0; i < lens; i++) {
+        if (str[i] == ' ') {
+            if (inWord) {
+                // 如果之前在单词中，现在遇到空格，表示单词结束
+                inWord = 0;
+                j++; // 移动到下一个单词
+            }
+            else {
+                // 如果不在单词中，累加空格数量
+                space[j]++;
+            }
+        }
+        else {
+            // 如果不是空格，标记正在处理单词
+            inWord = 1;
+        }
+    }
+    // 确保单词结束时索引正确
+    if (inWord) {
+        j++;
+    }
+    for (i = 0; i < j; i++)
+    {
+        if (i != 0)
+        {
+            space[i]++;
+        }
+    }
+	char words[10000][50] = { 0 };
+	int worsnum = 0;
+	
+	char* p = strtok(str, " ");
+	while (p != NULL)
+	{
+		strcpy(words[worsnum++], p);
+		p = strtok(NULL, " ");
+	}
+	//统计单词出现的次数
+	int flag = 0;
+	int first_index= 0;
+	int count = 0;
+	for (i = 0; i < worsnum; i++)
+	{
+		if (strcmp(words[i], tofind) == 0)
+		{
+			count++;
+		}
+		if (count == 1&&flag==0)
+		{
+			flag = 1;
+			first_index = i;
+		}
+	}
+	if(count==0)
+	{
+		printf("-1\n");
+		return 0;
+	}
+	printf("%d ", count);
+	//printf("%d\n", first_index);
+	int sum = space;
+	for (i = 0; i < first_index; i++)
+	{
+		sum=sum+strlen(words[i])+space[i];
+	}
+	printf("%d\n", sum);
+	return 0;
+}
+
+//#include <stdio.h>
+//#include <stdlib.h>
+//#include <string.h>
+//#include <ctype.h>
+//int main()
+//{
+//char tofind[11] = { 0 };
+//char str[100001] = { 0 };
+//fgets(tofind, 11, stdin);
+//fgets(str, 100001, stdin);
+//int lent=strlen(tofind);
+//int lens = strlen(str);
+//int i = 0;
+//    int space[10000] = { 0 }; // 存储每个单词前的空格数
+//    int j = 0; // 单词索引
+//    int inWord = 0; // 标记是否在单词内部
+//
+//    for (i = 0; i < lens; i++) {
+//        if (str[i] == ' ') {
+//            if (inWord) {
+//                // 如果之前在单词中，现在遇到空格，表示单词结束
+//                inWord = 0;
+//                j++; // 移动到下一个单词
+//            }
+//            else {
+//                // 如果不在单词中，累加空格数量
+//                space[j]++;
+//            }
+//        }
+//        else {
+//            // 如果不是空格，标记正在处理单词
+//            inWord = 1;
+//        }
+//    }
+//    // 确保单词结束时索引正确
+//    if (inWord) {
+//        j++;
+//    }
+//    for (i = 0; i < j; i++)
+//    {
+//        if (i != 0)
+//        {
+//            space[i]++;
+//        }
+//    }
+//    //输出每个单词前的空格数
+//for (i = 0; i < j; i++) {
+//    printf("%d ", space[i]);
+//}
+//    return 0;
+//}
+
+//#include <stdio.h>
+//#include <stdlib.h>
+//#include <string.h>
+//#include <ctype.h>
+//
+//int main() {
+//    char tofind[11] = { 0 };
+//    char str[100001] = { 0 };
+//    fgets(tofind, 11, stdin);
+//    fgets(str, 100001, stdin);
+//
+//    // 移除换行符
+//    if (str[strlen(tofind) - 1] == '\n') tofind[strlen(tofind) - 1] = '\0';
+//    if (str[strlen(str) - 1] == '\n') str[strlen(str) - 1] = '\0';
+//
+//    // 转换为小写
+//    for (int i = 0; i<strlen(tofind); i++) {
+//        tofind[i] = tolower(tofind[i]);
+//    }
+//    for (int i = 0; i<strlen(str); i++) {
+//        str[i] = tolower(str[i]);
+//    }
+//
+//    char words[10000][50] = { 0 };
+//    int spaces[10000] = { 0 }; // 存储每个单词前的空格数
+//    int worsnum = 0, spaceCount = 0, index = 0;
+//
+//    while (str[index]) {
+//        if (str[index] == ' ') {
+//            spaceCount++;
+//            index++;
+//            continue;
+//        }
+//
+//        int wordStart = index;
+//        while (str[index] && str[index] != ' ') {
+//            index++;
+//        }
+//
+//        strncpy(words[worsnum], str + wordStart, index - wordStart);
+//        words[worsnum][index - wordStart] = '\0';
+//        spaces[worsnum] = spaceCount;
+//        spaceCount = 1; // 为下一个单词重置空格计数
+//        worsnum++;
+//    }
+//
+//    // 统计单词出现的次数
+//    int first_index = -1, count = 0;
+//    for (int i = 0; i < worsnum; i++) {
+//        if (strcmp(words[i], tofind) == 0) {
+//            count++;
+//            if (first_index == -1) first_index = i;
+//        }
+//    }
+//
+//    if (count == 0) {
+//        printf("-1\n");
+//    }
+//    else {
+//        printf("%d ", count);
+//        int sum = 0;
+//        for (int i = 0; i <= first_index; i++) {
+//            sum += strlen(words[i]) + spaces[i];
+//        }
+//        printf("%d\n", sum); // 不包括第一次出现单词前的空格
+//    }
+//
+//    return 0;
+//}
