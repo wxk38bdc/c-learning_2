@@ -945,83 +945,105 @@
 //    return 0;
 //}
 
-#include <stdio.h>
-#include <stdlib.h>
+//#include <stdio.h>
+//#include <stdlib.h>
+//
+//struct ListNode {
+//    int val;
+//    struct ListNode* next;
+//};
+//
+//struct ListNode* insertionSortList(struct ListNode* head) {
+//    if (head == NULL || head->next == NULL) {
+//        return head;
+//    }
+//
+//    struct ListNode* sorted = NULL; // 新的排序链表的头节点
+//    struct ListNode* current = head; // 当前要插入的节点
+//
+//    while (current != NULL) {
+//        struct ListNode* next = current->next; // 保存下一个节点
+//
+//        // 寻找插入位置
+//        if (sorted == NULL || sorted->val >= current->val) {
+//            // 插入到头部
+//            current->next = sorted;
+//            sorted = current;
+//        }
+//        else {
+//            // 遍历已排序的链表找到插入点
+//            struct ListNode* tmp = sorted;
+//            while (tmp->next != NULL && tmp->next->val < current->val) {
+//                tmp = tmp->next;
+//            }
+//            // 插入到tmp节点之后
+//            current->next = tmp->next;
+//            tmp->next = current;
+//        }
+//
+//        current = next; // 移动到下一个要插入的节点
+//    }
+//
+//    return sorted;
+//}
+//
+//// 辅助函数：打印链表
+//void printList(struct ListNode* head) {
+//    struct ListNode* temp = head;
+//    while (temp != NULL) {
+//        printf("%d ", temp->val);
+//        temp = temp->next;
+//    }
+//    printf("\n");
+//}
+//
+//// 主函数：演示排序
+//int main() {
+//    // 创建链表并添加一些节点
+//    // 示例：1 -> 4 -> 3 -> 2 -> NULL
+//    struct ListNode* head = malloc(sizeof(struct ListNode));
+//    head->val = 1;
+//    head->next = malloc(sizeof(struct ListNode));
+//    head->next->val = 4;
+//    head->next->next = malloc(sizeof(struct ListNode));
+//    head->next->next->val = 3;
+//    head->next->next->next = malloc(sizeof(struct ListNode));
+//    head->next->next->next->val = 2;
+//    head->next->next->next->next = NULL;
+//
+//    printf("Original List: ");
+//    printList(head);
+//
+//    struct ListNode* sorted = insertionSortList(head);
+//
+//    printf("Sorted List: ");
+//    printList(sorted);
+//
+//    // 释放内存
+//    // 在实际应用中，确保适当释放所有已分配的内存
+//    // ...
+//
+//    return 0;
+//}
 
-struct ListNode {
-    int val;
-    struct ListNode* next;
-};
 
-struct ListNode* insertionSortList(struct ListNode* head) {
-    if (head == NULL || head->next == NULL) {
-        return head;
-    }
-
-    struct ListNode* sorted = NULL; // 新的排序链表的头节点
-    struct ListNode* current = head; // 当前要插入的节点
-
-    while (current != NULL) {
-        struct ListNode* next = current->next; // 保存下一个节点
-
-        // 寻找插入位置
-        if (sorted == NULL || sorted->val >= current->val) {
-            // 插入到头部
-            current->next = sorted;
-            sorted = current;
-        }
-        else {
-            // 遍历已排序的链表找到插入点
-            struct ListNode* tmp = sorted;
-            while (tmp->next != NULL && tmp->next->val < current->val) {
-                tmp = tmp->next;
-            }
-            // 插入到tmp节点之后
-            current->next = tmp->next;
-            tmp->next = current;
-        }
-
-        current = next; // 移动到下一个要插入的节点
-    }
-
-    return sorted;
-}
-
-// 辅助函数：打印链表
-void printList(struct ListNode* head) {
-    struct ListNode* temp = head;
-    while (temp != NULL) {
-        printf("%d ", temp->val);
-        temp = temp->next;
-    }
-    printf("\n");
-}
-
-// 主函数：演示排序
-int main() {
-    // 创建链表并添加一些节点
-    // 示例：1 -> 4 -> 3 -> 2 -> NULL
-    struct ListNode* head = malloc(sizeof(struct ListNode));
-    head->val = 1;
-    head->next = malloc(sizeof(struct ListNode));
-    head->next->val = 4;
-    head->next->next = malloc(sizeof(struct ListNode));
-    head->next->next->val = 3;
-    head->next->next->next = malloc(sizeof(struct ListNode));
-    head->next->next->next->val = 2;
-    head->next->next->next->next = NULL;
-
-    printf("Original List: ");
-    printList(head);
-
-    struct ListNode* sorted = insertionSortList(head);
-
-    printf("Sorted List: ");
-    printList(sorted);
-
-    // 释放内存
-    // 在实际应用中，确保适当释放所有已分配的内存
-    // ...
-
-    return 0;
-}
+//#include<stdio.h>
+////去重，预期修改为2,4,6,9，即将重复元素全部移到数组末尾
+//int quchong(int arr[], int n)
+//{
+//	int i = 0, j = 0;
+//	int ret = 0;
+//	
+//	return ret;
+//}
+//int main()
+//{
+//	int arr[] = { 1,1,2,3,3,4,5,5,6,7,7,7,8,8,9,0,0 };
+//	int ret=quchong(arr,17);//返回去重后数组的元素个数
+//	printf("ret=%d\n", ret);
+//	for (int i = 0; i < ret; i++)
+//	{
+//		printf("%d ", arr[i]);
+//	}
+//	return 0;
+//}
