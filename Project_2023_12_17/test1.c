@@ -1047,3 +1047,103 @@
 //	}
 //	return 0;
 //}
+
+//#include <stdio.h>
+//#include <math.h>
+//
+//// 函数声明
+//const char* getTriangleType(int a, int b, int c);
+//
+//int main() {
+//    int a, b, c;
+//    // 测试用例1
+//    a = 3; b = 3; c = 3;
+//    printf("Triangle with sides %d, %d, %d is %s\n", a, b, c, getTriangleType(a, b, c));
+//
+//    // 测试用例2
+//    a = 3; b = 4; c = 5;
+//    printf("Triangle with sides %d, %d, %d is %s\n", a, b, c, getTriangleType(a, b, c));
+//
+//    // 测试用例3
+//    a = 6; b = 10; c = 6;
+//    printf("Triangle with sides %d, %d, %d is %s\n", a, b, c, getTriangleType(a, b, c));
+//
+//    return 0;
+//}
+//
+//// 函数定义
+//const char* getTriangleType(int a, int b, int c) {
+//    // 检查是否为三角形
+//    if (a + b <= c || a + c <= b || b + c <= a) {
+//        return "Not a triangle";
+//    }
+//
+//    // 检查是否为等边三角形
+//    if (a == b && b == c) {
+//        return "Equilateral triangle";
+//    }
+//
+//    // 检查是否为等腰三角形，并且不是等边三角形
+//    if (a == b || a == c || b == c) {
+//        // 检查是否为直角三角形
+//        if (a * a + b * b == c * c || a * a + c * c == b * b || b * b + c * c == a * a) {
+//            return "Right and isosceles triangle";
+//        }
+//        // 检查是否为钝角三角形
+//        if (a * a + b * b < c * c || a * a + c * c < b * b || b * b + c * c < a * a) {
+//            return "Obtuse and isosceles triangle";
+//        }
+//        return "Isosceles triangle";
+//    }
+//
+//    // 检查是否为直角三角形
+//    if (a * a + b * b == c * c || a * a + c * c == b * b || b * b + c * c == a * a) {
+//        return "Right triangle";
+//    }
+//
+//    // 检查是否为钝角三角形
+//    if (a * a + b * b < c * c || a * a + c * c < b * b || b * b + c * c < a * a) {
+//        return "Obtuse triangle";
+//    }
+//
+//    // 如果以上条件都不满足，则为锐角三角形
+//    return "Acute triangle";
+//}
+
+//#include <stdio.h>
+//
+//int main() {
+//    int a, b, c;
+//
+//    // 提示用户输入三角形的三边长
+//    //printf("Enter the lengths of the three sides of a triangle: ");
+//    scanf("%d %d %d", &a, &b, &c);
+//
+//    // 验证输入的边是否能构成三角形
+//    int flag = 0;
+//    if (a <= 0 || b <= 0 || c <= 0 || a + b <= c || a + c <= b || b + c <= a) {
+//        printf("Not triangle\n");
+//        return 0;
+//    }
+//    if (a * a + b * b == c * c || a * a + c * c == b * b || b * b + c * c == a * a) {
+//        printf("Right triangle\n");
+//        flag = 1;
+//    }
+//
+//    if (a * a + b * b < c * c || a * a + c * c < b * b || b * b + c * c < a * a) {
+//        printf("Obtuse triangle\n");
+//        flag = 1;
+//    }
+//    if (flag==0)
+//    {
+//        printf("Acute triangle\n");
+//    }
+//    if (a == b || a == c || b == c) 
+//    {
+//        printf("Isosceles triangle\n");
+//    }
+//    if (a == b && b == c) {
+//        printf("Equilateral triangle\n");
+//    }
+//    return 0;
+//}
