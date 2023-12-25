@@ -1147,3 +1147,96 @@
 //    }
 //    return 0;
 //}
+
+
+//#include<stdio.h>
+//#include<stdlib.h>
+//#include<string.h>
+//void demicalToBinary(int n)//递归实现
+//{
+//	char str[100] = { 0 };
+//	while (n)
+//	{
+//		str[strlen(str)] = n % 2 + '0';
+//		n = n / 2;
+//	}
+//	for(int i = strlen(str) - 1; i >= 0; i--)
+//	{
+//		printf("%c", str[i]);
+//	}
+//}
+//void demicalToOctal(int n)
+//{
+//	char str[100] = { 0 };
+//	while (n)
+//	{
+//		str[strlen(str)] = n % 8 + '0';
+//		n = n / 8;
+//	}
+//	for (int i = strlen(str) - 1; i >= 0; i--)
+//	{
+//		printf("%c", str[i]);
+//	}
+//}
+//void binaryToDemical(char* str)
+//{
+//	int sum = 0;
+//	int i = 0;
+//	for (i = 0; i < strlen(str); i++)
+//	{
+//		sum = sum * 2 + str[i] - '0';
+//	}
+//	printf("%d\n", sum);
+//}
+//void binaryToOctal(char* str)
+//{
+//	int sum = 0;
+//	int i = 0;
+//	for (i = 0; i < strlen(str); i++)
+//	{
+//		sum = sum * 2 + str[i] - '0';
+//	}
+//	char str1[100] = { 0 };
+//	while (sum)
+//	{
+//		str1[strlen(str1)] = sum % 8 + '0';
+//		sum = sum / 8;
+//	}
+//	for (int i = strlen(str1) - 1; i >= 0; i--)
+//	{
+//		printf("%c", str1[i]);
+//	}
+//}
+//int main()
+//{
+//	int a = 0b1011;
+//	demicalToOctal(a);
+//	demicalToBinary(a);
+//	char s[10] = "1011";
+//	binaryToDemical(s);
+//	binaryToOctal(s);
+//	return 0;
+//}
+
+//#include<stdio.h>
+//int main()
+//{
+//	double a = 0.36;
+//	//将a的小数部分转为二进制
+//	for (int i = 0; i < 32; i++)
+//	{
+//		a = a * 2;
+//		printf("%d", (int)a);
+//		a = a - (int)a;
+//	}
+//	return 0;
+//}
+
+//#include<stdio.h>
+//#include<limits.h>
+//int main()
+//{
+//	int a = INT_MIN;
+//	printf("%d\n", a);
+//	return 0;
+//}

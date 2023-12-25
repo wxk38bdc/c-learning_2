@@ -7,7 +7,7 @@ typedef struct stack
 {
 	STDataType* _a;//动态开辟的数组
 	int _top;//栈顶的下标
-	int _capacity;
+	int _capacity;//容量
 }stack;
 
 void stackInit(stack* pst);//初始化
