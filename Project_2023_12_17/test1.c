@@ -1240,3 +1240,28 @@
 //	printf("%d\n", a);
 //	return 0;
 //}
+
+//#include<stdio.h>
+//#include<string.h>
+//#include<math.h>
+////实现2进制数转化为10进制数,如果输入不是二进制数，输出ERROR
+//int main()
+//{
+//	//先将二进制数存入字符数组
+//	char arr[30] = { 0 };
+//	scanf("%s", arr);
+//	int len = strlen(arr);
+//	int i = 0;
+//	int sum = 0;
+//	for (i = 0; i < len; i++)
+//	{
+//		if (arr[i] != '0' && arr[i] != '1')
+//		{
+//			printf("ERROR");
+//			return 0;
+//		}
+//		sum += (arr[i] - '0') * pow(2, len - 1 - i);
+//	}
+//	printf("%d", sum);
+//	return 0;
+//}
