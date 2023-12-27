@@ -1265,3 +1265,78 @@
 //	printf("%d", sum);
 //	return 0;
 //}
+
+//#include <stdio.h>
+//#include <stdlib.h>
+//
+//#define N 8 // 可以修改这个值来改变棋盘的大小
+//
+//int board[N][N]; // 棋盘
+//
+//// 打印解决方案
+//void printSolution() {
+//    for (int i = 0; i < N; i++) {
+//        for (int j = 0; j < N; j++)
+//            printf("%d ", board[i][j]);
+//        printf("\n");
+//    }
+//    printf("\n");
+//}
+//
+//// 检查当前位置是否可以放置皇后
+//int isSafe(int row, int col) {
+//    int i, j;
+//
+//    // 检查行
+//    for (i = 0; i < col; i++)
+//        if (board[row][i])
+//            return 0;
+//
+//    // 检查左上对角线
+//    for (i = row, j = col; i >= 0 && j >= 0; i--, j--)
+//        if (board[i][j])
+//            return 0;
+//
+//    // 检查左下对角线
+//    for (i = row, j = col; j >= 0 && i < N; i++, j--)
+//        if (board[i][j])
+//            return 0;
+//
+//    return 1;
+//}
+//
+//// 递归函数来放置皇后
+//int solveNQUtil(int col) {
+//    if (col >= N) {
+//        printSolution();
+//        return 1;
+//    }
+//
+//    int res = 0;
+//    for (int i = 0; i < N; i++) {
+//        if (isSafe(i, col)) {
+//            board[i][col] = 1;
+//            res = solveNQUtil(col + 1) || res;
+//            board[i][col] = 0; // 回溯
+//        }
+//    }
+//
+//    return res;
+//}
+//
+//// 解决N皇后问题
+//void solveNQ() {
+//    if (!solveNQUtil(0)) {
+//        printf("Solution does not exist");
+//        return;
+//    }
+//}
+//
+//int main() {
+//    for (int i = 0; i < N; i++)
+//        for (int j = 0; j < N; j++)
+//            board[i][j] = 0;
+//
+//    solveNQ();
+//    return 0;
+//}
