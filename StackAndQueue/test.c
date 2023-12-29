@@ -5,6 +5,7 @@
 void test1()
 {
 	//后进先出是相对入的时候在栈里的数据
+//先进先出是相对入的时候在队列里的数据
 	stack st;
 	stackInit(&st);
 	stackPush(&st, 1);

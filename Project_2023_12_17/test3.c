@@ -201,3 +201,262 @@
 //    printf("%s\n", str);
 //    return 0;
 //}
+
+//#include<stdio.h>
+//#include<string.h>
+//#include<stdlib.h>
+//int processAlice(char* str, int* arr, int len)
+//{
+//	int i = 0;
+//	int flag = 0;
+//	for (i = 0; i < len; i++)
+//	{
+//		if (arr[i] == 0)
+//		{
+//			flag = 1;
+//			break;
+//		}
+//	}
+//	if (flag == 0)
+//	{
+//		return -1;
+//	}
+//	for (i = 0; i < len; i++)
+//	{
+//		int j = len - 1;
+//		for (j = len - 1; j >= 0; j--)
+//		{
+//			if (arr[j] == 0)
+//			{
+//				break;
+//			}
+//		}
+//		if (arr[i] == 0)
+//		{
+//			if (str[i] != 'a')
+//			{
+//				str[i] = 'a';
+//				arr[i] = 1;
+//				break;
+//			}
+//			else if(str[i]=='a'&&i != j)
+//			{
+//				continue;
+//			}
+//			else//找到倒数第一个未修改的字符，并+1
+//			{
+//				str[j]++;
+//				arr[j] = 1;
+//			}
+//		}
+//	}
+//	return 0;
+//}
+//int processBob(char* str, int* arr, int len)
+//{
+//	int i = 0;
+//	int flag = 0;
+//	for (i = 0; i < len; i++)
+//	{
+//		if (arr[i] == 0)
+//		{
+//			flag = 1;
+//			break;
+//		}
+//	}
+//	if (flag == 0)
+//	{
+//		return -1;
+//	}
+//	for (i = 0; i < len; i++)
+//	{
+//		int j = 0;
+//		for (j = len - 1; j > 0; j--)
+//		{
+//			if (arr[j] == 0)
+//			{
+//				break;
+//			}
+//		}
+//		if (arr[i] == 0)
+//		{
+//			if (str[i] != 'z')
+//			{
+//				str[i] = 'z';
+//				arr[i] = 1;
+//				break;
+//			}
+//			else if (str[i] == 'z' && i != j)
+//			{
+//				continue;
+//			}
+//			else//找到倒数第一个未修改的字符，并-1
+//			{
+//				str[j]--;
+//				arr[j] = 1;
+//			}
+//		}
+//	}
+//	return 0;
+//}
+//int main()
+//{
+//	int n = 0;
+//	scanf("%d", &n);
+//	while (n--)
+//	{
+//		char str[1001] = { 0 };
+//		scanf("%s", str);
+//		int len = strlen(str);
+//		int* arr = (int*)malloc(sizeof(int) * len);
+//		memset(arr, 0, sizeof(int) * len);
+//		while (1)
+//		{
+//			int a = processAlice(str, arr, len);
+//			if (a == -1)break;
+//			int b = processBob(str, arr, len);
+//			if (b == -1)break;
+//		}
+//		printf("%s\n", str);
+//		free(arr);
+//	}
+//	return 0;
+//}
+
+//#include<stdio.h>
+//#include<string.h>
+//#include<stdlib.h>
+//void test(int n)
+//{
+//	if (n == 0 || n == 1)
+//	{
+//		printf("1\n");
+//	}
+//	else
+//	{
+//		int a = 1;
+//		int b = 1;
+//		int c = a + b;
+//		while (n >= 2)
+//		{
+//			c = a + b;
+//			a = b;
+//			b = c;
+//			n--;
+//		}
+//		printf("%d\n", c);
+//	}
+//}
+//int main()
+//{
+//	int n = 0;
+//	scanf("%d", &n);
+//	test(n);
+//	return 0;
+//}
+
+//#include <stdio.h>
+//#include <string.h>
+//#include <stdlib.h>
+//
+//typedef struct stu {
+//	char id[39];
+//	char name[39];
+//	double cn;
+//	double math;
+//	double eng;
+//} stu;
+//
+//void bubbleSortId(stu* array, int n) {
+//	stu temp;
+//
+//	for (int i = 0; i < n - 1; ++i) {
+//		for (int j = 0; j < n - i - 1; ++j) {
+//			if (strcmp(array[j].id, array[j + 1].id) > 0) {
+//				temp = array[j];
+//				array[j] = array[j + 1];
+//				array[j + 1] = temp;
+//			}
+//		}
+//	}
+//}
+//
+//void bubbleSortMath(stu* array, int n) {
+//	stu temp;
+//
+//	for (int i = 0; i < n - 1; ++i) {
+//		for (int j = 0; j < n - i - 1; ++j) {
+//			if (array[j].math < array[j + 1].math) {
+//				temp = array[j];
+//				array[j] = array[j + 1];
+//				array[j + 1] = temp;
+//			}
+//		}
+//	}
+//}
+//
+//void bubbleSortCn(stu* array, int n) {
+//	stu temp;
+//
+//	for (int i = 0; i < n - 1; ++i) {
+//		for (int j = 0; j < n - i - 1; ++j) {
+//			if (array[j].cn < array[j + 1].cn) {
+//				temp = array[j];
+//				array[j] = array[j + 1];
+//				array[j + 1] = temp;
+//			}
+//		}
+//	}
+//}
+//
+//void bubbleSortEng(stu* array, int n) {
+//	stu temp;
+//
+//	for (int i = 0; i < n - 1; ++i) {
+//		for (int j = 0; j < n - i - 1; ++j) {
+//			if (array[j].eng < array[j + 1].eng) {
+//				temp = array[j];
+//				array[j] = array[j + 1];
+//				array[j + 1] = temp;
+//			}
+//		}
+//	}
+//}
+//
+//void printSorted(stu* arr, int n) {
+//	for (int i = 0; i < n; ++i) {
+//		printf("%s %s\n", arr[i].id, arr[i].name);
+//	}
+//}
+//
+//int main() {
+//	int n;
+//	scanf("%d", &n);
+//
+//	stu s[n];
+//	for (int i = 0; i < n; ++i) {
+//		scanf("%s %s %lf %lf %lf", s[i].id, s[i].name, &s[i].math, &s[i].cn, &s[i].eng);
+//	}
+//
+//	double choice;
+//	scanf("%lf", &choice);
+//	if (choice != 1 && choice != 2 && choice != 3) {
+//		printf("ERROR\n");
+//		return 1;
+//	}
+//	bubbleSortId(s, n);
+//	if (choice == 1) {
+//		bubbleSortMath(s, n);
+//		printSorted(s, n);
+//	}
+//	else if (choice == 2) {
+//		bubbleSortCn(s, n);
+//		printSorted(s, n);
+//	}
+//	else if (choice == 3) {
+//		bubbleSortEng(s, n);
+//		printSorted(s, n);
+//	}
+//
+//	return 0;
+//}
