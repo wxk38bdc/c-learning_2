@@ -460,3 +460,139 @@
 //
 //	return 0;
 //}
+
+//#include<stdio.h>
+//#include<string.h>
+//#include<stdlib.h>
+//char* bigNumberSum(char* s1, char* s2)
+//{
+//	//先判断两个字符串哪个长，将长的字符串长度赋值给len
+//	int len1 = strlen(s1);
+//	int len2 = strlen(s2);
+//	int len = len1 > len2 ? len1 : len2;
+//	int* arr1 = (int*)malloc(sizeof(int) * len);
+//	int* arr2 = (int*)malloc(sizeof(int) * len);
+//	int* arr3 = (int*)malloc(sizeof(int) * (len + 1));
+//	memset(arr1, 0, sizeof(int) * len);
+//	memset(arr2, 0, sizeof(int) * len);
+//	memset(arr3, 0, sizeof(int) * (len + 1));
+//	int i = 0;
+//	int j = 0;
+//	//将字符串倒序存入数组
+//	for (i = len1 - 1, j = 0; i >= 0; i--, j++)
+//	{
+//		arr1[j] = s1[i] - '0';
+//	}
+//	for (i = len2 - 1, j = 0; i >= 0; i--, j++)
+//	{
+//		arr2[j] = s2[i] - '0';
+//	}
+//	for (i = 0; i < len; i++)
+//	{
+//		arr3[i] = arr1[i] + arr2[i];
+//	}
+//	for (i = 0; i < len; i++)
+//	{
+//		if (arr3[i] >= 10)
+//		{
+//			arr3[i + 1] += arr3[i] / 10;
+//			arr3[i] %= 10;
+//		}
+//	}
+//	char* sum = (char*)malloc(sizeof(char) * (len + 1));
+//	memset(sum, 0, sizeof(char) * (len + 1));
+//	for (i = len; i >= 0; i--)
+//	{
+//		sum[len - i] = arr3[i] + '0';
+//	}
+//	//如果最高位为0，则去掉
+//	if (sum[0] == '0')
+//	{
+//		for (i = 0; i < len; i++)
+//		{
+//			sum[i] = sum[i + 1];
+//		}
+//		sum[len] = '\0';
+//	}
+//	free(arr1);
+//	free(arr2);
+//	free(arr3);
+//	return sum;
+//}
+//int main()
+//{
+//	char num1[200] = { 0 };
+//	char num2[200] = { 0 };
+//	printf("请输入数字1：\n");
+//	scanf("%s", num1);
+//	printf("请输入数字2：\n");
+//	scanf("%s", num2);
+//	char *sum;
+//	sum=bigNumberSum(num1, num2);
+//	printf("sum=%s\n", sum);
+//	return 0;
+//}
+
+//#include<stdio.h>
+//#include<stdlib.h>
+////矩阵乘法
+//int main()
+//{
+//	int n = 0;
+//	scanf("%d", &n);
+//	int** arr1 = (int**)malloc(sizeof(int*) * n);
+//	int** arr2 = (int**)malloc(sizeof(int*) * n);
+//	int** arr3 = (int**)malloc(sizeof(int*) * n);
+//	int i = 0;
+//	int j = 0;
+//	for (i = 0; i < n; i++)
+//	{
+//		arr1[i] = (int*)malloc(sizeof(int) * n);
+//		arr2[i] = (int*)malloc(sizeof(int) * n);
+//		arr3[i] = (int*)malloc(sizeof(int) * n);
+//	}
+//	for (i = 0; i < n; i++)
+//	{
+//		for (j = 0; j < n; j++) 
+//		{
+//			scanf("%d", &arr1[i][j]);
+//		}
+//	}
+//	for (i = 0; i < n; i++)
+//	{
+//		for (j = 0; j < n; j++) 
+//		{
+//			scanf("%d", &arr2[i][j]);
+//		}
+//	}
+//	for (i = 0; i < n; i++)
+//	{
+//		for (j = 0; j < n; j++) 
+//		{
+//			arr3[i][j] = 0;
+//			int k = 0;
+//			for (k = 0; k < n; k++)
+//			{
+//				arr3[i][j] += arr1[i][k] * arr2[k][j];
+//			}
+//		}
+//	}
+//	for (i = 0; i < n; i++)
+//	{
+//		for (j = 0; j < n; j++) 
+//		{
+//			printf("%d ", arr3[i][j]);
+//		}
+//		printf("\n");
+//	}
+//	for (i = 0; i < n; i++)
+//	{
+//		free(arr1[i]);
+//		free(arr2[i]);
+//		free(arr3[i]);
+//	}
+//	free(arr1);
+//	free(arr2);
+//	free(arr3);
+//	return 0;
+//}
