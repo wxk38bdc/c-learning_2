@@ -13,6 +13,7 @@ typedef struct Heap
 
 void Swap(HPDataType* a, HPDataType* b);//交换
 void AdjustDown(HPDataType* a, int n, int root);//向下调整
+void AdjustUp(HPDataType* a, int n, int child);//向上调整
 void HeapInit(Heap* php, HPDataType* a, int n);//初始化
 void HeapDestory(Heap* php);//销毁
 void HeapPush(Heap* php, HPDataType x);//插入

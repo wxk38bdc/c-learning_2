@@ -19,18 +19,34 @@ void HeapSortDown(int* a, int n)//从大到小排序，建小堆
 }
 int main()
 {
-	int a[] = { 255,18,26,577,59,236,10,0};
-	HeapSortDown(a, sizeof(a) / sizeof(a[0]));
-	for (int i = 0; i < sizeof(a) / sizeof(a[0]); i++)
-	{
-		printf("%d ", a[i]);
-	}
-	//Heap hp;
-	//HeapInit(&hp, a, sizeof(a) / sizeof(a[0]));
-	////打印调整后的数组
-	//for (int i = 0; i < hp._size; i++)
+	int a[] = { 255,18,26,577,59,236,10,0 };
+	//HeapSortDown(a, sizeof(a) / sizeof(a[0]));
+	//for (int i = 0; i < sizeof(a) / sizeof(a[0]); i++)
 	//{
-	//	printf("%d ", hp._a[i]);
+	//	printf("%d ", a[i]);
 	//}
+	Heap hp;
+	HeapInit(&hp, a, sizeof(a) / sizeof(a[0]));
+	//打印调整后的数组
+	for (int i = 0; i < hp._size; i++)
+	{
+		printf("%d ", hp._a[i]);
+	}
+	printf("\n");
+	//push
+	HeapPush(&hp, 1);
+	//print
+	for (int i = 0; i < hp._size; i++)
+	{
+		printf("%d ", hp._a[i]);
+	}
+	printf("\n");
+	//pop
+	HeapPop(&hp);
+	//print
+	for (int i = 0; i < hp._size; i++)
+	{
+		printf("%d ", hp._a[i]);
+	}
 	return 0;
 }

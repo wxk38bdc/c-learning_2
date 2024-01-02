@@ -25,6 +25,21 @@ void AdjustDown(HPDataType* a, int n, int root)//向下调整
 			break;
 	}
 }
+void AdjustUp(HPDataType* a, int n, int child)//向上调整
+{
+	int parent = (child - 1) / 2;
+	while (child > 0)
+	{
+		if (a[child] < a[parent])
+		{
+			Swap(&a[child], &a[parent]);
+			child = parent;
+			parent = (child - 1) / 2;
+		}
+		else
+			break;
+	}
+}
 void HeapInit(Heap* php, HPDataType* a, int n)
 {
 	php->_a = (HPDataType*)malloc(sizeof(HPDataType) * n);
@@ -42,7 +57,41 @@ void HeapInit(Heap* php, HPDataType* a, int n)
 		AdjustDown(php->_a, php->_size, i);
 	}
 }
-void HeapDestory(Heap* php);//销毁
-void HeapPush(Heap* php, HPDataType x);//插入
-void HeapPop(Heap* php);//删除
-HPDataType HeapTop(Heap* php);//取堆顶元素
+void HeapDestory(Heap* php)//销毁
+{
+	assert(php);
+	free(php->_a);
+	php->_a = NULL;
+	php->_size = php->_capacity = 0;
+}
+void HeapPush(Heap* php, HPDataType x)//插入
+{
+	assert(php);
+	if (php->_size == php->_capacity)
+	{
+		php->_capacity *= 2;
+		HPDataType* tmp = (HPDataType*)realloc(php->_a, sizeof(HPDataType) * php->_capacity);
+		if (tmp == NULL)
+		{
+			assert(0);
+			return;
+		}
+		php->_a = tmp;
+	}
+	php->_a[php->_size++] = x;
+	AdjustUp(php->_a, php->_size, php->_size - 1);
+}
+void HeapPop(Heap* php)//删除堆顶元素
+{
+	assert(php);
+	assert(php->_size > 0);
+	Swap(&php->_a[0], &php->_a[php->_size - 1]);
+	php->_size--;
+	AdjustDown(php->_a, php->_size, 0);
+}
+HPDataType HeapTop(Heap* php)//取堆顶元素
+{
+	assert(php);
+	assert(php->_size > 0);
+	return php->_a[0];
+}
