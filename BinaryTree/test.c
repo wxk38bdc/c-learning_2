@@ -33,6 +33,7 @@ int TreeLeafSize(BTNode* root)//求二叉树的叶子节点个数
 		return 1;
 	return TreeLeafSize(root->_left) + TreeLeafSize(root->_right);
 }
+
 int TreeDepth(BTNode* root)//求二叉树的深度
 {
 	if (root == NULL)
