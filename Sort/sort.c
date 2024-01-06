@@ -12,7 +12,14 @@ void PrintArray(int* a, int n)
 	}
 	printf("\n");
 }
-
+//Ωªªª
+void Swap(int* a, int* b)
+{
+	assert(a && b);
+	int tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
 //≤Â»Î≈≈–Ú
 void InsertSort(int* a, int n)
 {
@@ -53,4 +60,131 @@ void ShellSort(int* a, int n)
 			a[end + gap] = tmp;
 		}
 	}
+}
+
+//—°‘Ò≈≈–Ú
+void SelectSort(int* a, int n)
+{
+	assert(a);
+	int begin = 0;
+	int end = n - 1;
+	while (begin < end)
+	{
+		int min = begin;
+		int max = begin;
+		int i = 0;
+		for (i = begin; i <= end; i++)
+		{
+			if (a[i] < a[min])
+			{
+				min = i;
+			}
+			if (a[i] > a[max])
+			{
+				max = i;
+			}
+		}
+		Swap(&a[begin], &a[min]);
+		if (max == begin)
+		{
+			max = min;
+		}
+		Swap(&a[end], &a[max]);
+		begin++;
+		end--;
+	}
+}
+
+//∂—≈≈–Ú
+void AdjustDown(int* a, int n, int root)
+{
+	assert(a);
+	int parent = root;
+	int child = parent * 2 + 1;
+	while (child < n)
+	{
+		if (child + 1 < n && a[child + 1] > a[child])
+		{
+			child++;
+		}
+		if (a[child] > a[parent])
+		{
+			Swap(&a[child], &a[parent]);
+			parent = child;
+			child = parent * 2 + 1;
+		}
+		else
+		{
+			break;
+		}
+	}
+}
+void HeapSort(int* a, int n)
+{
+	assert(a);
+	//Ω®∂—
+	int i = 0;
+	for (i = (n - 2) / 2; i >= 0; i--)
+	{
+		AdjustDown(a, n, i);
+	}
+	//≈≈–Ú
+	int end = n - 1;
+	while (end > 0)
+	{
+		Swap(&a[0], &a[end]);
+		AdjustDown(a, end, 0);
+		end--;
+	}
+}
+
+//√∞≈›≈≈–Ú
+void BubbleSort(int* a, int n)
+{
+	assert(a);
+	int end = n - 1;
+	while (end > 0)
+	{
+		int exchange = 0;
+		int i = 0;
+		for (i = 0; i < end; i++)
+		{
+			if (a[i] > a[i + 1])
+			{
+				Swap(&a[i], &a[i + 1]);
+				exchange = 1;
+			}
+		}
+		if (exchange == 0)
+		{
+			break;
+		}
+		end--;
+	}
+}
+
+//øÏÀŸ≈≈–Ú
+//[begin,end]±’«¯º‰
+int PartSort(int* a, int begin, int end)
+{
+	int key = a[end];
+	while (begin < end)
+	{
+		//begin’“¥Û
+		while (begin < end && a[begin] <= key)
+		{
+			begin++;
+		}
+		//end’“–°
+		while (begin < end && a[end] >= key)
+		{
+			end--;
+		}
+		Swap(&a[begin], &a[end]);
+	}
+
+}
+void QuickSort(int* a, int left, int right)
+{
+
 }

@@ -15,12 +15,14 @@ void ShellSort(int* a, int n);
 void SelectSort(int* a, int n);
 
 //堆排序
+void AdjustDown(int* a, int n, int root);
 void HeapSort(int* a, int n);
 
 //冒泡排序
 void BubbleSort(int* a, int n);
 
 //快速排序
+int PartSort(int* a, int begin, int end);
 void QuickSort(int* a, int left, int right);
 
 //归并排序
@@ -37,3 +39,6 @@ void RadixSort(int* a, int n);
 
 //打印数组
 void PrintArray(int* a, int n);
+
+//交换
+void Swap(int* a, int* b);
