@@ -22,7 +22,10 @@ void HeapSort(int* a, int n);
 void BubbleSort(int* a, int n);
 
 //¿ìËÙÅÅĞò
-int PartSort(int* a, int begin, int end);
+int GetMidIndex(int* a, int begin, int end);
+int PartSort1(int* a, int begin, int end);
+int PartSort2(int* a, int begin, int end);
+int PartSort3(int* a, int begin, int end);
 void QuickSort(int* a, int left, int right);
 
 //¹é²¢ÅÅĞò
