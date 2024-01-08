@@ -27,9 +27,13 @@ int PartSort1(int* a, int begin, int end);
 int PartSort2(int* a, int begin, int end);
 int PartSort3(int* a, int begin, int end);
 void QuickSort(int* a, int left, int right);
+void QuickSortNonR(int* a, int left, int right);//非递归快速排序
 
 //归并排序
+void Merge(int* a, int left, int mid, int right, int* tmp);
+void _MergeSort(int* a, int left, int right, int* tmp);
 void MergeSort(int* a, int n);
+void MergeSortNonR(int* a, int n);
 
 //计数排序
 void CountSort(int* a, int n);

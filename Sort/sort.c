@@ -1,6 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include"sort.h"
-
+#include"stack.h"
 //打印数组
 void PrintArray(int* a, int n)
 {
@@ -168,7 +168,8 @@ void BubbleSort(int* a, int n)
 int GetMidIndex(int* a, int begin, int end)
 {
 	//三数取中法
-	int mid = (begin + end) / 2;//防止溢出
+	int mid = begin + (end - begin) / 2;
+	//int mid = (begin + end) / 2;//防止溢出
 	if (a[mid] > a[begin])
 	{
 		if (a[mid] < a[end])
@@ -292,4 +293,148 @@ void QuickSort(int* a, int left, int right)
 		QuickSort(a, left, div - 1);
 		QuickSort(a, div + 1, right);
 	}
+}
+//非递归快速排序
+void QuickSortNonR(int* a, int left, int right)
+{
+	assert(a);
+	stack st;
+	stackInit(&st);
+	//先入右，再入左
+	stackPush(&st, right);
+	stackPush(&st, left);
+	while (!stackEmpty(&st))
+	{
+		//先出左，再出右
+		int begin = stackTop(&st);
+		stackPop(&st);
+		int end = stackTop(&st);
+		stackPop(&st);
+		//[begin,end]闭区间
+		int div = PartSort1(a, begin, end);
+		//[begin,div-1]
+		if (div - 1 > begin)
+		{
+			stackPush(&st, div - 1);
+			stackPush(&st, begin);
+		}
+		//[div+1,end]
+		if (div + 1 < end)
+		{
+			stackPush(&st, end);
+			stackPush(&st, div + 1);
+		}
+	}
+}
+
+//归并排序
+//递归实现
+void Merge(int* a, int left, int mid, int right, int* tmp) 
+{
+	int i = left;
+	int j = mid + 1;
+	int k = left;
+
+	// 合并两个有序区间
+	while (i <= mid && j <= right) {
+		if (a[i] <= a[j]) {
+			tmp[k++] = a[i++];
+		}
+		else {
+			tmp[k++] = a[j++];
+		}
+	}
+
+	// 处理剩余的元素
+	while (i <= mid) {
+		tmp[k++] = a[i++];
+	}
+	while (j <= right) {
+		tmp[k++] = a[j++];
+	}
+
+	// 将合并后的数组复制回原数组
+	for (i = left; i <= right; i++) {
+		a[i] = tmp[i];
+	}
+}
+
+void _MergeSort(int* a, int left, int right, int* tmp)
+{
+	if (left < right)
+	{
+		//[left,mid][mid+1,right]
+		int mid = left + (right - left) / 2; // 避免溢出
+		_MergeSort(a, left, mid, tmp); // 排序左半部分
+		_MergeSort(a, mid + 1, right, tmp); // 排序右半部分
+		//Merge(a, left, mid, right, tmp); // 合并两个有序区间
+		int i = left;
+		int j = mid + 1;
+		int k = left;
+
+		// 合并两个有序区间
+		while (i <= mid && j <= right) {
+			if (a[i] <= a[j]) {
+				tmp[k++] = a[i++];
+			}
+			else {
+				tmp[k++] = a[j++];
+			}
+		}
+
+		// 处理剩余的元素
+		while (i <= mid) {
+			tmp[k++] = a[i++];
+		}
+		while (j <= right) {
+			tmp[k++] = a[j++];
+		}
+
+		// 将合并后的数组复制回原数组
+		for (i = left; i <= right; i++) {
+			a[i] = tmp[i];
+		}
+	}
+}
+
+void MergeSort(int* a, int n) {
+	assert(a);
+	int* tmp = (int*)malloc(sizeof(int) * n);
+	if (tmp == NULL) {
+		printf("malloc fail\n");
+		exit(-1);
+	}
+	_MergeSort(a, 0, n - 1, tmp);
+	free(tmp);
+}
+//非递归实现
+void MergeSortNonR(int* a, int n)
+{
+	assert(a);
+	int* tmp = (int*)malloc(sizeof(int) * n);
+	if (tmp == NULL) {
+		printf("malloc fail\n");
+		exit(-1);
+	}
+	int gap = 1;
+	while (gap < n)
+	{
+		for (int i = 0; i < n; i += 2 * gap)
+		{
+			int left = i;
+			int mid = i + gap - 1;
+			int right = i + 2 * gap - 1;
+			if (mid >= n - 1)
+			{
+				mid = n - 1;
+			}
+			if (right >= n)
+			{
+				right = n - 1;
+			}
+			Merge(a, left, mid, right, tmp);
+		}
+		gap *= 2;
+	}
+	free(tmp);
 }
