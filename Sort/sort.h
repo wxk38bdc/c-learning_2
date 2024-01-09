@@ -34,6 +34,7 @@ void Merge(int* a, int left, int mid, int right, int* tmp);
 void _MergeSort(int* a, int left, int right, int* tmp);
 void MergeSort(int* a, int n);
 void MergeSortNonR(int* a, int n);
+void MergesortFile(const char* file);//Õ‚≈≈–Ú
 
 //º∆ ˝≈≈–Ú
 void CountSort(int* a, int n);

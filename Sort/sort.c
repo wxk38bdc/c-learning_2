@@ -438,3 +438,47 @@ void MergeSortNonR(int* a, int n)
 	}
 	free(tmp);
 }
+void MergesortFile(const char* file)
+{
+	assert(file);
+	FILE* fout=fopen(file,"r");
+	if (fout == NULL)
+	{
+		printf("open file fail\n");
+		exit(-1);
+	}
+	//分割成小文件
+	int n = 10;
+	int* a = (int*)malloc(sizeof(int) * n);
+	int num = 0;
+	int i = 0;
+	int fileIndex = 0;
+	char subfile[20];
+	while (fscanf(fout, "%d\n", &num) != EOF)
+	{
+		if (i < n-1)
+		{
+			a[i++] = num;
+		}
+		else
+		{
+			a[i]= num;
+			QuickSort(a, 0, n - 1);
+			sprintf(subfile, "sub\\sub_sort %d.txt", fileIndex++);
+			FILE* fin = fopen(subfile, "w");
+			if (fin == NULL)
+			{
+				printf("open file fail\n");
+				exit(-1);
+			}
+			for (int j = 0; j < n; j++)
+			{
+				fprintf(fin, "%d\n", a[j]);
+			}
+			fclose(fin);
+			i = 0;
+		}
+	}
+	//利用互相归并到文件，最终得到一个有序文件
+	fclose(fout);
+}
