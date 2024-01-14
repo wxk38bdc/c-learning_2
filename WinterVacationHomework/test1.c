@@ -258,8 +258,178 @@
 //}
 
 //DAY 10
-int main()
-{
+//int func(int x)
+//{
+//	int count = 0;
+//	while (x)
+//	{
+//		count++;
+//		x = x & (x - 1);
+//	}
+//	return count;
+//}
+//int main()
+//{
+//	printf("%d", func(-1));
+//	return 0;
+//}
+//int main()
+//{
+//	int a = 1, b = 2, m = 0, n = 0, k;
+//	k = (n = b < a) && (m = a);
+//	printf("%d %d", k, m);
+//	return 0;
+//}
 
-	return 0;
-}
+//DAY 11
+//int main()
+//{
+//	int k = 1 ^ (1 << 31 >> 31);
+//	printf("%d", k);
+//	return 0;
+//}
+//int isPerfectNumber(int num)
+//{
+//	int sum = 0;
+//	for (int i = 1; i < num; i++)
+//	{
+//		if (num % i == 0)
+//			sum += i;
+//	}
+//	if (sum == num)
+//		return 1;
+//	else
+//		return 0;
+//}
+//int main()
+//{
+//	int n;
+//	scanf("%d", &n);
+//	int count = 0;
+//	for (int i = 1; i <= n; i++)
+//	{
+//		if(isPerfectNumber(i))
+//			count++;
+//	}
+//	printf("%d", count);
+//	return 0;
+//}
+
+//DAY 12
+//int main()
+//{
+//	unsigned short x = 65530;
+//	unsigned int y = x;
+//	printf("%x", y);
+//	return 0;
+//}
+//int main()
+//{
+//	int n = 1001;
+//	int ans = 0;
+//	for (int i = 1; i <= n; i++)
+//	{
+//		ans ^= i % 3;
+//	}
+//	printf("%d", ans);
+//	return 0;
+//}
+//int main()
+//{
+//	int n;
+//	scanf("%d", &n);
+//	if(n==0)
+//	{
+//		printf("0");
+//		return 0;
+//	}
+//	while (n)
+//	{
+//		printf("%d", n % 10);
+//		n /= 10;
+//	}
+//	return 0;
+//}
+//int main()
+//{
+//	char str[10000];
+//	fgets(str, 10000, stdin);
+//	int len = strlen(str);
+//	int i = 0;
+//	for (i = 0; i < len; i++)
+//	{
+//		if (!isalpha(str[i]))
+//			str[i] = ' ';
+//	}
+//	char str1[1000][1000];
+//	char *p = strtok(str, " ");
+//	int j = 0;
+//	while (p)
+//	{
+//		strcpy(str1[j++], p);
+//		p = strtok(NULL, " ");
+//	}
+//	for (i = j - 1; i >= 0; i--)
+//		printf("%s ", str1[i]);
+//	return 0;
+//}
+
+//DAY 13
+//int fun(unsigned int x)
+//{
+//	int count = 0;
+//	while (x+1)
+//	{
+//		count++;
+//		x = x | (x + 1);
+//	}
+//	return count;
+//}
+//int main()
+//{
+//	printf("%d", fun(2014));
+//	return 0;
+//}
+//int fib(int n)
+//{
+//	if (n == 1 || n == 2)
+//		return 1;
+//	int a = 1;
+//	int b = 1;
+//	int c = 0;
+//	for (int i = 3; i <= n; i++)
+//	{
+//		c = a + b;
+//		a = b;
+//		b = c;
+//	}
+//	return c;
+//}
+//int main()
+//{
+//	int n;
+//	scanf("%d", &n);
+//	printf("%d", fib(n));
+//	return 0;
+//int main()
+//{
+//	double n,m;
+//	while(scanf("%lf %lf",&n,&m)!=EOF)
+//	{
+//		double sum = 0;
+//		for (int i = 0; i < m; i++)
+//		{
+//			sum += n;
+//			n = sqrt(n);
+//		}
+//		printf("%.2lf\n", sum);
+//	}
+//	return 0;
+//}
+//int main()
+//{
+//	float a[3] = { 1.5,2.5,3.5 }, * pa = a;
+//	*(pa++) *= 3;
+//	printf("%f", *pa);
+//	return 0;
+//}
