@@ -196,13 +196,68 @@
 //}
 
 //DAY 7
+//int func(int x)
+//{
+//	return (x == 1) ? 1 : (x + func(x - 1));
+//}
 //int main()
 //{
-//
+//	printf("%d", func(10));
 //	return 0;
+//}
+//int main()
+//{
+//	char str[1000];
+//	scanf("%s", str);
+//	int len = strlen(str);
+//	//¶Ô×Ö·û´®°´ASCIIÂëÅÅĞò
+//	for (int i = 0; i < len - 1; i++)
+//	{
+//		for (int j = 0; j < len - 1 - i; j++)
+//		{
+//			if (str[j] > str[j + 1])
+//			{
+//				char temp = str[j];
+//				str[j] = str[j + 1];
+//				str[j + 1] = temp;
+//			}
+//		}
+//	}
+//	//Êä³ö
+//	printf("%s", str);
 //}
 
 //DAY8
+//int main()
+//{
+//	char str[500] = { 0 };
+//	scanf("%s", str);
+//	int arr[128] = { 0 };
+//	for (int i = 0; i < strlen(str); i++)
+//	{
+//		arr[str[i]]++;
+//	}
+//	int num = 0;
+//	for (int i = 0; i < 128; i++)
+//	{
+//		if (arr[i] != 0)
+//			num++;
+//	}
+//	printf("%d", num);
+//	return 0;
+//}
+
+//DAY 9
+//int main()
+//{
+//	int a = 0xf8b82140;
+//	int b = 0xf8b8221c;
+//	int c = a * 2 / 5 + b * 3 / 5;
+//printf("%#x", c);
+//	return 0;
+//}
+
+//DAY 10
 int main()
 {
 
