@@ -405,6 +405,8 @@
 //	}
 //	return c;
 //}
+
+//DAY 14
 //int main()
 //{
 //	int n;
@@ -433,3 +435,54 @@
 //	printf("%f", *pa);
 //	return 0;
 //}
+
+//2024/01/15比特就业课
+//#define DOUBLE(x) ((x)+(x))
+//int main()
+//{
+//	int a = 5;
+//	printf("%d", DOUBLE(a + 1));
+//
+//	return 0;
+//}
+//#include <stdio.h>
+//// offsetof 宏
+//#define offsetof(type, member) ((size_t) &((type *)0)->member)
+//struct Example {
+//    int a;
+//    double b;
+//    char c;
+//};
+//int main() {
+//    // 计算并打印每个成员的偏移量
+//    printf("Offset of 'a' in 'struct Example': %zu\n", offsetof(struct Example, a));
+//    printf("Offset of 'b' in 'struct Example': %zu\n", offsetof(struct Example, b));
+//    printf("Offset of 'c' in 'struct Example': %zu\n", offsetof(struct Example, c));
+//
+//    return 0;
+//}
+//#include <stdio.h>
+//
+//#define SWAP_ODD_EVEN_BITS(x) (((x & 0xAAAAAAAA) >> 1) | ((x & 0x55555555) << 1))
+//
+//int main() 
+//{
+//    unsigned int x = 0b10101010101010101010101010101010; 
+//    unsigned int result = SWAP_ODD_EVEN_BITS(x);
+//
+//    printf("交换之前 %#X\n", x);
+//    printf("交换之后 %#X\n", result);
+//
+//    return 0;
+//int z = 2 * (4 + ((4 + 2) * 5 + 1));
+//int main()
+//{
+//	printf("%d", z);
+//	return 0;
+//}
+
+//DAY 15
+
+
+
+
