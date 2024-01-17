@@ -480,9 +480,77 @@
 //	printf("%d", z);
 //	return 0;
 //}
+//#include <stdio.h>
+//#include <stdlib.h>
+//
+//int main() {
+//    FILE* src, * dest;
+//    char ch;
+//
+//    // 打开源文件（读取模式）
+//    src = fopen("aaa.mp4", "rb");
+//    if (src == NULL) {
+//        printf("无法打开源文件 \n");
+//        exit(EXIT_FAILURE);
+//    }
+//
+//    // 打开目标文件（写入模式）
+//    dest = fopen("aaacopy.mp4", "wb");
+//    if (dest == NULL) {
+//        printf("无法创建目标文件 \n");
+//        fclose(src);
+//        exit(EXIT_FAILURE);
+//    }
+//
+//    // 从源文件读取字符并写入目标文件
+//    while ((ch = fgetc(src)) != EOF) {
+//        fputc(ch, dest);
+//    }
+//
+//    // 关闭文件
+//    fclose(src);
+//    fclose(dest);
+//
+//    printf("文件复制完成。\n");
+//
+//    return 0;
+//}
+//#include <stdio.h>
+//#include <stdlib.h>
+//
+//int main() {
+//    FILE* src, * dest;
+//    char buffer[1024];  // 使用缓冲区以提高效率
+//    size_t bytes;
+//
+//    // 以二进制模式打开源文件
+//    src = fopen("aaa.mp4", "rb");
+//    if (src == NULL) {
+//        printf("无法打开源文件 example.mp4\n");
+//        exit(EXIT_FAILURE);
+//    }
+//
+//    // 以二进制模式打开目标文件
+//    dest = fopen("aaacopy.mp4", "wb");
+//    if (dest == NULL) {
+//        printf("无法创建目标文件 examplecopy.mp4\n");
+//        fclose(src);
+//        exit(EXIT_FAILURE);
+//    }
+//    // 使用缓冲区读取和写入数据
+//    while ((bytes = fread(buffer, 1, sizeof(buffer), src)) > 0) {
+//        fwrite(buffer, 1, bytes, dest);
+//    }
+//
+//    // 关闭文件
+//    fclose(src);
+//    fclose(dest);
+//
+//    printf("文件复制完成。\n");
+//
+//    return 0;
+//}
 
 //DAY 15
-
-
 
 
