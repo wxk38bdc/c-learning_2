@@ -1,11 +1,11 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 
-#include<stdio.h>
-#include<stdlib.h>
-#include<assert.h>
-#include<string.h>
-#include<math.h>
-#include<ctype.h>
+//#include<stdio.h>
+//#include<stdlib.h>
+//#include<assert.h>
+//#include<string.h>
+//#include<math.h>
+//#include<ctype.h>
 //DAY 1
 // 
 //int isLeapYear(int year)
@@ -553,4 +553,35 @@
 
 //DAY 15
 
+//DAY 16
+//int main()
+//{
+//	unsigned char i = 7;
+//	int j = 0;
+//	for (; i > 0; i -= 3)
+//		j++;
+//	printf("%d", j);
+//	return 0;
+//}
+//int main() {
+//    long long x, y;
+//    long long n, k;
+//    long long count = 0;
+//    scanf("%lld %lld", &n, &k);
+//    if (k == 0)
+//    {
+//        printf("%lld", n * n);
+//        return 0;
+//    }
+//    else
+//    {
+//        for (x = k + 1; x <= n; x++)
+//        {
+//            count += (n / x) * (x - k) + (n % x >= k ? n % x - k + 1 : 0);
+//        }
+//    }
+//
+//    printf("%lld\n", count);
+//    return 0;
+//}
 
