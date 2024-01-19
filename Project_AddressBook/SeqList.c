@@ -1,6 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include"SeqList.h"
-
 //初始化
 void SLInit(SL* ps)
 {
@@ -14,7 +13,6 @@ void SLInit(SL* ps)
 	ps->size = 0;
 	ps->capacity = 3;
 }
-
 //销毁
 void SLDestory(SL* ps)
 {
@@ -23,7 +21,6 @@ void SLDestory(SL* ps)
 	ps->arr = NULL;
 	ps->size = ps->capacity = 0;
 }
-
 //检查容量
 void SLCheckCapacity(SL* ps)
 {
@@ -46,7 +43,7 @@ void SLPrint(SL* ps)
 	assert(ps);
 	for (int i = 0; i < ps->size; i++)
 	{
-		printf("%d ", ps->arr[i]);
+		//printf("%d ", ps->arr[i]);
 	}
 	printf("\n");
 }
@@ -98,19 +95,6 @@ void SLPopFront(SL* ps)
 	ps->size--;
 }
 
-//查找
-int SLFind(SL* ps, SLDataType x)
-{
-	assert(ps);
-	for (int i = 0; i < ps->size; i++)
-	{
-		if (ps->arr[i] == x)
-		{
-			return i;
-		}
-	}
-	return -1;//没找到，返回-1
-}
 //插入
 void SLInsert(SL* ps, int pos, SLDataType x)
 {
