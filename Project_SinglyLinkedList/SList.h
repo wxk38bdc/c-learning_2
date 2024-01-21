@@ -27,3 +27,10 @@ SLTNode* SLTFind(SLTNode* phead, SLTDataType x);
 void SLTInsertAfter(SLTNode* pos, SLTDataType x);
 //删除pos位置之后的节点
 void SLTEraseAfter(SLTNode* pos);
+//删除pos位置的节点
+void SLTErase(SLTNode** pphead, SLTNode* pos);
+//在pos位置之前插入x
+void SLTInsertBefore(SLTNode** pphead, SLTNode* pos, SLTDataType x);
+//销毁
+void SLTDestroy(SLTNode** pphead);
+

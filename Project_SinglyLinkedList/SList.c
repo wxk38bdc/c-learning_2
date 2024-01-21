@@ -146,3 +146,62 @@ void SLTEraseAfter(SLTNode* pos)
 		free(pcur);
 	}
 }
+//删除pos位置的节点
+void SLTErase(SLTNode** pphead, SLTNode* pos)
+{
+	assert(pphead);
+	assert(*pphead);
+	assert(pos);
+	if(pos==*pphead)
+	{
+		SLTPopFront(pphead);
+	}
+	else
+	{
+		SLTNode* pcur = *pphead;
+		while (pcur->next != pos)
+		{
+			pcur = pcur->next;
+		}
+		pcur->next = pos->next;
+		free(pos);
+	}
+}
+//在pos位置之前插入x
+void SLTInsertBefore(SLTNode** pphead, SLTNode* pos, SLTDataType x)
+{
+	assert(pphead);
+	assert(pos);
+	assert(*pphead);//链表不为空
+	SLTNode* pnewnode = BuyNewNode(x);
+	//pos为头节点
+	if (*pphead == pos)
+	{
+	/*	pnewnode->next = *pphead;
+		*pphead = pnewnode;*/
+		SLTPushFront(pphead, x);
+	}
+	//pos不为头结点
+	else
+	{
+		SLTNode* pcur = *pphead;
+		while (pcur->next != pos)
+		{
+			pcur = pcur->next;
+		}
+		pnewnode->next = pos;
+		pcur->next = pnewnode;
+	}
+}
+//销毁
+void SLTDestroy(SLTNode** pphead)
+{
+	assert(pphead);
+	SLTNode* pcur = *pphead;
+	while (pcur)
+	{
+		*pphead = pcur->next;
+		free(pcur);
+		pcur = *pphead;
+	}
+}

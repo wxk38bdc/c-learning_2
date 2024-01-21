@@ -12,7 +12,7 @@ void SListTest01()
 	SLTPrint(node1);
 	SLTPushFront(&node1, 0);
 	SLTPrint(node1);
-	SLTNode* ToFind = SLTFind(node1, 1);
+	SLTNode* ToFind = SLTFind(node1, 0);
 	if(ToFind)
 	{
 		printf("Find it!\n");
@@ -23,7 +23,9 @@ void SListTest01()
 	}
 	SLTInsertAfter(ToFind, 500);
 	SLTPrint(node1);
-	SLTEraseAfter(ToFind);
+	SLTInsertBefore(&node1, ToFind, 100);
+	SLTPrint(node1);
+	SLTErase(&node1, ToFind);
 	SLTPrint(node1);
 }
 int main()
