@@ -3,7 +3,7 @@
 #include<stdlib.h>
 #include<assert.h>
 #include<string.h>
-
+//顺序表的数据类型
 typedef int SLDataType;
 //动态顺序表
 typedef struct SeqList

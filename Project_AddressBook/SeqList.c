@@ -37,16 +37,16 @@ void SLCheckCapacity(SL* ps)
 		ps->capacity *= 2;
 	}
 }
-//¥Ú”°
-void SLPrint(SL* ps)
-{
-	assert(ps);
-	for (int i = 0; i < ps->size; i++)
-	{
-		//printf("%d ", ps->arr[i]);
-	}
-	printf("\n");
-}
+////¥Ú”°
+//void SLPrint(SL* ps)
+//{
+//	assert(ps);
+//	for (int i = 0; i < ps->size; i++)
+//	{
+//		printf("%d ", ps->arr[i]);
+//	}
+//	printf("\n");
+//}
 //Œ≤≤Â
 void SLPushBack(SL* ps, SLDataType x)
 {
