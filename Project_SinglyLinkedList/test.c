@@ -28,8 +28,28 @@ void SListTest01()
 	SLTErase(&node1, ToFind);
 	SLTPrint(node1);
 }
+void SListTest02()
+{
+	SLTNode* node1 = BuyNewNode(1);
+	SLTPushBack(&node1, 2);
+	SLTPushBack(&node1, 3);
+	SLTPushBack(&node1, 4);
+	SLTPushBack(&node1, 5);
+	SLTPrint(node1);
+	SLTPopBack(&node1);
+	SLTPrint(node1);
+	SLTPopFront(&node1);
+	SLTPrint(node1);
+	SLTNode* ToFind = SLTFind(node1, 3);
+	SLTEraseAfter(ToFind);
+	SLTPrint(node1);
+	SLTDestroy(&node1);
+	SLTPrint(node1);
+
+}
 int main()
 {
-	SListTest01();
+	//SListTest01();
+	SListTest02();
 	return 0;
 }
