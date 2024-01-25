@@ -482,3 +482,43 @@ void MergesortFile(const char* file)
 	//利用互相归并到文件，最终得到一个有序文件
 	fclose(fout);
 }
+
+//计数排序
+void CountSort(int* a, int n)
+{
+	assert(a);
+	int min = a[0];
+	int max = a[0];
+	int i = 0;
+	for (i = 0; i < n; i++)
+	{
+		if (a[i] < min)
+		{
+			min = a[i];
+		}
+		if (a[i] > max)
+		{
+			max = a[i];
+		}
+	}
+	int range = max - min + 1;//范围
+	int* count = (int*)calloc(range,sizeof(int));
+	if (count == NULL)
+	{
+		printf("calloc fail\n");
+		exit(-1);
+	}
+	for (i = 0; i < n; i++)
+	{
+		count[a[i] - min]++;
+	}
+	int index = 0;
+	for (i = 0; i < range; i++)
+	{
+		while (count[i]--)
+		{
+			a[index++] = i + min;
+		}
+	}
+	free(count);
+}
