@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include <stdio.h>
 #include <stdlib.h>
 #include <windows.h>
@@ -6,14 +6,19 @@
 #include <stdbool.h>
 #include <wchar.h>
 
-#define KEY_PRESS(vk) ((GetAsyncKeyState(vk)&0x1)?1:0) //°´¼ü°´ÏÂ
-#define WALL L'©I' 
+#define KEY_PRESS(vk) ((GetAsyncKeyState(vk)&0x1)?1:0) //æŒ‰é”®æŒ‰ä¸‹
+#define WALL L'â– ' 
+#define BODY L'â—'
+#define FOOD L'é£Ÿ'
+//é»˜è®¤èµ·å§‹åæ ‡
+#define POS_X 24
+#define POS_Y 5
 enum GAME_STATUS
 {
-	OK,
-	ESC,
-	KILL_BY_WALL,
-	KILL_BY_SELF
+	OK=1,//æ­£å¸¸è¿è¡Œ
+	ESC,//æŒ‰ESCé€€å‡º
+	KILL_BY_WALL,//æ’å¢™
+	KILL_BY_SELF//æ’è‡ªèº«
 };
 enum DIRECTION
 {
@@ -22,25 +27,38 @@ enum DIRECTION
 	LEFT,
 	RIGHT
 };
-//¶¨ÒåÉßÉí½Úµã
+//å®šä¹‰è›‡èº«èŠ‚ç‚¹
 typedef struct SnakeNode
 {
 	int x;
 	int y;
 	struct SnakeNode* next;
 }SnakeNode, * pSnakeNode;
-//¶¨ÒåÉß
+//å®šä¹‰è›‡
 typedef struct Snake
 {
-	pSnakeNode pSnake;//Î¬»¤ÕûÌõÉßµÄÖ¸Õë
-	pSnakeNode pFood;//Î¬»¤Ê³ÎïµÄÖ¸Õë
-	int Score;//·ÖÊı
-	int FoodWeight;//Ò»¸öÊ³ÎïµÄ·ÖÊı
-	int SleepTime;//ÉßĞİÃßµÄÊ±¼ä
-	enum GAME_STATUS Status;//ÓÎÏ·×´Ì¬
-	enum DIRECTION Dir;//ÉßµÄ·½Ïò
+	pSnakeNode pSnake;//ç»´æŠ¤æ•´æ¡è›‡çš„æŒ‡é’ˆ
+	pSnakeNode pFood;//ç»´æŠ¤é£Ÿç‰©çš„æŒ‡é’ˆ
+	int Score;//åˆ†æ•°
+	long long FoodWeight;//ä¸€ä¸ªé£Ÿç‰©çš„åˆ†æ•°
+	int SleepTime;//è›‡ä¼‘çœ çš„æ—¶é—´
+	enum GAME_STATUS Status;//æ¸¸æˆçŠ¶æ€
+	enum DIRECTION Dir;//è›‡çš„æ–¹å‘
 }Snake, * pSnake;
-void SetPos(int x, int y); //ÉèÖÃ¹â±êÎ»ÖÃ
-void GameStart(pSnake ps); //ÓÎÏ·¿ªÊ¼
-void WelcomeToGame(); //»¶Ó­½çÃæ
-void CreateMap(); //´´½¨µØÍ¼
+void SetPos(int x, int y); //è®¾ç½®å…‰æ ‡ä½ç½®
+
+void WelcomeToGame(); //æ¬¢è¿ç•Œé¢
+void CreateMap(); //åˆ›å»ºåœ°å›¾
+void InitSnake(pSnake ps);//åˆå§‹åŒ–è›‡
+void CreateFood(pSnake ps);//åˆ›å»ºé£Ÿç‰©
+void PrintHelpInfo();//æ‰“å°å¸®åŠ©ä¿¡æ¯
+void Pause();//æš‚åœ
+void SnakeMove(pSnake ps);//è›‡èº«è¿åŠ¨
+bool NextIsFood(pSnake ps, pSnakeNode pNext);//åˆ¤æ–­ä¸‹ä¸€ä¸ªä½ç½®æ˜¯å¦ä¸ºé£Ÿç‰©
+void EatFood(pSnake ps, pSnakeNode pNext);
+void NotEatFood(pSnake ps, pSnakeNode pNext);
+bool KillByWall(pSnake ps);//æ’å¢™
+bool KillBySelf(pSnake ps);//æ’è‡ªå·±
+void GameStart(pSnake ps); //æ¸¸æˆå¼€å§‹
+void GameRun(pSnake ps);//æ¸¸æˆè¿è¡Œ
+void GameEnd(pSnake ps);//æ¸¸æˆç»“æŸ

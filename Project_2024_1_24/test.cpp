@@ -207,57 +207,259 @@ using namespace std;
 //    return 0;
 //}
 
-class Date {
-public:
+//class Date {
+//public:
+//	int _year;
+//	int _month;
+//	int _day;
+//
+//	Date() {
+//		_year = 1900;
+//		_month = 1;
+//		_day = 1;
+//	}
+//	Date(int year, int month, int day) {
+//		_year = year;
+//		_month = month;
+//		_day = day;
+//	}
+//	void Display() {
+//		cout << _year << "-" << _month << "-" << _day << endl;
+//	}
+//};
+//bool operator==(const Date& d1, const Date& d2)//重载==
+//{
+//	return d1._year == d2._year && d1._month == d2._month && d1._day == d2._day;
+//}
+//bool operator>(const Date& d1, const Date& d2)//重载>
+//{
+//	if (d1._year > d2._year)
+//	{
+//		return true;
+//	}
+//	else if (d1._year == d2._year)
+//	{
+//		if (d1._month > d2._month)
+//		{
+//			return true;
+//		}
+//		else if (d1._month == d2._month)
+//		{
+//			if (d1._day > d2._day)
+//			{
+//				return true;
+//			}
+//		}
+//	}
+//	return false;
+//}
+//bool operator >=(const Date& d1, const Date& d2)//重载>=
+//{
+//	return d1 > d2 || d1 == d2;
+//}
+//void Judge(const Date& d1, const Date& d2)
+//{
+//	if (d1 == d2)
+//	{
+//		cout << "d1 = d2" << endl;
+//	}
+//	else if (d1 > d2)
+//	{
+//		cout << "d1 > d2" << endl;
+//	}
+//	else
+//	{
+//		cout << "d1 < d2" << endl;
+//	}
+//}
+//int main()
+//{
+//	Date d1(2020, 1, 1);
+//	Date d2(2020, 1, 2);
+//	Judge(d1, d2);
+//	return 0;
+//}
+
+//实现一个完整的日期类
+class Date
+{
+private:
 	int _year;
 	int _month;
 	int _day;
-
-	Date() {
-		_year = 1900;
-		_month = 1;
-		_day = 1;
-	}
-	Date(int year, int month, int day) {
-		_year = year;
-		_month = month;
-		_day = day;
-	}
-	void Display() {
-		cout << _year << "-" << _month << "-" << _day << endl;
-	}
-};
-bool operator==(const Date& d1, const Date& d2)//重载==
-{
-	return d1._year == d2._year && d1._month == d2._month && d1._day == d2._day;
-}
-bool operator>(const Date& d1, const Date& d2)//重载>
-{
-	if (d1._year > d2._year)
+public:
+	int GetMonthDay(int year, int month)
 	{
-		return true;
+		static int monthArray[13] = { 0,31,28,31,30,31,30,31,31,30,31,30,31 };
+		int day = monthArray[month];
+		if (month == 2 && ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0))
+		{
+			day++;
+		}
+		return day;
 	}
-	else if (d1._year == d2._year)
+	Date(int year = 1900, int month = 1, int day = 1)
 	{
-		if (d1._month > d2._month)
+		if (year > 0 && month > 0 && month < 13 && day>0 && day <= GetMonthDay(year, month))
+		{
+			_year = year;
+			_month = month;
+			_day = day;
+		}
+		else
+		{
+			cout << "非法日期：" << year << "-" << month << "-" << day << endl;
+			_year = -1;
+			_month = -1;
+			_day = -1;
+		}
+	}
+	Date(const Date& d)//拷贝构造函数
+	{
+		_year = d._year;
+		_month = d._month;
+		_day = d._day;
+	}
+	void Display()
+	{
+		if(_year!=-1)
+			cout << _year << "-" << _month << "-" << _day << endl;
+		else
+			cout << "非法日期,无法正常展示" << endl;
+	}
+	bool operator ==(const Date& d)
+	{
+		return _year == d._year && _month == d._month && _day == d._day;
+	}
+	bool operator <(const Date& d)
+	{
+		if (_year < d._year)
 		{
 			return true;
 		}
-		else if (d1._month == d2._month)
+		else if (_year == d._year)
 		{
-			if (d1._day > d2._day)
+			if (_month < d._month)
 			{
 				return true;
 			}
+			else if (_month == d._month)
+			{
+				if (_day < d._day)
+				{
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	bool operator >(const Date& d)
+	{
+		return !(*this < d) && !(*this == d);
+	}
+	bool operator !=(const Date& d)
+	{
+		return !(*this == d);
+	}
+	bool operator <=(const Date& d)
+	{
+		return *this < d || *this == d;
+	}
+	bool operator >=(const Date& d)
+	{
+		return *this > d || *this == d;
+	}
+	Date& operator =(const Date& d)
+	{
+		if (*this != d)
+		{
+			_year = d._year;
+			_month = d._month;
+			_day = d._day;
+		}
+		return *this;
+	}
+	void Judge(Date& d)
+	{
+		if (*this == d)
+		{
+			cout << "d1 = d2" << endl;
+		}
+		else if (*this > d)
+		{
+			cout << "d1 > d2" << endl;
+		}
+		else
+		{
+			cout << "d1 < d2" << endl;
 		}
 	}
-	return false;
-}
-bool operator >=(const Date& d1, const Date& d2)//重载>=
-{
-	return d1 > d2 || d1 == d2;
-}
-void Judge(const Date& d1, const Date& d2)
+	Date operator+(int day)
+	{
+		Date tmp(*this);
+		tmp._day += day;
+		while (tmp._day > GetMonthDay(tmp._year, tmp._month))
+		{
+			tmp._day -= GetMonthDay(tmp._year, tmp._month);
+			tmp._month++;
+			if (tmp._month > 12)
+			{
+				tmp._month = 1;
+				tmp._year++;
+			}
+		}
+		return tmp;
+	}
+	Date operator+=(int day)
+	{
+		*this = *this + day;
+		return *this;
+	}
+	Date operator++(int)//后置++
+	{
+		Date tmp(*this);
+		*this += 1;
+		return tmp;
+	}
+	Date& operator++()//前置++
+	{
+		*this += 1;
+		return *this;
+	}
+	Date operator-(int day)
+	{
+		Date tmp(*this);
+		tmp._day -= day;
+		while (tmp._day <= 0)
+		{
+			tmp._month--;
+			if (tmp._month <= 0)
+			{
+				tmp._month = 12;
+				tmp._year--;
+			}
+			tmp._day += GetMonthDay(tmp._year, tmp._month);
+		}
+		return tmp;
+	}
+	Date operator-=(int day)
+	{
+		*this = *this - day;
+		return *this;
+	}
+	Date operator--(int)//后置--
+	{
+		Date tmp(*this);
+		*this -= 1;
+		return tmp;
+	}
+	Date& operator--()//前置--
+	{
+		*this -= 1;
+		return *this;
+	}
+};
+void Judge(Date& d1, Date& d2)
 {
 	if (d1 == d2)
 	{
@@ -271,11 +473,16 @@ void Judge(const Date& d1, const Date& d2)
 	{
 		cout << "d1 < d2" << endl;
 	}
-}
+}	
 int main()
 {
-	Date d1(2020, 1, 1);
-	Date d2(2020, 1, 2);
+	Date d1(2020, 12, 1);
+	d1.Display();
+	Date d2;
+	d2.Display(); 
+	d1.Judge(d2);
 	Judge(d1, d2);
+	d2 += 100000;
+	d2.Display();
 	return 0;
 }
