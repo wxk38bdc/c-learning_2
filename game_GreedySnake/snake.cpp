@@ -13,6 +13,8 @@ void SetPos(int x, int y)
 //欢迎界面
 void WelcomeToGame()
 {
+	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN);
 	//打印欢迎界面
 	SetPos(35, 10);
 	printf("欢迎来到贪吃蛇游戏");
@@ -20,6 +22,7 @@ void WelcomeToGame()
 	system("pause");
 	system("cls");
 	//功能介绍信息
+	system("color e8");
 	SetPos(15, 10);
 	printf("游戏规则：用 ↑.↓.←.→ 分别控制蛇的移动,Ctrl为加速,Alt为减速\n");
 	SetPos(15, 11);
@@ -27,6 +30,7 @@ void WelcomeToGame()
 	SetPos(15, 13);
 	system("pause");
 	system("cls");
+	system("color 6D");
 }
 //创建地图
 void CreateMap()
@@ -34,7 +38,7 @@ void CreateMap()
 	//打印上边界
 	SetPos(0, 0);
 	int i = 0;
-	for (i = 0; i < 58; i+=2)
+	for (i = 0; i < 58; i += 2)
 	{
 		wprintf(L"%lc", WALL);
 	}
@@ -63,7 +67,9 @@ void InitSnake(pSnake ps)
 	//创建5个蛇身节点
 	pSnakeNode cur = NULL;
 	SetPos(62, 5);
-	printf("选择1.简单 2.普通 3.困难 4.噩梦:");
+	printf("模式选择");
+	SetPos(62, 6);
+	printf("1.简单 2.普通 3.困难 4.噩梦:");
 	int ch = 0;
 	scanf("%d", &ch);
 	switch (ch)
@@ -186,16 +192,22 @@ void GameStart(pSnake ps)
 //打印帮助信息
 void PrintHelpInfo()
 {
+	SetPos(62, 14);
+	printf("注意事项：");
 	SetPos(62, 15);
 	printf("1.不能撞墙，不能碰到自己");
 	SetPos(62, 16);
 	printf("2.用 ↑.↓.←.→ 分别控制蛇移动");
 	SetPos(62, 17);
 	printf("3.Ctrl为加速, Alt为减速");
+	SetPos(62, 18);
+	printf("4.按空格键暂停");
 	SetPos(62, 19);
-	printf("Made by 2227814847@qq.com");
-	SetPos(62, 20);
-	printf("@版权所有 侵权必究");
+	printf("5.按ESC键退出游戏");
+	SetPos(62, 21);
+	printf("游戏制作 @wxk2227814847");
+	SetPos(62, 22);
+	printf("版权所有 侵权必究");
 
 }
 //游戏运行
@@ -362,7 +374,7 @@ void GameRun(pSnake ps)
 		{
 			Pause();//暂停，恢复
 		}
-		else if (KEY_PRESS(VK_LCONTROL)|| KEY_PRESS(VK_RCONTROL))
+		else if (KEY_PRESS(VK_LCONTROL) || KEY_PRESS(VK_RCONTROL))
 		{
 			if (ps->SleepTime >= 80)
 			{
@@ -370,7 +382,7 @@ void GameRun(pSnake ps)
 				ps->FoodWeight += 10;
 			}
 		}
-		else if (KEY_PRESS(VK_LMENU)|| KEY_PRESS(VK_RMENU))
+		else if (KEY_PRESS(VK_LMENU) || KEY_PRESS(VK_RMENU))
 		{
 			if (ps->FoodWeight >= 50)
 			{
@@ -402,7 +414,7 @@ void GameEnd(pSnake ps)
 		break;
 	}
 	SetPos(30, 13);
-	printf("你的得分是:%d\n", ps->Score);
+	printf("你的得分是:%d\n", ps->Score - 1);
 	//释放贪吃蛇的链表资源
 	pSnakeNode cur = ps->pSnake;
 	while (cur)

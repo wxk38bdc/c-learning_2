@@ -300,6 +300,16 @@ public:
 	}
 	Date(int year = 1900, int month = 1, int day = 1)
 	{
+		Init(year, month, day);
+	}
+	Date(const Date& d)//拷贝构造函数
+	{
+		_year = d._year;
+		_month = d._month;
+		_day = d._day;
+	}
+	void Init(int year = 1900, int month = 1, int day = 1)
+	{
 		if (year > 0 && month > 0 && month < 13 && day>0 && day <= GetMonthDay(year, month))
 		{
 			_year = year;
@@ -313,12 +323,6 @@ public:
 			_month = -1;
 			_day = -1;
 		}
-	}
-	Date(const Date& d)//拷贝构造函数
-	{
-		_year = d._year;
-		_month = d._month;
-		_day = d._day;
 	}
 	void Display()
 	{
@@ -480,9 +484,8 @@ int main()
 	d1.Display();
 	Date d2;
 	d2.Display(); 
-	d1.Judge(d2);
-	Judge(d1, d2);
-	d2 += 100000;
+	d2.Init(3004, 2, 29);
 	d2.Display();
+	Judge(d1, d2);
 	return 0;
 }

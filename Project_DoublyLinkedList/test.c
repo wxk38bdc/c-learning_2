@@ -2,6 +2,7 @@
 #include"List.h"
 void test01()
 {
+	printf("test01()\n");
 	LTNode* plist = NULL;
 	LTInit(&plist);
 	LTPushBack(plist, 1);
@@ -14,6 +15,7 @@ void test01()
 }
 void test02()
 {
+	printf("test02()\n");
 	LTNode* plist = LTInit2();
 	LTPushFront(plist, 1);
 	LTPushFront(plist, 2);
@@ -40,7 +42,7 @@ void test02()
 }
 int main()
 {
-	//test01();
+	test01();
 	test02();
 	return 0;
 }

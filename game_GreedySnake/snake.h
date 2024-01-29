@@ -9,7 +9,7 @@
 #define KEY_PRESS(vk) ((GetAsyncKeyState(vk)&0x1)?1:0) //按键按下
 #define WALL L'■' 
 #define BODY L'◎'
-#define FOOD L'食'
+#define FOOD L'★'
 //默认起始坐标
 #define POS_X 24
 #define POS_Y 5
@@ -55,8 +55,8 @@ void PrintHelpInfo();//打印帮助信息
 void Pause();//暂停
 void SnakeMove(pSnake ps);//蛇身运动
 bool NextIsFood(pSnake ps, pSnakeNode pNext);//判断下一个位置是否为食物
-void EatFood(pSnake ps, pSnakeNode pNext);
-void NotEatFood(pSnake ps, pSnakeNode pNext);
+void EatFood(pSnake ps, pSnakeNode pNext);//吃到食物
+void NotEatFood(pSnake ps, pSnakeNode pNext);//没吃到食物
 bool KillByWall(pSnake ps);//撞墙
 bool KillBySelf(pSnake ps);//撞自己
 void GameStart(pSnake ps); //游戏开始

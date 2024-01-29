@@ -4,6 +4,7 @@
 
 void SListTest01()
 {
+	printf("SListTest01()\n");
 	SLTNode* node1 = BuyNewNode(1);
 	SLTPushBack(&node1, 2);
 	SLTPushBack(&node1, 3);
@@ -30,6 +31,7 @@ void SListTest01()
 }
 void SListTest02()
 {
+	printf("SListTest02()\n");
 	SLTNode* node1 = BuyNewNode(1);
 	SLTPushBack(&node1, 2);
 	SLTPushBack(&node1, 3);
@@ -49,7 +51,7 @@ void SListTest02()
 }
 int main()
 {
-	//SListTest01();
+	SListTest01();
 	SListTest02();
 	return 0;
 }
