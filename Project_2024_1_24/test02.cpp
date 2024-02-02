@@ -31,37 +31,62 @@ using namespace std;
 //	return 0;
 //}
 
-void MergeSort(int* arr, int left, int right, int* temp)
+//void MergeSort(int* arr, int left, int right, int* temp)
+//{
+//	if (left >= right)
+//		return;
+//	int mid = (left + right) / 2;
+//	MergeSort(arr, left, mid, temp);
+//	MergeSort(arr, mid + 1, right, temp);
+//	int begin1 = left, end1 = mid;
+//	int begin2 = mid + 1, end2 = right;
+//	int index = left;
+//	while (begin1 <= end1 && begin2 <= end2)
+//	{
+//		if (arr[begin1] < arr[begin2])
+//		{
+//			temp[index++] = arr[begin1++];
+//		}
+//		else
+//		{
+//			temp[index++] = arr[begin2++];
+//		}
+//	}
+//	while (begin1 <= end1)
+//	{
+//		temp[index++] = arr[begin1++];
+//	}
+//	while (begin2 <= end2)
+//	{
+//		temp[index++] = arr[begin2++];
+//	}
+//	for (int i = left; i <= right; i++)
+//	{
+//		arr[i] = temp[i];
+//	}
+//}
+
+void QuickSort(int* arr, int left, int right)
 {
 	if (left >= right)
 		return;
-	int mid = (left + right) / 2;
-	MergeSort(arr, left, mid, temp);
-	MergeSort(arr, mid + 1, right, temp);
-	int begin1 = left, end1 = mid;
-	int begin2 = mid + 1, end2 = right;
-	int index = left;
-	while (begin1 <= end1 && begin2 <= end2)
+	int begin = left;
+	int end = right;
+	int key = arr[left];
+	while (begin < end)
 	{
-		if (arr[begin1] < arr[begin2])
+		while (begin < end && arr[end] >= key)
 		{
-			temp[index++] = arr[begin1++];
+			end--;
 		}
-		else
+		arr[begin] = arr[end];
+		while (begin < end && arr[begin] <= key)
 		{
-			temp[index++] = arr[begin2++];
+			begin++;
 		}
+		arr[end] = arr[begin];
 	}
-	while (begin1 <= end1)
-	{
-		temp[index++] = arr[begin1++];
-	}
-	while (begin2 <= end2)
-	{
-		temp[index++] = arr[begin2++];
-	}
-	for (int i = left; i <= right; i++)
-	{
-		arr[i] = temp[i];
-	}
+	arr[begin] = key;
+	QuickSort(arr, left, begin - 1);
+	QuickSort(arr, begin + 1, right);
 }
