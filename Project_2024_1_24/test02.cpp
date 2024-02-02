@@ -3,9 +3,8 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cmath>
-#include<chrono>
-#include <ctime>
-#include <Windows.h>
+#include <chrono>
+#include <iomanip>
 using namespace std;
 
 //class Date
@@ -66,27 +65,79 @@ using namespace std;
 //	}
 //}
 
-void QuickSort(int* arr, int left, int right)
+//void QuickSort(int* arr, int left, int right)
+//{
+//	if (left >= right)
+//		return;
+//	int begin = left;
+//	int end = right;
+//	int key = arr[left];
+//	while (begin < end)
+//	{
+//		while (begin < end && arr[end] >= key)
+//		{
+//			end--;
+//		}
+//		arr[begin] = arr[end];
+//		while (begin < end && arr[begin] <= key)
+//		{
+//			begin++;
+//		}
+//		arr[end] = arr[begin];
+//	}
+//	arr[begin] = key;
+//	QuickSort(arr, left, begin - 1);
+//	QuickSort(arr, begin + 1, right);
+//}
+
+//#include <stdio.h>
+//#include <stdlib.h>
+//
+//int main(int argc, char* argv[])
+//{
+//    int n, q, l, r, i, j;
+//    scanf("%d %d", &n, &q);
+//    int *arr= (int *)malloc(n * sizeof(int));
+//    for (int i = 0; i < n; i++)
+//    {
+//        scanf("%d", &arr[i]);
+//    }
+//    while (q--)
+//    {
+//        scanf("%d %d", &l, &r);
+//        l--;
+//        r--;
+//        int flag = 0;
+//        for (i = l; i <= r; i++)
+//        {
+//            for (j = l + 1; j <= r; j++)
+//            {
+//                if (abs(arr[i] - arr[j]) <= 365)
+//                {
+//                    flag = 1;
+//                }
+//            }
+//        }
+//        if (flag)
+//            printf("YES\n");
+//        else
+//            printf("NO\n");
+//    }
+//    return 0;
+//}
+
+//int main()
+//{
+//	double a, b;
+//	cin >> a >> b;
+//	cout << fixed << setprecision(3) << a << " " << b << endl;
+//	return 0;
+//}
+
+int main()
 {
-	if (left >= right)
-		return;
-	int begin = left;
-	int end = right;
-	int key = arr[left];
-	while (begin < end)
-	{
-		while (begin < end && arr[end] >= key)
-		{
-			end--;
-		}
-		arr[begin] = arr[end];
-		while (begin < end && arr[begin] <= key)
-		{
-			begin++;
-		}
-		arr[end] = arr[begin];
-	}
-	arr[begin] = key;
-	QuickSort(arr, left, begin - 1);
-	QuickSort(arr, begin + 1, right);
+	string s;
+	cin.getline(s);
+	cout << s << endl;
+	return 0;
 }
