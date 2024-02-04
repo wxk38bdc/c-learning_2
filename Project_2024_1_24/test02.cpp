@@ -134,10 +134,27 @@ using namespace std;
 //	return 0;
 //}
 
-int main()
-{
-	string s;
-	cin.getline(s);
-	cout << s << endl;
-	return 0;
-}
+//int main()
+//{
+//	//声明并初始化一个空字符串
+//	string str1;
+//	//使用字符串字面值初始化一个字符串
+//	string str2= "hello,world!";
+//	//使用另一个字符串初始化一个字符串
+//	string str3(str2);//string str3 = str2;
+//	//使用部分字符串初始化一个字符串
+//	string str4(str2, 0, 5);
+//	//使用n个字符初始化一个字符串
+//	string str5(10, 'a');
+//	//使用字符数组初始化一个字符串
+//	char ch[] = "hello,wor";
+//	string str6(ch);
+//	//输出字符串
+//	cout << str1 << endl;//空字符串
+//	cout << str2 << endl;//hello,world!
+//	cout << str3 << endl;//hello,world!
+//	cout << str4 << endl;//hello
+//	cout << str5 << endl;//aaaaaaaaaa
+//	cout << str6 << endl;//hello,wor
+//	return 0;
+//}

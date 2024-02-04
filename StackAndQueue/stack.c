@@ -18,26 +18,25 @@ void stackDestroy(stack* pst)
 	pst->_top = pst->_capacity = 0;
 }
 //ÈëÕ»
-void stackPush(stack* pst,STDataType x)
+void stackPush(stack* pst, STDataType x) 
 {
 	assert(pst);
-	if(pst->_top == pst->_capacity)
+	if (pst->_top == pst->_capacity) 
 	{
+		// À©ÈÝ
 		pst->_capacity *= 2;
-		STDataType* tmp = (STDataType*)malloc(sizeof(STDataType) * pst->_capacity);
-		if(tmp==NULL)
+		STDataType* tmp = (STDataType*)realloc(pst->_a, sizeof(STDataType) * pst->_capacity);
+		if (tmp == NULL) 
 		{
-			printf("malloc fail\n");
+			printf("realloc fail\n");
 			exit(-1);
 		}
-		else
-		{
-			pst->_a = tmp;
-		}
+		pst->_a = tmp;
 	}
 	pst->_a[pst->_top] = x;
 	pst->_top++;
 }
+
 //³öÕ»
 void stackPop(stack* pst)
 {
