@@ -171,19 +171,19 @@ using namespace std;
 //{
 //	cout << "name:" << name << " age:" << age << endl;
 //}
-class Date {
-private:
-	int _year;
-	int _month;
-	int _day;
-public:
-	void Display() const
-	{
-		cout << _year << "-" << _month << "-" << _day << endl;
-	}
-};
-int main()
-{
-
-	return 0;
-}
+//class Date {
+//private:
+//	int _year;
+//	int _month;
+//	int _day;
+//public:
+//	void Display() const
+//	{
+//		cout << _year << "-" << _month << "-" << _day << endl;
+//	}
+//};
+//int main()
+//{
+//
+//	return 0;
+//}
