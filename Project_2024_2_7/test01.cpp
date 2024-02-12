@@ -213,3 +213,41 @@ using namespace std;
 //	A a1;
 //	return 0;
 //}
+
+////ÊµÏÖÓÑÔª£º
+//class Date
+//{
+//private:
+//	int _year = 1900;
+//	int _month = 1;
+//	int _day = 1;
+//public:
+//	Date(int year = 1900, int month = 1, int day = 1)
+//		:_year(year)
+//		, _month(month)
+//		, _day(day)
+//	{}
+//	void Display() const
+//	{
+//		cout << _year << "-" << _month << "-" << _day << endl;
+//	}
+//	friend ostream& operator<<(ostream& cout, const Date& d);
+//	friend istream& operator>>(istream& cin, Date& d);
+//};
+//ostream& operator<<(ostream& out, const Date& d)
+//{
+//	cout << d._year << "-" << d._month << "-" << d._day << endl;
+//	return out;
+//}
+//istream& operator>>(istream& in,Date& d)
+//{
+//	cin >> d._year >> d._month >> d._day;
+//	return in;
+//}
+//int main()
+//{
+//	Date d1;
+//	cin >> d1;
+//	cout << d1;
+//	return 0;
+//}
