@@ -373,3 +373,14 @@ using namespace std;
 //
 //    return 0;
 //}
+
+//ÀàÄ£°å
+template<class T1>
+class A
+{
+public:
+	//...
+private:
+	//...
+	//T1 num;
+};
