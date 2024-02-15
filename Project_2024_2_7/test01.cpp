@@ -252,124 +252,124 @@ using namespace std;
 //	return 0;
 //}
 
-#include <iostream>
-#include <cmath>
-
-class Date {
-private:
-    int year, month, day;
-
-    // 用于计算某月天数的辅助函数
-    int daysInMonth(int month, int year) const {
-        switch (month) {
-        case 4: case 6: case 9: case 11:
-            return 30;
-        case 2:
-            return (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) ? 29 : 28;
-        default:
-            return 31;
-        }
-    }
-
-public:
-    // 构造函数
-    Date(int y, int m, int d) : year(y), month(m), day(d) {}
-
-    // 重载比较运算符>
-    bool operator>(const Date& other) const {
-        if (year != other.year) return year > other.year;
-        if (month != other.month) return month > other.month;
-        return day > other.day;
-    }
-
-    // 重载赋值运算符=
-    Date& operator=(const Date& other) {
-        if (this != &other) {
-            year = other.year;
-            month = other.month;
-            day = other.day;
-        }
-        return *this;
-    }
-
-    bool operator<(const Date& other) const {
-		if (year != other.year) return year < other.year;
-		if (month != other.month) return month < other.month;
-		return day < other.day;
-	}
-    // 重载减法运算符-，计算两个日期之间相差的天数
-    int operator-(const Date& other) const {
-        // 简化的实现，不考虑闰年的详细规则
-        int days = 0;
-        Date tmp = *this;
-
-        while (tmp > other) {
-            --tmp.day;
-            ++days;
-            if (tmp.day == 0) {
-                if (tmp.month == 1) {
-                    tmp.year--;
-                    tmp.month = 12;
-                    tmp.day = 31;
-                }
-                else {
-                    tmp.month--;
-                    tmp.day = daysInMonth(tmp.month, tmp.year);
-                }
-            }
-        }
-        while (tmp < other)
-        {
-			++tmp.day;
-			--days;
-            if (tmp.day > daysInMonth(tmp.month, tmp.year)) {
-				tmp.day = 1;
-                if (tmp.month == 12) {
-					tmp.year++;
-					tmp.month = 1;
-				}
-                else {
-					tmp.month++;
-				}
-			}
-		}
-        return days;
-    }
-
-    // 辅助函数，用于调整日期
-    void decrement() {
-        if (day == 1) {
-            if (month == 1) {
-                year--;
-                month = 12;
-                day = 31;
-            }
-            else {
-                month--;
-                day = daysInMonth(month, year);
-            }
-        }
-        else {
-            day--;
-        }
-    }
-
-    // 打印日期，用于测试
-    void print() const {
-        std::cout << year << "-" << month << "-" << day << std::endl;
-    }
-};
-
-int main() {
-    Date date1(2022, 4, 12);
-    Date date2(2022, 4, 22);
-
-    std::cout << "Date 1 is ";
-    date1.print();
-    std::cout << "Date 2 is ";
-    date2.print();
-
-    cout << "Days between Date 1 and Date 2: " << abs(date1 - date2)+1 << endl;
-
-    return 0;
-}
+//#include <iostream>
+//#include <cmath>
+//
+//class Date {
+//private:
+//    int year, month, day;
+//
+//    // 用于计算某月天数的辅助函数
+//    int daysInMonth(int month, int year) const {
+//        switch (month) {
+//        case 4: case 6: case 9: case 11:
+//            return 30;
+//        case 2:
+//            return (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) ? 29 : 28;
+//        default:
+//            return 31;
+//        }
+//    }
+//
+//public:
+//    // 构造函数
+//    Date(int y, int m, int d) : year(y), month(m), day(d) {}
+//
+//    // 重载比较运算符>
+//    bool operator>(const Date& other) const {
+//        if (year != other.year) return year > other.year;
+//        if (month != other.month) return month > other.month;
+//        return day > other.day;
+//    }
+//
+//    // 重载赋值运算符=
+//    Date& operator=(const Date& other) {
+//        if (this != &other) {
+//            year = other.year;
+//            month = other.month;
+//            day = other.day;
+//        }
+//        return *this;
+//    }
+//
+//    bool operator<(const Date& other) const {
+//		if (year != other.year) return year < other.year;
+//		if (month != other.month) return month < other.month;
+//		return day < other.day;
+//	}
+//    // 重载减法运算符-，计算两个日期之间相差的天数
+//    int operator-(const Date& other) const {
+//        // 简化的实现，不考虑闰年的详细规则
+//        int days = 0;
+//        Date tmp = *this;
+//
+//        while (tmp > other) {
+//            --tmp.day;
+//            ++days;
+//            if (tmp.day == 0) {
+//                if (tmp.month == 1) {
+//                    tmp.year--;
+//                    tmp.month = 12;
+//                    tmp.day = 31;
+//                }
+//                else {
+//                    tmp.month--;
+//                    tmp.day = daysInMonth(tmp.month, tmp.year);
+//                }
+//            }
+//        }
+//        while (tmp < other)
+//        {
+//			++tmp.day;
+//			--days;
+//            if (tmp.day > daysInMonth(tmp.month, tmp.year)) {
+//				tmp.day = 1;
+//                if (tmp.month == 12) {
+//					tmp.year++;
+//					tmp.month = 1;
+//				}
+//                else {
+//					tmp.month++;
+//				}
+//			}
+//		}
+//        return days;
+//    }
+//
+//    // 辅助函数，用于调整日期
+//    void decrement() {
+//        if (day == 1) {
+//            if (month == 1) {
+//                year--;
+//                month = 12;
+//                day = 31;
+//            }
+//            else {
+//                month--;
+//                day = daysInMonth(month, year);
+//            }
+//        }
+//        else {
+//            day--;
+//        }
+//    }
+//
+//    // 打印日期，用于测试
+//    void print() const {
+//        std::cout << year << "-" << month << "-" << day << std::endl;
+//    }
+//};
+//
+//int main() {
+//    Date date1(2022, 4, 12);
+//    Date date2(2022, 4, 22);
+//
+//    std::cout << "Date 1 is ";
+//    date1.print();
+//    std::cout << "Date 2 is ";
+//    date2.print();
+//
+//    cout << "Days between Date 1 and Date 2: " << abs(date1 - date2)+1 << endl;
+//
+//    return 0;
+//}
