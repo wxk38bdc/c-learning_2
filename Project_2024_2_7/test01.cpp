@@ -44,7 +44,7 @@
 //#include <stack>
 //#include <stdexcept>
 //#include <streambuf>
-//#include <string>
+#include <string>
 //#include <typeinfo>
 //#include <utility>
 //#include <valarray>
@@ -374,13 +374,60 @@ using namespace std;
 //    return 0;
 //}
 
-//类模板
-template<class T1>
-class A
+////类模板
+//template<class T1>
+//class A
+//{
+//public:
+//	//...
+//private:
+//	//...
+//	//T1 num;
+//};
+
+//template<class T>//函数模板
+//T add(const T& left, const T& right)
+//{
+//	return left + right;
+//}
+//int main()
+//{
+//	int i1 = 1, i2 = 2, i3;
+//	i3 = add(i1, i2);//隐式调用
+//	double d1 = 1.3, d2 = 2.4, d3;
+//	d3 = add<double>(i1, d2);//显示调用(指定T的类型)
+//	cout << i3 << endl;
+//	cout << d3 << endl;
+//	return 0;
+//}
+
+//int main()
+//{
+//	string s1(10, 'a');//无参构造
+//	string s2("hello");//带参构造
+//	string s3(s2);//拷贝构造
+//	cout << s1 << endl;
+//	cout << s2 << endl;
+//	cout << s3 << endl;
+//	return 0;
+//}
+
+void test01()
 {
-public:
-	//...
-private:
-	//...
-	//T1 num;
-};
+	string s1;
+	string s2("hello");
+	string s3(s2);
+	string s4("hello", 2);
+	string s5(s2, 1, 2);
+	cout << s1 << endl;
+	cout << s2 << endl;
+	cout << s3 << endl;
+	cout << s4 << endl;
+	cout << s5 << endl;
+
+}
+int main()
+{
+	test01();
+	return 0;
+}
