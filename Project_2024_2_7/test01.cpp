@@ -426,8 +426,61 @@ void test01()
 	cout << s5 << endl;
 
 }
+void test02()
+{
+	string s1("Hello");
+	s1 += ' ';
+	s1 += "world";
+	cout << s1 << endl;
+	//for (size_t i = 0; i < s1.size(); ++i)
+	//{
+	//	s1[i] += 1;
+	//	cout << s1[i] << " ";
+	//}
+	//迭代器
+	string::iterator it = s1.begin();//auto it = s1.begin();
+	while (it != s1.end())
+	{
+		cout << *it << " ";
+		++it;
+	}
+	cout << endl;
+	//范围for C++11
+	for (auto& e : s1)
+	{
+		cout << e << " ";
+	}
+	cout << endl;
+}
+int stringToInt(const string& tmp)
+{
+	int ret = 0;
+	//使用迭代器实现
+	auto it = tmp.begin();//string::iterator it = tmp.begin();
+	for (; it != tmp.end(); ++it)
+	{
+		ret = ret * 10 + (*it - '0');
+	}
+	return ret;
+}
+void test03()
+{
+	//反向迭代器
+	string s1("Hello");
+	string::reverse_iterator rit = s1.rbegin();//auto rit = s1.rbegin();
+	while (rit != s1.rend())
+	{
+		cout << *rit << " ";
+		++rit;
+	}
+	cout << endl;
+	string nums("124653");
+	cout << stringToInt(nums) << endl;
+}
 int main()
 {
-	test01();
+	//test01();
+	//test02();
+	test03();
 	return 0;
 }
