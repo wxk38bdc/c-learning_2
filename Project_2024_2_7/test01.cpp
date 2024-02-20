@@ -477,10 +477,56 @@ void test03()
 	string nums("124653");
 	cout << stringToInt(nums) << endl;
 }
+void test04()
+{
+	string s1("Hello world!");
+	cout << s1.size() << endl;//长度
+	cout << s1.length() << endl;//长度，早期的接口
+	//cout << s1.max_size() << endl;//没有什么实际意义
+	cout << s1.capacity() << endl;//容量
+}
+void test05()
+{
+	//检测capacity的变化
+	string s;
+	size_t sz = s.capacity();
+	cout << "current capacity:" << sz << endl;
+	for (int i = 0; i < 1000; i++)
+	{
+		s += 'a';//尾插1个字母a
+		if (sz != s.capacity())
+		{
+			sz = s.capacity();
+			cout << "capacity changed:" << sz << endl;
+		}
+	}
+	s.reserve(1000);//预留1000个字符的空间
+	cout << "reserve capacity:" << s.capacity() << endl;
+	s.resize(100);//重新设置字符串大小
+	cout << "resize size:" << s.size() << endl;
+}
+void test06()
+{
+	//推荐使用+=来进行字符串的拼接
+	string s;
+	s.push_back('a');//尾插
+	s.append("hello");//尾插
+	s += ' ';
+	s += "world";//尾插
+	cout << s << endl;
+}
+void test07()
+{
+
+}
 int main()
 {
 	//test01();
 	//test02();
-	test03();
+	//test03();
+	//test04();
+	//test05();
+	//test06();
+	test07();
 	return 0;
 }
