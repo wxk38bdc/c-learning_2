@@ -412,121 +412,249 @@ using namespace std;
 //	return 0;
 //}
 
-void test01()
-{
-	string s1;
-	string s2("hello");
-	string s3(s2);
-	string s4("hello", 2);
-	string s5(s2, 1, 2);
-	cout << s1 << endl;
-	cout << s2 << endl;
-	cout << s3 << endl;
-	cout << s4 << endl;
-	cout << s5 << endl;
+//void test01()
+//{
+//	string s1;
+//	string s2("hello");
+//	string s3(s2);
+//	string s4("hello", 2);
+//	string s5(s2, 1, 2);
+//	cout << s1 << endl;
+//	cout << s2 << endl;
+//	cout << s3 << endl;
+//	cout << s4 << endl;
+//	cout << s5 << endl;
+//
+//}
+//void test02()
+//{
+//	string s1("Hello");
+//	s1 += ' ';
+//	s1 += "world";
+//	cout << s1 << endl;
+//	//for (size_t i = 0; i < s1.size(); ++i)
+//	//{
+//	//	s1[i] += 1;
+//	//	cout << s1[i] << " ";
+//	//}
+//	//迭代器
+//	string::iterator it = s1.begin();//auto it = s1.begin();
+//	while (it != s1.end())
+//	{
+//		cout << *it << " ";
+//		++it;
+//	}
+//	cout << endl;
+//	//范围for C++11
+//	for (auto& e : s1)
+//	{
+//		cout << e << " ";
+//	}
+//	cout << endl;
+//}
+//int stringToInt(const string& tmp)
+//{
+//	int ret = 0;
+//	//使用迭代器实现
+//	auto it = tmp.begin();//string::iterator it = tmp.begin();
+//	for (; it != tmp.end(); ++it)
+//	{
+//		ret = ret * 10 + (*it - '0');
+//	}
+//	return ret;
+//}
+//void test03()
+//{
+//	//反向迭代器
+//	string s1("Hello");
+//	string::reverse_iterator rit = s1.rbegin();//auto rit = s1.rbegin();
+//	while (rit != s1.rend())
+//	{
+//		cout << *rit << " ";
+//		++rit;
+//	}
+//	cout << endl;
+//	string nums("124653");
+//	cout << stringToInt(nums) << endl;
+//}
+//void test04()
+//{
+//	string s1("Hello world!");
+//	cout << s1.size() << endl;//长度
+//	cout << s1.length() << endl;//长度，早期的接口
+//	//cout << s1.max_size() << endl;//没有什么实际意义
+//	cout << s1.capacity() << endl;//容量
+//}
+//void test05()
+//{
+//	//检测capacity的变化
+//	string s;
+//	size_t sz = s.capacity();
+//	cout << "current capacity:" << sz << endl;
+//	for (int i = 0; i < 1000; i++)
+//	{
+//		s += 'a';//尾插1个字母a
+//		if (sz != s.capacity())
+//		{
+//			sz = s.capacity();
+//			cout << "capacity changed:" << sz << endl;
+//		}
+//	}
+//	s.reserve(1000);//预留1000个字符的空间
+//	cout << "reserve capacity:" << s.capacity() << endl;
+//	s.resize(100);//重新设置字符串大小
+//	cout << "resize size:" << s.size() << endl;
+//}
+//void test06()
+//{
+//	//推荐使用+=来进行字符串的拼接
+//	string s;
+//	s.push_back('a');//尾插
+//	s.append("hello");//尾插
+//	s += ' ';
+//	s += "world";//尾插
+//	cout << s << endl;
+//}
+//void test07()
+//{
+//	string s1("string.cpp");
+//	string s2("string.h");
+//	string s3("string.c");
+//	string s4("string.txt");
+//
+//	size_t pos1 = s1.find('.');//查找.的位置
+//	if (pos1 != string::npos)
+//	{
+//		cout << s1.substr(pos1) << endl;
+//	}
+//
+//	size_t pos2 = s2.find('.');
+//	if (pos2 != string::npos)
+//	{
+//		cout << s2.substr(pos2) << endl;
+//	}
+//}
+//void test08()
+//{
+//	//https://www.bilibili.com/video/BV1Zv421C7E1/?spm_id_from=333.1007.tianma.1-3-3.click&vd_source=a820315ba9e9f48064a55b3b1b289346
+//	//https://www.youtube.com/watch?v=l9eP9L-iJKc
+//	//https://www.youtube.com/watch?v=3JZ_D3ELwOQ
+//	//https://zh.m.wikipedia.org/wiki/%E7%BB%9F%E4%B8%80%E8%B5%84%E6%BA%90%E5%AE%9A%E4%BD%8D%E7%AC%A6
+//	string url1("https://www.bilibili.com/video/BV1Zv421C7E1/?spm_id_from=333.1007.tianma.1-3-3.click&vd_source=a820315ba9e9f48064a55b3b1b289346");
+//	string url2("https://www.youtube.com/watch?v=l9eP9L-iJKc");
+//	string url3("https://www.youtube.com/watch?v=3JZ_D3ELwOQ");
+//	string url4("https://zh.m.wikipedia.org/wiki/%E7%BB%9F%E4%B8%80%E8%B5%84%E6%BA%90%E5%AE%9A%E4%BD%8D%E7%AC%A6");
+//	string& url = url4;
+//	size_t pos1 = url.find(':');
+//	if (pos1 != string::npos)
+//	{
+//		cout << "协议:" << url.substr(0, pos1) << endl;
+//	}
+//	size_t pos2 = url.find('/', pos1 + 3);
+//	if (pos2 != string::npos)
+//	{
+//		cout << "主机:" << url.substr(pos1 + 3, pos2 - pos1 - 3) << endl;
+//	}
+//	cout<<"路径:"<<url.substr(pos2)<<endl;
+//
+//}
+//int main()
+//{
+//	//test01();
+//	//test02();
+//	//test03();
+//	//test04();
+//	//test05();
+//	//test06();
+//	//test07();
+//	test08();
+//	return 0;
+//}
 
-}
-void test02()
-{
-	string s1("Hello");
-	s1 += ' ';
-	s1 += "world";
-	cout << s1 << endl;
-	//for (size_t i = 0; i < s1.size(); ++i)
-	//{
-	//	s1[i] += 1;
-	//	cout << s1[i] << " ";
-	//}
-	//迭代器
-	string::iterator it = s1.begin();//auto it = s1.begin();
-	while (it != s1.end())
-	{
-		cout << *it << " ";
-		++it;
-	}
-	cout << endl;
-	//范围for C++11
-	for (auto& e : s1)
-	{
-		cout << e << " ";
-	}
-	cout << endl;
-}
-int stringToInt(const string& tmp)
-{
-	int ret = 0;
-	//使用迭代器实现
-	auto it = tmp.begin();//string::iterator it = tmp.begin();
-	for (; it != tmp.end(); ++it)
-	{
-		ret = ret * 10 + (*it - '0');
-	}
-	return ret;
-}
-void test03()
-{
-	//反向迭代器
-	string s1("Hello");
-	string::reverse_iterator rit = s1.rbegin();//auto rit = s1.rbegin();
-	while (rit != s1.rend())
-	{
-		cout << *rit << " ";
-		++rit;
-	}
-	cout << endl;
-	string nums("124653");
-	cout << stringToInt(nums) << endl;
-}
-void test04()
-{
-	string s1("Hello world!");
-	cout << s1.size() << endl;//长度
-	cout << s1.length() << endl;//长度，早期的接口
-	//cout << s1.max_size() << endl;//没有什么实际意义
-	cout << s1.capacity() << endl;//容量
-}
-void test05()
-{
-	//检测capacity的变化
-	string s;
-	size_t sz = s.capacity();
-	cout << "current capacity:" << sz << endl;
-	for (int i = 0; i < 1000; i++)
-	{
-		s += 'a';//尾插1个字母a
-		if (sz != s.capacity())
-		{
-			sz = s.capacity();
-			cout << "capacity changed:" << sz << endl;
-		}
-	}
-	s.reserve(1000);//预留1000个字符的空间
-	cout << "reserve capacity:" << s.capacity() << endl;
-	s.resize(100);//重新设置字符串大小
-	cout << "resize size:" << s.size() << endl;
-}
-void test06()
-{
-	//推荐使用+=来进行字符串的拼接
-	string s;
-	s.push_back('a');//尾插
-	s.append("hello");//尾插
-	s += ' ';
-	s += "world";//尾插
-	cout << s << endl;
-}
-void test07()
-{
+//int main() {
+//    string s;
+//    getline(cin, s);
+//    size_t pos = s.rfind(' ');
+//    if (pos != string::npos)
+//    {
+//        int count = 0;
+//        for (size_t i = pos + 1; i < s.size(); ++i)
+//        {
+//            count++;
+//		}
+//        cout<<count<<endl;
+//    }
+//    else {
+//        cout<<s.size()<<endl;
+//    }
+//}
 
+//int main()
+//{
+//	string num2;
+//	string num1;
+//	cin >> num1 >> num2;
+//	if (num1.size() < num2.size())
+//	{
+//		swap(num1, num2);
+//	}
+//	//在位数少的前面补0
+//	num2.insert(0, num1.size() - num2.size(), '0');
+//	//cout<<num1<<endl;
+//	//cout<<num2<<endl;
+//
+//	string sum;
+//	sum.resize(num1.size());
+//	int carry = 0;
+//	for (int i = num1.size() - 1; i >= 0; --i)
+//	{
+//		int ret = num1[i] - '0' + num2[i] - '0' + carry;
+//		if (ret >= 10)
+//		{
+//			carry = 1;
+//			sum[i] = ret - 10 + '0';
+//		}
+//		else
+//		{
+//			carry = 0;
+//			sum[i] = ret + '0';
+//		}
+//	}
+//	if (carry == 1)
+//	{
+//		sum.insert(0, 1, '1');
+//	}
+//	cout << sum << endl;
+//	return 0;
+//}
+
+string multiply(string num1, string num2) {
+    if (num1 == "0" || num2 == "0") return "0";
+
+    int n1 = num1.size(), n2 = num2.size();
+    string result(n1 + n2, '0'); // 初始化结果字符串
+
+    // 从num1和num2的个位数开始，逐位相乘
+    for (int i = n1 - 1; i >= 0; i--) {
+        for (int j = n2 - 1; j >= 0; j--) {
+            int mul = (num1[i] - '0') * (num2[j] - '0'); // 计算当前位的乘积
+            int sum = mul + (result[i + j + 1] - '0'); // 加上之前的进位
+            result[i + j + 1] = sum % 10 + '0'; // 更新当前位的结果
+            result[i + j] += sum / 10; // 更新进位
+        }
+    }
+
+    // 去除结果前端可能的多余0
+    size_t startpos = result.find_first_not_of("0");
+    if (string::npos != startpos) {
+        return result.substr(startpos);
+    }
+    return "0";
 }
 int main()
 {
-	//test01();
-	//test02();
-	//test03();
-	//test04();
-	//test05();
-	//test06();
-	test07();
+	string num1 = "123";
+	string num2 = "456";
+	cout << multiply(num1, num2) << endl;
 	return 0;
 }
