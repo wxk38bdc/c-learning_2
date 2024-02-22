@@ -124,7 +124,7 @@ namespace MyString
 			}
 			if (n < _size)
 			{
-				_str[n] = ch;
+				_str[n] = '\0';
 			}
 			else
 			{
@@ -132,6 +132,7 @@ namespace MyString
 				{
 					_str[i] = ch;
 				}
+				_str[n] = '\0';
 			}
 			_size = n;
 		}
@@ -174,7 +175,7 @@ namespace MyString
 		{
 			append(s);
 		}
-		void insert(size_t pos, char ch)
+		string& insert(size_t pos, char ch)
 		{
 			assert(pos <= _size);
 			if (_size == _capacity)
@@ -188,8 +189,9 @@ namespace MyString
 			}
 			_str[pos] = ch;
 			++_size;
+			return *this;
 		}
-		void insert(size_t pos, const char* str)
+		string& insert(size_t pos, const char* str)
 		{
 			assert(pos <= _size);
 			size_t len = strlen(str);
@@ -203,12 +205,14 @@ namespace MyString
 			}
 			strncpy(_str + pos, str, len);
 			_size += len;
+			return *this;
 		}
-		void insert(size_t pos, const string& s)
+		string& insert(size_t pos, const string& s)
 		{
 			insert(pos, s.c_str());
+			return *this;
 		}
-		void erase(size_t pos, size_t len = npos);
+
 
 		size_t find(char ch, size_t pos = 0)const
 		{
@@ -223,17 +227,43 @@ namespace MyString
 		}
 		size_t find(const char* str, size_t pos = 0)const
 		{
-			size_t len = strlen(str);
-			for (size_t i = pos; i < _size - len + 1; ++i)
+			char* substr = strstr(_str + pos, str);
+			if (substr == nullptr)
 			{
-				if (strncmp(_str + i, str, len) == 0)
-				{
-					return i;
-				}
+				return npos;
 			}
-			return npos;
+			return substr - _str;
+			//size_t len = strlen(str);
+			//for (size_t i = pos; i < _size - len + 1; ++i)
+			//{
+			//	if (strncmp(_str + i, str, len) == 0)
+			//	{
+			//		return i;
+			//	}
+			//}
+			//return npos;
 		}
+		string& erase(size_t pos, size_t len = npos - 1)
+		{
+			if (pos >= _size)
+			{
+				return *this;
+			}
+			if (pos + len > _size)
+			{
+				_size = pos;
+				_str[_size] = '\0';
+				return *this;
+			}
+			for (size_t i = pos + len; i < _size; ++i)
+			{
+				_str[i - len] = _str[i];
+			}
 
+			_size -= len;
+			_str[_size] = '\0';
+			return *this;
+		}
 		bool operator<(const string& s)const
 		{
 			return strcmp(_str, s.c_str()) < 0;
@@ -282,7 +312,7 @@ namespace MyString
 		string s2(s1);
 		string s3 = s1;
 		string s4 = "world";
-		cout << s1 << endl;
+		//cout << s1 << endl;
 		//cout << s2.c_str() << endl;
 		//cout << s3.c_str() << endl;
 		//cout << s4.c_str() << endl;
@@ -290,11 +320,15 @@ namespace MyString
 		//{
 		//	cout << e << " ";
 		//}
-		s1.push_back(' ');
-		s1.append(s4);
-		s1 += "you";
-		s1 += 'k';
-		s1 += s4;
+		//s1.push_back(' ');
+		//s1.append(s4);
+		//s1 += "you";
+		//s1 += 'k';
+		//s1 += s4;
+		//cout << s1 << endl;
+		s1 += " world";
+		cout << s1 << endl;
+		s1.erase(1);
 		cout << s1 << endl;
 	}
 }
