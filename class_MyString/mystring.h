@@ -41,12 +41,23 @@ namespace MyString
 			_str = new char[_capacity + 1];
 			strcpy(_str, str);
 		}
-		string(string& s)//深拷贝
+		//string(string& s)//深拷贝
+		//{
+		//	_size = s.size();
+		//	_capacity = s._capacity;
+		//	_str = new char[_capacity + 1];
+		//	strcpy(_str, s.c_str());
+		//}
+		//深拷贝的现代写法:使用构造函数进行初始化
+		string(const string& s)
+			:_str(nullptr)
+			, _size(0)
+			, _capacity(0)
 		{
-			_size = s.size();
-			_capacity = s._capacity;
-			_str = new char[_capacity + 1];
-			strcpy(_str, s.c_str());
+			string tmp(s._str);
+			swap(_str, tmp._str);
+			swap(_size, tmp._size);
+			swap(_capacity, tmp._capacity);
 		}
 		~string()
 		{
@@ -83,24 +94,32 @@ namespace MyString
 			assert(index < _size);
 			return _str[index];
 		}
-		string& operator=(const string& s)
+		string& operator=(string s)
 		{
-			if (this != &s)
-			{
-				delete[] _str;//释放原有空间
-				_str = new char[s.size() + 1];
-				strcpy(_str, s.c_str());
-				_size = s.size();
-				_capacity = s.capacity();
-			}
+			//现代写法
+			swap(_str, s._str);
+			swap(_size, s._size);
+			swap(_capacity, s._capacity);
+			//if (this != &s)
+			//{
+			//	string tmp(s);
+			//	swap(_str, tmp._str);
+			//	//delete[] _str;//释放原有空间
+			//	//_str = new char[s.size() + 1];
+			//	//strcpy(_str, s.c_str());
+			//	//_size = s.size();
+			//	//_capacity = s.capacity();
+			//}
 			return *this;
 		}
 		string& operator=(const char* str)
 		{
-			delete[] _str;
-			_size = _capacity = strlen(str);
-			_str = new char[strlen(str) + 1];
-			strcpy(_str, str);
+			string tmp(str);
+			swap(_str, tmp._str);
+			//delete[] _str;
+			//_size = _capacity = strlen(str);
+			//_str = new char[strlen(str) + 1];
+			//strcpy(_str, str);
 			return *this;
 		}
 		friend istream& operator>>(istream& _cin, string& s);
@@ -189,6 +208,7 @@ namespace MyString
 			}
 			_str[pos] = ch;
 			++_size;
+			_str[_size] = '\0';
 			return *this;
 		}
 		string& insert(size_t pos, const char* str)
@@ -199,7 +219,7 @@ namespace MyString
 			{
 				reserve(_size + len);
 			}
-			for (size_t i = _size; i >= pos; --i)
+			for (int i = _size; i >=(int)pos; --i)
 			{
 				_str[i + len] = _str[i];
 			}
@@ -326,9 +346,37 @@ namespace MyString
 		//s1 += 'k';
 		//s1 += s4;
 		//cout << s1 << endl;
-		s1 += " world";
+		//s1 += " world";
+		//cout << s1 << endl;
+		//s1.erase(1);
+		//cout << s1 << endl;
 		cout << s1 << endl;
-		s1.erase(1);
+		cin >> s1;
+		cout << s1 << endl;
+	}
+	void test_string2()
+	{
+		string s1("hello");
+		string s2("world");
+		cout << (s1 < s2) << endl;
+		cout << (s1 > s2) << endl;
+		cout << (s1 == s2) << endl;
+		cout << (s1 != s2) << endl;
+		cout << (s1 <= s2) << endl;
+		cout << (s1 >= s2) << endl;
+	}
+	void test_string3()
+	{
+		string s1("hello");
+		s1.insert(1, 'a');
+		cout << s1 << endl;
+		s1.insert(1, "world");
+		cout << s1 << endl;
+		s1.erase(1, 5);
+		cout << s1 << endl;
+		cout << s1.find('l') << endl;
+		cout << s1.find("lo") << endl;
+		s1.insert(0, "00");
 		cout << s1 << endl;
 	}
 }
