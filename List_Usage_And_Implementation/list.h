@@ -235,8 +235,40 @@ namespace myList
 			_head->_prev->_next = newNode;
 			_head->_prev = newNode;
 		}
+		void pop_back()
+		{
+			if (_head->_next == _head)
+				return;
+			node* del = _head->_prev;
+			_head->_prev = del->_prev;
+			del->_prev->_next = _head;
+			delete del;
+		
+		}
 	private:
 		node* _head;
 	};
+
+	void test_mylist01()
+	{
+		list<int> l;
+		l.push_back(1);
+		l.push_back(2);
+		l.push_back(3);
+		l.push_back(4);
+		l.push_back(5);
+		l.push_back(6);
+		l.push_back(7);
+		l.push_back(8);
+		l.push_back(9);
+		l.push_back(10);
+		l.push_back(11);
+		l.push_back(12);
+		l.push_back(13);
+		l.push_back(14);
+		l.push_back(15);
+
+		//l.print();
+	}
 
 }
