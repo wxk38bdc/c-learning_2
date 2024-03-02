@@ -296,4 +296,55 @@
 //    return 0;
 //}
 
+//#include<bits/stdc++.h>
+//using namespace std;
+//int main() {
+//	int n, m;
+//	cin >> n >> m;
+//	vector<int> a(m);
+//	for (int i = 0; i < m; ++i) {
+//		cin >> a[i];
+//	}
+//	
+//	int maxMeals = 0;
+//	for (int i = 0; i < m; ++i) { // 尝试以每种食物为主要成分
+//		int meals = 0;
+//		vector<int> b(a); // 复制一份食物数量数组进行操作
+//		while (*min_element(b.begin(), b.end()) >= 0) { // 确保所有食物数量非负
+//			int cnt = 0;
+//			for (int j = 0; j < m && cnt < n; ++j) {
+//				if (b[j] > 0) {
+//					--b[j]; // 使用一个单位的食物j
+//					++cnt; // 套餐中的食物数量增加
+//				}
+//			}
+//			if (cnt == n) ++meals; // 如果成功组成一个套餐，计数增加
+//			else break; // 如果不能组成套餐，结束循环
+//		}
+//		maxMeals = max(maxMeals, meals); // 更新最大套餐数量
+//	}
+//	
+//	cout << maxMeals << endl;
+//	
+//	return 0;
+//}
+//#include<bits/stdc++.h>
+//using namespace std;
+//int main()
+//{
+//	long long n, k, l, sum = 0;
+//	cin >> n >> k >> l;
+//	long long m = n * k;
+//	long long* a = new long long[m];
+//	for (int i = 0; i < m; i++)
+//		cin >> a[i];
+//	sort(a, a + m);
+//	for (int i = 0; i < n; i++)
+//		sum += a[i];
+//	if (a[n - 1] - a[0] > l)
+//		cout << 0;
+//	else
+//		cout << sum;
+//	return 0;
+//}
 
