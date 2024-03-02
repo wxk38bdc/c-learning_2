@@ -192,106 +192,108 @@
 //    return 0;
 //}
 
-#include <iostream>
-#include <vector>
+//#include <iostream>
+//#include <vector>
+//
+//using namespace std;
+//
+//// Matrix类
+//class Matrix {
+//private:
+//    vector<vector<int>> data; // 用于存储矩阵数据
+//    int rows; // 矩阵行数
+//    int cols; // 矩阵列数
+//
+//public:
+//    // 构造函数
+//    Matrix(int rows, int cols) : rows(rows), cols(cols) {
+//        // 初始化矩阵数据为0
+//        data.resize(rows, vector<int>(cols, 0));
+//    }
+//
+//    // 重载二元运算符+
+//    Matrix operator+(const Matrix& other) const {
+//        Matrix result(rows, cols);
+//        for (int i = 0; i < rows; ++i) {
+//            for (int j = 0; j < cols; ++j) {
+//                result.data[i][j] = data[i][j] + other.data[i][j];
+//            }
+//        }
+//        return result;
+//    }
+//
+//    // 重载二元运算符-
+//    Matrix operator-(const Matrix& other) const {
+//        Matrix result(rows, cols);
+//        for (int i = 0; i < rows; ++i) {
+//            for (int j = 0; j < cols; ++j) {
+//                result.data[i][j] = data[i][j] - other.data[i][j];
+//            }
+//        }
+//        return result;
+//    }
+//
+//    // 重载二元运算符*
+//    Matrix operator*(const Matrix& other) const {
+//        Matrix result(rows, other.cols);
+//        for (int i = 0; i < rows; ++i) {
+//            for (int j = 0; j < other.cols; ++j) {
+//                for (int k = 0; k < cols; ++k) {
+//                    result.data[i][j] += data[i][k] * other.data[k][j];
+//                }
+//            }
+//        }
+//        return result;
+//    }
+//
+//    // 重载输出运算符<<
+//    friend ostream& operator<<(ostream& os, const Matrix& matrix) {
+//        for (int i = 0; i < matrix.rows; ++i) {
+//            for (int j = 0; j < matrix.cols; ++j) {
+//                os << matrix.data[i][j];
+//                if (j < matrix.cols - 1) {
+//                    os << " ";
+//                }
+//            }
+//            if (i < matrix.rows - 1) {
+//                os << endl;
+//            }
+//        }
+//        return os;
+//    }
+//
+//    // 设置矩阵元素
+//    void setElement(int row, int col, int value) {
+//        if (row >= 0 && row < rows && col >= 0 && col < cols) {
+//            data[row][col] = value;
+//        }
+//    }
+//};
+//
+//int main() {
+//    // 读取输入数据
+//    Matrix A(3, 3), B(3, 3);
+//    for (int i = 0; i < 3; ++i) {
+//        for (int j = 0; j < 3; ++j) {
+//            int value;
+//            cin >> value;
+//            A.setElement(i, j, value);
+//        }
+//    }
+//    for (int i = 0; i < 3; ++i) {
+//        for (int j = 0; j < 3; ++j) {
+//            int value;
+//            cin >> value;
+//            B.setElement(i, j, value);
+//        }
+//    }
+//
+//    // 输出加减乘后的矩阵
+//    cout << (A + B) << endl;
+//    cout << (A - B) << endl;
+//    cout << (A * B) << endl;
+//
+//    return 0;
+//}
 
-using namespace std;
 
-// Matrix类
-class Matrix {
-private:
-    vector<vector<int>> data; // 用于存储矩阵数据
-    int rows; // 矩阵行数
-    int cols; // 矩阵列数
-
-public:
-    // 构造函数
-    Matrix(int rows, int cols) : rows(rows), cols(cols) {
-        // 初始化矩阵数据为0
-        data.resize(rows, vector<int>(cols, 0));
-    }
-
-    // 重载二元运算符+
-    Matrix operator+(const Matrix& other) const {
-        Matrix result(rows, cols);
-        for (int i = 0; i < rows; ++i) {
-            for (int j = 0; j < cols; ++j) {
-                result.data[i][j] = data[i][j] + other.data[i][j];
-            }
-        }
-        return result;
-    }
-
-    // 重载二元运算符-
-    Matrix operator-(const Matrix& other) const {
-        Matrix result(rows, cols);
-        for (int i = 0; i < rows; ++i) {
-            for (int j = 0; j < cols; ++j) {
-                result.data[i][j] = data[i][j] - other.data[i][j];
-            }
-        }
-        return result;
-    }
-
-    // 重载二元运算符*
-    Matrix operator*(const Matrix& other) const {
-        Matrix result(rows, other.cols);
-        for (int i = 0; i < rows; ++i) {
-            for (int j = 0; j < other.cols; ++j) {
-                for (int k = 0; k < cols; ++k) {
-                    result.data[i][j] += data[i][k] * other.data[k][j];
-                }
-            }
-        }
-        return result;
-    }
-
-    // 重载输出运算符<<
-    friend ostream& operator<<(ostream& os, const Matrix& matrix) {
-        for (int i = 0; i < matrix.rows; ++i) {
-            for (int j = 0; j < matrix.cols; ++j) {
-                os << matrix.data[i][j];
-                if (j < matrix.cols - 1) {
-                    os << " ";
-                }
-            }
-            if (i < matrix.rows - 1) {
-                os << endl;
-            }
-        }
-        return os;
-    }
-
-    // 设置矩阵元素
-    void setElement(int row, int col, int value) {
-        if (row >= 0 && row < rows && col >= 0 && col < cols) {
-            data[row][col] = value;
-        }
-    }
-};
-
-int main() {
-    // 读取输入数据
-    Matrix A(3, 3), B(3, 3);
-    for (int i = 0; i < 3; ++i) {
-        for (int j = 0; j < 3; ++j) {
-            int value;
-            cin >> value;
-            A.setElement(i, j, value);
-        }
-    }
-    for (int i = 0; i < 3; ++i) {
-        for (int j = 0; j < 3; ++j) {
-            int value;
-            cin >> value;
-            B.setElement(i, j, value);
-        }
-    }
-
-    // 输出加减乘后的矩阵
-    cout << (A + B) << endl;
-    cout << (A - B) << endl;
-    cout << (A * B) << endl;
-
-    return 0;
-}
