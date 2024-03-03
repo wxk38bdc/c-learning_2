@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS
+ï»¿#define _CRT_SECURE_NO_WARNINGS
 
 //int main()
 //{
@@ -54,10 +54,10 @@
 //
 //int main()
 //{
-//    char a[1000]; // Ô­Ê¼×Ö·û´®
+//    char a[1000]; // åŸå§‹å­—ç¬¦ä¸²
 //    cin >> a;
 //    int len = strlen(a);
-//    char b[1000]; // Ñ¹ËõºóµÄ×Ö·û´®
+//    char b[1000]; // å‹ç¼©åçš„å­—ç¬¦ä¸²
 //    stringZip(a, len, b);
 //    cout << b << endl;
 //    return 0;
@@ -94,7 +94,7 @@
 //        b += ch;
 //    }
 //    b += cur;
-//    // ½«Ñ¹ËõºóµÄ×Ö·û´®¿½±´µ½Êä³ö²ÎÊıÖ¸ÏòµÄÄÚ´æÖĞ
+//    // å°†å‹ç¼©åçš„å­—ç¬¦ä¸²æ‹·è´åˆ°è¾“å‡ºå‚æ•°æŒ‡å‘çš„å†…å­˜ä¸­
 //    strcpy(pOutputStr, b.c_str());
 //}
 
@@ -136,49 +136,48 @@
 //	return 0;
 //}
 
-
-//// Ñ§ÉúÀà
+//// å­¦ç”Ÿç±»
 //class Student {
 //public:
 //    int id;
 //    int score;
 //
-//    // ¹¹Ôìº¯Êı
+//    // æ„é€ å‡½æ•°
 //    Student(int id, int score) : id(id), score(score) {}
 //
-//    // ÖØÔØĞ¡ÓÚÔËËã·û£¬ÓÃÓÚÅÅĞò
+//    // é‡è½½å°äºè¿ç®—ç¬¦ï¼Œç”¨äºæ’åº
 //    bool operator<(const Student& other) const {
-//        return id < other.id; // °´ÕÕÑ§ºÅ´ÓĞ¡µ½´óÅÅĞò
+//        return id < other.id; // æŒ‰ç…§å­¦å·ä»å°åˆ°å¤§æ’åº
 //    }
 //};
 //
-//// ÕÒ³ö×î¸ß³É¼¨µÄÑ§Éú
+//// æ‰¾å‡ºæœ€é«˜æˆç»©çš„å­¦ç”Ÿ
 //void max(Student* students, int size) {
-//    // ÕÒ³ö×î¸ß·Ö
+//    // æ‰¾å‡ºæœ€é«˜åˆ†
 //    int maxScore = INT_MIN;
 //    for (int i = 0; i < size; ++i) {
 //        maxScore = max(maxScore, students[i].score);
 //    }
 //
-//    // Êä³ö×î¸ß·Ö¶ÔÓ¦µÄÑ§Éú
-//    vector<Student> maxStudents; // ´æ´¢×î¸ß·Ö¶ÔÓ¦µÄÑ§Éú¶ÔÏó
+//    // è¾“å‡ºæœ€é«˜åˆ†å¯¹åº”çš„å­¦ç”Ÿ
+//    vector<Student> maxStudents; // å­˜å‚¨æœ€é«˜åˆ†å¯¹åº”çš„å­¦ç”Ÿå¯¹è±¡
 //    for (int i = 0; i < size; ++i) {
 //        if (students[i].score == maxScore) {
 //            maxStudents.push_back(students[i]);
 //        }
 //    }
 //
-//    // ¶Ô×î¸ß·Ö¶ÔÓ¦µÄÑ§Éú¶ÔÏó½øĞĞÅÅĞò
+//    // å¯¹æœ€é«˜åˆ†å¯¹åº”çš„å­¦ç”Ÿå¯¹è±¡è¿›è¡Œæ’åº
 //    sort(maxStudents.begin(), maxStudents.end());
 //
-//    // Êä³öÅÅĞòºóµÄ×î¸ß·Ö¶ÔÓ¦µÄÑ§Éú
+//    // è¾“å‡ºæ’åºåçš„æœ€é«˜åˆ†å¯¹åº”çš„å­¦ç”Ÿ
 //    for (const auto& student : maxStudents) {
 //        cout << student.id << " " << student.score << endl;
 //    }
 //}
 //
 //int main() {
-//    // ¶ÁÈ¡ÊäÈëÊı¾İ
+//    // è¯»å–è¾“å…¥æ•°æ®
 //    vector<Student> students;
 //    for (int i = 0; i < 4; ++i) {
 //        int id, score;
@@ -186,7 +185,7 @@
 //        students.push_back(Student(id, score));
 //    }
 //
-//    // µ÷ÓÃº¯ÊıÕÒ³ö×î¸ß³É¼¨µÄÑ§Éú
+//    // è°ƒç”¨å‡½æ•°æ‰¾å‡ºæœ€é«˜æˆç»©çš„å­¦ç”Ÿ
 //    max(&students[0], students.size());
 //
 //    return 0;
@@ -197,21 +196,21 @@
 //
 //using namespace std;
 //
-//// MatrixÀà
+//// Matrixç±»
 //class Matrix {
 //private:
-//    vector<vector<int>> data; // ÓÃÓÚ´æ´¢¾ØÕóÊı¾İ
-//    int rows; // ¾ØÕóĞĞÊı
-//    int cols; // ¾ØÕóÁĞÊı
+//    vector<vector<int>> data; // ç”¨äºå­˜å‚¨çŸ©é˜µæ•°æ®
+//    int rows; // çŸ©é˜µè¡Œæ•°
+//    int cols; // çŸ©é˜µåˆ—æ•°
 //
 //public:
-//    // ¹¹Ôìº¯Êı
+//    // æ„é€ å‡½æ•°
 //    Matrix(int rows, int cols) : rows(rows), cols(cols) {
-//        // ³õÊ¼»¯¾ØÕóÊı¾İÎª0
+//        // åˆå§‹åŒ–çŸ©é˜µæ•°æ®ä¸º0
 //        data.resize(rows, vector<int>(cols, 0));
 //    }
 //
-//    // ÖØÔØ¶şÔªÔËËã·û+
+//    // é‡è½½äºŒå…ƒè¿ç®—ç¬¦+
 //    Matrix operator+(const Matrix& other) const {
 //        Matrix result(rows, cols);
 //        for (int i = 0; i < rows; ++i) {
@@ -222,7 +221,7 @@
 //        return result;
 //    }
 //
-//    // ÖØÔØ¶şÔªÔËËã·û-
+//    // é‡è½½äºŒå…ƒè¿ç®—ç¬¦-
 //    Matrix operator-(const Matrix& other) const {
 //        Matrix result(rows, cols);
 //        for (int i = 0; i < rows; ++i) {
@@ -233,7 +232,7 @@
 //        return result;
 //    }
 //
-//    // ÖØÔØ¶şÔªÔËËã·û*
+//    // é‡è½½äºŒå…ƒè¿ç®—ç¬¦*
 //    Matrix operator*(const Matrix& other) const {
 //        Matrix result(rows, other.cols);
 //        for (int i = 0; i < rows; ++i) {
@@ -246,7 +245,7 @@
 //        return result;
 //    }
 //
-//    // ÖØÔØÊä³öÔËËã·û<<
+//    // é‡è½½è¾“å‡ºè¿ç®—ç¬¦<<
 //    friend ostream& operator<<(ostream& os, const Matrix& matrix) {
 //        for (int i = 0; i < matrix.rows; ++i) {
 //            for (int j = 0; j < matrix.cols; ++j) {
@@ -262,7 +261,7 @@
 //        return os;
 //    }
 //
-//    // ÉèÖÃ¾ØÕóÔªËØ
+//    // è®¾ç½®çŸ©é˜µå…ƒç´ 
 //    void setElement(int row, int col, int value) {
 //        if (row >= 0 && row < rows && col >= 0 && col < cols) {
 //            data[row][col] = value;
@@ -271,7 +270,7 @@
 //};
 //
 //int main() {
-//    // ¶ÁÈ¡ÊäÈëÊı¾İ
+//    // è¯»å–è¾“å…¥æ•°æ®
 //    Matrix A(3, 3), B(3, 3);
 //    for (int i = 0; i < 3; ++i) {
 //        for (int j = 0; j < 3; ++j) {
@@ -288,7 +287,7 @@
 //        }
 //    }
 //
-//    // Êä³ö¼Ó¼õ³ËºóµÄ¾ØÕó
+//    // è¾“å‡ºåŠ å‡ä¹˜åçš„çŸ©é˜µ
 //    cout << (A + B) << endl;
 //    cout << (A - B) << endl;
 //    cout << (A * B) << endl;
@@ -307,21 +306,21 @@
 //	}
 //	
 //	int maxMeals = 0;
-//	for (int i = 0; i < m; ++i) { // ³¢ÊÔÒÔÃ¿ÖÖÊ³ÎïÎªÖ÷Òª³É·Ö
+//	for (int i = 0; i < m; ++i) { // å°è¯•ä»¥æ¯ç§é£Ÿç‰©ä¸ºä¸»è¦æˆåˆ†
 //		int meals = 0;
-//		vector<int> b(a); // ¸´ÖÆÒ»·İÊ³ÎïÊıÁ¿Êı×é½øĞĞ²Ù×÷
-//		while (*min_element(b.begin(), b.end()) >= 0) { // È·±£ËùÓĞÊ³ÎïÊıÁ¿·Ç¸º
+//		vector<int> b(a); // å¤åˆ¶ä¸€ä»½é£Ÿç‰©æ•°é‡æ•°ç»„è¿›è¡Œæ“ä½œ
+//		while (*min_element(b.begin(), b.end()) >= 0) { // ç¡®ä¿æ‰€æœ‰é£Ÿç‰©æ•°é‡éè´Ÿ
 //			int cnt = 0;
 //			for (int j = 0; j < m && cnt < n; ++j) {
 //				if (b[j] > 0) {
-//					--b[j]; // Ê¹ÓÃÒ»¸öµ¥Î»µÄÊ³Îïj
-//					++cnt; // Ì×²ÍÖĞµÄÊ³ÎïÊıÁ¿Ôö¼Ó
+//					--b[j]; // ä½¿ç”¨ä¸€ä¸ªå•ä½çš„é£Ÿç‰©j
+//					++cnt; // å¥—é¤ä¸­çš„é£Ÿç‰©æ•°é‡å¢åŠ 
 //				}
 //			}
-//			if (cnt == n) ++meals; // Èç¹û³É¹¦×é³ÉÒ»¸öÌ×²Í£¬¼ÆÊıÔö¼Ó
-//			else break; // Èç¹û²»ÄÜ×é³ÉÌ×²Í£¬½áÊøÑ­»·
+//			if (cnt == n) ++meals; // å¦‚æœæˆåŠŸç»„æˆä¸€ä¸ªå¥—é¤ï¼Œè®¡æ•°å¢åŠ 
+//			else break; // å¦‚æœä¸èƒ½ç»„æˆå¥—é¤ï¼Œç»“æŸå¾ªç¯
 //		}
-//		maxMeals = max(maxMeals, meals); // ¸üĞÂ×î´óÌ×²ÍÊıÁ¿
+//		maxMeals = max(maxMeals, meals); // æ›´æ–°æœ€å¤§å¥—é¤æ•°é‡
 //	}
 //	
 //	cout << maxMeals << endl;
@@ -347,4 +346,35 @@
 //		cout << sum;
 //	return 0;
 //}
+
+//class Solution {
+//public:
+//    vector<vector<int>> threeSum(vector<int>& nums)
+//    {
+//        set<vector<int>>ret;//setçš„æ—¶é—´å’Œç©ºé—´å¼€é”€å¤ªå¤§ï¼Œè™½ç„¶å¯ä»¥è‡ªåŠ¨å»é‡
+//
+//        sort(nums.begin(), nums.end());//æ’åº
+//
+//        int n = nums.size();
+//        for (int i = 0; i < n; i++) // å›ºå®šæ•° a
+//        {
+//            if (nums[i] > 0) break; // â¼©ä¼˜åŒ–
+//            int left = i + 1, right = n - 1, target = -nums[i];
+//            while (left < right)
+//            {
+//                int sum = nums[left] + nums[right];
+//                if (sum > target) right--;
+//                else if (sum < target) left++;
+//                else
+//                {
+//                    ret.insert({ nums[i], nums[left], nums[right] });
+//                    left++, right--;
+//                }
+//            }
+//        }
+//        vector<vector<int>> result(ret.begin(), ret.end());
+//
+//        return result;
+//    }
+//};
 
