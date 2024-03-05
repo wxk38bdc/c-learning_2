@@ -378,3 +378,39 @@
 //    }
 //};
 
+//class Solution {
+//public:
+//    vector<vector<int>> fourSum(vector<int>& nums, int target) {
+//        if (nums.size() < 4) {
+//            return {};
+//        }
+//
+//        sort(nums.begin(), nums.end());
+//        set<vector<int>> setArr;
+//
+//        for (size_t i = 0; i < nums.size() - 3; ++i) {
+//            for (size_t j = i + 1; j < nums.size() - 2; ++j) {
+//                size_t left = j + 1, right = nums.size() - 1;
+//
+//                while (left < right) {
+//                    // 使用 long long int 避免溢出
+//                    long long int sum = static_cast<long long int>(nums[i]) + nums[j] + nums[left] + nums[right];
+//
+//                    if (sum < target) {
+//                        left++;
+//                    }
+//                    else if (sum > target) {
+//                        right--;
+//                    }
+//                    else {
+//                        setArr.insert({ nums[i], nums[j], nums[left], nums[right] });
+//                        left++, right--;
+//                    }
+//                }
+//            }
+//        }
+//
+//        vector<vector<int>> ret(setArr.begin(), setArr.end());
+//        return ret;
+//    }
+//};
