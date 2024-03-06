@@ -1,4 +1,4 @@
-﻿#define _CRT_SECURE_NO_WARNINGS
+﻿//#define _CRT_SECURE_NO_WARNINGS
 
 //int main()
 //{
@@ -412,5 +412,34 @@
 //
 //        vector<vector<int>> ret(setArr.begin(), setArr.end());
 //        return ret;
+//    }
+//};
+
+//class Solution {
+//public:
+//    int longestOnes(vector<int>& nums, int k) {
+//        if (k >= nums.size()) return nums.size();  // 修正了返回值的逻辑  
+//
+//        int left = 0, right = 0;
+//        int numof1 = 0, numof0 = 0;
+//        int maxOnes = 0;
+//
+//        while (right < nums.size()) {
+//            if (nums[right] == 0) numof0++;
+//            if (nums[right] == 1) numof1++;
+//
+//            // 当0的数量超过k时，移动左指针  
+//            while (numof0 > k) {
+//                if (nums[left] == 0) numof0--;
+//                if (nums[left] == 1) numof1--;
+//                left++;
+//            }
+//
+//            // 更新最长的1的序列  
+//            maxOnes = max(maxOnes, right - left + 1);
+//            right++;
+//        }
+//
+//        return maxOnes;  // 修正了返回值的逻辑  
 //    }
 //};
