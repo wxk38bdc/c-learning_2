@@ -177,6 +177,52 @@ void topK() {
 //	free(arr);	
 //	fclose(f);
 //}
+void testHeap4()
+{
+	//利用堆找到最小的k个数
+	Heap heap;
+	HeapInit(&heap);
+	int arr[] = { 1, 3, 5, 7, 9, 2, 4, 6, 8, 0 };
+	for (int i = 0; i < 10; i++)
+	{
+		HeapPush(&heap, arr[i]);
+	}
+}
+void testHeap5()
+{
+	//利用堆排序
+	Heap heap;
+	HeapInit(&heap);
+	int arr[] = { 1, 3, 5, 7, 9, 2, 4, 6, 8, 0 };
+	for (int i = 0; i < 10; i++)
+	{
+		HeapPush(&heap, arr[i]);
+	}
+	while (HeapEmpty(&heap) != true)
+	{
+		cout << HeapTop(&heap) << " ";
+		HeapPop(&heap);
+	}
+	cout << endl;
+	HeapDestroy(&heap);
+}
+void testHeap6()
+{
+	//调用Heapsort
+	int arr[100] = { 0 };
+	srand((unsigned int)time(NULL));
+	for (int i = 0; i < 100; i++)
+	{
+		arr[i] = rand() % 1000;
+	}
+	HeapSort(arr, 100);
+	for (int i = 0; i < 100; i++)
+	{
+		cout << arr[i] << " ";
+	}
+	cout << endl;
+}
+
 int main()
 {
 	//testHeap1();
