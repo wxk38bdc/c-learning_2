@@ -21,17 +21,17 @@ void HeapDestroy(Heap* pHeap)
 	pHeap->size = 0;
 	pHeap->capacity = 0;
 }
-void AdjustDown(Heap* pHeap, size_t parent)
+void AdjustDown(Heap* pHeap, size_t parent)//大堆
 {
 	assert(pHeap);
 	size_t child = parent * 2 + 1;
 	while (child < pHeap->size)
 	{
-		if (child + 1 < pHeap->size && pHeap->data[child + 1] < pHeap->data[child])
+		if (child + 1 < pHeap->size && pHeap->data[child + 1] > pHeap->data[child])
 		{
 			child++;
 		}
-		if (pHeap->data[child] < pHeap->data[parent])
+		if (pHeap->data[child] > pHeap->data[parent])
 		{
 			swap(pHeap->data[child], pHeap->data[parent]);
 			parent = child;
@@ -43,13 +43,35 @@ void AdjustDown(Heap* pHeap, size_t parent)
 		}
 	}
 }
-void AdjustUp(Heap* pHeap, size_t child)
+void AdjustDown_Array(HeapDataType* arr, size_t parent, size_t size)
+{
+	size_t child = parent * 2 + 1;
+	while (child < size)
+	{
+		if (child + 1 < size && arr[child + 1] > arr[child])
+		{
+			child++;
+		}
+		if (arr[child] > arr[parent])
+		{
+			swap(arr[child], arr[parent]);
+			parent = child;
+			child = parent * 2 + 1;
+		}
+		else
+		{
+			break;
+		}
+	}
+}
+
+void AdjustUp(Heap* pHeap, size_t child)//大堆
 {
 	assert(pHeap);
 	size_t parent = (child - 1) / 2;
 	while (child > 0)
 	{
-		if (pHeap->data[child] < pHeap->data[parent])
+		if (pHeap->data[child] > pHeap->data[parent])
 		{
 			swap(pHeap->data[child], pHeap->data[parent]);
 			child = parent;
@@ -113,4 +135,35 @@ void HeapPrint(Heap* pHeap)
 		cout << pHeap->data[i] << " ";
 	}
 	cout << endl;
+}
+
+void HeapArrayInit(Heap* pHeap, HeapDataType* arr, size_t size)//将数组初始化成堆
+{
+	assert(pHeap);
+	assert(arr);
+	pHeap->data = (HeapDataType*)malloc(sizeof(HeapDataType) * size);
+	if (pHeap->data == NULL)
+	{
+		assert(0);
+		return;
+	}
+	memcpy(pHeap->data, arr, sizeof(HeapDataType) * size);
+	pHeap->size = pHeap->capacity = size;
+	for (int i = (size - 2) / 2; i >= 0; i--)
+	{
+		AdjustDown(pHeap, i);
+	}
+}
+
+void HeapSort(HeapDataType* arr, size_t n)
+{
+	for (int i = (n - 2) / 2; i >= 0; i--)
+	{
+		AdjustDown_Array(arr, i, n);
+	}
+	for (int i = 0; i < n; i++)
+	{
+		swap(arr[0], arr[n - 1 - i]);
+		AdjustDown_Array(arr, 0, n - 1 - i);
+	}
 }

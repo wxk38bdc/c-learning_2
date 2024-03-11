@@ -10,9 +10,8 @@ typedef struct BinaryTreeNode
 	struct BinaryTreeNode* _left;
 	struct BinaryTreeNode* _right;
 	BTNDataType _data;
-}BTNode;
+}BTNode, * QDataType;
 
-typedef BTNode* QDataType;
 typedef struct queueNode
 {
 	QDataType _data;
