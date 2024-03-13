@@ -222,6 +222,36 @@ void testHeap6()
 	}
 	cout << endl;
 }
+//class Solution {
+//public:
+//	vector<int> searchRange(vector<int>& nums, int target) {
+//		vector<int> result(2, -1);  // 初始化结果为{-1, -1}
+//		int n = nums.size();
+//
+//		// 查找左边界
+//		int left = 0, right = n - 1;
+//		while (left <= right) {
+//			int mid = left + (right - left) / 2;
+//			if (nums[mid] >= target) right = mid - 1;
+//			else left = mid + 1;
+//		}
+//		// 检查左边界是否超出范围或不等于目标值
+//		if (left == n || nums[left] != target) return result;
+//		result[0] = left;
+//
+//		// 查找右边界
+//		right = n - 1;  // 重置right为数组末尾
+//		while (left <= right) {
+//			int mid = left + (right - left) / 2;
+//			if (nums[mid] <= target) left = mid + 1;
+//			else right = mid - 1;
+//		}
+//		// right 此时指向目标值的最后一个实例
+//		result[1] = right;
+//
+//		return result;
+//	}
+//};
 
 int main()
 {
