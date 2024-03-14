@@ -1,9 +1,9 @@
-#pragma once
 #ifndef QUEUE_H
 #define QUEUE_H
 #include<stdio.h>
 #include<stdlib.h>
 #include<assert.h>
+#include<stdbool.h>
 typedef char BTNDataType;
 typedef struct BinaryTreeNode
 {

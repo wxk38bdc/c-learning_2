@@ -2,7 +2,8 @@
 
 #include"queue.h"
 
-BTNode* CreateNode(BTNDataType x)//创建节点
+//创建节点
+BTNode* CreateNode(BTNDataType x)
 {
 	BTNode* node = (BTNode*)malloc(sizeof(BTNode));
 	node->_data = x;
@@ -10,11 +11,33 @@ BTNode* CreateNode(BTNDataType x)//创建节点
 	node->_right = NULL;
 	return node;
 }
-int TreeSize(BTNode* root)//求二叉树的节点个数
+//销毁
+void BinaryTreeDestory(BTNode** root)//传入二级指针，因为要修改指针的指向
+{
+	assert(root);
+	if (*root == NULL)
+		return;
+	BinaryTreeDestory(&(*root)->_left);
+	BinaryTreeDestory(&(*root)->_right);
+	free(*root);
+	*root = NULL;
+}
+void BinaryTreeDestory2(BTNode* root)//传一级指针的destroy
+{
+	if (root == NULL)
+		return;
+	BinaryTreeDestory2(root->_left);
+	BinaryTreeDestory2(root->_right);
+	free(root);
+	root = NULL;
+}
+//求二叉树的节点个数
+int TreeSize(BTNode* root)
 {
 	return root == NULL ? 0 : 1 + TreeSize(root->_left) + TreeSize(root->_right);
 }
-int TreeLeafSize(BTNode* root)//求二叉树的叶子节点个数
+//求二叉树的叶子节点个数
+int TreeLeafSize(BTNode* root)
 {
 	if (root == NULL)
 		return 0;
@@ -116,33 +139,26 @@ BTNode* BinaryTreeFind(BTNode* root, BTNDataType x)//在二叉树中查找值为x的节点
 		return NULL;
 	if (root->_data == x)
 		return root;
-	BTNode* ret = BinaryTreeFind(root->_left, x);
-	if (ret)
-		return ret;
-	return BinaryTreeFind(root->_right, x);
+	//在左子树中找
+	BTNode* ret1 = BinaryTreeFind(root->_left, x);
+	if (ret1)
+		return ret1;
+	//在右子树中找
+	BTNode* ret2 = BinaryTreeFind(root->_right, x);
+	if (ret2)
+		return ret2;
+	//左右子树都没找到
+	return NULL;
 }
-//销毁
-//传入二级指针，因为要修改指针的指向
-void BinaryTreeDestory(BTNode** root)
-{
-	assert(root);
-	if (*root == NULL)
-		return;
-	BinaryTreeDestory(&(*root)->_left);
-	BinaryTreeDestory(&(*root)->_right);
-	free(*root);
-	*root = NULL;
-}
-//传一级指针的destroy
-void BinaryTreeDestory2(BTNode* root)
+bool IsXExist(BTNode*root,BTNDataType x)//判断x是否在二叉树中
 {
 	if (root == NULL)
-		return;
-	BinaryTreeDestory2(root->_left);
-	BinaryTreeDestory2(root->_right);
-	free(root);
-	root = NULL;
+		return false;
+	if (root->_data == x)
+		return true;
+	return IsXExist(root->_left, x) || IsXExist(root->_right, x);
 }
+
 //层序遍历，用队列实现
 void BinaryTreeLevelOrder(BTNode* root)
 {
@@ -181,6 +197,10 @@ int main()
 	PreOrder(A);
 	printf("\n");
 	printf("TreeSize=%d\n", TreeSize(A));
+	printf("Level4Size=%d\n", LevelKSize(A,4));
+	//找‘E’
+	printf("'E'的地址：%p\n", BinaryTreeFind(A, 'G'));
+
 	//PreOrder(A);
 	//printf("\n");
 	//InOrder(A);
