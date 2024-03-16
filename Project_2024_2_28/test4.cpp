@@ -248,3 +248,62 @@
 //	cout<<square<<" "<<rectangle;
 //	return 0;
 //}
+
+//class Solution {
+//public:
+//    int subarraysDivByK(vector<int>& nums, int k) {
+//        int n = nums.size();
+//        int count = 0;//计算次数
+//        unordered_map<int, int>remainder_times;
+//        int sum = 0;//计算前缀和
+//        remainder_times[0] = 1;
+//        for (int i = 0; i < n; i++)
+//        {
+//            sum += nums[i];
+//            int rem = (sum % k + k) % k;
+//            if (remainder_times.count(rem))count += remainder_times[rem];
+//            remainder_times[rem]++;
+//        }
+//        return count;
+//    }
+//};
+
+//#include<bits/stdc++.h>
+//using namespace std;
+//typedef long long ll;
+//
+//bool isOK(ll H[], ll W[], ll N, ll K, ll len) {
+//	ll count = 0; // 计算能分出边长为len巧克力总数
+//	for (ll i = 0; i < N; i++) {
+//		count += (H[i] / len) * (W[i] / len);
+//	}
+//	return count >= K;
+//}
+//
+//int main() {
+//	ll N, K;
+//	cin >> N >> K;
+//	ll H[N], W[N]; // 长*宽
+//	ll maxLen = 0; // 存储所有巧克力中最小尺寸的最大值
+//
+//	for (ll i = 0; i < N; i++) {
+//		cin >> H[i] >> W[i];
+//		if (H[i] < W[i]) swap(H[i], W[i]); // 保证长>=宽
+//		maxLen = max(maxLen, min(H[i], W[i])); // 更新最大可能的len
+//	}
+//
+//	ll low = 1, high = maxLen, ans = 0;
+//	while (low <= high) {
+//		ll mid = low + (high - low) / 2;
+//		if (isOK(H, W, N, K, mid)) {
+//			ans = mid; // 更新答案
+//			low = mid + 1; // 尝试寻找更大的len
+//		}
+//		else {
+//			high = mid - 1;
+//		}
+//	}
+//
+//	cout << ans << endl;
+//	return 0;
+//}
