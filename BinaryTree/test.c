@@ -88,21 +88,21 @@ void PostOrder(BTNode* root)//后序遍历
 	printf("%c ", root->_data);
 }
 //判断一棵树是否为完全二叉树
-int BinaryTreeComplete(BTNode* root)
+bool BinaryTreeComplete(BTNode* root)
 {
 	if (root == NULL)
-		return 0;
+		return false;
 	if (root->_left == NULL&&root->_right == NULL)
-		return 1;
+		return true;
 	if (root->_left&&root->_right)
 		return BinaryTreeComplete(root->_left) && BinaryTreeComplete(root->_right);
-	return 0;
+	return false;
 }
 //用队列判断一棵树是否为完全二叉树，层序遍历，遇到空节点停止入队，如果后面还有非空节点，说明不是完全二叉树
-int BinaryTreeComplete2(BTNode* root)
+bool BinaryTreeComplete2(BTNode* root)
 {
 	if (root == NULL)
-		return 0;
+		return false;
 	queue q;
 	queueInit(&q);
 	queuePush(&q, root);
@@ -119,10 +119,15 @@ int BinaryTreeComplete2(BTNode* root)
 	{
 		BTNode* front = queueFront(&q);
 		queuePop(&q);
-		if (front)
-			return 0;
+		if (front)//非空节点,不是完全二叉树
+		{
+			queueDestroy(&q);
+			return false;
+		}
+			
 	}
-	return 1;
+	queueDestroy(&q);
+	return true;
 }
 //分治法：将问题分解为子问题，子问题的解决方案与原问题相同
 int BinaryTreeLevelKSize(BTNode* root, int k)//求第k层节点的个数
@@ -167,7 +172,7 @@ void BinaryTreeLevelOrder(BTNode* root)
 	queue q;
 	queueInit(&q);
 	queuePush(&q, root);
-	while (!queueEmpty(&q))
+	while (!queueEmpty(&q))//队列不为空
 	{
 		BTNode* front = queueFront(&q);
 		printf("%c ", front->_data);
@@ -177,6 +182,7 @@ void BinaryTreeLevelOrder(BTNode* root)
 		if (front->_right)
 			queuePush(&q, front->_right);
 	}
+	queueDestroy(&q);
 }
 int main()
 {

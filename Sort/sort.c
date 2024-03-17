@@ -39,19 +39,37 @@ void InsertSort(int* a, int n)
 }
 
 //希尔排序
+//void ShellSort(int* a, int n) {
+//	assert(a);
+//
+//	// 预先定义的Sedgewick增量序列的一部分，这足以处理大多数实际大小的数组
+//	int sedgewick[] = { 1, 5, 19, 41, 109, 209, 505, 929, 2161, 3905, 8929, 16001, 36289, 64769, 146305, 260609 };
+//	int sedgewickLength = sizeof(sedgewick) / sizeof(sedgewick[0]);
+//
+//	for (int k = sedgewickLength - 1; k >= 0; k--) {
+//		int gap = sedgewick[k];
+//		for (int i = gap; i < n; i++) {
+//			int temp = a[i];
+//			int j;
+//			for (j = i; j >= gap && a[j - gap] > temp; j -= gap) {
+//				a[j] = a[j - gap];
+//			}
+//			a[j] = temp;
+//		}
+//	}
+//}
 void ShellSort(int* a, int n)
 {
 	//gap>1 相当于预排序，最后一次gap=1，相当于插入排序
 	assert(a);
 	int gap = n;
-	while (gap > 1)
+	while (gap > 1)//gap=1 之后，退出循环
 	{
 		gap = gap / 3 + 1;
-		int i = 0;
-		for (i = gap; i < n; i++)
+		for (int i = 0; i < n - gap; i++)
 		{
-			int end = i - gap;
-			int tmp = a[i];
+			int end = i;
+			int tmp = a[end + gap];
 			while (end >= 0 && a[end] > tmp)
 			{
 				a[end + gap] = a[end];
