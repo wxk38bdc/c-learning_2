@@ -307,3 +307,26 @@
 //	cout << ans << endl;
 //	return 0;
 //}
+
+//class Solution {
+//public:
+//    int missingNumber(vector<int>& nums) {
+//        int n = nums.size(), ret = 0;
+//        for (int i = 0; i <= n; i++)ret ^= i;
+//        for (int i = 0; i < n; i++)ret ^= nums[i];
+//        return ret;
+//    }
+//};
+
+//class Solution {
+//public:
+//    int getSum(int a, int b) {
+//        int sum;
+//        int carry;//计算进位
+//        sum = a ^ b;//无进位和
+//        carry = (a & b) << 1;//
+//        if (carry)return getSum(sum, carry);
+//        return sum;
+//
+//    }
+//};
