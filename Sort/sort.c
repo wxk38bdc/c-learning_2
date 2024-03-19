@@ -540,3 +540,90 @@ void CountSort(int* a, int n)
 	}
 	free(count);
 }
+//桶排序
+void BucketSort(int* a, int n)
+{
+	assert(a);
+	int min = a[0];
+	int max = a[0];
+	int i = 0;
+	for (i = 0; i < n; i++)
+	{
+		if (a[i] < min)
+		{
+			min = a[i];
+		}
+		if (a[i] > max)
+		{
+			max = a[i];
+		}
+	}
+	int range = max - min + 1;//范围
+	int* count = (int*)calloc(range, sizeof(int));
+	if (count == NULL)
+	{
+		printf("calloc fail\n");
+		exit(-1);
+	}
+	for (i = 0; i < n; i++)
+	{
+		count[a[i] - min]++;
+	}
+	int index = 0;
+	for (i = 0; i < range; i++)
+	{
+		while (count[i]--)
+		{
+			a[index++] = i + min;
+		}
+	}
+	free(count);
+
+}
+
+//基数排序
+void RadixSort(int* a, int n)//原理：先按个位排序，再按十位排序，再按百位排序
+{
+		assert(a);
+	int max = a[0];
+	int i = 0;
+	for (i = 0; i < n; i++)
+	{
+		if (a[i] > max)
+		{
+			max = a[i];
+		}
+	}
+	int digit = 0;
+	while (max)
+	{
+		max /= 10;
+		digit++;
+	}
+	int* count = (int*)malloc(sizeof(int) * n);
+	int* bucket = (int*)malloc(sizeof(int) * n);
+	int radix = 1;
+	for (i = 0; i < digit; i++)
+	{
+		memset(count, 0, sizeof(int) * n);
+		int j = 0;
+		for (j = 0; j < n; j++)
+		{
+			count[(a[j] / radix) % 10]++;
+		}
+		for (j = 1; j < n; j++)
+		{
+			count[j] += count[j - 1];
+		}
+		for (j = n - 1; j >= 0; j--)
+		{
+			int k = (a[j] / radix) % 10;
+			bucket[count[k] - 1] = a[j];
+			count[k]--;
+		}
+		memcpy(a, bucket, sizeof(int) * n);
+		radix *= 10;
+	}
+	free(count);
+	free(bucket);
+}

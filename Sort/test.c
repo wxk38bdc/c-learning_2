@@ -76,6 +76,20 @@ void testOP() {
     end = clock();
     printf("Count Sort took %f seconds\n", (double)(end - start) / CLOCKS_PER_SEC);
 
+    // 桶排序测试
+    memcpy(copy, a, n * sizeof(int));
+    start = clock();
+    BucketSort(copy, n);
+	end = clock();
+    printf("Bucket Sort took %f seconds\n", (double)(end - start) / CLOCKS_PER_SEC);
+
+    // 基数排序测试
+    memcpy(copy, a, n * sizeof(int));
+    start = clock();
+    RadixSort(copy, n);
+	end = clock();
+    printf("Radix Sort took %f seconds\n", (double)(end - start) / CLOCKS_PER_SEC);
+
     free(a); // 释放原数组内存
     free(copy); // 释放临时数组内存
     free(tmp); // 释放归并排序临时数组内存
@@ -105,6 +119,8 @@ int main()
 	//MergeSort(a, sz_a);//归并排序
 	//MergeSortNonR(a, sz_a);//归并排序非递归
 	//CountSort(a, sz_a);//计数排序
+    //BucketSort(a, sz_a);//桶排序
+    //RadixSort(a, sz_a);//基数排序
 	
     PrintArray(a, sz_a);
 
