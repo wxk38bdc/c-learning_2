@@ -94,11 +94,29 @@ void testOP() {
     free(copy); // 释放临时数组内存
     free(tmp); // 释放归并排序临时数组内存
 }
+void test() {
+	int a[] = { 1, 3, 5, 7, 9, 2, 4, 6, 8, 10 };
+	int sz = sizeof(a) / sizeof(a[0]);
+	//InsertSort(a, sz);
+	//ShellSort(a, sz);
+	//SelectSort(a, sz);
+	//HeapSort(a, sz);
+	//BubbleSort(a, sz);
+	//QuickSort(a, 0, sz - 1);
+	//QuickSortNonR(a, 0, sz - 1);
+	//MergeSort(a, sz);
+	//MergeSortNonR(a, sz);
+	//CountSort(a, sz);
+	//BucketSort(a, sz);
+	RadixSort(a, sz);
+	PrintArray(a, sz);
+}
 int main()
 {
     //测试时间复杂度
     testOP();
 
+    //test();
 	//生成随机数
 	srand((unsigned int)time(NULL));
 	int a[NUM] = { 0 };
