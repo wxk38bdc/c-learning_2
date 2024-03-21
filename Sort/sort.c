@@ -188,6 +188,23 @@ int GetMidIndex(int* a, int begin, int end)
 	//三数取中法
 	int mid = begin + (end - begin) / 2;
 	//int mid = (begin + end) / 2;//防止溢出
+	//简化三数取中
+
+	int arr[] = { a[begin], a[mid], a[end] };
+	InsertSort(arr, 3);
+	if (arr[1] == a[begin])
+	{
+		return begin;
+	}
+	else if (arr[1] == a[mid])
+	{
+		return mid;
+	}
+	else
+	{
+		return end;
+	}
+	/*
 	if (a[mid] > a[begin])
 	{
 		if (a[mid] < a[end])
@@ -218,7 +235,7 @@ int GetMidIndex(int* a, int begin, int end)
 			return end;
 		}
 	}
-
+	*/
 }
 int PartSort1(int* a, int begin, int end)
 {
@@ -330,18 +347,19 @@ void QuickSortNonR(int* a, int left, int right)
 		stackPop(&st);
 		//[begin,end]闭区间
 		int div = PartSort1(a, begin, end);
-		//[begin,div-1]
-		if (div - 1 > begin)
-		{
-			stackPush(&st, div - 1);
-			stackPush(&st, begin);
-		}
 		//[div+1,end]
 		if (div + 1 < end)
 		{
 			stackPush(&st, end);
 			stackPush(&st, div + 1);
 		}
+		//[begin,div-1]
+		if (div - 1 > begin)
+		{
+			stackPush(&st, div - 1);
+			stackPush(&st, begin);
+		}
+		
 	}
 }
 

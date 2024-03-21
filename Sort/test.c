@@ -4,7 +4,7 @@
 #define NUM 20
 
 void testOP() {
-    int n = 50000; // 数组大小，根据需要调整
+    int n = 50000000; // 数组大小，根据需要调整
     int* a = (int*)malloc(n * sizeof(int)); // 动态分配数组
     int* tmp = (int*)malloc(n * sizeof(int)); // 为归并排序准备临时数组
 
@@ -23,7 +23,7 @@ void testOP() {
     // 插入排序测试
     memcpy(copy, a, n * sizeof(int)); // 每次排序前复制原数组
     start = clock();
-    InsertSort(copy, n);
+   // InsertSort(copy, n);
     end = clock();
     printf("Insertion Sort took %f seconds\n", (double)(end - start) / CLOCKS_PER_SEC);
 
@@ -37,14 +37,14 @@ void testOP() {
     // 选择排序测试
     memcpy(copy, a, n * sizeof(int));
     start = clock();
-    SelectSort(copy, n);
+  //  SelectSort(copy, n);
     end = clock();
     printf("Selection Sort took %f seconds\n", (double)(end - start) / CLOCKS_PER_SEC);
 
     // 冒泡排序测试
     memcpy(copy, a, n * sizeof(int));
     start = clock();
-    BubbleSort(copy, n);
+  //  BubbleSort(copy, n);
     end = clock();
     printf("Bubble Sort took %f seconds\n", (double)(end - start) / CLOCKS_PER_SEC);
 
@@ -61,6 +61,13 @@ void testOP() {
     QuickSort(copy, 0, n - 1);
     end = clock();
     printf("Quick Sort took %f seconds\n", (double)(end - start) / CLOCKS_PER_SEC);
+
+    // 非递归快速排序测试
+    memcpy(copy, a, n * sizeof(int));
+    start = clock();
+    QuickSortNonR(copy, 0, n - 1);
+	end = clock();
+    printf("Non-Recursive Quick Sort took %f seconds\n", (double)(end - start) / CLOCKS_PER_SEC);
 
     // 归并排序测试
     memcpy(copy, a, n * sizeof(int));
