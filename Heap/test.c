@@ -17,6 +17,15 @@ void HeapSortDown(int* a, int n)//从大到小排序，建小堆
 		end--;
 	}
 }
+void testHeap()
+{
+	int a[] = { 255,18,26,577,59,236,10,0 };
+	HeapSortDown(a, sizeof(a) / sizeof(a[0]));
+	for (int i = 0; i < sizeof(a) / sizeof(a[0]); i++)
+	{
+		printf("%d ", a[i]);
+	}
+}
 int main()
 {
 	int a[] = { 255,18,26,577,59,236,10,0 };
@@ -48,5 +57,8 @@ int main()
 	{
 		printf("%d ", hp._a[i]);
 	}
+	printf("\n");
+
+	testHeap();
 	return 0;
 }
