@@ -330,3 +330,58 @@
 //
 //    }
 //};
+
+//38. 外观数列
+//class Solution {
+//public:
+//    string countAndSay(int n) {
+//        string prev = "";
+//        string cur = "1";
+//        for (int i = 1; i < n; i++)
+//        {
+//            prev = cur;
+//            cur = "";
+//            int left = 0, right = 0;
+//            while (right <= prev.size())
+//            {
+//                //考虑最右边情况
+//                if (right == prev.size())
+//                {
+//                    int count = right - left; // 数量
+//                    cur += std::to_string(count) + prev[left];
+//                    break;
+//                }
+//                //一般情况
+//                if (prev[right] == prev[left])
+//                {
+//                    right++;
+//                }
+//                else
+//                {
+//                    int count = right - left; // 数量
+//                    cur += std::to_string(count) + prev[left];
+//                    left = right;
+//                }
+//            }
+//
+//        }
+//        return cur;
+//    }
+//};
+
+//class Solution {
+//public:
+//    int maxProfit(vector<int>& prices) {
+//        int n = prices.size();
+//        int dp_i_0 = 0, dp_i_1 = INT_MIN;
+//        for (int i = 0; i < n; i++)
+//        {
+//            int temp = dp_i_0;
+//            dp_i_0 = max(dp_i_0, dp_i_1 + prices[i]);
+//            dp_i_1 = max(dp_i_1, temp - prices[i]);
+//        }
+//        return dp_i_0;
+//    }
+//};
+
+
