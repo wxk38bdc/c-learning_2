@@ -113,7 +113,7 @@ void SelectSort(int* a, int n)
 	}
 }
 
-//堆排序
+//堆排序//建（大）堆，排序
 void AdjustDown(int* a, int n, int root)
 {
 	assert(a);
@@ -469,6 +469,32 @@ void MergeSortNonR(int* a, int n)
 				right = n - 1;
 			}
 			Merge(a, left, mid, right, tmp);
+			//int i = left;
+			//int j = mid + 1;
+			//int k = left;
+
+			//// 合并两个有序区间
+			//while (i <= mid && j <= right) {
+			//	if (a[i] <= a[j]) {
+			//		tmp[k++] = a[i++];
+			//	}
+			//	else {
+			//		tmp[k++] = a[j++];
+			//	}
+			//}
+
+			//// 处理剩余的元素
+			//while (i <= mid) {
+			//	tmp[k++] = a[i++];
+			//}
+			//while (j <= right) {
+			//	tmp[k++] = a[j++];
+			//}
+
+			//// 将合并后的数组复制回原数组
+			//for (i = left; i <= right; i++) {
+			//	a[i] = tmp[i];
+			//}
 		}
 		gap *= 2;
 	}
@@ -526,6 +552,7 @@ void CountSort(int* a, int n)
 	int min = a[0];
 	int max = a[0];
 	int i = 0;
+	//找到最大值和最小值
 	for (i = 0; i < n; i++)
 	{
 		if (a[i] < min)
@@ -644,4 +671,35 @@ void RadixSort(int* a, int n)//原理：先按个位排序，再按十位排序，再按百位排序
 	}
 	free(count);
 	free(bucket);
+}
+
+
+// 检查数组是否已排序
+bool isSorted(int* a, int n) {
+	for (int i = 1; i < n; i++) {
+		if (a[i - 1] > a[i]) {
+			return false;
+		}
+	}
+	return true;
+}
+
+// 数组打乱
+void shuffle(int* a, int n) {
+	for (int i = 0; i < n; i++) {
+		int j = rand() % n;
+		int temp = a[i];
+		a[i] = a[j];
+		a[j] = temp;
+	}
+}
+
+// 猴子排序算法
+void MonkeySort(int* a, int n) {
+	// 使用系统时间作为随机种子
+	srand(time(NULL));
+	// 当数组未排序时，持续随机打乱数组顺序
+	while (!isSorted(a, n)) {
+		shuffle(a, n);
+	}
 }

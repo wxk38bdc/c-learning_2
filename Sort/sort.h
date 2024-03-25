@@ -4,6 +4,7 @@
 #include<assert.h>
 #include<string.h>
 #include<time.h>//用于随机数的产生
+#include<stdbool.h>
 
 //插入排序
 void InsertSort(int* a, int n);
@@ -50,3 +51,8 @@ void PrintArray(int* a, int n);
 
 //交换
 void Swap(int* a, int* b);
+
+//猴子排序:随机打乱数组，检查是否有序，直到有序为止
+bool isSorted(int* a, int n);
+void shuffle(int* a, int n);
+void MonkeySort(int* a, int n);
