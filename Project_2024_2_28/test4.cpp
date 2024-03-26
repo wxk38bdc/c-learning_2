@@ -384,4 +384,122 @@
 //    }
 //};
 
+//leetcode 493. 翻转对
+//class Solution {
+//public:
+//	long long tmp[50001];
+//	long long ret;
+//	void MergeSort(vector<long long>& a, long long left, long long right)
+//	{
+//		if (left < right)
+//		{
+//			//[left,mid][mid+1,right]
+//			long long mid = left + (right - left) / 2; // 避免溢出
+//			MergeSort(a, left, mid); // 排序左半部分
+//			MergeSort(a, mid + 1, right); // 排序右半部分
+//
+//			long long i = left;
+//			long long j = mid + 1;
+//			long long k = left;
+//
+//			long long tmpi = i, tmpj = j, tmpk = k;
+//			while (tmpi <= mid && tmpj <= right)
+//			{
+//				while (tmpj <= right && a[tmpi] <= a[tmpj] * 2)tmpj++;
+//				//此时 a[tmpi]>2*a[tmpj]
+//				ret += right - tmpj + 1;
+//				tmpi++;
+//			}
+//
+//			// 合并两个有序区间
+//			while (i <= mid && j <= right) {
+//				if (a[i] <= a[j]) {
+//					tmp[k++] = a[j++];
+//				}
+//				else {
+//					tmp[k++] = a[i++];
+//				}
+//			}
+//
+//			// 处理剩余的元素
+//			while (i <= mid) {
+//				tmp[k++] = a[i++];
+//			}
+//			while (j <= right) {
+//				tmp[k++] = a[j++];
+//			}
+//
+//			// 将合并后的数组复制回原数组
+//			for (i = left; i <= right; i++) {
+//				a[i] = tmp[i];
+//			}
+//		}
+//	}
+//	int reversePairs(vector<int>& nums) {
+//		ret = 0;
+//		vector<long long>numbers(nums.size());
+//		for (int i = 0; i < nums.size(); i++)
+//		{
+//			numbers[i] = nums[i];
+//		}
+//		MergeSort(numbers, 0, nums.size() - 1);
+//		return ret;
+//	}
+//};
 
+//leetcode 315. 计算右侧小于当前元素的个数
+//class Solution {
+//public:
+//    void MergeSort(int left, int right, vector<int>& nums, vector<int>& count, vector<int>& temp, vector<int>& index, vector<int>& tempIndex) {
+//        if (left >= right) return;
+//
+//        int mid = left + (right - left) / 2;
+//        MergeSort(left, mid, nums, count, temp, index, tempIndex);
+//        MergeSort(mid + 1, right, nums, count, temp, index, tempIndex);
+//
+//        // Merge two sorted halves
+//        int i = left, j = mid + 1, k = left;
+//        while (i <= mid && j <= right) {
+//            if (nums[index[i]] <= nums[index[j]]) {
+//                temp[k] = index[i];
+//                count[index[i]] += j - mid - 1;
+//                i++;
+//            }
+//            else {
+//                temp[k] = index[j];
+//                j++;
+//            }
+//            k++;
+//        }
+//
+//        while (i <= mid) {
+//            temp[k] = index[i];
+//            count[index[i]] += j - mid - 1;
+//            i++;
+//            k++;
+//        }
+//
+//        while (j <= right) {
+//            temp[k] = index[j];
+//            j++;
+//            k++;
+//        }
+//
+//        // Copy back to the original index array for the next iteration
+//        for (int i = left; i <= right; i++) {
+//            index[i] = temp[i];
+//        }
+//    }
+//
+//    vector<int> countSmaller(vector<int>& nums) {
+//        int n = nums.size();
+//        vector<int> count(n, 0), temp(n), index(n), tempIndex(n);
+//        for (int i = 0; i < n; i++) {
+//            index[i] = i;
+//        }
+//
+//        MergeSort(0, n - 1, nums, count, temp, index, tempIndex);
+//
+//        return count;
+//    }
+//};
