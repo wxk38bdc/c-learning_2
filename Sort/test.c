@@ -107,12 +107,12 @@ void testOP() {
 	end = clock();
     printf("Radix Sort took %.3f seconds\n", (double)(end - start) / CLOCKS_PER_SEC);
 
-    //// 猴子排序测试
-    //memcpy(copy, a, n * sizeof(int));
-    //start = clock();
-    //MonkeySort(copy, n);
-    //end = clock();
-    //printf("Monkey Sort took %.3f seconds\n", (double)(end - start) / CLOCKS_PER_SEC);
+    // 猴子排序测试
+    memcpy(copy, a, n * sizeof(int));
+    start = clock();
+    MonkeySort(copy, n);
+    end = clock();
+    printf("Monkey Sort took %.3f seconds\n", (double)(end - start) / CLOCKS_PER_SEC);
 
     free(a); // 释放原数组内存
     free(copy); // 释放临时数组内存

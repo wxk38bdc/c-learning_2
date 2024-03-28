@@ -1,8 +1,18 @@
 #include<iostream>
 using namespace std;
 
+void func()
+{
+	cout << "Value of a is:: " << endl;
+}
+void func(int a=10)
+{
+	cout << "Value of a is: "  << endl;
+
+}
 int main()
 {
-	cout << "Hello World!";
+	func(1);
+	//func(10);
 	return 0;
 }
