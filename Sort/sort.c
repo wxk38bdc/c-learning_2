@@ -137,6 +137,30 @@ void AdjustDown(int* a, int n, int root)
 		}
 	}
 }
+//小堆 向下调整
+void AdjustDown1(int* a, int n, int root)
+{
+	assert(a);
+	int parent = root;
+	int child = parent * 2 + 1;
+	while (child < n)
+	{
+		if (child + 1 < n && a[child + 1] < a[child])
+		{
+			child++;
+		}
+		if (a[child] < a[parent])
+		{
+			Swap(&a[child], &a[parent]);
+			parent = child;
+			child = parent * 2 + 1;
+		}
+		else
+		{
+			break;
+		}
+	}
+}
 void HeapSort(int* a, int n)
 {
 	assert(a);

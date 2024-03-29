@@ -17,6 +17,7 @@ void SelectSort(int* a, int n);
 
 //∂—≈≈–Ú
 void AdjustDown(int* a, int n, int root);
+void AdjustDown1(int* a, int n, int root);
 void HeapSort(int* a, int n);
 
 //√∞≈›≈≈–Ú
