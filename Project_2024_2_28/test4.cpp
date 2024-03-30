@@ -503,3 +503,22 @@
 //        return count;
 //    }
 //};
+
+////leetcode 174. 地下城游戏
+//class Solution {
+//public:
+//    int calculateMinimumHP(vector<vector<int>>& dungeon) {
+//        int m = dungeon.size(), n = dungeon[0].size();
+//        vector<vector<int>> dp(m + 1, vector<int>(n + 1, INT_MAX));
+//        dp[m][n - 1] = dp[m - 1][n] = 1; // 右下角的下和右设为1，表示到达终点至少需要的健康点数
+//
+//        for (int i = m - 1; i >= 0; --i) {
+//            for (int j = n - 1; j >= 0; --j) {
+//                // 计算到达每个房间需要的最小健康点数
+//                int need = min(dp[i + 1][j], dp[i][j + 1]) - dungeon[i][j];
+//                dp[i][j] = need <= 0 ? 1 : need; // 如果计算结果小于等于0，则至少需要1点健康点数
+//            }
+//        }
+//        return dp[0][0]; // 返回左上角所需的最小健康点数
+//    }
+//};
