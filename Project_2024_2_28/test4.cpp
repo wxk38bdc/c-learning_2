@@ -522,3 +522,62 @@
 //        return dp[0][0]; // 返回左上角所需的最小健康点数
 //    }
 //};
+
+//leetcode 740. 删除并获得点数
+//class Solution {
+//public:
+//    int deleteAndEarn(vector<int>& nums) {
+//        int n = nums.size();
+//
+//        //转换为“打家劫舍”问题
+//        vector<int>rob(10001, 0);
+//        for (int i = 0; i < n; i++)
+//        {
+//            rob[nums[i]] += nums[i];
+//        }
+//        return robRange(rob, 0, 10000);
+//
+//    }
+//    int robRange(const vector<int>& nums, int start, int end) {
+//        if (start > end)return 0;
+//        if (start == end) return nums[start];
+//        vector<int> dp(end - start + 1, 0);
+//        dp[0] = nums[start];
+//        dp[1] = max(nums[start], nums[start + 1]);
+//        for (int i = start + 2; i <= end; i++) {
+//            dp[i - start] = max(dp[i - start - 1], dp[i - start - 2] + nums[i]);
+//        }
+//        return dp[end - start];
+//    }
+//};
+
+//leetcode 213. 打家劫舍 II
+/*
+* 1. 如果房屋数量为1，则直接返回该房屋的金额
+* 2. 如果房屋数量为2，则返回两个房屋中金额较大的那个
+* 3. 如果房屋数量大于2，则分两种情况：
+*  a. 不偷窃第一个房屋，即偷窃范围为[1, n-1]
+*  b. 不偷窃最后一个房屋，即偷窃范围为[0, n-2]
+* 返回两种情况中金额较大的那个
+*/
+//class Solution {
+//public:
+//    int rob(vector<int>& nums) {
+//        int n = nums.size();
+//        if (n == 1) return nums[0];
+//        // 分两种情况：不包含第一个元素，和不包含最后一个元素
+//        return max(robRange(nums, 0, n - 2), robRange(nums, 1, n - 1));
+//    }
+//
+//    // 动态规划解决从[start, end]的偷窃问题
+//    int robRange(const vector<int>& nums, int start, int end) {
+//        if (start == end) return nums[start];
+//        vector<int> dp(end - start + 1, 0);
+//        dp[0] = nums[start];
+//        dp[1] = max(nums[start], nums[start + 1]);
+//        for (int i = start + 2; i <= end; i++) {
+//            dp[i - start] = max(dp[i - start - 1], dp[i - start - 2] + nums[i]);
+//        }
+//        return dp[end - start];
+//    }
+//};
