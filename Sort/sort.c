@@ -653,7 +653,7 @@ void BucketSort(int* a, int n)
 //基数排序
 void RadixSort(int* a, int n)//原理：先按个位排序，再按十位排序，再按百位排序
 {
-		assert(a);
+	assert(a);
 	int max = a[0];
 	int i = 0;
 	for (i = 0; i < n; i++)
@@ -726,4 +726,107 @@ void MonkeySort(int* a, int n) {
 	while (!isSorted(a, n)) {
 		shuffle(a, n);
 	}
+}
+
+//测试时间复杂度
+void TestTime()
+{
+	int n = 100000;
+	int* a = (int*)malloc(sizeof(int) * n);
+	int* b = (int*)malloc(sizeof(int) * n);
+	int* c = (int*)malloc(sizeof(int) * n);
+	int* d = (int*)malloc(sizeof(int) * n);
+	int* e = (int*)malloc(sizeof(int) * n);
+	int* f = (int*)malloc(sizeof(int) * n);
+	int* g = (int*)malloc(sizeof(int) * n);
+	int* h = (int*)malloc(sizeof(int) * n);
+	int* i = (int*)malloc(sizeof(int) * n);
+	int* j = (int*)malloc(sizeof(int) * n);
+	int* k = (int*)malloc(sizeof(int) * n);
+	int* l = (int*)malloc(sizeof(int) * n);
+	int* m = (int*)malloc(sizeof(int) * n);
+
+
+	for (int i = 0; i < n; i++) {
+		a[i] = rand();
+		b[i] = a[i];
+		c[i] = a[i];
+		d[i] = a[i];
+		e[i] = a[i];
+		f[i] = a[i];
+		g[i] = a[i];
+		h[i] = a[i];
+		i[i] = a[i];
+		j[i] = a[i];
+		k[i] = a[i];
+		l[i] = a[i];
+		m[i] = a[i];
+	}
+
+	clock_t start, end;
+	start = clock();
+	InsertSort(a, n);
+	end = clock();
+	printf("InsertSort: %dms\n", end - start);
+
+	start = clock();
+	ShellSort(b, n);
+	end = clock();
+	printf("ShellSort: %dms\n", end - start);
+
+	start = clock();
+	SelectSort(c, n);
+	end = clock();
+	printf("SelectSort: %dms\n", end - start);
+
+	start = clock();
+	HeapSort(d, n);
+	end = clock();
+	printf("HeapSort: %dms\n", end - start);
+
+	start = clock();
+	BubbleSort(e, n);
+	end = clock();
+	printf("BubbleSort: %dms\n", end - start);
+
+	start = clock();
+	QuickSort(f, 0, n - 1);
+	end = clock();
+	printf("QuickSort: %dms\n", end - start);
+
+	start = clock();
+	QuickSortNonR(g, 0, n - 1);
+	end = clock();
+	printf("QuickSortNonR: %dms\n", end - start);
+
+	start = clock();
+	MergeSort(h, n);
+	end = clock();
+	printf("MergeSort: %dms\n", end - start);
+
+	start = clock();
+	MergeSortNonR(i, n);
+	end = clock();
+	printf("MergeSortNonR: %dms\n", end - start);
+
+	start = clock();
+	CountSort(j, n);
+	end = clock();
+	printf("CountSort: %dms\n", end - start);
+
+	start = clock();
+	BucketSort(k, n);
+	end = clock();
+	printf("BucketSort: %dms\n", end - start);
+
+	start = clock();
+	RadixSort(l, n);
+	end = clock();
+	printf("RadixSort: %dms\n", end - start);
+
+	start = clock();
+	MonkeySort(m, n);
+	end = clock();
+	printf("MonkeySort: %dms\n", end - start);
+
 }

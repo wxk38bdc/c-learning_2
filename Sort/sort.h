@@ -57,3 +57,6 @@ void Swap(int* a, int* b);
 bool isSorted(int* a, int n);
 void shuffle(int* a, int n);
 void MonkeySort(int* a, int n);
+
+
+void TestTime();//≤‚ ‘ ±º‰∏¥‘”∂»
