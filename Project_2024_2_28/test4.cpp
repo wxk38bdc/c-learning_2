@@ -581,3 +581,38 @@
 //        return dp[end - start];
 //    }
 //};
+
+//#include <iostream>
+//#include <cstdlib>
+//#include <ctime>
+//
+//using namespace std;
+//
+//int main() {
+//    srand(time(0)); // 设置随机种子
+//
+//    int secretNumber = rand() % 100 + 1; // 生成1到100之间的随机数
+//    int guess;
+//    int attempts = 0;
+//
+//    cout << "欢迎来到猜数字游戏！" << endl;
+//    cout << "我已经选择了一个1到100之间的秘密数字，请猜测它。" << endl;
+//
+//    do {
+//        cout << "请输入你的猜测: ";
+//        cin >> guess;
+//        attempts++;
+//
+//        if (guess > secretNumber) {
+//            cout << "太大了！再试一次。" << endl;
+//        }
+//        else if (guess < secretNumber) {
+//            cout << "太小了！再试一次。" << endl;
+//        }
+//        else {
+//            cout << "恭喜！你猜对了，使用了 " << attempts << " 次尝试。" << endl;
+//        }
+//    } while (guess != secretNumber);
+//
+//    return 0;
+//}
