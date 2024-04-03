@@ -616,3 +616,76 @@
 //
 //    return 0;
 //}
+
+//#include <iostream>
+//#include <string>
+//using namespace std;
+//
+//// 定义Student类
+//class Student {
+//private:
+//    string name;  // 学生姓名
+//    int age;      // 学生年龄
+//    float score;  // 学生成绩
+//
+//public:
+//    // 构造函数
+//    Student(string n, int a, float s) : name(n), age(a), score(s) {}
+//
+//    // 设置学生姓名
+//    void setName(string n) {
+//        name = n;
+//    }
+//
+//    // 获取学生姓名
+//    string getName() {
+//        return name;
+//    }
+//
+//    // 设置学生年龄
+//    void setAge(int a) {
+//        age = a;
+//    }
+//
+//    // 获取学生年龄
+//    int getAge() {
+//        return age;
+//    }
+//
+//    // 设置学生成绩
+//    void setScore(float s) {
+//        score = s;
+//    }
+//
+//    // 获取学生成绩
+//    float getScore() {
+//        return score;
+//    }
+//
+//    // 显示学生信息
+//    void display() {
+//        cout << "Student Information:" << endl;
+//        cout << "Name: " << name << endl;
+//        cout << "Age: " << age << endl;
+//        cout << "Score: " << score << endl;
+//    }
+//};
+//
+//int main() {
+//    // 创建Student对象
+//    Student student1("John Doe", 20, 92.5);
+//
+//    // 使用成员函数设置和获取信息
+//    student1.setName("Jane Doe");
+//    student1.setAge(21);
+//    student1.setScore(93.5);
+//
+//    // 显示学生信息
+//    student1.display();
+//
+//    // 创建第二个Student对象，并直接初始化
+//    Student student2("Mike Johnson", 19, 88.0);
+//    student2.display();
+//
+//    return 0;
+//}
