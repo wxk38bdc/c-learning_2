@@ -1,8 +1,8 @@
 #pragma once
 #include<iostream>
-#include<string>
 #include<cstring>
 #include<cassert>
+#include<algorithm>
 using namespace std;
 namespace MyString
 {
@@ -13,7 +13,6 @@ namespace MyString
 		size_t _size;//有效长度
 		size_t _capacity;//能够容纳的最大有效长度
 
-		static size_t npos;
 	public:
 		typedef char* iterator;//迭代器
 		iterator begin()
@@ -34,13 +33,7 @@ namespace MyString
 			return _str + _size;
 		}
 
-		string(const char* str = " ")
-		{
-			_size = strlen(str);
-			_capacity = _size;
-			_str = new char[_capacity + 1];
-			strcpy(_str, str);
-		}
+		string(const char* str = " ");
 		//string(string& s)//深拷贝
 		//{
 		//	_size = s.size();
@@ -49,16 +42,7 @@ namespace MyString
 		//	strcpy(_str, s.c_str());
 		//}
 		//深拷贝的现代写法:使用构造函数进行初始化
-		string(const string& s)
-			:_str(nullptr)
-			, _size(0)
-			, _capacity(0)
-		{
-			string tmp(s._str);
-			swap(_str, tmp._str);
-			swap(_size, tmp._size);
-			swap(_capacity, tmp._capacity);
-		}
+		string(const string& s);
 		~string()
 		{
 			if (_str)
@@ -122,7 +106,6 @@ namespace MyString
 			//strcpy(_str, str);
 			return *this;
 		}
-		friend istream& operator>>(istream& _cin, string& s);
 
 		void reserve(size_t n)
 		{
@@ -308,75 +291,10 @@ namespace MyString
 		{
 			return strcmp(_str, s.c_str()) >= 0;
 		}
+
+		static size_t npos;
+		friend std::ostream& operator<<(std::ostream& _cout, const string& s);
+		friend std::istream& operator>>(std::istream& _cin, string& s);
 	};
-	size_t string::npos = -1;//静态成员变量的初始化
-	ostream& operator<<(ostream& _cout, const string& s)
-	{
-		//for(size_t i = 0; i < s.size(); ++i)
-		//{
-		//	_cout << s[i];
-		//}
-		_cout << s.c_str();
-		return _cout;
-	}
-	istream& operator>>(istream& _cin, string& s)
-	{
-		_cin >> s._str;
-		s._size = strlen(s._str);
-		s._capacity = s._size;
-		return _cin;
-	}
-	void test_string1()
-	{
-		string s1("hello");
-		string s2(s1);
-		string s3 = s1;
-		string s4 = "world";
-		//cout << s1 << endl;
-		//cout << s2.c_str() << endl;
-		//cout << s3.c_str() << endl;
-		//cout << s4.c_str() << endl;
-		//for (auto e : s4)//范围for-底层使用迭代器
-		//{
-		//	cout << e << " ";
-		//}
-		//s1.push_back(' ');
-		//s1.append(s4);
-		//s1 += "you";
-		//s1 += 'k';
-		//s1 += s4;
-		//cout << s1 << endl;
-		//s1 += " world";
-		//cout << s1 << endl;
-		//s1.erase(1);
-		//cout << s1 << endl;
-		cout << s1 << endl;
-		cin >> s1;
-		cout << s1 << endl;
-	}
-	void test_string2()
-	{
-		string s1("hello");
-		string s2("world");
-		cout << (s1 < s2) << endl;
-		cout << (s1 > s2) << endl;
-		cout << (s1 == s2) << endl;
-		cout << (s1 != s2) << endl;
-		cout << (s1 <= s2) << endl;
-		cout << (s1 >= s2) << endl;
-	}
-	void test_string3()
-	{
-		string s1("hello");
-		s1.insert(1, 'a');
-		cout << s1 << endl;
-		s1.insert(1, "world");
-		cout << s1 << endl;
-		s1.erase(1, 5);
-		cout << s1 << endl;
-		cout << s1.find('l') << endl;
-		cout << s1.find("lo") << endl;
-		s1.insert(0, "00");
-		cout << s1 << endl;
-	}
+	
 }
