@@ -51,15 +51,28 @@ void test_string3()
 	cout << s1 << endl;
 	s1.erase(1, 5);
 	cout << s1 << endl;
-	cout << s1.find('l') << endl;
-	cout << s1.find("lo") << endl;
+	cout << (s1.find('l')) << endl;
+	cout << (s1.find("lo")) << endl;
 	s1.insert(0, "00");
 	cout << s1 << endl;
+}
+void test_string4()
+{
+	MyString::string s;
+	s += 'a';
+	s += 'b';
+	s += "cde";
+	cout << s << endl;
+	MyString::string s2("hello");
+	s += s2;
+	s += "world";
+	cout << s << endl;
 }
 int main()
 {
 	//test_string1();
 	//test_string2();
-	test_string3();
+	//test_string3();
+	test_string4();
 	return 0;
 }

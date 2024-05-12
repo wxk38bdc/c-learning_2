@@ -15,286 +15,61 @@ namespace MyString
 
 	public:
 		typedef char* iterator;//迭代器
-		iterator begin()
-		{
-			return _str;
-		}
-		iterator end()
-		{
-			return _str + _size;
-		}
+		iterator begin();
+		iterator end();
+
 		typedef const char* const_iterator;//常迭代器
-		const_iterator begin()const
-		{
-			return _str;
-		}
-		const_iterator end()const
-		{
-			return _str + _size;
-		}
+		const_iterator begin()const;
+		const_iterator end()const;
 
 		string(const char* str = " ");
-		//string(string& s)//深拷贝
-		//{
-		//	_size = s.size();
-		//	_capacity = s._capacity;
-		//	_str = new char[_capacity + 1];
-		//	strcpy(_str, s.c_str());
-		//}
-		//深拷贝的现代写法:使用构造函数进行初始化
 		string(const string& s);
-		~string()
-		{
-			if (_str)
-			{
-				delete[] _str;
-				_str = nullptr;
-				_size = _capacity = 0;
-			}
-		}
-		size_t size()const
-		{
-			return _size;
-		}
-		size_t length()const
-		{
-			return _size;
-		}
-		size_t capacity()const
-		{
-			return _capacity;
-		}
-		const char* c_str()const
-		{
-			return _str;
-		}
-		const char& operator[](size_t index)const
-		{
-			assert(index < _size);
-			return _str[index];
-		}
-		char& operator[](size_t index)
-		{
-			assert(index < _size);
-			return _str[index];
-		}
-		string& operator=(string s)
-		{
-			//现代写法
-			swap(_str, s._str);
-			swap(_size, s._size);
-			swap(_capacity, s._capacity);
-			//if (this != &s)
-			//{
-			//	string tmp(s);
-			//	swap(_str, tmp._str);
-			//	//delete[] _str;//释放原有空间
-			//	//_str = new char[s.size() + 1];
-			//	//strcpy(_str, s.c_str());
-			//	//_size = s.size();
-			//	//_capacity = s.capacity();
-			//}
-			return *this;
-		}
-		string& operator=(const char* str)
-		{
-			string tmp(str);
-			swap(_str, tmp._str);
-			//delete[] _str;
-			//_size = _capacity = strlen(str);
-			//_str = new char[strlen(str) + 1];
-			//strcpy(_str, str);
-			return *this;
-		}
+		~string();
 
-		void reserve(size_t n)
-		{
-			if (n > _capacity)
-			{
-				char* tmp = new char[n + 1];
-				strcpy(tmp, _str);
-				delete[] _str;
-				_str = tmp;
-				_capacity = n;
-			}
-		}
-		void resize(size_t n, char ch = '\0')
-		{
-			if (n > _capacity)
-			{
-				reserve(n);
-			}
-			if (n < _size)
-			{
-				_str[n] = '\0';
-			}
-			else
-			{
-				for (size_t i = _size; i < n; ++i)
-				{
-					_str[i] = ch;
-				}
-				_str[n] = '\0';
-			}
-			_size = n;
-		}
+		size_t size()const;
+		size_t length()const;
+		size_t capacity()const;
+		const char* c_str()const;
+		const char& operator[](size_t index)const;
+		char& operator[](size_t index);
+
+		string& operator=(string s);
+		string& operator=(const char* str);
+
+		void reserve(size_t n);
+		void resize(size_t n, char ch = '\0');
+
 		//增删查改
-		void push_back(char ch)
-		{
-			//如果有效长度等于容量，进行扩容
-			if (_size == _capacity)
-			{
-				size_t newcapacity = (_capacity == 0) ? 15 : 2 * _capacity;
-				reserve(newcapacity);
-			}
-			_str[_size++] = ch;
-			_str[_size] = '\0';
-		}
-		void append(const char* str)
-		{
-			size_t len = strlen(str);
-			if (_size + len > _capacity)
-			{
-				reserve(_size + len);
-			}
-			strcpy(_str + _size, str);
-			_size += len;
-		}
-		void append(const string& s)
-		{
-			const char* str = s.c_str();
-			append(str);
-		}
-		void operator+=(char ch)
-		{
-			push_back(ch);
-		}
-		void operator+=(const char* str)
-		{
-			append(str);
-		}
-		void operator+=(const string& s)
-		{
-			append(s);
-		}
-		string& insert(size_t pos, char ch)
-		{
-			assert(pos <= _size);
-			if (_size == _capacity)
-			{
-				size_t newcapacity = (_capacity == 0) ? 15 : 2 * _capacity;
-				reserve(newcapacity);
-			}
-			for (size_t i = _size; i > pos; --i)
-			{
-				_str[i] = _str[i - 1];
-			}
-			_str[pos] = ch;
-			++_size;
-			_str[_size] = '\0';
-			return *this;
-		}
-		string& insert(size_t pos, const char* str)
-		{
-			assert(pos <= _size);
-			size_t len = strlen(str);
-			if (_size + len > _capacity)
-			{
-				reserve(_size + len);
-			}
-			for (int i = _size; i >=(int)pos; --i)
-			{
-				_str[i + len] = _str[i];
-			}
-			strncpy(_str + pos, str, len);
-			_size += len;
-			return *this;
-		}
-		string& insert(size_t pos, const string& s)
-		{
-			insert(pos, s.c_str());
-			return *this;
-		}
+		void push_back(char ch);
+		void append(const char* str);
+		void append(const string& s);
 
+		void operator+=(char ch);
+		void operator+=(const char* str);
+		void operator+=(const string& s);
+		string operator+(char ch);
+		string operator+(const char* str);
+		string operator+(const string& s);
 
-		size_t find(char ch, size_t pos = 0)const
-		{
-			for (size_t i = pos; i < _size; ++i)
-			{
-				if (_str[i] == ch)
-				{
-					return i;
-				}
-			}
-			return npos;
-		}
-		size_t find(const char* str, size_t pos = 0)const
-		{
-			char* substr = strstr(_str + pos, str);
-			if (substr == nullptr)
-			{
-				return npos;
-			}
-			return substr - _str;
-			//size_t len = strlen(str);
-			//for (size_t i = pos; i < _size - len + 1; ++i)
-			//{
-			//	if (strncmp(_str + i, str, len) == 0)
-			//	{
-			//		return i;
-			//	}
-			//}
-			//return npos;
-		}
-		string& erase(size_t pos, size_t len = npos - 1)
-		{
-			if (pos >= _size)
-			{
-				return *this;
-			}
-			if (pos + len > _size)
-			{
-				_size = pos;
-				_str[_size] = '\0';
-				return *this;
-			}
-			for (size_t i = pos + len; i < _size; ++i)
-			{
-				_str[i - len] = _str[i];
-			}
+		string& insert(size_t pos, char ch);
+		string& insert(size_t pos, const char* str);
+		string& insert(size_t pos, const string& s);
 
-			_size -= len;
-			_str[_size] = '\0';
-			return *this;
-		}
-		bool operator<(const string& s)const
-		{
-			return strcmp(_str, s.c_str()) < 0;
-		}
-		bool operator>(const string& s)const
-		{
-			return strcmp(_str, s.c_str()) > 0;
-		}
-		bool operator==(const string& s)const
-		{
-			return strcmp(_str, s.c_str()) == 0;
-		}
-		bool operator!=(const string& s)const
-		{
-			return strcmp(_str, s.c_str()) != 0;
-		}
-		bool operator<=(const string& s)const
-		{
-			return strcmp(_str, s.c_str()) <= 0;
-		}
-		bool operator>=(const string& s)const
-		{
-			return strcmp(_str, s.c_str()) >= 0;
-		}
+		size_t find(char ch, size_t pos = 0)const;
+		size_t find(const char* str, size_t pos = 0)const;
 
-		static size_t npos;
-		friend std::ostream& operator<<(std::ostream& _cout, const string& s);
-		friend std::istream& operator>>(std::istream& _cin, string& s);
+		string& erase(size_t pos, size_t len = npos - 1);
+
+		bool operator<(const string& s)const;
+		bool operator>(const string& s)const;
+		bool operator==(const string& s)const;
+		bool operator!=(const string& s)const;
+		bool operator<=(const string& s)const;
+		bool operator>=(const string& s)const;
+
+		const static size_t npos;
+		friend ostream& operator<<(ostream& _cout, const string& s);
+		friend istream& operator>>(istream& _cin, string& s);
 	};
 	
 }
