@@ -68,11 +68,21 @@ void test_string4()
 	s += "world";
 	cout << s << endl;
 }
+void test_string5()
+{
+	MyString::string s1, s2;
+	s1 = "accccccc";
+	s2 = s1;
+	cout << s2.substr() << endl;
+	cout << s2.substr(1) << endl;
+	cout << s2.substr(1, 2) << endl;
+}
 int main()
 {
 	//test_string1();
 	//test_string2();
 	//test_string3();
-	test_string4();
+	//test_string4();
+	test_string5();
 	return 0;
 }

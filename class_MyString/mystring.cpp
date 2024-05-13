@@ -4,6 +4,7 @@
 
 namespace MyString
 {
+	//构造函数、析构函数与赋值运算符重载
 	string::string(const char* str)
 	{
 		_size = strlen(str);
@@ -18,9 +19,9 @@ namespace MyString
 		, _capacity(0)
 	{
 		string tmp(s._str);
-		swap(_str, tmp._str);
-		swap(_size, tmp._size);
-		swap(_capacity, tmp._capacity);
+		std::swap(_str, tmp._str);
+		std::swap(_size, tmp._size);
+		std::swap(_capacity, tmp._capacity);
 	}
 
 	string::~string()
@@ -32,6 +33,26 @@ namespace MyString
 			_size = _capacity = 0;
 		}
 	}
+
+	string& string::operator=(string s)
+	{
+		//现代写法
+		std::swap(_str, s._str);
+		std::swap(_size, s._size);
+		std::swap(_capacity, s._capacity);
+		return *this;
+	}
+
+	string& string::operator=(const char* str)
+	{
+		string tmp(str);
+		std::swap(_str, tmp._str);
+		std::swap(_size, tmp._size);
+		std::swap(_capacity, tmp._capacity);
+		return *this;
+	}
+
+	//访问及遍历操作函数
 	string::iterator string::begin()
 	{
 		return _str;
@@ -52,23 +73,19 @@ namespace MyString
 		return _str + _size;
 	}
 
-	const size_t string::npos = -1;
-
-	ostream& operator<<(ostream& _cout, const string& s) {
-		_cout << s.c_str();
-		return _cout;
+	const char& string::operator[](size_t index)const
+	{
+		assert(index < _size);
+		return _str[index];
 	}
 
-	istream& operator>>(istream& _cin, string& s) {
-		char temp[1000];
-		_cin >> temp;
-		string tmp(temp);
-		std::swap(s._str, tmp._str);
-		std::swap(s._size, tmp._size);
-		std::swap(s._capacity, tmp._capacity);
-		return _cin;
+	char& string::operator[](size_t index)
+	{
+		assert(index < _size);
+		return _str[index];
 	}
 
+	//容量操作函数
 	size_t string::size()const
 	{
 		return _size;
@@ -82,39 +99,6 @@ namespace MyString
 	size_t string::capacity()const
 	{
 		return _capacity;
-	}
-
-	const char* string::c_str()const
-	{
-		return _str;
-	}
-
-	const char& string::operator[](size_t index)const
-	{
-		assert(index < _size);
-		return _str[index];
-	}
-
-	char& string::operator[](size_t index)
-	{
-		assert(index < _size);
-		return _str[index];
-	}
-
-	string& string::operator=(string s)
-	{
-		//现代写法
-		swap(_str, s._str);
-		swap(_size, s._size);
-		swap(_capacity, s._capacity);
-		return *this;
-	}
-
-	string& string::operator=(const char* str)
-	{
-		string tmp(str);
-		swap(_str, tmp._str);
-		return *this;
 	}
 
 	void string::reserve(size_t n)
@@ -150,6 +134,13 @@ namespace MyString
 		_size = n;
 	}
 
+	void string::clear()
+	{
+		_size = 0;
+		_str[_size] = '\0';
+	}
+
+	//对象修改操作函数
 	void string::push_back(char ch)
 	{
 		//如果有效长度等于容量，进行扩容
@@ -248,36 +239,6 @@ namespace MyString
 		return *this;
 	}
 
-	size_t string::find(char ch, size_t pos)const
-	{
-		for (size_t i = pos; i < _size; ++i)
-		{
-			if (_str[i] == ch)
-			{
-				return i;
-			}
-		}
-		return npos;
-	}
-	size_t string::find(const char* str, size_t pos)const
-	{
-		char* substr = strstr(_str + pos, str);
-		if (substr == nullptr)
-		{
-			return npos;
-		}
-		return substr - _str;
-		//size_t len = strlen(str);
-		//for (size_t i = pos; i < _size - len + 1; ++i)
-		//{
-		//	if (strncmp(_str + i, str, len) == 0)
-		//	{
-		//		return i;
-		//	}
-		//}
-		//return npos;
-	}
-
 	string& string::erase(size_t pos, size_t len)
 	{
 		if (pos >= _size)
@@ -300,6 +261,58 @@ namespace MyString
 		return *this;
 	}
 
+	void string::swap(string& s)
+	{
+		std::swap(_str, s._str);
+		std::swap(_size, s._size);
+		std::swap(_capacity, s._capacity);
+	}
+
+	//其他操作函数
+	string string::substr(size_t pos, size_t len) const {
+		if (pos > _size) {
+			throw std::out_of_range("Position is out of range");
+		}
+		if (len == npos || pos + len > _size) {
+			len = _size - pos;
+		}
+
+		string tmp;
+		tmp.reserve(len);
+		for (size_t i = 0; i < len; ++i) {
+			tmp.push_back(_str[pos + i]);
+		}
+		return tmp;
+	}
+
+	size_t string::find(char ch, size_t pos)const
+	{
+		for (size_t i = pos; i < _size; ++i)
+		{
+			if (_str[i] == ch)
+			{
+				return i;
+			}
+		}
+		return npos;
+	}
+
+	size_t string::find(const char* str, size_t pos)const
+	{
+		char* substr = strstr(_str + pos, str);
+		if (substr == nullptr)
+		{
+			return npos;
+		}
+		return substr - _str;
+	}
+
+	const char* string::c_str()const
+	{
+		return _str;
+	}
+
+	//运算符重载
 	bool string::operator<(const string& s)const
 	{
 		return strcmp(_str, s.c_str()) < 0;
@@ -324,5 +337,23 @@ namespace MyString
 	{
 		return strcmp(_str, s.c_str()) >= 0;
 	}
+	
+	ostream& operator<<(ostream& _cout, const string& s) {
+		_cout << s.c_str();
+		return _cout;
+	}
+
+	istream& operator>>(istream& _cin, string& s) {
+		char temp[1000];
+		_cin >> temp;
+		string tmp(temp);
+		std::swap(s._str, tmp._str);
+		std::swap(s._size, tmp._size);
+		std::swap(s._capacity, tmp._capacity);
+		return _cin;
+	}
+
+	//静态成员
+	const size_t string::npos = -1;
 }
 
