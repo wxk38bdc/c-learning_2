@@ -35,6 +35,7 @@ public:
 		_finish = nullptr;
 		_end_of_storage = nullptr;
 	}
+	//vector()=default;//强制编译器生成默认构造函数
 	vector(size_t n, const T& val = T())//构造函数
 	{
 		_start = new T[n];
@@ -65,6 +66,12 @@ public:
 		_finish = _start + v.size();
 		_end_of_storage = _start + v.capacity();
 	}
+	//拷贝构造的现代写法
+	//vector(vector<T> v)
+	//{
+	//	this->swap(v);
+	//	return *this;
+	//}
 	template<class InputIterator>
 	vector(InputIterator first, InputIterator last)//区间构造函数
 	{
@@ -74,6 +81,19 @@ public:
 		{
 			_start[i] = *first;
 			++first;
+		}
+		_finish = _start + n;
+		_end_of_storage = _start + n;
+	}
+	vector(initializer_list<T> l)//初始化列表构造函数
+	{
+		size_t n = l.size();
+		_start = new T[n];
+		auto it = l.begin();
+		for (size_t i = 0; i < n; i++)
+		{
+			_start[i] = *it;
+			it++;
 		}
 		_finish = _start + n;
 		_end_of_storage = _start + n;
@@ -386,4 +406,14 @@ void testvector11()
 		cout << v2[i] << " ";
 	}
 	cout << endl;
+	auto a = { 1,2,3 };
+	initializer_list<int> b = { 1,2,3 };
+}
+void testvector12()
+{
+	vector<int>v1 = { 1,2,3 };
+	for (auto e : v1)
+	{
+		cout << e << endl;
+	}
 }

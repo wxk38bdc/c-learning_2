@@ -2,11 +2,12 @@
 #include<string>
 #include<cassert>
 #include<algorithm>
+#include<initializer_list>
 using namespace std;
 #include"vector.h"
 
 int main()
 {
-	testvector11();
+	testvector12();
 	return 0;
 }
