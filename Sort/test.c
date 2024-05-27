@@ -1,10 +1,10 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include"sort.h"
 #include"stack.h"
-#define NUM 15
+#define NUM 40
 
 void testOP() {
-    int n = 10000; // 数组大小，根据需要调整
+    int n = 100000; // 数组大小，根据需要调整
     int* a = (int*)malloc(n * sizeof(int)); // 动态分配数组
     int* tmp = (int*)malloc(n * sizeof(int)); // 为归并排序准备临时数组
 
@@ -26,7 +26,7 @@ void testOP() {
     // 插入排序测试
     memcpy(copy, a, n * sizeof(int)); // 每次排序前复制原数组
     start = clock();
-   // InsertSort(copy, n);
+    InsertSort(copy, n);
     end = clock();
     printf("Insertion Sort took %.3f seconds\n", (double)(end - start) / CLOCKS_PER_SEC);
 
@@ -40,16 +40,16 @@ void testOP() {
     // 选择排序测试
     memcpy(copy, a, n * sizeof(int));
     start = clock();
-  //  SelectSort(copy, n);
+    SelectSort(copy, n);
     end = clock();
     printf("Selection Sort took %.3f seconds\n", (double)(end - start) / CLOCKS_PER_SEC);
 
-    // 冒泡排序测试
-    memcpy(copy, a, n * sizeof(int));
-    start = clock();
-  //  BubbleSort(copy, n);
-    end = clock();
-    printf("Bubble Sort took %.3f seconds\n", (double)(end - start) / CLOCKS_PER_SEC);
+    //// 冒泡排序测试
+    //memcpy(copy, a, n * sizeof(int));
+    //start = clock();
+    //BubbleSort(copy, n);
+    //end = clock();
+    //printf("Bubble Sort took %.3f seconds\n", (double)(end - start) / CLOCKS_PER_SEC);
 
     // 堆排序测试
     memcpy(copy, a, n * sizeof(int));
@@ -107,12 +107,12 @@ void testOP() {
 	end = clock();
     printf("Radix Sort took %.3f seconds\n", (double)(end - start) / CLOCKS_PER_SEC);
 
-    // 猴子排序测试
-    memcpy(copy, a, n * sizeof(int));
-    start = clock();
-    MonkeySort(copy, n);
-    end = clock();
-    printf("Monkey Sort took %.3f seconds\n", (double)(end - start) / CLOCKS_PER_SEC);
+    //// 猴子排序测试
+    //memcpy(copy, a, n * sizeof(int));
+    //start = clock();
+    //MonkeySort(copy, n);
+    //end = clock();
+    //printf("Monkey Sort took %.3f seconds\n", (double)(end - start) / CLOCKS_PER_SEC);
 
     free(a); // 释放原数组内存
     free(copy); // 释放临时数组内存
@@ -138,7 +138,7 @@ void test() {
 int main()
 {
     //测试时间复杂度
-    testOP();
+    //testOP();
 
     //test();
 	//生成随机数
@@ -160,9 +160,9 @@ int main()
 	//QuickSortNonR(a, 0, sz_a - 1);//非递归快速排序
 	//MergeSort(a, sz_a);//归并排序
 	//MergeSortNonR(a, sz_a);//归并排序非递归
-	CountSort(a, sz_a);//计数排序
+	//CountSort(a, sz_a);//计数排序
     //BucketSort(a, sz_a);//桶排序
-    //RadixSort(a, sz_a);//基数排序
+    RadixSort(a, sz_a);//基数排序
     //MonkeySort(a, sz_a);//猴子排序
 
     PrintArray(a, sz_a);

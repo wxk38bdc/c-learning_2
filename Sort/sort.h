@@ -59,4 +59,4 @@ void shuffle(int* a, int n);
 void MonkeySort(int* a, int n);
 
 
-void TestTime();//测试时间复杂度
+//void TestTime();//测试时间复杂度

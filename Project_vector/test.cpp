@@ -8,6 +8,6 @@ using namespace std;
 
 int main()
 {
-	testvector12();
+	testvector13();
 	return 0;
 }

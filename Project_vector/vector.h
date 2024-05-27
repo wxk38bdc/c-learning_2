@@ -1,5 +1,51 @@
 #pragma once
 
+template<class iterator, class ref>
+struct reverseIterator {
+	iterator _it;
+	reverseIterator(iterator it) : _it(it) {}
+
+	ref operator*() {
+		iterator tmp = _it;
+		return *--tmp;
+	}
+
+	ref operator->() {
+		return &operator*();
+	}
+
+	reverseIterator& operator++() {
+		--_it;
+		return *this;
+	}
+
+	reverseIterator operator++(int) {
+		reverseIterator tmp = *this;
+		--_it;
+		return tmp;
+	}
+
+	reverseIterator& operator--() {
+		++_it;
+		return *this;
+	}
+
+	reverseIterator operator--(int) {
+		reverseIterator tmp = *this;
+		++_it;
+		return tmp;
+	}
+
+	bool operator==(const reverseIterator& other) const {
+		return _it == other._it;
+	}
+
+	bool operator!=(const reverseIterator& other) const {
+		return _it != other._it;
+	}
+};
+
+
 template <class T>
 class vector
 {
@@ -8,6 +54,8 @@ public:
 	typedef const T* const_iterator;
 	typedef T& reference;
 	typedef const T& const_reference;
+	typedef reverseIterator<iterator, reference> reverse_iterator;
+	typedef reverseIterator<const_iterator, const_reference> const_reverse_iterator;
 private:
 	iterator _start;
 	iterator _finish;
@@ -28,6 +76,22 @@ public:
 	const_iterator cend()const
 	{
 		return _finish;
+	}
+	reverse_iterator rbegin()
+	{
+		return reverse_iterator(_finish);
+	}
+	reverse_iterator rend()
+	{
+		return reverse_iterator(_start);
+	}
+	const_reverse_iterator crbegin()const
+	{
+		return const_reverse_iterator(_finish);
+	}
+	const_reverse_iterator crend()const
+	{
+		return const_reverse_iterator(_start);
 	}
 	vector()//构造函数
 	{
@@ -416,4 +480,14 @@ void testvector12()
 	{
 		cout << e << endl;
 	}
+}
+//测试反向迭代器
+void testvector13()
+{
+	vector<int> v1 = { 1,2,3,4,5 };
+	for (auto it = v1.rbegin(); it != v1.rend(); it++)
+	{
+		cout << *it << " ";
+	}
+	cout << endl;
 }
