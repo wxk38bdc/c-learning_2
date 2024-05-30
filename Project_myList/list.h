@@ -1,5 +1,4 @@
 #pragma once
-
 template<class T>
 struct ListNode
 {
