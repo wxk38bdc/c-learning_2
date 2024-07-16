@@ -1,7 +1,7 @@
 #include"BinarySearchTree.h"
 int main()
 {
-	BSTree bst;
+	Key::BSTree<int> bst;
 	bst.insert(5);
 	bst.insert(3);
 	bst.insert(7);

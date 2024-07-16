@@ -1,27 +1,30 @@
 #pragma once
 #include<iostream>
 using namespace std;
+
+namespace Key {
+template<class T>
 struct BSTNode
 {
-	int data;
-	BSTNode* left;
-	BSTNode* right;
-	BSTNode(int data) : data(data), left(nullptr), right(nullptr) {}
+	T data;
+	BSTNode<T>* left;
+	BSTNode<T>* right;
+	BSTNode(const T&data=T()) : data(data), left(nullptr), right(nullptr) {}
 };
+template<class T>
 class BSTree
 {
 private:
-	BSTNode* root;
+	BSTNode<T>* root;
 public:
-	typedef BSTNode Node;
-	typedef BSTNode* PNode;
+	typedef BSTNode<T> Node;
+	typedef BSTNode<T>* PNode;
 	BSTree():root(nullptr){}
 	~BSTree(){}
 	
 	PNode getRoot() const { return root; }
 	void inOrder(PNode p) const
 	{
-		//if (p == nullptr)cout << "NULL" << " ";
 		if (p)
 		{
 			inOrder(p->left);
@@ -29,7 +32,7 @@ public:
 			inOrder(p->right);
 		}
 	}
-	PNode find(int data) const
+	PNode find(const T& data) const
 	{
 		PNode p = root;
 		while (p)
@@ -43,7 +46,7 @@ public:
 		}
 		return nullptr;
 	}
-	bool insert(int data)//若插入成功返回true，否则返回false
+	bool insert(const T& data)//若插入成功返回true，否则返回false
 	{
 		PNode p = root;
 		PNode pp = nullptr;
@@ -66,7 +69,7 @@ public:
 			pp->right = newNode;
 		return true;
 	}
-	bool erase(int data)
+	bool erase(const T& data)
 	{
 		PNode p = root;
 		PNode pp = nullptr;
@@ -111,3 +114,4 @@ public:
 		return true;
 	}
 };
+}
