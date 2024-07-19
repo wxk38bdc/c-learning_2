@@ -2,6 +2,11 @@
 
 int main()
 {
-
-	return 0;
+    testAVLTree01();
+    testAVLTreeInsert();
+    testAVLTreeFind();
+    testAVLTreeBalance();
+    testAVLTreeDestroy();
+    testAVLTreeComplex();
+    return 0;
 }
