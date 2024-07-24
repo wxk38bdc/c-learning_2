@@ -211,7 +211,7 @@ public:
 				return make_pair(Iterator(cur, _root), false);
 			}
 			parent = cur;
-			if (kot(cur->_data) < kot(data))
+			if (kot(cur->_data) > kot(data))
 			{
 				cur = cur->_left;
 			}
@@ -460,3 +460,12 @@ private:
 		}
 	}
 };
+
+struct KeyOfT
+{
+	int operator()(const int& data) const
+	{
+		return data;
+	}
+};
+
