@@ -12,8 +12,8 @@ int main()
 	//hash_bucket::TestHT2();
 
 
-	wxk::test_set();
-	//wxk::test_map();
-
+	//wxk::test_set();
+	wxk::test_map2();
+	//wxk::test_set2();
 	return 0;
 }

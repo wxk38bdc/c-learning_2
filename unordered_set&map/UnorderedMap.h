@@ -82,4 +82,39 @@ namespace wxk
 		}
 		cout << endl;
 	}
+	// 测试unordered_map
+	void test_map2() {
+		unordered_map<int, string> dict;
+
+		// 插入键值对
+		dict.insert({ 1, "one" });
+		dict.insert({ 2, "two" });
+		dict.insert({ 3, "three" });
+		dict.insert({ 4, "four" });
+		dict.insert({ 5, "five" });
+
+		// 使用[]操作符访问和修改元素
+		dict[2] = "TWO";
+		dict[6] = "six"; // 插入新的键值对
+
+		// 查找元素
+		auto it = dict.Find(3);
+		if (it != dict.end()) {
+			cout << "Found: " << it->first << " -> " << it->second << endl;
+		}
+		else {
+			cout << "Not Found: 3" << endl;
+		}
+
+		// 删除元素
+		bool erased = dict.Erase(4);
+		cout << "Element with key 4 " << (erased ? "was erased." : "not found.") << endl;
+
+		// 遍历unordered_map
+		cout << "Contents of the unordered_map:" << endl;
+		for (auto it = dict.begin(); it != dict.end(); ++it) {
+			cout << it->first << " -> " << it->second << endl;
+		}
+		cout << endl;
+	}
 }

@@ -17,7 +17,6 @@ namespace wxk
 		typedef typename hash_bucket::HashTable<K, const K, SetKeyOfT, Hash>::Iterator iterator;
 		typedef typename hash_bucket::HashTable<K, const K, SetKeyOfT, Hash>::ConstIterator const_iterator;
 
-
 		iterator begin()
 		{
 			return _ht.Begin();
@@ -80,4 +79,47 @@ namespace wxk
 		}
 		cout << endl;
 	}
+
+	void test_set2() {
+		unordered_set<int> s;
+
+		// 插入元素
+		int a[] = { 4, 2, 6, 1, 3, 5, 15, 7, 16, 14, 3, 3, 15 };
+		for (auto e : a) {
+			s.insert(e);
+		}
+
+		// 查找元素
+		auto it = s.Find(6);
+		if (it != s.end()) {
+			cout << "Found: " << *it << endl;
+		}
+		else {
+			cout << "Not Found: 6" << endl;
+		}
+
+		// 删除元素
+		bool erased = s.Erase(7);
+		cout << "Element 7 " << (erased ? "was erased." : "not found.") << endl;
+
+		// 遍历unordered_set
+		cout << "Contents of the unordered_set:" << endl;
+		for (auto it = s.begin(); it != s.end(); ++it) {
+			cout << *it << " ";
+		}
+		cout << endl;
+
+		// 插入更多元素并检查唯一性
+		s.insert(10);
+		s.insert(2); // 重复插入2，测试唯一性
+		s.insert(8);
+
+		// 遍历unordered_set
+		cout << "Contents of the unordered_set after more insertions:" << endl;
+		for (auto it = s.begin(); it != s.end(); ++it) {
+			cout << *it << " ";
+		}
+		cout << endl;
+	}
+
 }

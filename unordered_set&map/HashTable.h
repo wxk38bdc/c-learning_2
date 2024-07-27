@@ -1,5 +1,4 @@
 #pragma once
-
 template<class K>
 struct HashFunc
 {
@@ -71,8 +70,7 @@ namespace open_address //开放定址法
 				_tables.swap(newHT._tables);
 			}
 
-			Hash hs;
-			size_t hashi = hs(kv.first) % _tables.size();
+			size_t hashi = Hash()(kv.first) % _tables.size();
 			while (_tables[hashi]._state == EXIST)
 			{
 				++hashi;
@@ -88,8 +86,7 @@ namespace open_address //开放定址法
 
 		HashData<K, V>* Find(const K& key)
 		{
-			Hash hs;
-			size_t hashi = hs(key) % _tables.size();
+			size_t hashi = Hash()(key) % _tables.size();
 			while (_tables[hashi]._state != EMPTY)
 			{
 				if (_tables[hashi]._state == EXIST
@@ -125,7 +122,7 @@ namespace open_address //开放定址法
 	};
 }
 
-namespace hash_bucket
+namespace hash_bucket // 拉链法(链地址法)
 {
 	template<class T>
 	struct HashNode
@@ -149,8 +146,8 @@ namespace hash_bucket
 		typedef HashNode<T> Node;
 		typedef HTIterator<K, T, Ptr, Ref, KeyOfT, Hash> Self;
 
-		Node* _node;
-		const HashTable<K, T, KeyOfT, Hash>* _pht;
+		Node* _node;// 当前节点
+		const HashTable<K, T, KeyOfT, Hash>* _pht;// 哈希表
 
 		HTIterator(Node* node, const HashTable<K, T, KeyOfT, Hash>* pht)
 			:_node(node)
@@ -291,7 +288,7 @@ namespace hash_bucket
 		{
 			KeyOfT kot;
 			Iterator it = Find(kot(data));
-			if (it != End())
+			if (it != End())// 说明找到了
 				return make_pair(it, false);
 
 			Hash hs;
