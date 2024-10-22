@@ -2,6 +2,6 @@
 
 int main()
 {
-	testBM();
+	test1();
 	return 0;
 }
