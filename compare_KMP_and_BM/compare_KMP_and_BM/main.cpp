@@ -21,7 +21,7 @@ std::vector<std::string> readFile(const std::string& filename) {
 }
 
 void testPerformance() {
-    std::vector<std::string> lines = readFile("C:\\Users\\WangXikang\\OneDrive\\Desktop\\test_01.txt");
+    std::vector<std::string> lines = readFile("E:\\王熙康nku\\教材及课程\\2024-2025上学期（第三学期）\\2024-2025上 数据结构 刘明铭\\实验报告\\字符串搜索\\data\\test_03_front.txt");
 
     std::string mainString = lines[0]; // 主串
 
@@ -98,9 +98,9 @@ void testPerformance() {
     std::cout << "BM on long patterns took: " << elapsed.count() << " seconds.\n";
 }
 
-void testPerformanceWithCount() {
+void testPerformanceWithCount(){
     // 读取测试文件
-    std::vector<std::string> lines = readFile("C:\\Users\\WangXikang\\OneDrive\\Desktop\\test_01.txt");
+    std::vector<std::string> lines = readFile("E:\\王熙康nku\\教材及课程\\2024-2025上学期（第三学期）\\2024-2025上 数据结构 刘明铭\\实验报告\\字符串搜索\\data\\test_03_last.txt");
 
     std::string mainString = lines[0];  // 主串
 
