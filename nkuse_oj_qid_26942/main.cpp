@@ -31,6 +31,9 @@ a
 a
 
 */
+
+//方法一：二叉链表存储二叉树，先序遍历构造二叉树，后序遍历输出
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -84,12 +87,39 @@ void postorderTraversal(TreeNode* root) {
 	cout << root->val;
 }
 
-int main() {
-	string preorder;
-	cin >> preorder;
+//int main() {
+//	string preorder;
+//	cin >> preorder;
+//
+//	TreeNode* root = constructTree(preorder, 0, preorder.size() - 1);
+//	postorderTraversal(root);
+//	cout << endl;
+//	return 0;
+//}
 
-	TreeNode* root = constructTree(preorder, 0, preorder.size() - 1);
-	postorderTraversal(root);
-	cout << endl;
+//方法二:数组存储二叉树，先序遍历构造二叉树，后序遍历输出
+int pos = 0;
+void preOrder(string& str, const string& preorderStr, int cur)
+{
+	if (cur >= (int)preorderStr.size())return;
+	str[cur] = preorderStr[pos++];
+	preOrder(str, preorderStr, 2 * cur + 1);
+	preOrder(str, preorderStr, 2 * cur + 2);
+}
+void postOrder(const string& str, int cur)
+{
+	if (cur >= (int)str.size())return;
+	postOrder(str, 2 * cur + 1);
+	postOrder(str, 2 * cur + 2);
+	cout << str[cur];
+}
+int main()
+{
+	string preorderStr;
+	cin >> preorderStr;
+	string tree;
+	tree.resize(preorderStr.size());
+	preOrder(tree, preorderStr, 0);
+	postOrder(tree, 0);
 	return 0;
 }
