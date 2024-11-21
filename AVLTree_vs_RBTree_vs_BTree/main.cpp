@@ -160,39 +160,37 @@ void runTests(int N, int minDegree) {
 
     // AVL Tree 测试
     AVLTree<int> avlTree;
-    //testTree(avlTree, data, searchNumbers, "AVL Tree");
-    //testTreeReverseDelete(avlTree, data, searchNumbers, "AVL Tree");
+    testTree(avlTree, data, searchNumbers, "AVL Tree");
+    testTreeReverseDelete(avlTree, data, searchNumbers, "AVL Tree");
     testTreeRandom(avlTree, data, searchNumbers, "AVL Tree", N);  // 传入 N 作为种子
 
     // BSTree 测试
     BSTree<int> bstTree;
-    //testTree(bstTree, data, searchNumbers, "BSTree");
-    //testTreeReverseDelete(bstTree, data, searchNumbers, "BSTree");
-    //testTreeRandom(bstTree, data, searchNumbers, "BSTree", N);  // 传入 N 作为种子
+    testTree(bstTree, data, searchNumbers, "BSTree");
+    testTreeReverseDelete(bstTree, data, searchNumbers, "BSTree");
+    testTreeRandom(bstTree, data, searchNumbers, "BSTree", N);  // 传入 N 作为种子
 
     // BTree 测试
     BTree bTree(minDegree);
-    //testTree(bTree, data, searchNumbers, "BTree");
-    //testTreeReverseDelete(bTree, data, searchNumbers, "BTree");
+    testTree(bTree, data, searchNumbers, "BTree");
+    testTreeReverseDelete(bTree, data, searchNumbers, "BTree");
     testTreeRandom(bTree, data, searchNumbers, "BTree", N);  // 传入 N 作为种子
 
     // RBTree 测试
     RBTree<int> rbTree;
-    //testTree(rbTree, data, searchNumbers, "RBTree");
-    //testTreeReverseDelete(rbTree, data, searchNumbers, "RBTree");
+    testTree(rbTree, data, searchNumbers, "RBTree");
+    testTreeReverseDelete(rbTree, data, searchNumbers, "RBTree");
     testTreeRandom(rbTree, data, searchNumbers, "RBTree", N);  // 传入 N 作为种子
 }
 
-
-
 int main() {
-    int minDegree = 256;  // B树的最小度（确保为512阶）
+    //int minDegree = 256;  // B树的最小度（确保为512阶）
 
-    // 循环测试不同规模的数据
-    for (int N = 10000; N <= 400000; N += 20000) {
-        cout << "Testing with N = " << N << " elements..." << endl;
-        runTests(N, minDegree);
-    }
-
+    //// 循环测试不同规模的数据
+    //for (int N = 10000; N <= 400000; N += 20000) {
+    //    cout << "Testing with N = " << N << " elements..." << endl;
+    //    runTests(N, minDegree);
+    //}
+    testBTree();
     return 0;
 }
