@@ -1,10 +1,9 @@
 ////////////////////////////////////////////////////////
 // 程序名称：博弈五子棋
-// 编译环境：Visual C++ 2019		EasyX_2020-3-15(beta)
-// 作　　者：陈可佳 <emil09_chen@126.com>
-// 最后修改：2020-4-28
-//
-
+// 原作者：陈可佳 <emil09_chen@126.com>
+// 修改者：wxk38bdc
+// 最后修改：2024/12/9
+// 程序功能：实现一个简单的五子棋游戏，玩家与电脑对战。
 
 #include <conio.h>
 #include "GameLogic.h"
@@ -12,7 +11,7 @@
 
 // 游戏是否继续的选择函数
 bool askToContinue() {
-    std::cout << "Do you want to play again? (Y/y/N/n): ";  // 在控制台输出提示信息
+    std::cout << "Do you want to play again? (Y/y for yes,N/n for no): ";  // 在控制台输出提示信息
     char ch;
 	std::cin >> ch;
 
