@@ -610,6 +610,28 @@ DRAW: // 绘制
 
 // 游戏是否继续的选择函数
 bool askToContinue() {
+
+	cleardevice(); // 清空图形窗口
+	setbkcolor(RGB(230, 230, 250)); // 设置背景颜色为浅紫色
+	setfillcolor(RGB(245, 245, 220)); // 设置填充颜色为米色
+	solidrectangle(0, 0, 700, 700); // 绘制整个窗口背景
+
+	// 添加顶部标题
+	settextstyle(40, 0, _T("Consolas"));
+	settextcolor(RGB(0, 100, 200)); // 蓝色字体
+	outtextxy(200, 100, _T("游戏结束！"));
+
+	setlinecolor(RGB(100, 149, 237)); // 设置边框颜色为天蓝色
+	setlinestyle(PS_SOLID, 3); // 设置实线边框
+	rectangle(150, 180, 550, 450); // 绘制选择框
+
+	settextstyle(30, 0, _T("Consolas"));
+	settextcolor(BLACK);
+	outtextxy(200, 200, _T("是否继续游戏？"));
+	outtextxy(200, 250, _T("继续（输入Y或y）"));
+	outtextxy(200, 300, _T("结束（输入N或n) "));
+
+
 	std::cout << "Do you want to play again? (Y/y for yes,N/n for no): ";  // 在控制台输出提示信息
 	char ch;
 	std::cin >> ch;
@@ -621,5 +643,18 @@ bool askToContinue() {
 	}
 
 	// 根据用户输入判断是否继续游戏
+	if (toupper(ch) == 'Y')
+	{	
+		outtextxy(300, 500, _T("游戏继续"));
+	}
+	else if (toupper(ch) == 'N') {
+		outtextxy(300, 500, _T("游戏结束"));
+	}
+
+	// 添加图案作为装饰
+	setfillcolor(RGB(255, 192, 203)); // 设置填充颜色为粉色
+	fillcircle(350, 600, 30); // 绘制底部装饰圆
+
+	Sleep(1500); // 等待 1.5 秒让用户看到选择结果
 	return toupper(ch) == 'Y';
 }
