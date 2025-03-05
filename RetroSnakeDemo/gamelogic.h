@@ -41,15 +41,30 @@ public:
 		}
 		body.push_back(newBody);
 	}
+	
+	//绘制背景
+	void drawBackground()
+	{
+		// 加载并绘制背景图片
+		IMAGE bgImage;
+		loadimage(&bgImage, _T("background.jpg"), GRAPH_LENGTH, GRAPH_WIDTH);
+		putimage(0, 0, &bgImage); // 将背景图片绘制到窗口中
 
-	void draw(int color = YELLOW)
-	{   //设置背景为白色并刷新
-		setbkcolor(WHITE);
-		cleardevice();
-
-		//绘制表格
+		// 绘制表格
 		drawTable(COL, ROW);
+	}
 
+	void drawSnake(int color = YELLOW)
+	{   
+		//清除蛇
+		for (int i = 0; i < ROW; i++)
+		{
+			for (int j = 0; j < COL; j++)
+			{
+				//填充背景色为RGB粉色
+				fillBlock(j, i, RGB(255, 192, 203));
+			}
+		}
 		//绘制蛇
 		for (int i = 0; i < body.size(); i++)
 		{
@@ -97,15 +112,27 @@ public:
 	//检测键盘输入
 	void checkKeyBoard()
 	{
-		// 检测键盘输入，使用 GetAsyncKeyState 检测按键
+		// 检测键盘输入，使用 GetAsyncKeyState 检测按键,转弯角度为90度
 		if (GetAsyncKeyState('W') & 0x8000)  // 如果 W 键按下
-			currentDir = Direction::UP;
+		{
+			if (currentDir != Direction::DOWN)
+				currentDir = Direction::UP;
+		}
 		else if (GetAsyncKeyState('S') & 0x8000)  // 如果 S 键按下
-			currentDir = Direction::DOWN;
+		{
+			if (currentDir != Direction::UP)
+				currentDir = Direction::DOWN;
+		}
 		else if (GetAsyncKeyState('A') & 0x8000)  // 如果 A 键按下
-			currentDir = Direction::LEFT;
+		{
+			if (currentDir != Direction::RIGHT)
+				currentDir = Direction::LEFT;
+		}
 		else if (GetAsyncKeyState('D') & 0x8000)  // 如果 D 键按下
-			currentDir = Direction::RIGHT;
+		{
+			if (currentDir != Direction::LEFT)
+				currentDir = Direction::RIGHT;
+		}
 		else if (GetAsyncKeyState('Q') & 0x8000)  // 如果 Q 键按下，退出游戏
 			gameOver = true;
 	}
@@ -157,7 +184,7 @@ public:
 			gameOver = true;
 		}
 		//绘制蛇
-		draw(GREEN);
+		drawSnake(GREEN);
 	}
 
 	//检测是否游戏结束
@@ -180,7 +207,7 @@ private:
 // 绘制表格
 void drawTable(int col, int row)
 {
-	setlinecolor(BLACK);
+	setlinecolor(WHITE);
 	settextstyle(16, 0, _T("Consolas"));
 	settextcolor(BLACK);
 

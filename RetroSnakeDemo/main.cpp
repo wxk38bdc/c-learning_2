@@ -9,6 +9,8 @@ int main()
 	//初始化图形界面
 	initgraph(GRAPH_LENGTH, GRAPH_WIDTH);
 
+	setbkmode(TRANSPARENT);//设置背景透明
+
 	//创建蛇
 	Snake snake({ { 14, 11 },
 		{ 13, 11 },
@@ -24,11 +26,14 @@ int main()
 		{ 7, 7 }
 		});
 
+	//绘制背景
+	snake.drawBackground();
+
 	//游戏主循环
 	while (true)
 	{
 		//绘制蛇
-		snake.draw(GREEN);
+		snake.drawSnake(GREEN);
 
 		////生成食物
 		//snake.generateFood(BLUE);
@@ -43,11 +48,11 @@ int main()
 		//检测是否游戏结束
 		snake.checkGameOver();
 
-		//打印蛇身坐标到控制台，用于调试
+		//打印蛇身坐标到控制台
 		snake.printBodyCoordinate();
 
-		//延时，避免游戏过快
-		Sleep(100);
+		//延时
+		Sleep(1000);
 	}
 
 	system("pause");
