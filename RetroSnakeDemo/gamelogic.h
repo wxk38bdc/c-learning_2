@@ -7,7 +7,7 @@
 #include <iostream>
 #include <cassert>
 using namespace std;
-
+using Color = int;
 const int ROW = 24;
 const int COL = 24;
 const int GRAPH_LENGTH = 700;
@@ -22,7 +22,6 @@ enum Direction {
 
 void drawTable(int col, int row);
 void fillBlock(int x, int y, int color = YELLOW);
-void drawGameOver();
 
 // 蛇类
 class Snake
@@ -54,7 +53,7 @@ public:
 		drawTable(COL, ROW);
 	}
 
-	void drawSnake(int color = YELLOW)
+	void drawSnake()
 	{   
 		//清除蛇
 		for (int i = 0; i < ROW; i++)
@@ -62,17 +61,24 @@ public:
 			for (int j = 0; j < COL; j++)
 			{
 				//填充背景色为RGB粉色
-				fillBlock(j, i, RGB(255, 192, 203));
+				fillBlock(i, j, RGB(255, 192, 203));
 			}
 		}
 		//绘制蛇
 		for (int i = 0; i < body.size(); i++)
 		{
 			if (i == 0)
-				fillBlock(body[i][0], body[i][1], RED);
+				fillBlock(body[i][0], body[i][1], headColor);
 			else
-				fillBlock(body[i][0], body[i][1], color);
+				fillBlock(body[i][0], body[i][1], bodyColor);
 		}
+		drawFood();
+
+	}
+
+	void drawFood()
+	{
+		fillBlock(food[0], food[1], foodColor);
 	}
 
 	//打印蛇身坐标到控制台
@@ -90,7 +96,7 @@ public:
 	}
 
 	//生成食物
-	void generateFood(int color = RED)
+	void generateFood()
 	{
 		// 生成随机数
 		int x = rand() % COL;
@@ -105,8 +111,8 @@ public:
 				return;
 			}
 		}
-
-		fillBlock(x, y, color);
+		food = { x, y };
+		fillBlock(x, y, foodColor);
 	}
 
 	//检测键盘输入
@@ -137,10 +143,6 @@ public:
 			gameOver = true;
 	}
 
-	//与checkKeyBoard()为同一功能，只是checkKeyBoard()更加合理
-	void moveSnake() {
-		checkKeyBoard();
-	}
 
 	//自动移动
 	void autoMove()
@@ -167,8 +169,19 @@ public:
 		}
 		//把新的头部插入到头部
 		body.insert(body.begin(), newHead);
-		//删除尾部
-		body.pop_back();
+		//检测是否吃到食物
+		if (newHead[0] == food[0] && newHead[1] == food[1])
+		{
+			//生成新的食物
+			generateFood();
+			drawFood();
+		}
+		else
+		{
+			//删除尾部
+			body.pop_back();
+		}
+
 		//检测是否撞到自己
 		for (int i = 1; i < body.size(); i++)
 		{
@@ -184,7 +197,7 @@ public:
 			gameOver = true;
 		}
 		//绘制蛇
-		drawSnake(GREEN);
+		drawSnake();
 	}
 
 	//检测是否游戏结束
@@ -198,10 +211,29 @@ public:
 			exit(0);
 		}
 	}
+
+	// 绘制游戏结束画面
+	void drawGameOver()
+	{
+		setbkcolor(WHITE);
+		cleardevice();
+		settextstyle(64, 0, _T("Consolas"));
+		settextcolor(RED);
+		outtextxy(200, 300, _T("Game Over!"));
+		//写出最终蛇长
+		wstring text = L"最终蛇长:";
+		text += to_wstring(body.size());
+		outtextxy(200, 400, text.c_str());
+	}
+
 private:
 	vector<vector<int>> body;
+	vector<int> food;
 	bool gameOver = false;
 	Direction currentDir = Direction::RIGHT;
+	Color headColor = RED;
+	Color bodyColor = YELLOW;
+	Color foodColor = BLUE;
 };
 
 // 绘制表格
@@ -259,12 +291,3 @@ void fillBlock(int x, int y, int color)
 	fillrectangle(startX + x * BLOCK_SIZE, startY + y * BLOCK_SIZE, startX + (x + 1) * BLOCK_SIZE, startY + (y + 1) * BLOCK_SIZE);
 }
 
-// 绘制游戏结束画面
-void drawGameOver()
-{
-	setbkcolor(WHITE);
-	cleardevice();
-	settextstyle(64, 0, _T("Consolas"));
-	settextcolor(RED);
-	outtextxy(200, 300, _T("Game Over!"));
-}
