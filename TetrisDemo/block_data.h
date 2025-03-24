@@ -48,3 +48,5 @@ const std::vector<std::vector<std::vector<std::pair<int, int>>>> Block = {
         {{0, 0}, {0, 1}, {0, -1}, {1, -1}}
     }
 };
+
+const int BLOCK_TYPE_COUNT = Block.size(); // 方块类型数量

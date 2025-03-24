@@ -25,15 +25,15 @@ int main() {
 	PreviewArea previewArea;
 
     // 初始化当前方块和下一个方块
-    TetrisBlock currentBlock(rand() % 7, 0, WIDTH / 2 - 2, 0);
-    TetrisBlock nextBlock(rand() % 7, 0, 0, 0);
+    TetrisBlock currentBlock(rand() % BLOCK_TYPE_COUNT, 0, WIDTH / 2 - 2, 0);
+    TetrisBlock nextBlock(rand() % BLOCK_TYPE_COUNT, 0, 0, 0);
     previewArea.UpdateNextBlock(nextBlock);
-
 
     // 游戏主循环
     while (true) {
         // 绘制游戏区域
-        gameArea.Draw();
+		gameArea.Draw();
+
 
         // 绘制当前方块
         currentBlock.Draw(MARGIN, MARGIN);
@@ -83,7 +83,7 @@ int main() {
         }
 
         // 根据等级调整下落速度
-        int delay = 200 - (scoreManager.GetLevel() - 1) * 20; // 每升一级减少 20 毫秒
+        int delay = 150 - (scoreManager.GetLevel() - 1) * 20; // 每升一级减少 20 毫秒
         if (delay < 50) delay = 50; // 最小延迟为 50 毫秒
         Sleep(delay);
 

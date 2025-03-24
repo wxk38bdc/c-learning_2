@@ -50,7 +50,7 @@ public:
 
     // 绘制分数和等级
     void Draw() const {
-        settextstyle(20, 0, _T("宋体")); // 设置字体
+        settextstyle(20, 0, _T("仿宋")); // 设置字体
         settextcolor(BLACK); // 设置文字颜色
 
         // 绘制分数
@@ -185,9 +185,8 @@ public:
     }
 
 
-    // 绘制游戏区域
+	// 绘制游戏区域,填充颜色
     void Draw() const {
-		
         for (int i = 0; i < HEIGHT; ++i) {
             for (int j = 0; j < WIDTH; ++j) {
                 setfillcolor(grid[i][j]); // 设置格子颜色
@@ -195,15 +194,20 @@ public:
                     MARGIN + (j + 1) * CELL_SIZE, MARGIN + (i + 1) * CELL_SIZE);
             }
         }
-		// 重新绘制网格
-        setlinecolor(BLACK);
-        for (int i = 0; i <= WIDTH; ++i) {
-            line(MARGIN + i * CELL_SIZE, MARGIN, MARGIN + i * CELL_SIZE, MARGIN + HEIGHT * CELL_SIZE);
-        }
-        for (int j = 0; j <= HEIGHT; ++j) {
-            line(MARGIN, MARGIN + j * CELL_SIZE, MARGIN + WIDTH * CELL_SIZE, MARGIN + j * CELL_SIZE);
-        }
+		if (DISPLAY_GAMEAREA_GRID) DrawGrid();//绘制网格
     }
+
+    //绘制网格
+	void DrawGrid() const {
+		// 重新绘制网格
+		setlinecolor(BLACK);
+		for (int i = 0; i <= WIDTH; ++i) {
+			line(MARGIN + i * CELL_SIZE, MARGIN, MARGIN + i * CELL_SIZE, MARGIN + HEIGHT * CELL_SIZE);
+		}
+		for (int j = 0; j <= HEIGHT; ++j) {
+			line(MARGIN, MARGIN + j * CELL_SIZE, MARGIN + WIDTH * CELL_SIZE, MARGIN + j * CELL_SIZE);
+		}
+	}
 };
 
 
@@ -246,14 +250,16 @@ private:
         // 填充白色背景
         setfillcolor(WHITE);
         solidrectangle(startX, startY, startX + PREVIEW_WIDTH * CELL_SIZE, startY + PREVIEW_HEIGHT * CELL_SIZE);
-
-        // 重新绘制网格
-        setlinecolor(BLACK);
-        for (int i = 0; i <= PREVIEW_WIDTH; ++i) {
-            line(startX + i * CELL_SIZE, startY, startX + i * CELL_SIZE, startY + PREVIEW_HEIGHT * CELL_SIZE);
+        if (DISPLAY_PREVIEWAREA_GRID) {
+            // 重新绘制网格
+            setlinecolor(BLACK);
+            for (int i = 0; i <= PREVIEW_WIDTH; ++i) {
+                line(startX + i * CELL_SIZE, startY, startX + i * CELL_SIZE, startY + PREVIEW_HEIGHT * CELL_SIZE);
+            }
+            for (int j = 0; j <= PREVIEW_HEIGHT; ++j) {
+                line(startX, startY + j * CELL_SIZE, startX + PREVIEW_WIDTH * CELL_SIZE, startY + j * CELL_SIZE);
+            }
         }
-        for (int j = 0; j <= PREVIEW_HEIGHT; ++j) {
-            line(startX, startY + j * CELL_SIZE, startX + PREVIEW_WIDTH * CELL_SIZE, startY + j * CELL_SIZE);
-        }
+       
     }
 };
