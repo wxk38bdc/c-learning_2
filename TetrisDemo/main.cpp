@@ -1,5 +1,6 @@
 #include <graphics.h>
 #include <iostream>
+#include <ctime>
 #include "constants.h"
 #include "draw_utils.h"
 #include "tetris_block.h"
@@ -7,6 +8,9 @@
 
 
 int main() {
+	// 设置随机数种子
+	srand(time(nullptr));
+
     // 初始化图形窗口
     initgraph(SCREEN_WIDTH, SCREEN_HEIGHT);
 
@@ -33,7 +37,6 @@ int main() {
     while (true) {
         // 绘制游戏区域
 		gameArea.Draw();
-
 
         // 绘制当前方块
         currentBlock.Draw(MARGIN, MARGIN);
