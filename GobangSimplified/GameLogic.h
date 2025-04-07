@@ -6,6 +6,7 @@
 #include <cstdlib>
 #include <vector>
 #include <algorithm>
+#include <Windows.h>
 // 全局变量
 box BOX[19][19];      // 棋盘
 int win = -1;         // 谁赢了（0：白棋，1：黑棋，2：平局）
@@ -28,9 +29,6 @@ int gameMode = 1; // 默认为人机对战模式
 
 // 选择模式函数
 void chooseMode() {
-
-
-	char ch;
 	while (true) {
 		cleardevice(); // 清空图形窗口
 		setbkcolor(RGB(230, 230, 250)); // 设置背景颜色为浅紫色
@@ -59,23 +57,17 @@ void chooseMode() {
 		settextcolor(RGB(0, 128, 0)); // 设置绿色字体
 		outtextxy(200, 400, _T("请输入模式编号 (1, 2, 3):"));
 
-		std::cout << "Select Game Mode:\n";
-		std::cout << "1. Player vs AI (Human vs Computer)\n";
-		std::cout << "2. Player vs Player (Human vs Human)\n";
-		std::cout << "3. AI vs AI (Computer vs Computer)\n";
-		std::cout << "Enter 1, 2, or 3: ";
-		std::cin >> ch; // 从命令行读取用户输入
-		if (ch == '1') {
+		if (GetAsyncKeyState('1') & 0x8000 || GetAsyncKeyState(VK_NUMPAD1) & 0x8000) {
 			gameMode = 1; // 人机对战
 			outtextxy(200, 500, _T("已选择: 玩家 vs AI"));
 			break;
 		}
-		else if (ch == '2') {
+		else if (GetAsyncKeyState('2') & 0x8000 || GetAsyncKeyState(VK_NUMPAD2) & 0x8000) {
 			gameMode = 2; // 双人对战
 			outtextxy(200, 500, _T("已选择: 玩家 vs 玩家"));
 			break;
 		}
-		else if (ch == '3') {
+		else if (GetAsyncKeyState('3') & 0x8000 || GetAsyncKeyState(VK_NUMPAD3) & 0x8000) {
 			gameMode = 3; // AI 对战
 			outtextxy(200, 500, _T("已选择: AI vs AI"));
 			break;
