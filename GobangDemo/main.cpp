@@ -6,6 +6,7 @@
 #include <Windows.h>
 #include "game.h"
 #include <iostream>
+#include <memory>
 
 // 静态成员初始化
 IMAGE Piece::blackPieceImg;
@@ -13,22 +14,21 @@ IMAGE Piece::whitePieceImg;
 bool Piece::imagesLoaded = false;
 
 int main() {
-    Game game;
+    // 使用智能指针管理游戏对象
+    std::unique_ptr<Game> game = std::make_unique<TwoPlayerGame>();
 
     // 主游戏循环
     while (true) {
-        // 检查按键输入
-        if (_kbhit()) {
-            if (_getch() == VK_ESCAPE) {
-                break; // ESC键退出
-            }
+        // 如果 ESC 键被按下，退出游戏
+        if (GetAsyncKeyState(VK_ESCAPE) & 0x8000) {
+            break;
         }
 
         // 处理鼠标消息
         if (MouseHit()) {
             MOUSEMSG msg = GetMouseMsg();
             if (msg.uMsg == WM_LBUTTONDOWN) {
-                game.handleMouseClick(msg.x, msg.y);
+                game->handleMouseClick(msg.x, msg.y);
             }
         }
 
